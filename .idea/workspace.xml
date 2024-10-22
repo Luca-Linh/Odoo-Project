@@ -2,7 +2,798 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="81c1c157-0331-46e3-aca5-2792eae3fca8" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/Chart/Chart.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/ace/ace.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/ace/ace.odoo-custom.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/ace/javascript_highlight_rules.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/ace/mode-js.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/ace/mode-python.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/ace/mode-scss.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/ace/mode-xml.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/ace/theme-monokai.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/ace/worker-xml.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/benchmarkjs/LICENSE" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/benchmarkjs/benchmark.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/benchmarkjs/lodash.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/bootstrap/LICENSE" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/bootstrap/css/bootstrap.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/bootstrap/js/alert.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/bootstrap/js/button.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/bootstrap/js/carousel.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/bootstrap/js/collapse.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/bootstrap/js/dropdown.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/bootstrap/js/index.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/bootstrap/js/modal.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/bootstrap/js/popover.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/bootstrap/js/scrollspy.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/bootstrap/js/tab.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/bootstrap/js/toast.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/bootstrap/js/tooltip.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/bootstrap/js/util.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/bootstrap/scss/_alert.scss" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/bootstrap/scss/_badge.scss" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/bootstrap/scss/_breadcrumb.scss" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/bootstrap/scss/_button-group.scss" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/bootstrap/scss/_buttons.scss" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/bootstrap/scss/_card.scss" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/bootstrap/scss/_carousel.scss" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/bootstrap/scss/_close.scss" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/bootstrap/scss/_code.scss" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/bootstrap/scss/_custom-forms.scss" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/bootstrap/scss/_dropdown.scss" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/bootstrap/scss/_forms.scss" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/bootstrap/scss/_functions.scss" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/bootstrap/scss/_grid.scss" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/bootstrap/scss/_images.scss" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/bootstrap/scss/_input-group.scss" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/bootstrap/scss/_jumbotron.scss" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/bootstrap/scss/_list-group.scss" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/bootstrap/scss/_media.scss" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/bootstrap/scss/_mixins.scss" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/bootstrap/scss/_modal.scss" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/bootstrap/scss/_nav.scss" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/bootstrap/scss/_navbar.scss" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/bootstrap/scss/_pagination.scss" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/bootstrap/scss/_popover.scss" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/bootstrap/scss/_print.scss" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/bootstrap/scss/_progress.scss" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/bootstrap/scss/_reboot.scss" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/bootstrap/scss/_root.scss" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/bootstrap/scss/_spinners.scss" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/bootstrap/scss/_tables.scss" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/bootstrap/scss/_toasts.scss" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/bootstrap/scss/_tooltip.scss" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/bootstrap/scss/_transitions.scss" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/bootstrap/scss/_type.scss" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/bootstrap/scss/_utilities.scss" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/bootstrap/scss/_variables.scss" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/bootstrap/scss/bootstrap.scss" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/bootstrap/scss/mixins/_alert.scss" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/bootstrap/scss/mixins/_background-variant.scss" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/bootstrap/scss/mixins/_badge.scss" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/bootstrap/scss/mixins/_border-radius.scss" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/bootstrap/scss/mixins/_box-shadow.scss" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/bootstrap/scss/mixins/_breakpoints.scss" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/bootstrap/scss/mixins/_buttons.scss" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/bootstrap/scss/mixins/_caret.scss" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/bootstrap/scss/mixins/_clearfix.scss" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/bootstrap/scss/mixins/_deprecate.scss" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/bootstrap/scss/mixins/_float.scss" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/bootstrap/scss/mixins/_forms.scss" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/bootstrap/scss/mixins/_gradients.scss" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/bootstrap/scss/mixins/_grid-framework.scss" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/bootstrap/scss/mixins/_grid.scss" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/bootstrap/scss/mixins/_hover.scss" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/bootstrap/scss/mixins/_image.scss" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/bootstrap/scss/mixins/_list-group.scss" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/bootstrap/scss/mixins/_lists.scss" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/bootstrap/scss/mixins/_nav-divider.scss" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/bootstrap/scss/mixins/_pagination.scss" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/bootstrap/scss/mixins/_reset-text.scss" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/bootstrap/scss/mixins/_resize.scss" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/bootstrap/scss/mixins/_screen-reader.scss" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/bootstrap/scss/mixins/_size.scss" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/bootstrap/scss/mixins/_table-row.scss" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/bootstrap/scss/mixins/_text-emphasis.scss" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/bootstrap/scss/mixins/_text-hide.scss" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/bootstrap/scss/mixins/_text-truncate.scss" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/bootstrap/scss/mixins/_transition.scss" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/bootstrap/scss/mixins/_visibility.scss" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/bootstrap/scss/utilities/_align.scss" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/bootstrap/scss/utilities/_background.scss" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/bootstrap/scss/utilities/_borders.scss" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/bootstrap/scss/utilities/_clearfix.scss" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/bootstrap/scss/utilities/_display.scss" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/bootstrap/scss/utilities/_embed.scss" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/bootstrap/scss/utilities/_flex.scss" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/bootstrap/scss/utilities/_float.scss" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/bootstrap/scss/utilities/_overflow.scss" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/bootstrap/scss/utilities/_position.scss" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/bootstrap/scss/utilities/_screenreaders.scss" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/bootstrap/scss/utilities/_shadows.scss" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/bootstrap/scss/utilities/_sizing.scss" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/bootstrap/scss/utilities/_spacing.scss" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/bootstrap/scss/utilities/_stretched-link.scss" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/bootstrap/scss/utilities/_text.scss" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/bootstrap/scss/utilities/_visibility.scss" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/bootstrap/scss/vendor/_rfs.scss" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/clipboard/clipboard.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/daterangepicker/README.md" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/daterangepicker/daterangepicker.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/daterangepicker/daterangepicker.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/es6-promise/es6-promise-polyfill.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/fontawesome/css/font-awesome.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/fontawesome/fonts/FontAwesome.otf" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/fontawesome/fonts/fontawesome-webfont.eot" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/fontawesome/fonts/fontawesome-webfont.svg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/fontawesome/fonts/fontawesome-webfont.ttf" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/fontawesome/fonts/fontawesome-webfont.woff" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/fontawesome/fonts/fontawesome-webfont.woff2" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/fullcalendar/LICENSE.txt" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/fullcalendar/bootstrap/main.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/fullcalendar/bootstrap/main.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/fullcalendar/core/locales-all.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/fullcalendar/core/locales/af.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/fullcalendar/core/locales/ar-dz.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/fullcalendar/core/locales/ar-kw.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/fullcalendar/core/locales/ar-ly.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/fullcalendar/core/locales/ar-ma.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/fullcalendar/core/locales/ar-sa.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/fullcalendar/core/locales/ar-tn.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/fullcalendar/core/locales/ar.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/fullcalendar/core/locales/az.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/fullcalendar/core/locales/bg.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/fullcalendar/core/locales/bs.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/fullcalendar/core/locales/ca.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/fullcalendar/core/locales/cs.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/fullcalendar/core/locales/da.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/fullcalendar/core/locales/de.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/fullcalendar/core/locales/el.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/fullcalendar/core/locales/en-au.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/fullcalendar/core/locales/en-gb.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/fullcalendar/core/locales/en-nz.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/fullcalendar/core/locales/es-us.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/fullcalendar/core/locales/es.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/fullcalendar/core/locales/et.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/fullcalendar/core/locales/eu.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/fullcalendar/core/locales/fa.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/fullcalendar/core/locales/fi.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/fullcalendar/core/locales/fr-ca.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/fullcalendar/core/locales/fr-ch.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/fullcalendar/core/locales/fr.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/fullcalendar/core/locales/gl.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/fullcalendar/core/locales/he.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/fullcalendar/core/locales/hi.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/fullcalendar/core/locales/hr.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/fullcalendar/core/locales/hu.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/fullcalendar/core/locales/id.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/fullcalendar/core/locales/is.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/fullcalendar/core/locales/it.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/fullcalendar/core/locales/ja.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/fullcalendar/core/locales/ka.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/fullcalendar/core/locales/kk.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/fullcalendar/core/locales/ko.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/fullcalendar/core/locales/lb.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/fullcalendar/core/locales/lt.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/fullcalendar/core/locales/lv.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/fullcalendar/core/locales/mk.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/fullcalendar/core/locales/ms.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/fullcalendar/core/locales/nb.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/fullcalendar/core/locales/nl.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/fullcalendar/core/locales/nn.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/fullcalendar/core/locales/pl.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/fullcalendar/core/locales/pt-br.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/fullcalendar/core/locales/pt.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/fullcalendar/core/locales/ro.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/fullcalendar/core/locales/ru.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/fullcalendar/core/locales/sk.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/fullcalendar/core/locales/sl.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/fullcalendar/core/locales/sq.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/fullcalendar/core/locales/sr-cyrl.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/fullcalendar/core/locales/sr.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/fullcalendar/core/locales/sv.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/fullcalendar/core/locales/th.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/fullcalendar/core/locales/tr.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/fullcalendar/core/locales/ug.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/fullcalendar/core/locales/uk.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/fullcalendar/core/locales/uz.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/fullcalendar/core/locales/vi.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/fullcalendar/core/locales/zh-cn.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/fullcalendar/core/locales/zh-tw.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/fullcalendar/core/main.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/fullcalendar/core/main.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/fullcalendar/daygrid/main.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/fullcalendar/daygrid/main.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/fullcalendar/google-calendar/main.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/fullcalendar/interaction/main.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/fullcalendar/list/main.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/fullcalendar/list/main.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/fullcalendar/luxon/main.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/fullcalendar/moment-timezone/main.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/fullcalendar/moment/main.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/fullcalendar/rrule/main.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/fullcalendar/timegrid/main.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/fullcalendar/timegrid/main.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/fuzzy-master/LICENCE-MIT" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/fuzzy-master/fuzzy.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/jSignature/jSignatureCustom.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/jquery.ba-bbq/jquery.ba-bbq.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/jquery.blockUI/jquery.blockUI.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/jquery.form/jquery.form.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/jquery.hotkeys/README.md" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/jquery.hotkeys/jquery.hotkeys.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/jquery.mjs.nestedSortable/jquery.mjs.nestedSortable.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/jquery.placeholder/jquery.placeholder.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/jquery.scrollTo/jquery.scrollTo.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/jquery.touchSwipe/jquery.touchSwipe.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/jquery.ui/images/ui-icons_444444_256x240.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/jquery.ui/images/ui-icons_555555_256x240.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/jquery.ui/images/ui-icons_777620_256x240.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/jquery.ui/images/ui-icons_777777_256x240.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/jquery.ui/images/ui-icons_cc0000_256x240.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/jquery.ui/images/ui-icons_ffffff_256x240.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/jquery.ui/jquery-ui.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/jquery.ui/jquery-ui.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/jquery/jquery.browser.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/jquery/jquery.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/moment/locale/af.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/moment/locale/ar-dz.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/moment/locale/ar-ly.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/moment/locale/ar-ma.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/moment/locale/ar-sa.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/moment/locale/ar-tn.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/moment/locale/ar.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/moment/locale/az.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/moment/locale/be.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/moment/locale/bg.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/moment/locale/bn.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/moment/locale/bo.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/moment/locale/br.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/moment/locale/bs.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/moment/locale/ca.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/moment/locale/cs.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/moment/locale/cv.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/moment/locale/cy.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/moment/locale/da.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/moment/locale/de-at.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/moment/locale/de.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/moment/locale/dv.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/moment/locale/el.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/moment/locale/en-au.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/moment/locale/en-ca.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/moment/locale/en-gb.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/moment/locale/en-ie.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/moment/locale/en-nz.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/moment/locale/eo.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/moment/locale/es-do.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/moment/locale/es.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/moment/locale/et.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/moment/locale/eu.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/moment/locale/fa.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/moment/locale/fi.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/moment/locale/fo.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/moment/locale/fr-ca.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/moment/locale/fr-ch.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/moment/locale/fr.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/moment/locale/fy.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/moment/locale/gd.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/moment/locale/gl.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/moment/locale/he.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/moment/locale/hi.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/moment/locale/hr.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/moment/locale/hu.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/moment/locale/hy-am.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/moment/locale/id.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/moment/locale/is.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/moment/locale/it.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/moment/locale/ja.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/moment/locale/jv.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/moment/locale/ka.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/moment/locale/kk.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/moment/locale/km.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/moment/locale/ko.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/moment/locale/ky.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/moment/locale/lb.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/moment/locale/lo.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/moment/locale/lt.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/moment/locale/lv.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/moment/locale/me.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/moment/locale/mi.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/moment/locale/mk.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/moment/locale/ml.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/moment/locale/mr.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/moment/locale/ms-my.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/moment/locale/ms.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/moment/locale/my.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/moment/locale/nb.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/moment/locale/ne.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/moment/locale/nl-be.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/moment/locale/nl.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/moment/locale/nn.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/moment/locale/pa-in.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/moment/locale/pl.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/moment/locale/pt-br.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/moment/locale/pt.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/moment/locale/ro.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/moment/locale/ru.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/moment/locale/se.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/moment/locale/si.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/moment/locale/sk.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/moment/locale/sl.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/moment/locale/sq.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/moment/locale/sr-cyrl.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/moment/locale/sr.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/moment/locale/ss.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/moment/locale/sv.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/moment/locale/sw.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/moment/locale/ta.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/moment/locale/te.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/moment/locale/tet.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/moment/locale/th.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/moment/locale/tl-ph.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/moment/locale/tlh.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/moment/locale/tr.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/moment/locale/tzl.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/moment/locale/tzm-latn.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/moment/locale/tzm.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/moment/locale/uk.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/moment/locale/uz.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/moment/locale/vi.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/moment/locale/x-pseudo.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/moment/locale/yo.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/moment/locale/zh-cn.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/moment/locale/zh-hk.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/moment/locale/zh-tw.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/moment/moment.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/nearest/README.md" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/nearest/bower.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/nearest/jquery.nearest.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/nearest/jquery.nearest.min.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/nearest/nearest.jquery.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/owl/owl.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/78-EUC-H.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/78-EUC-V.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/78-H.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/78-RKSJ-H.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/78-RKSJ-V.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/78-V.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/78ms-RKSJ-H.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/78ms-RKSJ-V.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/83pv-RKSJ-H.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/90ms-RKSJ-H.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/90ms-RKSJ-V.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/90msp-RKSJ-H.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/90msp-RKSJ-V.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/90pv-RKSJ-H.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/90pv-RKSJ-V.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/Add-H.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/Add-RKSJ-H.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/Add-RKSJ-V.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/Add-V.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/Adobe-CNS1-0.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/Adobe-CNS1-1.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/Adobe-CNS1-2.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/Adobe-CNS1-3.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/Adobe-CNS1-4.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/Adobe-CNS1-5.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/Adobe-CNS1-6.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/Adobe-CNS1-UCS2.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/Adobe-GB1-0.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/Adobe-GB1-1.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/Adobe-GB1-2.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/Adobe-GB1-3.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/Adobe-GB1-4.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/Adobe-GB1-5.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/Adobe-GB1-UCS2.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/Adobe-Japan1-0.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/Adobe-Japan1-1.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/Adobe-Japan1-2.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/Adobe-Japan1-3.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/Adobe-Japan1-4.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/Adobe-Japan1-5.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/Adobe-Japan1-6.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/Adobe-Japan1-UCS2.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/Adobe-Korea1-0.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/Adobe-Korea1-1.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/Adobe-Korea1-2.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/Adobe-Korea1-UCS2.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/B5-H.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/B5-V.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/B5pc-H.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/B5pc-V.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/CNS-EUC-H.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/CNS-EUC-V.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/CNS1-H.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/CNS1-V.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/CNS2-H.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/CNS2-V.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/ETHK-B5-H.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/ETHK-B5-V.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/ETen-B5-H.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/ETen-B5-V.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/ETenms-B5-H.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/ETenms-B5-V.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/EUC-H.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/EUC-V.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/Ext-H.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/Ext-RKSJ-H.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/Ext-RKSJ-V.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/Ext-V.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/GB-EUC-H.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/GB-EUC-V.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/GB-H.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/GB-V.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/GBK-EUC-H.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/GBK-EUC-V.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/GBK2K-H.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/GBK2K-V.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/GBKp-EUC-H.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/GBKp-EUC-V.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/GBT-EUC-H.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/GBT-EUC-V.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/GBT-H.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/GBT-V.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/GBTpc-EUC-H.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/GBTpc-EUC-V.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/GBpc-EUC-H.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/GBpc-EUC-V.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/H.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/HKdla-B5-H.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/HKdla-B5-V.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/HKdlb-B5-H.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/HKdlb-B5-V.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/HKgccs-B5-H.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/HKgccs-B5-V.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/HKm314-B5-H.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/HKm314-B5-V.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/HKm471-B5-H.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/HKm471-B5-V.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/HKscs-B5-H.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/HKscs-B5-V.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/Hankaku.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/Hiragana.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/KSC-EUC-H.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/KSC-EUC-V.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/KSC-H.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/KSC-Johab-H.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/KSC-Johab-V.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/KSC-V.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/KSCms-UHC-H.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/KSCms-UHC-HW-H.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/KSCms-UHC-HW-V.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/KSCms-UHC-V.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/KSCpc-EUC-H.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/KSCpc-EUC-V.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/Katakana.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/LICENSE" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/NWP-H.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/NWP-V.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/RKSJ-H.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/RKSJ-V.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/Roman.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/UniCNS-UCS2-H.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/UniCNS-UCS2-V.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/UniCNS-UTF16-H.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/UniCNS-UTF16-V.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/UniCNS-UTF32-H.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/UniCNS-UTF32-V.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/UniCNS-UTF8-H.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/UniCNS-UTF8-V.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/UniGB-UCS2-H.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/UniGB-UCS2-V.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/UniGB-UTF16-H.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/UniGB-UTF16-V.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/UniGB-UTF32-H.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/UniGB-UTF32-V.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/UniGB-UTF8-H.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/UniGB-UTF8-V.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/UniJIS-UCS2-H.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/UniJIS-UCS2-HW-H.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/UniJIS-UCS2-HW-V.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/UniJIS-UCS2-V.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/UniJIS-UTF16-H.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/UniJIS-UTF16-V.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/UniJIS-UTF32-H.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/UniJIS-UTF32-V.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/UniJIS-UTF8-H.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/UniJIS-UTF8-V.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/UniJIS2004-UTF16-H.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/UniJIS2004-UTF16-V.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/UniJIS2004-UTF32-H.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/UniJIS2004-UTF32-V.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/UniJIS2004-UTF8-H.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/UniJIS2004-UTF8-V.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/UniJISPro-UCS2-HW-V.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/UniJISPro-UCS2-V.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/UniJISPro-UTF8-V.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/UniJISX0213-UTF32-H.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/UniJISX0213-UTF32-V.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/UniJISX02132004-UTF32-H.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/UniJISX02132004-UTF32-V.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/UniKS-UCS2-H.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/UniKS-UCS2-V.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/UniKS-UTF16-H.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/UniKS-UTF16-V.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/UniKS-UTF32-H.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/UniKS-UTF32-V.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/UniKS-UTF8-H.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/UniKS-UTF8-V.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/V.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/cmaps/WP-Symbol.bcmap" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/compressed.tracemonkey-pldi-09.pdf" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/debugger.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/images/annotation-check.svg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/images/annotation-comment.svg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/images/annotation-help.svg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/images/annotation-insert.svg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/images/annotation-key.svg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/images/annotation-newparagraph.svg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/images/annotation-noicon.svg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/images/annotation-note.svg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/images/annotation-paragraph.svg" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/images/findbarButton-next-rtl.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/images/findbarButton-next-rtl@2x.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/images/findbarButton-next.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/images/findbarButton-next@2x.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/images/findbarButton-previous-rtl.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/images/findbarButton-previous-rtl@2x.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/images/findbarButton-previous.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/images/findbarButton-previous@2x.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/images/grab.cur" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/images/grabbing.cur" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/images/loading-icon.gif" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/images/loading-small.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/images/loading-small@2x.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/images/secondaryToolbarButton-documentProperties.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/images/secondaryToolbarButton-documentProperties@2x.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/images/secondaryToolbarButton-firstPage.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/images/secondaryToolbarButton-firstPage@2x.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/images/secondaryToolbarButton-handTool.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/images/secondaryToolbarButton-handTool@2x.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/images/secondaryToolbarButton-lastPage.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/images/secondaryToolbarButton-lastPage@2x.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/images/secondaryToolbarButton-rotateCcw.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/images/secondaryToolbarButton-rotateCcw@2x.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/images/secondaryToolbarButton-rotateCw.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/images/secondaryToolbarButton-rotateCw@2x.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/images/secondaryToolbarButton-scrollHorizontal.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/images/secondaryToolbarButton-scrollHorizontal@2x.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/images/secondaryToolbarButton-scrollVertical.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/images/secondaryToolbarButton-scrollVertical@2x.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/images/secondaryToolbarButton-scrollWrapped.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/images/secondaryToolbarButton-scrollWrapped@2x.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/images/secondaryToolbarButton-selectTool.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/images/secondaryToolbarButton-selectTool@2x.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/images/secondaryToolbarButton-spreadEven.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/images/secondaryToolbarButton-spreadEven@2x.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/images/secondaryToolbarButton-spreadNone.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/images/secondaryToolbarButton-spreadNone@2x.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/images/secondaryToolbarButton-spreadOdd.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/images/secondaryToolbarButton-spreadOdd@2x.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/images/shadow.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/images/texture.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/images/toolbarButton-bookmark.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/images/toolbarButton-bookmark@2x.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/images/toolbarButton-download.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/images/toolbarButton-download@2x.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/images/toolbarButton-menuArrows.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/images/toolbarButton-menuArrows@2x.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/images/toolbarButton-openFile.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/images/toolbarButton-openFile@2x.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/images/toolbarButton-pageDown-rtl.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/images/toolbarButton-pageDown-rtl@2x.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/images/toolbarButton-pageDown.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/images/toolbarButton-pageDown@2x.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/images/toolbarButton-pageUp-rtl.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/images/toolbarButton-pageUp-rtl@2x.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/images/toolbarButton-pageUp.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/images/toolbarButton-pageUp@2x.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/images/toolbarButton-presentationMode.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/images/toolbarButton-presentationMode@2x.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/images/toolbarButton-print.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/images/toolbarButton-print@2x.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/images/toolbarButton-search.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/images/toolbarButton-search@2x.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/images/toolbarButton-secondaryToolbarToggle-rtl.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/images/toolbarButton-secondaryToolbarToggle-rtl@2x.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/images/toolbarButton-secondaryToolbarToggle.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/images/toolbarButton-secondaryToolbarToggle@2x.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/images/toolbarButton-sidebarToggle-rtl.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/images/toolbarButton-sidebarToggle-rtl@2x.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/images/toolbarButton-sidebarToggle.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/images/toolbarButton-sidebarToggle@2x.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/images/toolbarButton-viewAttachments.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/images/toolbarButton-viewAttachments@2x.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/images/toolbarButton-viewOutline-rtl.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/images/toolbarButton-viewOutline-rtl@2x.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/images/toolbarButton-viewOutline.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/images/toolbarButton-viewOutline@2x.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/images/toolbarButton-viewThumbnail.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/images/toolbarButton-viewThumbnail@2x.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/images/toolbarButton-zoomIn.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/images/toolbarButton-zoomIn@2x.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/images/toolbarButton-zoomOut.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/images/toolbarButton-zoomOut@2x.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/images/treeitem-collapsed-rtl.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/images/treeitem-collapsed-rtl@2x.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/images/treeitem-collapsed.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/images/treeitem-collapsed@2x.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/images/treeitem-expanded.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/images/treeitem-expanded@2x.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/locale/ach/viewer.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/locale/af/viewer.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/locale/ak/viewer.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/locale/an/viewer.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/locale/ar/viewer.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/locale/as/viewer.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/locale/ast/viewer.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/locale/az/viewer.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/locale/be/viewer.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/locale/bg/viewer.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/locale/bn-BD/viewer.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/locale/bn-IN/viewer.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/locale/br/viewer.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/locale/brx/viewer.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/locale/bs/viewer.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/locale/ca/viewer.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/locale/cak/viewer.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/locale/crh/viewer.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/locale/cs/viewer.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/locale/csb/viewer.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/locale/cy/viewer.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/locale/da/viewer.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/locale/de/viewer.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/locale/el/viewer.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/locale/en-CA/viewer.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/locale/en-GB/viewer.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/locale/en-US/viewer.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/locale/en-ZA/viewer.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/locale/eo/viewer.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/locale/es-AR/viewer.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/locale/es-CL/viewer.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/locale/es-ES/viewer.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/locale/es-MX/viewer.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/locale/et/viewer.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/locale/eu/viewer.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/locale/fa/viewer.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/locale/ff/viewer.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/locale/fi/viewer.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/locale/fr/viewer.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/locale/fy-NL/viewer.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/locale/ga-IE/viewer.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/locale/gd/viewer.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/locale/gl/viewer.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/locale/gn/viewer.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/locale/gu-IN/viewer.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/locale/he/viewer.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/locale/hi-IN/viewer.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/locale/hr/viewer.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/locale/hsb/viewer.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/locale/hto/viewer.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/locale/hu/viewer.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/locale/hy-AM/viewer.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/locale/ia/viewer.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/locale/id/viewer.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/locale/is/viewer.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/locale/it/viewer.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/locale/ja/viewer.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/locale/ka/viewer.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/locale/kab/viewer.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/locale/kk/viewer.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/locale/km/viewer.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/locale/kn/viewer.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/locale/ko/viewer.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/locale/kok/viewer.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/locale/ks/viewer.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/locale/ku/viewer.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/locale/lg/viewer.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/locale/lij/viewer.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/locale/lo/viewer.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/locale/locale.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/locale/lt/viewer.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/locale/ltg/viewer.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/locale/lv/viewer.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/locale/mai/viewer.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/locale/meh/viewer.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/locale/mk/viewer.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/locale/ml/viewer.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/locale/mn/viewer.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/locale/mr/viewer.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/locale/ms/viewer.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/locale/my/viewer.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/locale/nb-NO/viewer.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/locale/ne-NP/viewer.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/locale/nl/viewer.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/locale/nn-NO/viewer.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/locale/nso/viewer.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/locale/oc/viewer.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/locale/or/viewer.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/locale/pa-IN/viewer.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/locale/pl/viewer.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/locale/pt-BR/viewer.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/locale/pt-PT/viewer.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/locale/rm/viewer.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/locale/ro/viewer.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/locale/ru/viewer.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/locale/rw/viewer.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/locale/sah/viewer.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/locale/sat/viewer.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/locale/si/viewer.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/locale/sk/viewer.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/locale/sl/viewer.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/locale/son/viewer.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/locale/sq/viewer.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/locale/sr/viewer.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/locale/sv-SE/viewer.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/locale/sw/viewer.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/locale/ta-LK/viewer.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/locale/ta/viewer.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/locale/te/viewer.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/locale/th/viewer.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/locale/tl/viewer.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/locale/tn/viewer.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/locale/tr/viewer.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/locale/tsz/viewer.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/locale/uk/viewer.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/locale/ur/viewer.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/locale/uz/viewer.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/locale/vi/viewer.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/locale/wo/viewer.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/locale/xh/viewer.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/locale/zam/viewer.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/locale/zh-CN/viewer.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/locale/zh-TW/viewer.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/locale/zu/viewer.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/viewer.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/viewer.html" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/pdfjs/web/viewer.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/popper/popper.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/py.js/LICENSE" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/py.js/README.rst" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/py.js/TODO.rst" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/py.js/doc/Makefile" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/py.js/doc/builtins.rst" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/py.js/doc/conf.py" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/py.js/doc/differences.rst" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/py.js/doc/index.rst" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/py.js/doc/make.bat" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/py.js/doc/types.rst" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/py.js/doc/utility.rst" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/py.js/lib/py.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/py.js/lib/py_extras.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/qunit/qunit-2.9.1.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/qunit/qunit-2.9.1.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/qweb/qweb-benchmark.html" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/qweb/qweb-benchmark.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/qweb/qweb-test-attributes.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/qweb/qweb-test-call.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/qweb/qweb-test-conditionals.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/qweb/qweb-test-extend.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/qweb/qweb-test-foreach.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/qweb/qweb-test-global.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/qweb/qweb-test-output.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/qweb/qweb-test-set.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/qweb/qweb-test-utf8tags.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/qweb/qweb-test-widgets.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/qweb/qweb-test.js.html" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/qweb/qweb.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/qweb/qweb2.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/select2-bootstrap-css/select2-bootstrap.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/select2/LICENSE" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/select2/README.md" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/select2/release.sh" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/select2/select2-spinner.gif" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/select2/select2.css" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/select2/select2.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/select2/select2.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/select2/select2x2.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/tempusdominus/LICENSE" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/tempusdominus/tempusdominus.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/tempusdominus/tempusdominus.scss" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/underscore.string/lib/underscore.string.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/addons/web/static/lib/underscore/underscore.js" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -12,16 +803,36 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="README.md" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="135">
-                <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+              <first_editor relative-caret-position="120">
+                <caret line="8" column="8" lean-forward="false" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
                 <folding />
               </first_editor>
               <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="requirements.txt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/requirements.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="400">
+              <caret line="145" column="10" lean-forward="true" selection-start-line="145" selection-start-column="10" selection-end-line="145" selection-end-column="10" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -30,6 +841,13 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/.gitignore" />
+      </list>
+    </option>
   </component>
   <component name="ProjectFrameBounds" fullScreen="true">
     <option name="y" value="25" />
@@ -52,7 +870,6 @@
     </navigator>
     <panes>
       <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -60,14 +877,54 @@
               <item name="Odoo-Training" type="b2602c69:ProjectViewProjectNode" />
               <item name="Odoo-Training" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="Odoo-Training" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Odoo-Training" type="462c0819:PsiDirectoryNode" />
+              <item name="addons" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Odoo-Training" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Odoo-Training" type="462c0819:PsiDirectoryNode" />
+              <item name="addons" type="462c0819:PsiDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Odoo-Training" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Odoo-Training" type="462c0819:PsiDirectoryNode" />
+              <item name="addons" type="462c0819:PsiDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Odoo-Training" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Odoo-Training" type="462c0819:PsiDirectoryNode" />
+              <item name="addons" type="462c0819:PsiDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="img" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Odoo-Training" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Odoo-Training" type="462c0819:PsiDirectoryNode" />
+              <item name="addons" type="462c0819:PsiDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/addons/web" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -103,20 +960,22 @@
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24947146" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32889965" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32889965" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24947146" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -128,11 +987,100 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/requirements.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="135">
-            <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <first_editor relative-caret-position="120">
+            <caret line="8" column="8" lean-forward="false" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
+            <folding />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/odoo.conf">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="18" lean-forward="false" selection-start-line="15" selection-start-column="18" selection-end-line="15" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="120">
+            <caret line="8" column="8" lean-forward="false" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
+            <folding />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/requirements.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/odoo.conf">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="18" lean-forward="true" selection-start-line="15" selection-start-column="18" selection-end-line="15" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="120">
+            <caret line="8" column="8" lean-forward="false" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
+            <folding />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/requirements.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/odoo.conf">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="15" lean-forward="false" selection-start-line="7" selection-start-column="15" selection-end-line="7" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="400">
+          <caret line="145" column="10" lean-forward="true" selection-start-line="145" selection-start-column="10" selection-end-line="145" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="120">
+            <caret line="8" column="8" lean-forward="false" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
             <folding />
           </first_editor>
           <second_editor />
