@@ -50,6 +50,7 @@ coverage.xml
 .pytest_cache/
 cover/
 odoo.conf
+*.conf
 
 # Translations
 *.mo
