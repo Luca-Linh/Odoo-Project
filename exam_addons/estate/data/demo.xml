@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="estate_property1" model="estate.property">
+            <field name="name">Pen house</field>
+            <field name="description">The Pen House Full Furniture</field>
+            <field name="postcode">700000</field>
+            <field name="date_availability">2024-4-1</field>
+            <field name="expected_price">5900000</field>
+            <field name="selling_price">5500000</field>
+            <field name="bedrooms">7</field>
+            <field name="living_area">1</field>
+            <field name="facades">2</field>
+            <field name="garage">True</field>
+            <field name="garden">True</field>
+            <field name="garden_area">1</field>
+            <field name="garden_orientation">south</field>
+        </record>
+
+        <record id="estate_property2" model="estate.property">
+            <field name="name">Apartment</field>
+            <field name="description">The Apartment House Full Furniture</field>
+            <field name="postcode">700000</field>
+            <field name="date_availability">2024-8-4</field>
+            <field name="expected_price">7000000</field>
+            <field name="selling_price">6500000</field>
+            <field name="bedrooms">2</field>
+            <field name="living_area">1</field>
+            <field name="facades">0</field>
+            <field name="garage">False</field>
+            <field name="garden">False</field>
+            <field name="garden_area">0</field>
+            <field name="garden_orientation">south</field>
+        </record>
+    </data>
+</odoo>
