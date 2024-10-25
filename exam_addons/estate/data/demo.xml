@@ -15,6 +15,8 @@
             <field name="garden">True</field>
             <field name="garden_area">1</field>
             <field name="garden_orientation">south</field>
+            <field name="active">True</field>
+            <field name="state">new</field>
         </record>
 
         <record id="estate_property2" model="estate.property">
@@ -31,6 +33,62 @@
             <field name="garden">False</field>
             <field name="garden_area">0</field>
             <field name="garden_orientation">south</field>
+            <field name="active">True</field>
+            <field name="state">new</field>
+        </record>
+
+        <record id="estate_property3" model="estate.property">
+            <field name="name">Resort</field>
+            <field name="description">The Resort near sea and beautiful view</field>
+            <field name="postcode">600000</field>
+            <field name="date_availability">2024-9-2</field>
+            <field name="expected_price">70000000</field>
+            <field name="selling_price">65000000</field>
+            <field name="bedrooms">10</field>
+            <field name="living_area">1</field>
+            <field name="facades">1</field>
+            <field name="garage">True</field>
+            <field name="garden">True</field>
+            <field name="garden_area">2</field>
+            <field name="garden_orientation">south</field>
+            <field name="active">True</field>
+            <field name="state">new</field>
+        </record>
+
+        <record id="estate_property4" model="estate.property">
+            <field name="name">VinHome Apartment</field>
+            <field name="description">The Apartment House Full Furniture and beautiful view</field>
+            <field name="postcode">700000</field>
+            <field name="date_availability">2024-12-9</field>
+            <field name="expected_price">9000000</field>
+            <field name="selling_price">8500000</field>
+            <field name="bedrooms">2</field>
+            <field name="living_area">1</field>
+            <field name="facades">0</field>
+            <field name="garage">False</field>
+            <field name="garden">False</field>
+            <field name="garden_area">0</field>
+            <field name="garden_orientation">south</field>
+            <field name="active">True</field>
+            <field name="state">new</field>
+        </record>
+
+        <record id="estate_property5" model="estate.property">
+            <field name="name">Home Stay</field>
+            <field name="description">The Home Stay Full Furniture</field>
+            <field name="postcode">400000</field>
+            <field name="date_availability">2024-8-4</field>
+            <field name="expected_price">8000000</field>
+            <field name="selling_price">4500000</field>
+            <field name="bedrooms">2</field>
+            <field name="living_area">1</field>
+            <field name="facades">0</field>
+            <field name="garage">False</field>
+            <field name="garden">False</field>
+            <field name="garden_area">0</field>
+            <field name="garden_orientation">south</field>
+            <field name="active">True</field>
+            <field name="state">new</field>
         </record>
     </data>
 </odoo>

@@ -9,10 +9,12 @@
     "author":"linhvt",
     'depends': ['base'],
     "data":[
+        "security/res_groups.xml",
+        "security/ir.model.access.csv",
         "data/demo.xml",
-        "data/res_groups.xml",
+        "views/estate_property_views.xml",
+        "views/estate_menu_views.xml",
     ],
     'installable': True,
-    'auto-install': False,
     'application': True
 }
