@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+        <!-- Root Menu -->
+        <menuitem id="estate_menu_root" name="Real Estate" sequence="10"/>
+
+        <!-- First Level Menu  -->
+        <menuitem id="estate_menu_sales" name="Sales" parent="estate_menu_root" sequence="1"/>
+
+        <!-- Actions Menu  (Dưới menu Sales) -->
+        <menuitem id="estate_menu_sales_list" name="Sales List" action="estate_property_action" parent="estate_menu_sales" sequence="2"/>
+
+</odoo>
