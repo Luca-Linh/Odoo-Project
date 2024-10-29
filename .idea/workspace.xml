@@ -5,19 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="81c1c157-0331-46e3-aca5-2792eae3fca8" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/exam_addons/estate/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exam_addons/estate/__manifest__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exam_addons/estate/data/demo.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exam_addons/estate/models/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exam_addons/estate/models/estate_property.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exam_addons/estate/security/ir.model.access.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exam_addons/estate/security/res_groups.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exam_addons/estate/views/estate_menu_views.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exam_addons/estate/views/estate_property_views.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Odoo-Training.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Odoo-Training.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exam_addons/estate/data/estate_property_offer_data.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exam_addons/estate/data/estate_sequence_data.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exam_addons/estate/models/estate_property_offer.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exam_addons/estate/models/estate_property_tag.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exam_addons/estate/models/estate_property_type.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exam_addons/estate/views/estate_property_offer_views.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exam_addons/estate/views/estate_property_tag_views.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exam_addons/estate/views/estate_property_type_views.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exam_addons/estate/__manifest__.py" beforeDir="false" afterPath="$PROJECT_DIR$/exam_addons/estate/__manifest__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exam_addons/estate/data/demo.xml" beforeDir="false" afterPath="$PROJECT_DIR$/exam_addons/estate/data/demo.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exam_addons/estate/models/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/exam_addons/estate/models/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exam_addons/estate/models/estate_property.py" beforeDir="false" afterPath="$PROJECT_DIR$/exam_addons/estate/models/estate_property.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exam_addons/estate/security/ir.model.access.csv" beforeDir="false" afterPath="$PROJECT_DIR$/exam_addons/estate/security/ir.model.access.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exam_addons/estate/views/estate_menu_views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/exam_addons/estate/views/estate_menu_views.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exam_addons/estate/views/estate_property_views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/exam_addons/estate/views/estate_property_views.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,6 +65,13 @@
       </file>
     </leaf>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -71,11 +82,15 @@
       </list>
     </option>
   </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 0
+}]]></component>
   <component name="ProjectFrameBounds" fullScreen="true">
     <option name="y" value="25" />
     <option name="width" value="1440" />
     <option name="height" value="814" />
   </component>
+  <component name="ProjectId" id="2o3D2Qu62H9i789IS4kTXVv3Llw" />
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
       <flattenPackages />
@@ -140,9 +155,15 @@
       <pane id="Scope" />
     </panes>
   </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "git-widget-placeholder": "Merging linhvt-lesson4"
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "linhvt-lesson4",
+    "ignore.virus.scanning.warn.message": "true"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -150,6 +171,14 @@
       <recent name="$PROJECT_DIR$/addons/web" />
     </key>
   </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-python-sdk-0e3be3396995-c546a90a8094-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-242.23339.19" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -188,8 +217,16 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
-  <component name="VcsContentAnnotationSettings">
-    <option name="myLimit" value="2678400000" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/requirements.txt">
