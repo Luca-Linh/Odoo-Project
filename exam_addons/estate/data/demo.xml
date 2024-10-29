@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+<!--Estate Property Type Data-->
+        <record id="estate_property_type_house" model="estate.property.type">
+           <field name="name">House</field>
+        </record>
+
+        <record id="estate_property_type_villa" model="estate.property.type">
+           <field name="name">Villa</field>
+        </record>
+
+        <record id="estate_property_type_apartment" model="estate.property.type">
+           <field name="name">Apartment</field>
+        </record>
+
+<!--Estate Property Tag Data-->
+        <record id="estate_property_tag_new" model="estate.property.tag">
+            <field name="name">New</field>
+        </record>
+
+        <record id="estate_property_tag_green" model="estate.property.tag">
+            <field name="name">Green</field>
+        </record>
+
+        <record id="estate_property_tag_old" model="estate.property.tag">
+            <field name="name">Old</field>
+        </record>
+<!--Estate Property Data-->
+        <record id="estate_property_pen_house" model="estate.property">
+            <field name="name">Pen house</field>
+            <field name="description">The Pen House Full Furniture</field>
+            <field name="postcode">700000</field>
+            <field name="date_availability">2024-12-12</field>
+            <field name="expected_price">5900000</field>
+            <field name="selling_price">5500000</field>
+            <field name="bedrooms">7</field>
+            <field name="living_area">1</field>
+            <field name="facades">2</field>
+            <field name="garage">True</field>
+            <field name="garden">True</field>
+            <field name="garden_area">1</field>
+            <field name="garden_orientation">south</field>
+            <field name="active">True</field>
+            <field name="state">new</field>
+            <field name="property_type_id" ref="estate_property_type_villa"/>
+            <field name="partner_id" ref="base.main_partner"/>
+            <field name="user_id" ref="base.user_admin"/>
+            <field name="tag_ids" eval="[(4,ref('estate_property_tag_new')), (4,ref('estate_property_tag_green'))]"/>
+        </record>
+
+        <record id="estate_property_ap_Vin" model="estate.property">
+            <field name="name">VinHome Apartment</field>
+            <field name="description">The Apartment House Full Furniture</field>
+            <field name="postcode">700000</field>
+            <field name="date_availability">2024-11-12</field>
+            <field name="expected_price">7000000</field>
+            <field name="selling_price">6500000</field>
+            <field name="bedrooms">2</field>
+            <field name="living_area">1</field>
+            <field name="facades">0</field>
+            <field name="garage">False</field>
+            <field name="garden">False</field>
+            <field name="garden_area">0</field>
+            <field name="garden_orientation">south</field>
+            <field name="active">True</field>
+            <field name="state">new</field>
+            <field name="property_type_id" ref="estate_property_type_apartment"/>
+            <field name="partner_id" ref="base.main_partner"/>
+            <field name="user_id" ref="base.user_admin"/>
+            <field name="tag_ids" eval="[(4,ref('estate_property_tag_new'))]"/>
+        </record>
+
+        <record id="estate_property_ap_Nova" model="estate.property">
+            <field name="name">Novaland Apartment</field>
+            <field name="description">The Resort near sea and beautiful view</field>
+            <field name="postcode">600000</field>
+            <field name="date_availability">2024-12-11</field>
+            <field name="expected_price">70000000</field>
+            <field name="selling_price">65000000</field>
+            <field name="bedrooms">10</field>
+            <field name="living_area">1</field>
+            <field name="facades">1</field>
+            <field name="garage">True</field>
+            <field name="garden">True</field>
+            <field name="garden_area">2</field>
+            <field name="garden_orientation">south</field>
+            <field name="active">True</field>
+            <field name="state">new</field>
+            <field name="property_type_id" ref="estate_property_type_apartment"/>
+            <field name="partner_id" ref="base.main_partner"/>
+            <field name="user_id" ref="base.user_admin"/>
+            <field name="tag_ids" eval="[(4,ref('estate_property_tag_new'))]"/>
+        </record>
+
+        <record id="estate_property_house" model="estate.property">
+            <field name="name">House Thu Duc</field>
+            <field name="description">The House Full Furniture and beautiful view</field>
+            <field name="postcode">700000</field>
+            <field name="date_availability">2024-12-9</field>
+            <field name="expected_price">9000000</field>
+            <field name="selling_price">8500000</field>
+            <field name="bedrooms">2</field>
+            <field name="living_area">1</field>
+            <field name="facades">0</field>
+            <field name="garage">False</field>
+            <field name="garden">False</field>
+            <field name="garden_area">0</field>
+            <field name="garden_orientation">south</field>
+            <field name="active">True</field>
+            <field name="state">new</field>
+            <field name="property_type_id" ref="estate_property_type_house"/>
+            <field name="partner_id" ref="base.main_partner"/>
+            <field name="user_id" ref="base.user_admin"/>
+            <field name="tag_ids" eval="[(4,ref('estate_property_tag_new'))]"/>
+        </record>
+
+        <record id="estate_property_villa_NT" model="estate.property">
+            <field name="name">Nha Trang Villa</field>
+            <field name="description">The Villa Full Furniture</field>
+            <field name="postcode">400000</field>
+            <field name="date_availability">2024-12-4</field>
+            <field name="expected_price">8000000</field>
+            <field name="selling_price">4500000</field>
+            <field name="bedrooms">2</field>
+            <field name="living_area">1</field>
+            <field name="facades">0</field>
+            <field name="garage">False</field>
+            <field name="garden">False</field>
+            <field name="garden_area">0</field>
+            <field name="garden_orientation">south</field>
+            <field name="active">True</field>
+            <field name="state">new</field>
+            <field name="property_type_id" ref="estate_property_type_villa"/>
+            <field name="partner_id" ref="base.main_partner"/>
+            <field name="user_id" ref="base.user_admin"/>
+            <field name="tag_ids" eval="[(4,ref('estate_property_tag_new'))]"/>
+        </record>
+    </data>
+
+    <data>
+         <record id="estate_property_pen_house" model="estate.property">
+            <field name="name">Pen house 123</field>
+        </record>
+    </data>
+</odoo>
