@@ -1,13 +1,9 @@
 from datetime import date
-from email.policy import default
-
-from PIL.ImImagePlugin import number
 from dateutil.relativedelta import relativedelta
-from unicodedata import digit
 
 from odoo import models, fields, api, _
-from odoo.exceptions import ValidationError
-from odoo.tools.populate import compute
+from odoo.exceptions import ValidationError, UserError
+
 
 
 class EstateProperty(models.Model):
@@ -100,3 +96,18 @@ class EstateProperty(models.Model):
     #             num = 1
     #         vals['code'] = f"PTT{str(num).zfill(5)}"
     #     return super(EstateProperty, self).create(vals)
+    def action_set_sold(self):
+        for record in self:
+            if record.state == 'canceled':
+                raise UserError("A canceled property cannot be set as sold.")
+            elif record.state == 'sold':
+                raise UserError("This property is already sold.")
+            record.state = 'sold'
+
+    def action_set_cancelled(self):
+        for record in self:
+            if record.state == 'sold':
+                raise UserError("A sold property cannot be canceled.")
+            elif record.state == 'canceled':
+                raise UserError("This property is already canceled.")
+            record.state = 'canceled'

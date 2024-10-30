@@ -4,6 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+<<<<<<< Updated upstream
     <list default="true" id="81c1c157-0331-46e3-aca5-2792eae3fca8" name="Default" comment="">
       <change afterPath="$PROJECT_DIR$/exam_addons/estate/data/estate_property_offer_data.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/exam_addons/estate/data/estate_sequence_data.xml" afterDir="false" />
@@ -23,6 +24,9 @@
       <change beforePath="$PROJECT_DIR$/exam_addons/estate/views/estate_menu_views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/exam_addons/estate/views/estate_menu_views.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exam_addons/estate/views/estate_property_views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/exam_addons/estate/views/estate_property_views.xml" afterDir="false" />
     </list>
+=======
+    <list default="true" id="81c1c157-0331-46e3-aca5-2792eae3fca8" name="Default" comment="" />
+>>>>>>> Stashed changes
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -155,6 +159,7 @@
       <pane id="Scope" />
     </panes>
   </component>
+<<<<<<< Updated upstream
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -164,6 +169,11 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "linhvt-lesson4",
     "ignore.virus.scanning.warn.message": "true"
+=======
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "git-widget-placeholder": "master"
+>>>>>>> Stashed changes
   }
 }]]></component>
   <component name="RecentsManager">
@@ -171,6 +181,7 @@
       <recent name="$PROJECT_DIR$/addons/web" />
     </key>
   </component>
+<<<<<<< Updated upstream
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -179,6 +190,8 @@
     </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+=======
+>>>>>>> Stashed changes
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -217,6 +230,7 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
+<<<<<<< Updated upstream
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
@@ -228,6 +242,8 @@
       </map>
     </option>
   </component>
+=======
+>>>>>>> Stashed changes
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/requirements.txt">
       <provider selected="true" editor-type-id="text-editor">

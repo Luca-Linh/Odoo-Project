@@ -25,7 +25,17 @@
             <field name="model">estate.property</field>
             <field name="arch" type="xml">
             <form string="Real Estate">
+                <header>
+                    <button name="action_set_sold" type="object" string="Sold"
+                            states="new,offer_received,offer_accepted" class="btn-primary"/>
+                    <button name="action_set_cancelled" type="object" string="Cancel"
+                        states="new,offer_received,offer_accepted" class="btn-secondary"/>
+                </header>
                 <sheet>
+                    <button name="action_set_sold" type="object" string="Sold"
+                            states="new,offer_received,offer_accepted" class="btn-primary"/>
+                    <button name="action_set_cancelled" type="object" string="Cancel"
+                        states="new,offer_received,offer_accepted" class="btn-secondary"/>
                     <h1>
                         <field name="name"/>
                     </h1>

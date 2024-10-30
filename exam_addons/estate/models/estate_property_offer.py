@@ -1,12 +1,7 @@
-from email.policy import default
-from sqlite3.dbapi2 import apilevel
 from datetime import timedelta
-from functools import partial
-from Tools.scripts.dutree import store
 
 from odoo import models, fields, api, exceptions, _
-from odoo.addons.test_convert.tests.test_env import record
-from odoo.tools.populate import compute
+
 
 
 class EstatePropertyOffer(models.Model):
