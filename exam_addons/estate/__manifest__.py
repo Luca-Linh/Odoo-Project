@@ -9,9 +9,9 @@
     "author":"linhvt",
     'depends': ['base'],
     "data":[
+        "data/estate_sequence_data.xml",
         "data/demo.xml",
         "data/estate_property_offer_data.xml",
-        "data/estate_sequence_data.xml",
         "security/res_groups.xml",
         "security/ir.model.access.csv",
         "views/estate_property_views.xml",

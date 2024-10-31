@@ -1,8 +1,10 @@
 from datetime import date
+
 from dateutil.relativedelta import relativedelta
 
 from odoo import models, fields, api, _
 from odoo.exceptions import ValidationError, UserError
+from odoo import exceptions
 
 
 
@@ -15,7 +17,7 @@ class EstateProperty(models.Model):
     postcode = fields.Char(string='Postcode')
     date_availability = fields.Date(string='Date Available', copy=False, default=lambda self: date.today() + relativedelta(months=3) )
     expected_price = fields.Float(string='Expected Price',digits=(16,2), required=True)
-    selling_price = fields.Float(string='Sell Price',digits=(16,2), readonly=True, copy=False)
+    selling_price = fields.Float(string='Sell Price',digits=(16,2), copy=False, default=0.0)
     bedrooms = fields.Integer(string='Bedrooms')
     living_area = fields.Integer(string='Living area')
     facades = fields.Integer(string='Facades')
@@ -46,9 +48,10 @@ class EstateProperty(models.Model):
     @api.depends('living_area','garden_area')
     def compute_total_area(self):
         for rec in self:
-            rec.total_area = (rec.living_area or 0.0) + (rec.garden_area or 0.0)
+            rec.total_area = (rec.living_area or 0) + (rec.garden_area or 0)
 
     best_price = fields.Float(string="Highest Price", compute="compute_best_price",digit=(16,2))
+
     @api.depends("offer_ids.price")
     def compute_best_price(self):
         for rec in self:
@@ -81,10 +84,19 @@ class EstateProperty(models.Model):
         required=True,
         readonly=True,
         copy=False, default=lambda self: _('New Code'))
+
     @api.model
     def create(self, vals):
         vals['code'] = self.env['ir.sequence'].next_by_code('estate_sequence_code')
         return super(EstateProperty, self).create(vals)
+
+    @api.constrains('expected_price','selling_price')
+    def _check_selling_price(self):
+        for rec in self:
+            if rec.selling_price >= 0 and rec.expected_price > 0:
+                if rec.selling_price < 0.9 * rec.expected_price:
+                    raise ValidationError("Selling Price Cannot Lower 90% Expected Price")
+
 
     # @api.model
     # def create(self, vals):
@@ -96,18 +108,34 @@ class EstateProperty(models.Model):
     #             num = 1
     #         vals['code'] = f"PTT{str(num).zfill(5)}"
     #     return super(EstateProperty, self).create(vals)
-    def action_set_sold(self):
+
+    def action_sold(self):
         for record in self:
             if record.state == 'canceled':
-                raise UserError("A canceled property cannot be set as sold.")
-            elif record.state == 'sold':
-                raise UserError("This property is already sold.")
+                raise UserError(_("A canceled property cannot be sold."))
             record.state = 'sold'
 
-    def action_set_cancelled(self):
+    def action_cancelled(self):
         for record in self:
             if record.state == 'sold':
-                raise UserError("A sold property cannot be canceled.")
-            elif record.state == 'canceled':
-                raise UserError("This property is already canceled.")
+                raise UserError(_('A sold property cannot be canceled.'))
             record.state = 'canceled'
+
+    # def action_accept_offer(self):
+    #     for record in self: #[{'selling_price': 2;;;;'offer_ids':[{'price':12},{}]},{},{}]
+    #         # accepted_offers = record.offer_ids.filtered(lambda o: o.status == 'accepted')
+    #         total_selling_price = 0.0
+    #         last_accepted_offer_partner = None
+    #
+    #         for offer in accepted_offers:
+    #             total_selling_price += offer.price
+    #             last_accepted_offer_partner = offer.partner_id
+    #
+    #         # Set the total selling price and buyer
+    #         record.selling_price = total_selling_price
+    #         record.partner_id = last_accepted_offer_partner
+
+    _sql_constraints = [
+        ('check_expected_price_positive', 'CHECK(expected_price > 0)', 'The expected price must be strictly positive.'),
+        ('check_selling_price_positive', 'CHECK(selling_price >= 0)', 'The selling price must be positive.')
+    ]

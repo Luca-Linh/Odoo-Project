@@ -9,6 +9,8 @@
                     <field name="property_id"/>
                     <field name="partner_id"/>
                     <field name="price"/>
+                    <button name="action_confirm" type="object" icon="fa-check"/>
+                    <button name="action_cancel" type="object" icon="fa-times"/>
                     <field name="status"/>
                     <field name="property_type_id"/>
                     <field name="validity"/>
@@ -16,10 +18,35 @@
                 </tree>
             </field>
         </record>
+        <record id="estate_property_offer_view_form" model="ir.ui.view">
+            <field name="name">estate.property.offer.form</field>
+            <field name="model">estate.property.offer</field>
+            <field name="arch" type="xml">
+                <form string="Property Offer">
+                    <sheet>
+                        <group>
+                            <field name="property_id"/>
+                            <field name="partner_id"/>
+                            <field name="price"/>
+                            <field name="status"/>
+                            <field name="validity"/>
+                            <field name="date_deadline"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
         <record id="estate_property_offer_action" model="ir.actions.act_window">
             <field name="name">Estate Property Offer</field>
             <field name="res_model">estate.property.offer</field>
             <field name="view_mode">tree,form</field>
+        </record>
+        <record id="action_estate_property_offer_by_type" model="ir.actions.act_window">
+            <field name="name">Property Offers by Type</field>
+            <field name="res_model">estate.property.offer</field>
+            <field name="view_mode">tree,form</field>
+            <!-- Domain to filter offers based on the property type ID -->
+            <field name="domain">[('property_id.property_type_id', '=', active_id)]</field>
         </record>
     </data>
 </odoo>
