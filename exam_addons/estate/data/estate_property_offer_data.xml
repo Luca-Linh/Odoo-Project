@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data noupdate="1">
+        <!--Estate Property Offer Data-->
+        <record id="estate_property_offer10" model="estate.property.offer">
+            <field name="price">50000000</field>
+            <field name="status">refused</field>
+            <field name="partner_id" ref="base.main_partner"/>
+            <field name="property_id" ref="estate.estate_property_pen_house"/>
+            <field name="property_type_id" ref="estate.estate_property_type_villa"/>
+        </record>
+
+        <record id="estate_property_offer11" model="estate.property.offer">
+            <field name="price">10000000</field>
+            <field name="status">refused</field>
+            <field name="partner_id" ref="base.main_partner"/>
+            <field name="property_id" ref="estate.estate_property_pen_house"/>
+            <field name="property_type_id" ref="estate.estate_property_type_villa"/>
+        </record>
+
+        <record id="estate_property_offer12" model="estate.property.offer">
+            <field name="price">70000000</field>
+            <field name="status">refused</field>
+            <field name="partner_id" ref="base.main_partner"/>
+            <field name="property_id" ref="estate.estate_property_pen_house"/>
+            <field name="property_type_id" ref="estate.estate_property_type_villa"/>
+        </record>
+    </data>
+</odoo>
