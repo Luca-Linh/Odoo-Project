@@ -1,5 +1,5 @@
 from datetime import timedelta
-from email.policy import default
+
 
 from odoo import models, fields, api, exceptions, _
 from odoo.exceptions import UserError
@@ -11,11 +11,11 @@ class EstatePropertyOffer(models.Model):
 
     price = fields.Float(digits=(16,2),string="Price")
     status = fields.Selection([
-        ('draft','Draft'),
+        ('new','New'),
         ('accepted','Accepted'),
         ('refused','Refused'),
-    ], copy=False, string="Status", default='draft')
-    partner_id = fields.Many2one('res.partner', required=True, string="Partner")
+    ], copy=False, string="Status", default='new')
+    buyer_id = fields.Many2one('res.partner', required=True, string="Buyer")
     property_id = fields.Many2one('estate.property', required=True, string="Property")
     property_type_id = fields.Many2one('estate.property.type',related='property_id.property_type_id', store=True)
     validity = fields.Integer(string="Validity", default=7)
@@ -28,31 +28,48 @@ class EstatePropertyOffer(models.Model):
             else:
                 rec.date_deadline = fields.Date.context_today(self) + timedelta(days=rec.validity or 0)
 
-    def write(self, vals):
+    @api.model
+    def create(self, vals):
+        properties = self.env['estate.property'].browse(vals.get('property_id'))
+        if properties.offer_ids.filtered(lambda o:o.price >= vals.get('price')):
+            raise UserError(_("You cannot create offer with price lower than or equal to an existing offer."))
+        if properties.state == 'new':
+            properties.state = 'offer_received'
+        return super(EstatePropertyOffer,self).create(vals)
+
+
+    def update(self, vals):
         for rec in self:
             if rec.status == "accepted":
                 raise exceptions.UserError(_("Cannot Edit Offer Accepted"))
-            return super(EstatePropertyOffer, self).write(vals)
+        return super().update(vals)
 
     def unlink(self):
         for rec in self:
             if rec.status == "accepted":
                 raise  exceptions.UserError(_("Cannot Delete Offer Accepted"))
-            return super(EstatePropertyOffer, self).unlink()
+        return super(EstatePropertyOffer, self).unlink()
 
     def action_confirm(self):
         for offer in self:
             if offer.status == 'accepted':
                 raise UserError(_("This offer is already accepted."))
             offer.status = 'accepted'
-            offer.property_id.partner_id = offer.partner_id
+            offer.property_id.partner_id = offer.buyer_id
             accepted_offers = offer.property_id.offer_ids.filtered(lambda o: o.status == 'accepted')
             offer.property_id.selling_price = sum(accepted_offers.mapped('price'))
 
+
+    # def total_price(self):
+    #     accepted_offers = self.property_id.offer_ids.filtered(lambda o: o.status == 'accepted')
+    #     total_price = sum(accepted_offers.mapped('price'))
+    #     self.property_id.write({
+    #         'partner_id':self.env.user.partner_id.id,
+    #         'selling_price': total_price,
+    #     })
+
     def action_cancel(self):
         for record in self:
-            if record.status == 'accepted':
-                raise UserError(_('An accepted offer cannot be refused.'))
             record.status = 'refused'
 
     _sql_constraints = [

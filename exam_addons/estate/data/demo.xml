@@ -41,7 +41,6 @@
             <field name="garden_area">50</field>
             <field name="garden_orientation">south</field>
             <field name="property_type_id" ref="estate_property_type_villa"/>
-            <field name="partner_id" ref="base.main_partner"/>
             <field name="user_id" ref="base.user_admin"/>
             <field name="tag_ids" eval="[(4, ref('estate_property_tag_new')), (4, ref('estate_property_tag_green'))]"/>
         </record>
@@ -60,7 +59,6 @@
             <field name="garden_area">0</field>
             <field name="garden_orientation">south</field>
             <field name="property_type_id" ref="estate_property_type_apartment"/>
-            <field name="partner_id" ref="base.main_partner"/>
             <field name="user_id" ref="base.user_admin"/>
             <field name="tag_ids" eval="[(4,ref('estate_property_tag_new'))]"/>
         </record>
@@ -79,7 +77,6 @@
             <field name="garden_area">2</field>
             <field name="garden_orientation">south</field>
             <field name="property_type_id" ref="estate_property_type_apartment"/>
-            <field name="partner_id" ref="base.main_partner"/>
             <field name="user_id" ref="base.user_admin"/>
             <field name="tag_ids" eval="[(4,ref('estate_property_tag_new'))]"/>
         </record>
@@ -98,7 +95,6 @@
             <field name="garden_area">0</field>
             <field name="garden_orientation">south</field>
             <field name="property_type_id" ref="estate_property_type_house"/>
-            <field name="partner_id" ref="base.main_partner"/>
             <field name="user_id" ref="base.user_admin"/>
             <field name="tag_ids" eval="[(4,ref('estate_property_tag_new'))]"/>
         </record>

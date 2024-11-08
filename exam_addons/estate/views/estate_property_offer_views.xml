@@ -10,10 +10,10 @@
                       decoration-danger="status == 'refused'"
                       decoration-success="status == 'accepted'">
                     <field name="property_id"/>
-                    <field name="partner_id"/>
+                    <field name="buyer_id"/>
                     <field name="price"/>
-                    <button name="action_confirm" type="object" icon="fa-check" attrs="{'invisible':[('status','in',['accepted','refused'])]}"/>
-                    <button name="action_cancel" type="object" icon="fa-times" attrs="{'invisible':[('status','in',['accepted','refused'])]}"/>
+                    <button name="action_confirm" type="object"  icon="fa-check" attrs="{'invisible':[('status','in',['accepted','refused'])]}"/>
+                    <button name="action_cancel" type="object"  icon="fa-times" attrs="{'invisible':[('status','in',['accepted','refused'])]}"/>
                     <field name="status" attrs="{'invisible':[('status','in',['accepted','refused'])]}"/>
                     <field name="property_type_id"/>
                     <field name="validity"/>
@@ -29,7 +29,7 @@
                     <sheet>
                         <group>
                             <field name="property_id"/>
-                            <field name="partner_id"/>
+                            <field name="buyer_id"/>
                             <field name="price"/>
                             <field name="status"/>
                             <field name="validity"/>

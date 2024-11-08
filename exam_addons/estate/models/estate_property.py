@@ -4,13 +4,14 @@ from dateutil.relativedelta import relativedelta
 
 from odoo import models, fields, api, _
 from odoo.exceptions import ValidationError, UserError
-from odoo import exceptions
+
 
 
 
 class EstateProperty(models.Model):
     _name = 'estate.property'
     _description = 'Estate Property'
+    _inherit = ['mail.thread','mail.activity.mixin']
 
     name = fields.Char(string='Name', required=True)
     description = fields.Text(string='Description')
@@ -90,24 +91,18 @@ class EstateProperty(models.Model):
         vals['code'] = self.env['ir.sequence'].next_by_code('estate_sequence_code')
         return super(EstateProperty, self).create(vals)
 
+    def unlink(self):
+        for rec in self:
+            if rec.state not in ['new','canceled']:
+                raise UserError(_("Can not Delete Property not in new or canceled"))
+        return super(EstateProperty,self).unlink()
+
     @api.constrains('expected_price','selling_price')
     def _check_selling_price(self):
         for rec in self:
             if rec.selling_price >= 0 and rec.expected_price > 0:
                 if rec.selling_price < 0.9 * rec.expected_price:
                     raise ValidationError("Selling Price Cannot Lower 90% Expected Price")
-
-
-    # @api.model
-    # def create(self, vals):
-    #     if not vals.get('code'):
-    #         last_code = self.search([], order="id desc", limit=1).code
-    #         if last_code:
-    #             num = int(last_code[3:])+1
-    #         else:
-    #             num = 1
-    #         vals['code'] = f"PTT{str(num).zfill(5)}"
-    #     return super(EstateProperty, self).create(vals)
 
     def action_sold(self):
         for record in self:
@@ -120,20 +115,6 @@ class EstateProperty(models.Model):
             if record.state == 'sold':
                 raise UserError(_('A sold property cannot be canceled.'))
             record.state = 'canceled'
-
-    # def action_accept_offer(self):
-    #     for record in self: #[{'selling_price': 2;;;;'offer_ids':[{'price':12},{}]},{},{}]
-    #         # accepted_offers = record.offer_ids.filtered(lambda o: o.status == 'accepted')
-    #         total_selling_price = 0.0
-    #         last_accepted_offer_partner = None
-    #
-    #         for offer in accepted_offers:
-    #             total_selling_price += offer.price
-    #             last_accepted_offer_partner = offer.partner_id
-    #
-    #         # Set the total selling price and buyer
-    #         record.selling_price = total_selling_price
-    #         record.partner_id = last_accepted_offer_partner
 
     _sql_constraints = [
         ('check_expected_price_positive', 'CHECK(expected_price > 0)', 'The expected price must be strictly positive.'),

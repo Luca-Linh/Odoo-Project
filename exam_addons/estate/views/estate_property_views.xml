@@ -25,8 +25,6 @@
                             decoration-bf="state == 'offer_accepted'"
                             decoration-muted="state == 'sold'"
                             widget="many2one"
-                            options="{'no_create':True, 'no_edit':True}"
-                            readonly="1"
                             context="{'default_property_type_id': active_id}"/>
                     <field name="tag_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
                     <field name="state" invisible="1"/>
@@ -55,7 +53,7 @@
                                     name="property_type_id"
                                     widget="many2one"
                                     options="{'no_create':True, 'no_edit':True}"
-                                    readonly="1"/>
+                                    />
                             <field name="postcode"/>
                             <field name="date_availability"/>
                             <field name="code" readonly="1"/>
@@ -64,7 +62,6 @@
                             <field name="expected_price"/>
                             <field name="selling_price"/>
                             <field name="best_price"/>
-                            <field name="partner_id"/>
                         </group>
                     </group>
                     <notebook>
@@ -86,9 +83,11 @@
 <!--                        Page Offers-->
                     <page string="Offers">
                         <field name="offer_ids" readonly="1" attrs="{'readonly':[('state','in',['offer_accepted','sold','canceled'])]}" context="{'default_property_id': active_id}">
-                            <tree editable="bottom">
+                            <tree editable="bottom"
+                                  decoration-danger="status == 'refused'"
+                                  decoration-success="status == 'accepted'">
                                 <field name="price"/>
-                                <field name="partner_id"/>
+                                <field name="buyer_id"/>
                                 <field name="validity"/>
                                 <field name="date_deadline"/>
                                 <button name="action_confirm" type="object" icon="fa-check" attrs="{'invisible':[('status','in',['accepted','refused'])]}"/>
@@ -106,6 +105,11 @@
                     </page>
                     </notebook>
                 </sheet>
+                <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                </div>
             </form>
             </field>
         </record>
