@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data noupdate="1">
+        <!--Estate Property Offer Data-->
+        <record id="estate_property_offer15" model="estate.property.offer">
+            <field name="price">50000000</field>
+            <field name="buyer_id" ref="base.main_partner"/>
+            <field name="property_id" ref="estate.estate_property_ap_Vin"/>
+            <field name="property_type_id" ref="estate.estate_property_type_apartment"/>
+        </record>
+
+        <record id="estate_property_offer16" model="estate.property.offer">
+            <field name="price">70000000</field>
+            <field name="buyer_id" ref="base.main_partner"/>
+            <field name="property_id" ref="estate.estate_property_ap_Vin"/>
+            <field name="property_type_id" ref="estate.estate_property_type_apartment"/>
+        </record>
+    </data>
+</odoo>
