@@ -32,5 +32,14 @@
             <field name="perm_create" eval="1"/>
             <field name="perm_unlink" eval="1"/>
         </record>
+        <record id="buyer_offer_report_access" model="ir.model.access">
+            <field name="name">buyer.offer.report access</field>
+            <field name="model_id" ref="model_buyer_offer_report"/>
+            <field name="group_id" ref="base.group_user"/>
+            <field name="perm_read" eval="1"/>
+            <field name="perm_write" eval="0"/>
+            <field name="perm_create" eval="0"/>
+            <field name="perm_unlink" eval="0"/>
+        </record>
     </data>
 </odoo>
