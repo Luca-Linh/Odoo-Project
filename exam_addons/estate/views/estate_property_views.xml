@@ -82,7 +82,7 @@
                     </page>
 <!--                        Page Offers-->
                     <page string="Offers">
-                        <field name="offer_ids" readonly="1" attrs="{'readonly':[('state','in',['offer_accepted','sold','canceled'])]}" context="{'default_property_id': active_id}">
+                        <field name="offer_ids" readonly="0" attrs="{'readonly':[('state','in',['offer_accepted','sold','canceled'])]}" context="{'default_property_id': active_id}">
                             <tree editable="bottom"
                                   decoration-danger="status == 'refused'"
                                   decoration-success="status == 'accepted'">

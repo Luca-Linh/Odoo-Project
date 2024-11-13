@@ -6,7 +6,7 @@ class EstateProperty(models.Model):
     _inherit = 'estate.property'
 
     # buyer = partner
-    buyer_mail = fields.Char(string='Buyer Mail', required=True)
+    buyer_mail = fields.Char(string='Buyer Mail', required=False)
     user_sold = fields.Many2one('res.users',string='Sold buy', readonly=1)
 
     @api.onchange('partner_id')

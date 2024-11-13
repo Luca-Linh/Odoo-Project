@@ -97,10 +97,10 @@ class EstateProperty(models.Model):
                 raise UserError(_("Can not Delete Property not in new or canceled"))
         return super(EstateProperty,self).unlink()
 
-    @api.constrains('expected_price','selling_price')
+    @api.constrains('expected_price','selling_price','state')
     def _check_selling_price(self):
         for rec in self:
-            if rec.selling_price >= 0 and rec.expected_price > 0:
+            if rec.state != 'new' and rec.selling_price >= 0 and rec.expected_price > 0:
                 if rec.selling_price < 0.9 * rec.expected_price:
                     raise ValidationError("Selling Price Cannot Lower 90% Expected Price")
 

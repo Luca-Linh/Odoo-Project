@@ -8,7 +8,15 @@
             <field name="arch" type="xml">
                 <xpath expr="//notebook" position="inside">
                     <page string="Properties">
-                        <field name="property_ids"/>
+                        <field name="property_ids" context="{'default_user_id': id}">
+                            <tree>
+                                <field name="name"/>
+                                <field name="state"/>
+                                <field name="expected_price"/>
+                                <field name="selling_price"/>
+                                <field name="date_availability"/>
+                            </tree>
+                        </field>
                     </page>
                 </xpath>
             </field>

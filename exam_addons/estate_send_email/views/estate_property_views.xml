@@ -16,7 +16,7 @@
                 </xpath>
                 <!-- Add buyer_mail fields to the Other Info page -->
                 <xpath expr="//field[@name='partner_id']" position="after">
-                    <field name="buyer_mail" required="1"/>
+                    <field name="buyer_mail" attrs="{'required':[('state','in',['offer_accepted','sold'])]}"/>
                 </xpath>
             </field>
         </record>
