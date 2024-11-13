@@ -1,7 +1,6 @@
 from odoo import http
 from odoo.http import request
 from datetime import datetime
-from odoo.exceptions import UserError
 
 class BuyerOfferReportController(http.Controller):
 
@@ -10,39 +9,30 @@ class BuyerOfferReportController(http.Controller):
         # Capture the parameters from the URL
         start_date = kwargs.get('start_date')
         end_date = kwargs.get('end_date')
-        buyer_id = kwargs.get('buyer_id')
+        buyer_ids = kwargs.get('buyer_ids')
 
         # Validate dates
         if not start_date or not end_date:
             return "Start date and end date are required."
 
+        # Convert start_date and end_date to date objects
         try:
-            # Convert start_date and end_date to date objects
             start_date_obj = datetime.strptime(start_date, '%Y-%m-%d').date()
             end_date_obj = datetime.strptime(end_date, '%Y-%m-%d').date()
         except ValueError:
             return "Invalid date format. Please use YYYY-MM-DD."
 
-        # Ensure the start date is not later than the end date
-        if start_date_obj > end_date_obj:
-            return "Start date cannot be later than end date."
-
-        # Handle buyer selection: either one buyer or none
-        if buyer_id:
-            buyer_id = int(buyer_id)
-            buyer = request.env['res.partner'].sudo().browse(buyer_id)
-            if not buyer.exists():
-                return "Invalid buyer selected."
-            buyer_ids_list = [buyer_id]  # Only one buyer selected
+        # Convert buyer_ids to a list of integers if provided
+        if buyer_ids:
+            buyer_ids = [int(buyer_id) for buyer_id in buyer_ids.split(',')]
         else:
-            # If no buyer is selected, fetch all partners (no filtering)
-            buyer_ids_list = [partner.id for partner in request.env['res.partner'].sudo().search([])]
+            buyer_ids = None
 
         # Prepare the context for the report
         data = {
             'start_date': start_date_obj,
             'end_date': end_date_obj,
-            'buyer_ids': buyer_ids_list if buyer_ids_list else None,  # If no buyer_ids, pass None
+            'buyer_ids': buyer_ids,  # Pass list of IDs or None if no buyers selected
         }
 
         # Generate the XLSX report
@@ -51,9 +41,12 @@ class BuyerOfferReportController(http.Controller):
 
         # Return the file as an attachment
         filename = 'Buyer_Offer_Report.xlsx'
-        response = request.make_response(file_content,
-                                         headers=[('Content-Type',
-                                                   'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'),
-                                                  ('Content-Disposition', f'attachment; filename={filename}')])
+        response = request.make_response(
+            file_content,
+            headers=[
+                ('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'),
+                ('Content-Disposition', f'attachment; filename={filename}')
+            ]
+        )
 
         return response

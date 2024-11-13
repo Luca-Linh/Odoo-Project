@@ -11,7 +11,7 @@ class BuyerOfferReportXLSX(models.AbstractModel):
         output = io.BytesIO()
         workbook = xlsxwriter.Workbook(output, {'in_memory': True})
 
-        buyer_id = data.get('buyer_id')  # A specific buyer ID, or None if all buyers
+        buyer_ids = data.get('buyer_ids')
         start_date = data.get('start_date')
         end_date = data.get('end_date')
 
@@ -27,8 +27,7 @@ class BuyerOfferReportXLSX(models.AbstractModel):
         worksheet.write('D5', start_date.strftime('%d/%m/%Y'), date_format)
         worksheet.write('F5', 'Date To', title_format)
         worksheet.write('G5', end_date.strftime('%d/%m/%Y'), date_format)
-
-        # Set column widths
+        # Set width
         worksheet.set_column('A:A', 20)  # Buyer name
         worksheet.set_column('B:B', 25)  # Email
         worksheet.set_column('C:G', 16)  # Other columns
@@ -43,16 +42,16 @@ class BuyerOfferReportXLSX(models.AbstractModel):
         for col, header in enumerate(headers):
             worksheet.write(7, col, header, header_format)
 
-        # Query to fetch the data
+        # Query and write data
         query = """
             SELECT 
                 partner.name AS buyer_name,
                 partner.email AS buyer_email,
-                COUNT(CASE WHEN prop.state = 'accepted' THEN 1 END) AS state_accepted_count,
+                COUNT(CASE WHEN prop.state = 'offer_accepted' THEN 1 END) AS state_accepted_count,
                 COUNT(CASE WHEN prop.state = 'sold' THEN 1 END) AS state_sold_count,
-                COUNT(CASE WHEN prop.state = 'cancel' THEN 1 END) AS state_cancel_count,
+                COUNT(CASE WHEN prop.state = 'canceled' THEN 1 END) AS state_cancel_count,
                 COUNT(CASE WHEN offer.status = 'accepted' THEN 1 END) AS offer_accepted_count,
-                COUNT(CASE WHEN offer.status = 'rejected' THEN 1 END) AS offer_rejected_count,
+                COUNT(CASE WHEN offer.status = 'refused' THEN 1 END) AS offer_rejected_count,
                 MAX(offer.price) AS max_offer_price,
                 MIN(offer.price) AS min_offer_price
             FROM 
@@ -63,10 +62,15 @@ class BuyerOfferReportXLSX(models.AbstractModel):
                 res_partner partner ON partner.id = prop.partner_id
             WHERE 
                 prop.date_availability BETWEEN %s AND %s
-                AND (%s IS NULL OR prop.partner_id = %s)
-            GROUP BY partner.name, partner.email
         """
-        params = (start_date, end_date, buyer_id, buyer_id)
+        params = [start_date, end_date]
+
+        # Add buyer filter if buyer_ids is provided
+        if buyer_ids:
+            query += " AND prop.partner_id = ANY(%s)"
+            params.append(buyer_ids)
+
+        query += " GROUP BY partner.name, partner.email"
 
         try:
             self.env.cr.execute(query, params)
@@ -86,6 +90,7 @@ class BuyerOfferReportXLSX(models.AbstractModel):
             worksheet.write(row, 7, report[7], number_format)  # Max Offer Price
             worksheet.write(row, 8, report[8], number_format)  # Min Offer Price
             row += 1
+
         workbook.close()
         output.seek(0)
 

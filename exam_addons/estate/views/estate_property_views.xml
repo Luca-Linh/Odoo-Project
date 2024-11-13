@@ -11,7 +11,7 @@
                             name="name"
                             string="Title"
                             decoration-success="state == 'offer_received'"
-                            decoration-bf="state == 'offer_accepted'"
+                            decoration-bf="state == 'canceled'"
                             decoration-muted="state == 'sold'"/>
                     <field name="postcode"/>
                     <field name="bedrooms"/>
@@ -22,7 +22,7 @@
                     <field
                             name="property_type_id"
                             decoration-success="state == 'offer_received'"
-                            decoration-bf="state == 'offer_accepted'"
+                            decoration-bf="state == 'canceled'"
                             decoration-muted="state == 'sold'"
                             widget="many2one"
                             context="{'default_property_type_id': active_id}"/>

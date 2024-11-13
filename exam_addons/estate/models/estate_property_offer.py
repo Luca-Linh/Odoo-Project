@@ -59,6 +59,9 @@ class EstatePropertyOffer(models.Model):
             accepted_offers = offer.property_id.offer_ids.filtered(lambda o: o.status == 'accepted')
             offer.property_id.selling_price = sum(accepted_offers.mapped('price'))
 
+    def action_cancel(self):
+        for record in self:
+            record.status = 'refused'
 
     # def total_price(self):
     #     accepted_offers = self.property_id.offer_ids.filtered(lambda o: o.status == 'accepted')
@@ -67,10 +70,6 @@ class EstatePropertyOffer(models.Model):
     #         'partner_id':self.env.user.partner_id.id,
     #         'selling_price': total_price,
     #     })
-
-    def action_cancel(self):
-        for record in self:
-            record.status = 'refused'
 
     _sql_constraints = [
         ('check_offer_price_positive','CHECK(price > 0)','The offer price must be strictly positive.')
