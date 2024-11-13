@@ -1,0 +1,24 @@
+<odoo>
+    <data>
+        <!-- Extend estate.property form view -->
+        <record id="inherit_estate_property_view_form_send_mail" model="ir.ui.view">
+            <field name="name">inherit.estate.property.send.mail.view.form</field>
+            <field name="model">estate.property</field>
+            <field name="inherit_id" ref="estate.estate_property_view_form"/>
+            <field name="arch" type="xml">
+                 <!-- Add Send Mail button when property is Sold -->
+                <xpath expr="//header" position="inside">
+                    <button name="action_send_mail"
+                            type="object"
+                            string="Send Mail"
+                            class="btn-primary"
+                            attrs="{'invisible': [('state', '!=', 'sold')]}"/>
+                </xpath>
+                <!-- Add buyer_mail fields to the Other Info page -->
+                <xpath expr="//field[@name='partner_id']" position="after">
+                    <field name="buyer_mail" attrs="{'required':[('state','in',['offer_accepted','sold'])]}"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

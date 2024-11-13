@@ -1,0 +1,27 @@
+<odoo>
+    <data>
+         <record id="buyer_offer_report_view_tree" model="ir.ui.view">
+            <field name="name">buyer.offer.report.view.tree</field>
+            <field name="model">buyer.offer.report</field>
+            <field name="arch" type="xml">
+                <tree string="Buyer Offer Report">
+                    <field name="buyer_id" />
+                    <field name="property_count" />
+                    <field name="properties_accepted"/>
+                    <field name="properties_sold" />
+                    <field name="properties_canceled" />
+                    <field name="offers_accepted" />
+                    <field name="offers_rejected" />
+                    <field name="min_offer_price" />
+                    <field name="max_offer_price" />
+                </tree>
+            </field>
+        </record>
+        <!-- Add the action to access the report -->
+        <record id="buyer_offer_report_action" model="ir.actions.act_window">
+            <field name="name">Buyer Offer Report</field>
+            <field name="res_model">buyer.offer.report</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+    </data>
+</odoo>

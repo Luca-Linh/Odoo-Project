@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+<!--    <record id="buyer_offer_report_xlsx" model="ir.actions.report">-->
+<!--        <field name="name">Buyer Offer Report XLSX</field>-->
+<!--        <field name="model">buyer.offer.report</field>-->
+<!--        <field name="report_type">xlsx</field>-->
+<!--        <field name="report_name">estate.buyer_offer_report_xlsx</field>-->
+<!--        <field name="report_file">buyer_offer_report_xlsx</field>-->
+<!--        <field name="binding_model_id" ref="model_buyer_offer_report"/>-->
+<!--        <field name="binding_type">report</field>-->
+<!--    </record>-->
+</odoo>

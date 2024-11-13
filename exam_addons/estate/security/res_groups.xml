@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+    <data>
+        <record id="estate_admin" model="res.groups">
+            <field name="name">Estate Manager</field>
+        </record>
+        <record id="estate_property_tag_user_access" model="ir.model.access">
+            <field name="name">estate.property.tag user access</field>
+            <field name="model_id" ref="model_estate_property_tag"/>
+            <field name="group_id" ref="base.group_user"/> <!-- This gives access to all regular users -->
+            <field name="perm_read" eval="1"/>
+            <field name="perm_write" eval="1"/>
+            <field name="perm_create" eval="1"/>
+            <field name="perm_unlink" eval="1"/>
+        </record>
+        <record id="estate_property_offer_user_access" model="ir.model.access">
+            <field name="name">estate.property.offer user access</field>
+            <field name="model_id" ref="model_estate_property_offer"/>
+            <field name="group_id" ref="base.group_user"/> <!-- Grants access to all regular users -->
+            <field name="perm_read" eval="1"/>
+            <field name="perm_write" eval="1"/>
+            <field name="perm_create" eval="1"/>
+            <field name="perm_unlink" eval="1"/>
+        </record>
+        <record id="estate_property_type_user_access" model="ir.model.access">
+            <field name="name">estate.property.type user access</field>
+            <field name="model_id" ref="model_estate_property_type"/>
+            <field name="group_id" ref="base.group_user"/> <!-- Grants access to all regular users -->
+            <field name="perm_read" eval="1"/>
+            <field name="perm_write" eval="1"/>
+            <field name="perm_create" eval="1"/>
+            <field name="perm_unlink" eval="1"/>
+        </record>
+        <record id="buyer_offer_report_access" model="ir.model.access">
+            <field name="name">buyer.offer.report access</field>
+            <field name="model_id" ref="model_buyer_offer_report"/>
+            <field name="group_id" ref="base.group_user"/>
+            <field name="perm_read" eval="1"/>
+            <field name="perm_write" eval="0"/>
+            <field name="perm_create" eval="0"/>
+            <field name="perm_unlink" eval="0"/>
+        </record>
+    </data>
+</odoo>
