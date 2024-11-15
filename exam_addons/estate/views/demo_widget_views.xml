@@ -1,0 +1,40 @@
+<odoo>
+    <data>
+        <!-- Define a tree (list) view for demo.widget -->
+        <record id="view_demo_widget_tree" model="ir.ui.view">
+            <field name="name">demo.widget.tree</field>
+            <field name="model">demo.widget</field>
+            <field name="arch" type="xml">
+                <tree string="Demo Widget" js_class="demo_widget_tree_class">
+                    <field name="name"/>
+                    <field name="color" widget="int_color"/>
+                    <field name="date" widget="month_year"/>
+                </tree>
+            </field>
+        </record>
+        <!-- Define a form view for demo.widget -->
+        <record id="view_demo_widget_form" model="ir.ui.view">
+            <field name="name">demo.widget.form</field>
+            <field name="model">demo.widget</field>
+            <field name="arch" type="xml">
+                <form string="Demo Widget">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="color" widget="int_color"/>
+                            <field name="date" widget="month_year"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Action to open the demo widget records -->
+        <record id="action_demo_widget" model="ir.actions.act_window">
+            <field name="name">Demo Widgets</field>
+            <field name="res_model">demo.widget</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+    </data>
+</odoo>

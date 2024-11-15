@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates>
+    <t t-name="FieldColorPills">
+        <t t-foreach="_.range(widget.totalColors)" t-as="pill_no">
+            <span
+                t-attf-class="o_color_pill o_color_#{pill_no} #{widget.value == pill_no ? 'active' : ''}"
+                t-att-data-val="pill_no"
+                data-toggle="tooltip"
+                data-placement="bottom"
+                t-attf-title="This colorCount is #{widget.colorGroupData[pill_no] || 0}."
+            />
+        </t>
+        <h6>
+            <span class="color-count">This colorCount is 0</span>
+        </h6>
+    </t>
+</templates>

@@ -1,0 +1,17 @@
+<t t-name="ViewStudent">
+    <div class="row ml16 mr16">
+        <div t-foreach="data_list" t-as="data" class="col-2">
+            <div class="card mt16">
+                <div class="card-body">
+                    <img t-att-src="'data:image/png;base64,' + data['image']" class="card-img-top" />
+                    <h5 class="card-title mt8">
+                        <t t-esc="data['display_name']"/>
+                    </h5>
+                    <a href="#" class="btn btn-sm btn-primary o_primary_button" t-att-data-id="data['id']">
+                        View student
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</t>

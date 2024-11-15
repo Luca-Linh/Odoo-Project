@@ -41,5 +41,14 @@
             <field name="perm_create" eval="0"/>
             <field name="perm_unlink" eval="0"/>
         </record>
+        <record id="demo_widget_access" model="ir.model.access">
+            <field name="name">demo.widget access</field>
+            <field name="model_id" ref="model_demo_widget"/>
+            <field name="group_id" ref="base.group_user"/>
+            <field name="perm_read" eval="1"/>
+            <field name="perm_write" eval="1"/>
+            <field name="perm_create" eval="1"/>
+            <field name="perm_unlink" eval="1"/>
+        </record>
     </data>
 </odoo>

@@ -1,0 +1,28 @@
+.o_int_color {
+    .o_color_pill {
+        position: relative;
+        display: inline-block;
+        width: 25px;
+        height: 25px;
+        margin: 4px;
+        border-radius: 25px;
+        @for $size from 1 through length($o-colors){
+            &.o_color_#{$size - 1} {
+                background-color: nth($o-colors, $size);
+                &:not(.readonly):hover {
+                    transform: scale(1.2);
+                    transition: 0.3s;
+                    cursor: pointer;
+                }
+                &.active:after {
+                    content: "\f00c";
+                    position: absolute;
+                    display: inline-block;
+                    padding: 4px;
+                    font: normal 16px/1 FontAwesome;
+                    color: #fff;
+                }
+            }
+        }
+    }
+}

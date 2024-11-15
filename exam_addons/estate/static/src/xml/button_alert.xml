@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates>
+   <!-- Mở rộng chỉ cho model demo.widget và view tree của nó -->
+   <t t-extend="ListView.buttons" t-name="estate.demo_widget_buttons">
+       <t t-jquery="button.o_list_button_add" t-operation="after">
+           <button type="button" class="btn btn-primary o_button_alert_notification">
+               Click Me
+           </button>
+       </t>
+   </t>
+</templates>
