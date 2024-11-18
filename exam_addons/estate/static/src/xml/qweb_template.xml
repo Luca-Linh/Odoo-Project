@@ -1,4 +1,4 @@
-<t t-name="ViewStudent">
+<t t-name="ViewEstate">
     <div class="row ml16 mr16">
         <div t-foreach="data_list" t-as="data" class="col-2">
             <div class="card mt16">

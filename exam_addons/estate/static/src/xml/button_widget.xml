@@ -1,0 +1,31 @@
+<templates>
+    <!-- Mở rộng chỉ cho model demo.widget và view tree của nó -->
+    <t t-extend="ListView.buttons" t-name="estate.demo_widget_buttons">
+
+        <!-- Nút Click Me -->
+        <t t-jquery="button.o_list_button_add" t-operation="before">
+            <button type="button" class="btn btn-primary o_button_alert_notification">
+                Click Me
+            </button>
+        </t>
+
+        <!-- Check box Hide Color -->
+        <t t-jquery="button.o_list_button_add" t-operation="after">
+            <div class="o_checkbox_demo">
+                <input type="checkbox" id="hide_color" />
+                <label for="hide_color">Hide Color</label>
+            </div>
+            <div class="o_checkbox_demo">
+                <input type="checkbox" id="hide_date" />
+                <label for="hide_date">Hide Date</label>
+            </div>
+            <button type="button" id="apply_button" class="btn btn-primary d-none">
+                Apply
+            </button>
+            <button type="button" id="clear_button" class="btn btn-primary d-none">
+                Clear
+            </button>
+        </t>
+
+    </t>
+</templates>

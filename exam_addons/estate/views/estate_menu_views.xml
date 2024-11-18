@@ -11,6 +11,8 @@
         <menuitem id="estate_menu_report" name="Report" parent="estate_menu_root" sequence="4"/>
         <menuitem id="estate_menu_widget" name="Widgets" parent="estate_menu_root" sequence="5"/>
 
+        <!-- Actions Menu below estate menu-->
+<!--        <menuitem id="estate_menu_view" name="View Estate" parent="estate_menu" action="estate_property_action_estate" sequence="1"/>-->
         <!-- Actions Menu below Adv -->
         <menuitem id="estate_menu_adv_offer" name="Property Offer" action="estate_property_offer_action" parent="estate_menu_adv" sequence="1"/>
         <!-- Actions Menu below Conf  -->

@@ -1,9 +1,9 @@
-odoo.define('Model', function (require) {
+odoo.define('estate.Model', function (require) {
     'use strict';
 
     var AbstractModel = require('web.AbstractModel');
 
-    var StudentModel = AbstractModel.extend({
+    var EstateModel = AbstractModel.extend({
         init: function () {
             this._super.apply(this, arguments);
             this.data = null;
@@ -46,6 +46,6 @@ odoo.define('Model', function (require) {
         },
     });
 
-    return StudentModel;
+    return EstateModel;
 
 });

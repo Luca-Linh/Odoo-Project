@@ -24,13 +24,13 @@
         "views/estate_property_report_views.xml",
         "views/buyer_offer_report_wizard.xml",
         "views/demo_widget_views.xml",
-        # "views/demo_widget_inherit_view.xml",
         "views/estate_menu_views.xml",
     ],
 
     'qweb': [
         'static/src/xml/integer_color_picker.xml',
-        'static/src/xml/button_alert.xml',
+        'static/src/xml/button_widget.xml',
+        # 'static/src/xml/qweb_template.xml',
     ],
 
     'installable': True,

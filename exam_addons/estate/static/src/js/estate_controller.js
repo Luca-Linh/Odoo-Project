@@ -1,13 +1,13 @@
-odoo.define('Controller', function (require) {
+odoo.define('estate.Controller', function (require) {
     'use strict';
 
     var AbstractController = require('web.AbstractController');
     var core = require('web.core');
     var qweb = core.qweb;
 
-    var StudentController = AbstractController.extend({
+    var EstateController = AbstractController.extend({
         custom_events: _.extend({}, AbstractController.prototype.custom_events, {
-            'view_student': '_onClickViewButton',
+            'view_estate': '_onClickViewButton',
         }),
 
         _onClickViewButton: function (ev) {
@@ -31,6 +31,6 @@ odoo.define('Controller', function (require) {
         },
     });
 
-    return StudentController;
+    return EstateController;
 
 });

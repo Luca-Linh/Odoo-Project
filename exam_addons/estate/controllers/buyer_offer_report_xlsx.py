@@ -6,7 +6,6 @@ class BuyerOfferReportController(http.Controller):
 
     @http.route('/buyer_offer_report_xlsx', type='http', auth='user', csrf=False)
     def buyer_offer_report_xlsx(self, **kwargs):
-        # Capture the parameters from the URL
         start_date = kwargs.get('start_date')
         end_date = kwargs.get('end_date')
         buyer_ids = kwargs.get('buyer_ids')
