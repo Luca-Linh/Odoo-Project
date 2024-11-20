@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="assets_backend" inherit_id="web.assets_backend">
+        <xpath expr="." position="inside">
+            <script src="/estate/static/src/js/integer_color_picker.js" type="text/javascript"/>
+            <link href="/estate/static/src/scss/integer_color_picker.scss" rel="stylesheet" type="text/scss"/>
+
+            <script src="/estate/static/src/js/month_year_widget.js" type="text/javascript"/>
+            <link href="/estate/static/src/scss/month_year_widget.scss" rel="stylesheet" type="text/scss"/>
+
+            <script src="/estate/static/src/js/button_widget.js" type="text/javascript"/>
+            <link href="/estate/static/src/scss/button_widget.scss" rel="stylesheet" type="text/scss"/>
+
+<!--            <script src="/estate/static/src/js/estate_view.js" type="text/javascript"/>-->
+<!--            <script src="/estate/static/src/js/estate_model.js" type="text/javascript"/>-->
+<!--            <script src="/estate/static/src/js/estate_controller.js" type="text/javascript"/>-->
+<!--            <script src="/estate/static/src/js/estate_renderer.js" type="text/javascript"/>-->
+
+        </xpath>
+    </template>
+</odoo>

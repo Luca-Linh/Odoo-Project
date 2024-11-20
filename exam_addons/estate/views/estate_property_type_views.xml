@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="estate_property_type_view_tree" model="ir.ui.view">
+            <field name="name">estate.type.type.tree</field>
+            <field name="model">estate.property.type</field>
+            <field name="arch" type="xml">
+                <tree string="Estate Property Type">
+                    <field name="name"/>
+                    <field name="offer_count" string="Number of Offers"/>
+                </tree>
+            </field>
+        </record>
+         <record id="estate_property_type_view_form" model="ir.ui.view">
+            <field name="name">estate.property.type.form</field>
+            <field name="model">estate.property.type</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button name="action_view_offer" type="object" class="oe_stat_button" icon="fa-icon" string="offers of Type">
+                                <field name="offer_count" widget="statinfo"/>
+                            </button>
+                        </div>
+                        <group>
+                            <field name="name"/>
+                            <field name="offer_count" string="Number of Offers"/>
+                        </group>
+                        <notebook>
+                            <page string="Properties">
+                                <field name="property_ids" context="{'default_property_type_id': active_id}">
+                                    <tree editable="bottom">
+                                        <field name="name"/>
+                                        <field name="expected_price"/>
+                                        <field name="state"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="estate_property_type_action" model="ir.actions.act_window">
+            <field name="name">Estate Property Type</field>
+            <field name="res_model">estate.property.type</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <record id="action_estate_property_offer_by_type" model="ir.actions.act_window">
+            <field name="name">Property Offers by Type</field>
+            <field name="res_model">estate.property.offer</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('property_id.property_type_id', '=', active_id)]</field>
+        </record>
+    </data>
+</odoo>
