@@ -23,59 +23,84 @@ odoo.define('estate.button_widget', function (require) {
             var isColorChecked = $('#hide_color').is(':checked');
             var isDateChecked = $('#hide_date').is(':checked');
 
-            // Hiện nút Apply nếu ít nhất một checkbox được chọn
-            if (isColorChecked || isDateChecked) {
-                $('#apply_button').removeClass('d-none');
-            } else {
+            // Show Apply button if any checkbox is selected
+            this._toggleButtonVisibility(false);
+        },
+        _onInitState: function () {
+            var self = this;
+
+            // Fetch saved flags from the server
+            this._rpc({
+                model: 'demo.widget',
+                method: 'get_hide_flags',
+            }).then(function (flags) {
+                var [hideColor, hideDate] = flags;
+
+                // Update checkbox states
+                $('#hide_color').prop('checked', hideColor).prop('disabled', hideColor);
+                $('#hide_date').prop('checked', hideDate).prop('disabled', hideDate);
+
+                // Update Apply/Clear button visibility
+                self._toggleButtonVisibility(hideColor || hideDate);
+            });
+        },
+
+        _toggleButtonVisibility: function (hasSelection) {
+            if (hasSelection) {
                 $('#apply_button').addClass('d-none');
+                $('#clear_button').removeClass('d-none');
+            } else {
+                $('#apply_button').removeClass('d-none');
+                $('#clear_button').addClass('d-none');
             }
         },
+
         // Apply
         _onApply: function () {
+            var self = this;
             var isColorChecked = $('#hide_color').is(':checked');
             var isDateChecked = $('#hide_date').is(':checked');
+            console.log("Hide Color:", isColorChecked, "Hide Date:", isDateChecked);
+            this._rpc({
+                model: 'demo.widget',
+                method: 'update_hide_flags',
+                args: [[isColorChecked, isDateChecked]],
+            }).then(function () {
+                self.do_notify("Fields Updated", "The visibility of fields has been updated.");
+                if (isColorChecked) {
+                     $('#hide_color').prop('disabled', true);
+                }
+                if (isDateChecked) {
+                     $('#hide_date').prop('disabled', true);
+                }
 
-            if (isColorChecked) {
-                this._toggleFieldVisibility('color', false); // hide column `color`
-                $('#hide_color').prop('disabled', true);
-            }
-            if (isDateChecked) {
-                this._toggleFieldVisibility('date', false); // hide column `date`
-                 $('#hide_date').prop('disabled', true);
-            }
-
-            if ((isColorChecked && !isDateChecked) || (!isColorChecked && isDateChecked)) {
-                // Show Apply and Clear
-                $('#apply_button').removeClass('d-none');
-                $('#clear_button').removeClass('d-none');
-            } else {
-                // Show Clear
-                $('#apply_button').addClass('d-none');
-                $('#clear_button').removeClass('d-none');
-            }
+                self._toggleButtonVisibility(true);
+                self.reload(); // Reload the view to apply changes
+            });
         },
         // Clear
         _onClear: function () {
-            this._toggleFieldVisibility('color', true);
-            this._toggleFieldVisibility('date', true);
+            var self = this;
+            // Reset tất cả các cờ về False
+            this._rpc({
+                model: 'demo.widget',
+                method: 'update_hide_flags',
+                args: [[false, false]], // Truyền danh sách [False, False]
+            }).then(function () {
+                // Hiển thị thông báo và reload view
+                self.do_notify("Fields Reset", "The visibility of fields has been reset.");
 
-            $('#hide_color').prop('checked', false).prop('disabled', false);
-            $('#hide_date').prop('checked', false).prop('disabled', false);
+                 $('#hide_color').prop('disabled', false).prop('checked', false);
+                 $('#hide_date').prop('disabled', false).prop('checked', false);
 
-            // Reset
-            $('#apply_button').addClass('d-none');
-            $('#clear_button').addClass('d-none');
+                self._toggleButtonVisibility(false);
+                self.reload(); // Reload lại tree view để áp dụng thay đổi
+            });
         },
-
-        _toggleFieldVisibility: function (fieldName, isVisible) {
-            var $fields = this.$el.find(`td[data-name="${fieldName}"], span[name="${fieldName}"]`);
-            if (isVisible) {
-                $fields.show(); // Show
-            } else {
-                $fields.hide(); // Hide
-            }
+        _start: function () {
+            this._super.apply(this, arguments);
+            this._onInitState(); // Gọi hàm khởi tạo trạng thái
         },
-
     });
      var WidgetListView = ListView.extend({
          config: _.extend({}, ListView.prototype.config, {

@@ -3,7 +3,7 @@
 
         <!-- Root Menu -->
         <menuitem id="estate_menu_root" name="Real Estate" sequence="10" action="estate_property_action"/>
-
+<!--        <menuitem id="menu_estates_page" name="Estates Web" url="/estate_properties" parent="website.menu_website" sequence="20"/>-->
         <!-- First Level Menu  -->
         <menuitem id="estate_menu" name="Estate" parent="estate_menu_root" sequence="1" action="estate_property_action"/>
         <menuitem id="estate_menu_adv" name="Advertisement" parent="estate_menu_root" sequence="2"/>

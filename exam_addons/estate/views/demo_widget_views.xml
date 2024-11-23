@@ -7,8 +7,10 @@
             <field name="arch" type="xml">
                 <tree string="Demo Widget" js_class="demo_widget_tree_class">
                     <field name="name"/>
-                    <field name="color" widget="int_color"/>
-                    <field name="date" widget="month_year"/>
+                    <field name="color" widget="int_color" attrs="{'invisible':[('hide_color', '=', True)]}"/>
+                    <field name="date" widget="month_year" attrs="{'invisible':[('hide_date', '=', True)]}"/>
+                    <field name="hide_color" invisible="1"/>
+                    <field name="hide_date" invisible="1"/>
                 </tree>
             </field>
         </record>
@@ -21,8 +23,10 @@
                     <sheet>
                         <group>
                             <field name="name"/>
-                            <field name="color" widget="int_color"/>
-                            <field name="date" widget="month_year"/>
+                            <field name="color" widget="int_color" attrs="{'invisible': [('hide_color', '=', True)]}"/>
+                            <field name="date" widget="month_year" attrs="{'invisible': [('hide_date', '=', True)]}"/>
+                            <field name="hide_color" invisible="1"/>
+                            <field name="hide_date" invisible="1"/>
                         </group>
                     </sheet>
                 </form>

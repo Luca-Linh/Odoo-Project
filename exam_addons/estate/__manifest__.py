@@ -7,7 +7,7 @@
     Exam for test 2
     """,
     "author":"linhvt",
-    'depends': ['base','mail','report_xlsx'],
+    'depends': ['base','mail','report_xlsx','website'],
     "data":[
         "data/estate_sequence_data.xml",
         "data/demo.xml",
@@ -24,6 +24,7 @@
         "views/estate_property_report_views.xml",
         "views/buyer_offer_report_wizard.xml",
         "views/demo_widget_views.xml",
+        "views/estate_property_templates.xml",
         "views/estate_menu_views.xml",
     ],
 

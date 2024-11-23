@@ -1,0 +1,75 @@
+<odoo>
+    <template id="estates_page" name="Estates Page">
+        <t t-call="website.layout">
+            <div class="container">
+                <h1>Estate Properties</h1>
+                <form method="GET" action="/estate_property">
+                    <input type="text" name="search" placeholder="Search by name" t-att-value="search or ''"/>
+                    <button type="submit" class="btn btn-primary">Search</button>
+                </form>
+                <div class="row">
+                   <t t-foreach="estates" t-as="estate">
+                       <div class="col-md-3 mb-4">
+                           <div class="card">
+                               <a t-att-href="'/estate_property/%d' % estate.id" class="card-link">
+                                   <img t-att-src="'/web/image/estate.property/%d/image_1920' % estate.id" class="card-img-top" t-att-alt="estate.name"/>
+                                   <div class="card-body">
+                                        <h5 class="card-title"><t t-esc="estate.name"/></h5>
+                                        <p class="card-text"><strong>Price:</strong> <t t-esc="estate.expected_price"/> </p>
+                                        <p class="card-text"><strong>Bedrooms:</strong> <t t-esc="estate.bedrooms or 'N/A'"/> </p>
+                                    </div>
+                               </a>
+                           </div>
+                       </div>
+                   </t>
+               </div>
+                <!-- Pagination -->
+            <nav aria-label="Page navigation" class="mt-4">
+                <ul class="pagination">
+                    <li class="page-item" t-att-class="'disabled' if not pager.get('prev') else ''">
+                        <a class="page-link" t-att-href="'/estate_property?page=%d&amp;search=%s' % (pager.get('prev') or 1, search)">Previous</a>
+                    </li>
+                    <t t-foreach="pager.get('pages')" t-as="p">
+                        <li class="page-item" t-att-class="'active' if p == pager.get('page') else ''">
+                            <a class="page-link" t-att-href="'/estate_property?page=%d&amp;search=%s' % (p, search)">
+                                <t t-esc="p"/>
+                            </a>
+                        </li>
+                    </t>
+                    <li class="page-item" t-att-class="'disabled' if not pager.get('next') else ''">
+                        <a class="page-link" t-att-href="'/estate_property?page=%d&amp;search=%s' % (pager.get('next') or pager.get('page'), search)">Next</a>
+                    </li>
+                </ul>
+            </nav>
+
+            </div>
+        </t>
+    </template>
+
+    <template id="estate_details_page" name="Estate Details Page">
+        <t t-call="website.layout">
+            <div class="container">
+                <h1><t t-esc="estate.name" /></h1>
+                <div class="row mt-4">
+                    <div class="col-md-6">
+                        <p><strong>Name:</strong> <t t-esc="estate.name or 'N/A'" /></p>
+                        <p><strong>Description:</strong> <t t-esc="estate.description or 'N/A'" /></p>
+                        <p><strong>Facades:</strong> <t t-esc="estate.facades or 'N/A'" /></p>
+                        <p><strong>Location:</strong> <t t-esc="estate.postcode or 'N/A'" /></p>
+                        <p><strong>Bedrooms:</strong> <t t-esc="estate.bedrooms or 'N/A'" /></p>
+                        <p><strong>Living Area:</strong> <t t-esc="estate.living_area or 'N/A'" /> m²</p>
+                    </div>
+                    <div class="col-md-6">
+                        <p><strong>Expected Price:</strong> <t t-esc="estate.expected_price" /></p>
+                        <p><strong>Selling Price:</strong> <t t-esc="estate.selling_price or 'Not Sold'" /></p>
+                        <p><strong>Availability:</strong> <t t-esc="estate.date_availability" /></p>
+                        <p><strong>Garden:</strong> <t t-esc="estate.garden" /></p>
+                        <p><strong>Garden Area:</strong> <t t-esc="estate.garden_area" /></p>
+                        <p><strong>Garden Orientation:</strong> <t t-esc="estate.garden_orientation" /></p>
+                    </div>
+                </div>
+                <a href="/estate_property" class="btn btn-secondary mt-4">Back to Listing</a>
+            </div>
+        </t>
+    </template>
+</odoo>
