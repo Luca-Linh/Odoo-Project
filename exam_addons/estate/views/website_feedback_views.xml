@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_feedback_tree" model="ir.ui.view">
+        <field name="name">Feedback List</field>
+        <field name="model">website.user.feedback</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="description" />
+                <field name="create_datetime" />
+            </tree>
+        </field>
+    </record>
+
+
+    <record id="action_website_user_feedback" model="ir.actions.act_window">
+        <field name="name">Feedback</field>
+        <field name="res_model">website.user.feedback</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>

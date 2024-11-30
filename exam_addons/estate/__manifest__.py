@@ -26,13 +26,13 @@
         "views/demo_widget_views.xml",
         "views/estate_property_templates.xml",
         "views/estate_property_home.xml",
+        "views/website_feedback_views.xml",
+        "views/snippets/feedback_form.xml",
         "views/estate_menu_views.xml",
     ],
 
     'qweb': [
-        'static/src/xml/integer_color_picker.xml',
-        'static/src/xml/button_widget.xml',
-        # 'static/src/xml/qweb_template.xml',
+        'static/src/xml/*.xml',
     ],
 
     'installable': True,

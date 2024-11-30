@@ -6,9 +6,6 @@ import json
 
 class EstatePropertyController(http.Controller):
 
-    # @http.route('/vi', auth='public', type='http', website=True)
-    # def homepage(self, **kwargs):
-    #     return request.render('estate.homepage_template')
 
     @http.route('/estate_property', auth='public', type='http', website=True)
     def estate_property(self, page=1, search='', **kwargs):
