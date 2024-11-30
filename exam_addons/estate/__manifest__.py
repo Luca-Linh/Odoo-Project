@@ -25,6 +25,7 @@
         "views/buyer_offer_report_wizard.xml",
         "views/demo_widget_views.xml",
         "views/estate_property_templates.xml",
+        "views/estate_property_home.xml",
         "views/estate_menu_views.xml",
     ],
 

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
-
         <!-- Root Menu -->
         <menuitem id="estate_menu_root" name="Real Estate" sequence="10" action="estate_property_action"/>
 <!--        <menuitem id="menu_estates_page" name="Estates Web" url="/estate_properties" parent="website.menu_website" sequence="20"/>-->
@@ -18,10 +17,13 @@
         <!-- Actions Menu below Conf  -->
         <menuitem id="estate_menu_conf_type" name="Property Type" action="estate_property_type_action" parent="estate_menu_conf" sequence="1"/>
         <menuitem id="estate_menu_conf_tag" name="Property Tag" action="estate_property_tag_action" parent="estate_menu_conf" sequence="2"/>
-
         <!-- Actions Menu below Report -->
         <menuitem id="estate_menu_report_buyer" name="Buyer Offer Report" action="buyer_offer_report_action" parent="estate_menu_report" sequence="1"/>
         <menuitem id="estate_menu_report_buyer_excel" name="Export Buyer Offer Excel" action="action_buyer_offer_report_wizard" parent="estate_menu_report" sequence="2"/>
         <!-- Actions Menu below Widget -->
         <menuitem id="estate_menu_widget_demo_widget" name="Demo Widgets" parent="estate_menu_widget" action="action_demo_widget" sequence="1"/>
+
+<!--Web Menu-->
+        <menuitem id="menu_homepage" name="Homepage" parent="website.menu_website_configuration" action="action_homepage"/>
+<!--        <menuitem id="menu_homepage_web" name="Homepage" parent="menu_homepage" />-->
 </odoo>

@@ -1,0 +1,202 @@
+<odoo>
+    <template id="inherit_homepage_template" inherit_id="website.homepage" name="Customize Homepage">
+        <xpath expr="//div[@id='wrap']" position="replace">
+            <div id="wrap" class="custom-homepage">
+                <section class="homepage-banner">
+                    <div class="container">
+                        <div class="row mt-4">
+                            <div class="col-md-6">
+                                 <h1>One platform for your team to get work done faster</h1>
+                                 <p>Comprehensive features make Bemo@ the premier option to boots efficiency and productivity in your workflow</p>
+                                 <a href="#" class="btn">Go to system</a>
+                            </div>
+                            <div class="col-md-6">
+                                 <img t-att-src="'estate/static/src/fonts/lato/Group 22.svg'" />
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="homepage-news">
+                    <div class="container">
+                        <div class="news-header d-flex">
+                            <img t-att-src="'estate/static/src/img/polygon-bg 1.png'"/>
+                            <h1>Latest Internal News</h1>
+                        </div>
+                        <div class="news-slider row grid">
+                            <div class="news-wrap col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
+                                <img t-att-src="'estate/static/src/img/Frame 11282.png'"/>
+                                <div class="news-info">
+                                    <div class="news-date">
+                                        <img t-att-src="'estate/static/src/img/Calendar Alt.png'"/>
+                                        <p class="d-inline-block">27-06-2022</p>
+                                    </div>
+                                    <h6>
+                                        [BAP x DUT] Blockchain Seminar
+                                    </h6>
+                                    <p>On April 23, BAP company has a sharing session on the topic of
+                                        Blockchain with the participation of student...</p>
+                                </div>
+                            </div>
+                            <div class="new-wrap col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
+                                <img t-att-src="'estate/static/src/img/Frame 11282.png'"/>
+                                <div class="news-info">
+                                    <div class="news-date">
+                                        <img t-att-src="'estate/static/src/img/Calendar Alt.png'"/>
+                                        <p class="d-inline-block">27-06-2022</p>
+                                    </div>
+                                    <h6>
+                                        [BAP x DUT] Blockchain Seminar
+                                    </h6>
+                                    <p class="d-inline-block">On April 23, BAP company has a sharing session on the topic of
+                                        Blockchain with the participation of student...</p>
+                                </div>
+                            </div>
+                            <div class="new-wrap col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
+                                <img t-att-src="'estate/static/src/img/Frame 11282.png'"/>
+                                <div class="news-info">
+                                    <div class="news-date">
+                                        <img t-att-src="'estate/static/src/img/Calendar Alt.png'"/>
+                                        <p>27-06-2022</p>
+                                    </div>
+                                    <h6>
+                                        [BAP x DUT] Blockchain Seminar
+                                    </h6>
+                                    <p>On April 23, BAP company has a sharing session on the topic of
+                                        Blockchain with the participation of student...</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+                <!-- Intention-->
+                <section class="homepage-intention">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xl-6">
+                            <img t-att-src="'estate/static/src/img/bemo_company_intention 1.png'" />
+                        </div>
+                            <div class="col-xl-6">
+                            <div class="title-section">
+                                <img t-att-src="'estate/static/src/img/polygon-bg 1.png'"/>
+                                <h1>Company Intention</h1>
+                            </div>
+                            <div>
+                                <p>On April 23, BAP company has a sharing session on the topic of
+                                        Blockchain with the participation of student...</p>
+                                <p>On April 23, BAP company has a sharing session on the topic of
+                                        Blockchain with the participation of student...</p>
+                                <p>On April 23, BAP company has a sharing session on the topic of
+                                        Blockchain with the participation of student...</p>
+                                <p>On April 23, BAP company has a sharing session on the topic of
+                                        Blockchain with the participation of student...</p>
+                                <p>On April 23, BAP company has a sharing session on the topic of
+                                        Blockchain with the participation of student...</p>
+                                <p>On April 23, BAP company has a sharing session on the topic of
+                                        Blockchain with the participation of student...</p>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </section>
+                <!--  Gallery-->
+                <section class="homepage-gallery">
+                    <div class="container">
+                         <div class="">
+                            <img t-att-src="'estate/static/src/img/polygon-bg 1.png'"/>
+                            <h1>Company Gallery</h1>
+                        </div>
+                        <div class="row grid">
+                            <div class="col-lg-6 col-md-6">
+                                <video>
+                                    <source t-att-src="'estate/static/src/video/video-nen.mp4'" type="video/mp4"/>
+                                </video>
+                            </div>
+                            <div class="col-lg-3 col-md-3 ">
+                                <img t-att-src="'estate/static/src/img/Rectangle 2958.png'" />
+                            </div>
+                            <div class="col-lg-3 col-md-3 ">
+                                <img t-att-src="'estate/static/src/img/Rectangle 2959.png'" />
+                            </div>
+                        </div>
+                        <div class="row grid">
+                            <div class="col-lg-3 col-md-3 ">
+                                <img t-att-src="'estate/static/src/img/Rectangle 2958.png'" />
+                            </div>
+                            <div class="col-lg-3 col-md-3 ">
+                                <img t-att-src="'estate/static/src/img/Rectangle 2959.png'" />
+                            </div>
+                            <div class="col-lg-3 col-md-3 ">
+                                <img t-att-src="'estate/static/src/img/Rectangle 2959.png'" />
+                            </div>
+                            <div class="col-lg-3 col-md-3 ">
+                                <img t-att-src="'estate/static/src/img/Rectangle 2959.png'" />
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </xpath>
+        <!-- Phần Banner -->
+        <!--                <header class="navbar">-->
+<!--                    <div class="container">-->
+<!--                        <div class="navbar-left" style="display: flex; align-items: center;">-->
+<!--                        <img t-att-src="'estate/static/src/img/logo-bap.png'" alt="Logo" class="navbar-logo"/>-->
+<!--                        <nav>-->
+<!--                            <ul>-->
+<!--                                <li><a href="#home">Home</a></li>-->
+<!--                                <li><a href="#about">About Us</a></li>-->
+<!--                                <li><a href="#contact">Contact</a></li>-->
+<!--                            </ul>-->
+<!--                        </nav>-->
+<!--                        </div>-->
+<!--                        <div class="navbar-right" style="display: flex; align-items: center;">-->
+<!--                        <select class="custom-select" style="margin-left: 20px;">-->
+<!--                            <option value="option1">Option 1</option>-->
+<!--                            <option value="option2">Option 2</option>-->
+<!--                            <option value="option3">Option 3</option>-->
+<!--                        </select>-->
+<!--                        <select class="custom-select" style="margin-left: 10px;">-->
+<!--                            <option value="option1">Option 1</option>-->
+<!--                            <option value="option2">Option 2</option>-->
+<!--                            <option value="option3">Option 3</option>-->
+<!--                        </select>-->
+<!--                    </div>-->
+<!--                    </div>-->
+<!--                </header>-->
+<!--        <div id="header-home">-->
+<!--            <div class="header_layout" style="flex-grow: 1; width: 100%;">-->
+<!--                <nav id="navbar" style="display: flex; justify-content: space-between; width: 100%; align-items: center;">-->
+<!--                    &lt;!&ndash; Menu items on the left &ndash;&gt;-->
+<!--                    <div class="navbar-left" style="display: flex; align-items: center;">-->
+<!--                        <img t-att-src="'estate/static/src/img/logo-bap.png'" alt="header logo" class="header_logo" style="margin-right: 20px;" />-->
+<!--                        <ul class="navbar-nav" style="display: flex; list-style: none; margin: 0; padding: 0;">-->
+<!--                            <li class="nav-item" style="margin-right: 20px;"><a style="text-decoration: none; color: black; line-height: 24px;" class="nav-link scroll" href="#">Home</a></li>-->
+<!--                            <li class="nav-item" style="margin-right: 20px;"><a style="text-decoration: none; color: black; line-height: 24px;" class="nav-link scroll" href="#about">About us</a></li>-->
+<!--                            <li class="nav-item" style="margin-right: 20px;"><a style="text-decoration: none; color: black; line-height: 24px;" class="nav-link scroll" href="#blogs">Blogs</a></li>-->
+<!--                        </ul>-->
+<!--                    </div>-->
+
+<!--                    &lt;!&ndash; Select containers on the right &ndash;&gt;-->
+<!--                    <div class="navbar-right" style="display: flex; align-items: center;">-->
+<!--                        <select class="custom-select" style="margin-left: 20px;">-->
+<!--                            <option value="option1">Option 1</option>-->
+<!--                            <option value="option2">Option 2</option>-->
+<!--                            <option value="option3">Option 3</option>-->
+<!--                        </select>-->
+<!--                        <select class="custom-select" style="margin-left: 10px;">-->
+<!--                            <option value="option1">Option 1</option>-->
+<!--                            <option value="option2">Option 2</option>-->
+<!--                            <option value="option3">Option 3</option>-->
+<!--                        </select>-->
+<!--                    </div>-->
+<!--                </nav>-->
+<!--            </div>-->
+<!--        </div>-->
+    </template>
+
+    <record id="action_homepage" model="ir.actions.client">
+        <field name="name">Homepage</field>
+        <field name="tag">homepage_template</field>
+    </record>
+</odoo>

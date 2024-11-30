@@ -1,0 +1,103 @@
+.custom-homepage {
+    font-family: Arial, sans-serif;
+    .homepage-banner {
+        color: white;
+        padding: 50px 0;
+        text-align: center;
+        h1 {
+            color: #091F32;
+            font-weight: 700;
+        }
+        p{
+            color:#4D4D4D;
+            font-size: 20px;
+        }
+        .btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            padding: 10px 25px;
+            float: left;
+            &:hover {
+                background-color: #0056b3;
+                color: white;
+            }
+        }
+    }
+    .homepage-news{
+        color: white;
+        padding: 50px 0;
+        text-align: center;
+        .news-header
+            padding-left: 15px;
+            img{
+                height: 45px;
+                display: inline-block;
+                padding-right: 20px;
+            }
+            h1{
+                color: #007bff;
+                font-size: 40px;
+                font-weight: 700;
+                text-transform: uppercase;
+                display: inline-block;
+        }
+//         .news-info{
+//             padding-left: 10px;
+//             .news-date{
+//                 float: left;
+//                 p{
+//                     color: #808080;
+//                     display: inline-block;
+//                     font-size: 14px;
+//                 }
+//             }
+//             h2{
+//                 font-size: 18px;
+//                 color: #4d4d4d;
+//                 text-align: left;
+//                 float: left;
+//             }
+//             p{
+//                 color: #808080;
+//                 font-size: 16px;
+//                 float: left;
+//                 text-align: left;
+//             }
+        }
+
+    }
+}
+//     .navbar {
+//         background-color: #f8f9fa;
+//         display: flex;
+//         justify-content: space-between;
+//         align-items: center;
+//         padding: 10px 20px;
+//
+//         .navbar-logo {
+//             max-height: 50px;
+//         }
+//
+//         nav ul {
+//             list-style: none;
+//             display: flex;
+//             gap: 20px;
+//
+//             li {
+//                 a {
+//                     text-decoration: none;
+//                     color: #007bff;
+//
+//                     &:hover {
+//                         text-decoration: underline;
+//                     }
+//                 }
+//             }
+//         }
+//     }
+
