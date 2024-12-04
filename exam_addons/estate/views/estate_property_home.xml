@@ -18,7 +18,6 @@
                     <!-- Brand Logo -->
                     <div class="navbar-brand">
                         <div class="logo-container">
-                            <!-- Thay logo bằng hình hoặc SVG -->
                             <img src="/estate/static/src/img/logo-bap.png" alt="Logo" class="logo-img"/>
                         </div>
                     </div>
@@ -39,7 +38,6 @@
                             </t>
                         </t>
 
-                        <!-- Second Component: Sign-In and User Dropdown -->
                         <div class="signin-user-component ml-auto d-flex align-items-center">
                             <!-- Sign In -->
                             <t t-call="portal.placeholder_user_sign_in">
@@ -57,7 +55,6 @@
 
                     <!-- Language Selector -->
                     <t t-call="estate.bemo_header_language_selector_flag">
-                        <!-- <t t-set="_div_classes" t-value="'ml-2'"/> -->
                     </t>
                 </div>
             </nav>
@@ -90,55 +87,34 @@
                             <img t-att-src="'estate/static/src/img/polygon-bg 1.png'" class="img-fluid"/>
                             <span class="d-inline-block">TIN TỨC NỘI BỘ MỚI NHẤT</span>
                         </div>
-                        <div class="news-slider row grid">
-                            <div class="news-wrap col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
-                                <img t-att-src="'estate/static/src/img/Frame 11282.png'" class="img-fluid"/>
-                                <div class="news-info">
-                                    <div class="news-date">
-                                        <img t-att-src="'estate/static/src/img/Calendar Alt.png'" class="img-fluid"/>
-                                        <p class="d-inline-block">27-06-2022</p>
+                        <div class="news-slider row mt-4">
+                            <t t-foreach="[1,2,3]" t-as="news">
+                                <div class="news-wrap col-xl-4">
+                                    <img t-att-src="'estate/static/src/img/Frame 11282.png'" class="img-fluid"/>
+                                    <div class="news-info">
+                                        <div class="news-date">
+                                            <img t-att-src="'estate/static/src/img/Calendar Alt.png'" class="img-fluid"/>
+                                            <p class="d-inline-block">27-06-2022</p>
+                                        </div>
+                                        <h5>
+                                            [BAP x DUT] Blockchain Seminar
+                                        </h5>
+                                        <p>On April 23, BAP company has a sharing session on the topic of
+                                            Blockchain with the participation of student...</p>
                                     </div>
-                                    <h5>
-                                        [BAP x DUT] Blockchain Seminar
-                                    </h5>
-                                    <p>On April 23, BAP company has a sharing session on the topic of
-                                        Blockchain with the participation of student...</p>
                                 </div>
-                            </div>
-                            <div class="news-wrap col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
-                                <img t-att-src="'estate/static/src/img/Frame 11282.png'" class="img-fluid"/>
-                                <div class="news-info">
-                                    <div class="news-date">
-                                        <img t-att-src="'estate/static/src/img/Calendar Alt.png'" class="img-fluid"/>
-                                        <p class="d-inline-block">27-06-2022</p>
-                                    </div>
-                                    <h5>
-                                        [BAP x DUT] Blockchain Seminar
-                                    </h5>
-                                    <p>On April 23, BAP company has a sharing session on the topic of
-                                        Blockchain with the participation of student...</p>
-                                </div>
-                            </div>
-                            <div class="news-wrap col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
-                                <img t-att-src="'estate/static/src/img/Frame 11282.png'" class="img-fluid"/>
-                                <div class="news-info">
-                                    <div class="news-date">
-                                        <img t-att-src="'estate/static/src/img/Calendar Alt.png'" class="img-fluid"/>
-                                        <p class="d-inline-block">27-06-2022</p>
-                                    </div>
-                                    <h5>
-                                        [BAP x DUT] Blockchain Seminar
-                                    </h5>
-                                    <p>On April 23, BAP company has a sharing session on the topic of
-                                        Blockchain with the participation of student...</p>
-                                </div>
-                            </div>
+                            </t>
                         </div>
 
                     </div>
                 </section>
                 <!-- Intention-->
                 <section class="homepage-intention">
+                    <img t-att-src="'estate/static/src/img/Group 26.png'" id="group26"/>
+                    <img t-att-src="'estate/static/src/img/Group 25.png'" id="group25"/>
+                    <img t-att-src="'estate/static/src/img/Group 24.png'" id="group24"/>
+                    <img t-att-src="'estate/static/src/img/Group 23.png'" id="group23"/>
+                    <img t-att-src="'estate/static/src/img/Vector.png'" id="group24-vector"/>
                     <div class="container">
                         <div class="row">
                             <div class="col-xl-6">

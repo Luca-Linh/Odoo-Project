@@ -1,0 +1,29 @@
+.snippet_feedback_section{
+    background-color: #F3F4F7;
+    margin-top: 60px;
+    .feedback_image{
+        padding: 70px 0;
+    }
+    .feedback_content{
+        padding: 50px;
+        .feedback_title{
+            font-weight: 700;
+            color: #007BFF;
+            font-size: 24px;
+            padding-bottom: 30px;
+            img{
+            padding-right: 10px;
+            }
+        }
+        .feedback_input{
+            width: 697px;
+            height: 260px;
+
+        }
+        .btn{
+            background-color: #007BFF;
+            padding: 10px 50px;
+            border-radius: 50px;
+        }
+    }
+}

@@ -66,6 +66,7 @@
             line-height: 44px;
             img {
                 padding-right: 10px;
+                padding-left: 15px;
             }
         }
         .news-slider{
@@ -77,11 +78,39 @@
         }
     }
     .homepage-intention{
+        padding: 60px 0;
+        #group26{
+            position: absolute;
+            top: 92px;
+            left: 58px;
+        }
+        #group25{
+            position: absolute;
+            top: 470px;
+            left: 230px;
+        }
+        #group24{
+            position: absolute;
+            top: 481px;
+            left: 1256px;
+        }
+        #group24-vector{
+            position: absolute;
+            top: 562.06px;
+            left: 1257.94px;
+            transform: rotate(-180deg);
+        }
+        #group23{
+            position: absolute;
+            top: 76px;
+            left: 1290px;
+        }
         .title-section{
             color: #007BFF;
             font-size: 24px;
             font-weight: 700;
             line-height: 44px;
+            padding: 20px 0;
             img {
                 padding-right: 10px;
             }

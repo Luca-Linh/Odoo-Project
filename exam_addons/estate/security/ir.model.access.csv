@@ -5,4 +5,4 @@ access_estate_property_type_admin,access.estate.property.type.admin,model_estate
 access_estate_property_tag_admin,access.estate.property.tag.admin,model_estate_property_tag,estate.estate_admin,1,1,1,1
 access_estate_property_offer_admin,access.estate.property.offer.admin,model_estate_property_offer,estate.estate_admin,1,1,1,1
 access_buyer.offer.report.wizard,access.buyer.offer.report.wizard,model_buyer_offer_report_wizard,,1,1,1,1
-access_website.user.feedback,access.website.user.feedback,model_website_user_feedback,,1,1,1,1
+access_website.user.feedback,access.website.user.feedback,model_website_user_feedback,,1,1,1,0

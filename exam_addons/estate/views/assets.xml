@@ -18,6 +18,7 @@
     <template id="assets_frontend" inherit_id="web.assets_frontend">
         <xpath expr="." position="inside">
             <link href="/estate/static/src/scss/custom_homepage.scss" rel="stylesheet" type="text/scss"/>
+            <link href="/estate/static/src/scss/snippets_feedback.scss" rel="stylesheet" type="text/scss"/>
         </xpath>
     </template>
 

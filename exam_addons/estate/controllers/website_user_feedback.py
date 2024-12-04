@@ -4,16 +4,12 @@ from odoo.http import request
 
 class WebsiteUserFeedbackController(http.Controller):
 
-    http.route('/feedback/submit', type='http', auth='public', website=True, methods=['POST'], csrf=False)
-    def submit_feedback(self, **kwargs):
-        description = kwargs.get('description', '').strip()
+    @http.route('/feedback_submit', type='http', auth='public', website=True, csrf=False)
+    def submit_feedback(self, description=None, **kwargs):
         if description:
             request.env['website.user.feedback'].sudo().create({
                 'description': description,
             })
-            return request.redirect('/feedback/thanks')
-        return request.redirect('/feedback')
+            return request.render('estate.feedback_thanks_template')
 
-    @http.route('/feedback/thanks', type='http', auth='public', website=True)
-    def feedback_thanks(self):
-        return request.render('estate.feedback_thanks_template')
+        return request.redirect('/#feedback_form_error')
