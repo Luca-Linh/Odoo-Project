@@ -12,6 +12,7 @@
         "data/estate_sequence_data.xml",
         "data/demo.xml",
         "data/estate_property_offer_data.xml",
+        "data/default_language_data.xml",
         "security/res_groups.xml",
         "security/ir.model.access.csv",
         "views/assets.xml",
@@ -30,6 +31,7 @@
         "views/snippets/feedback_form.xml",
         "views/estate_menu_views.xml",
     ],
+    'post_init_hook': 'set_default_language',
 
     'qweb': [
         'static/src/xml/*.xml',

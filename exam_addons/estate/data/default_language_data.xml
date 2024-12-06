@@ -1,0 +1,14 @@
+<odoo>
+    <data noupdate="1">
+        <!-- Tạo hoặc sửa Website mặc định -->
+        <record id="default_website" model="website">
+            <field name="name">My Website</field>
+            <field name="domain"></field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="user_id" ref="base.public_user"/>
+            <!-- Thêm trường default_lang_id, giá trị là tiếng Việt -->
+            <field name="default_lang_id" ref="base.lang_vi_VN"/>
+            <!-- Correct homepage will be set during bootstrapping -->
+        </record>
+    </data>
+</odoo>

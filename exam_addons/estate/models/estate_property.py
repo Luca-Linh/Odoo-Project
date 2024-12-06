@@ -4,7 +4,7 @@ from dateutil.relativedelta import relativedelta
 
 from odoo import models, fields, api, _
 from odoo.exceptions import ValidationError, UserError
-
+from odoo import SUPERUSER_ID
 
 
 
@@ -115,6 +115,15 @@ class EstateProperty(models.Model):
             if record.state == 'sold':
                 raise UserError(_('A sold property cannot be canceled.'))
             record.state = 'canceled'
+
+
+    def set_default_language(cr, registry):
+        """Set default language for websites."""
+        env = api.Environment(cr, SUPERUSER_ID, {})
+        website = env['website'].search([], limit=1)
+        vi_lang = env['res.lang'].search([('code', '=', 'vi_VN')], limit=1)
+        if website and vi_lang:
+            website.write({'default_lang_id': vi_lang.id})
 
     _sql_constraints = [
         ('check_expected_price_positive', 'CHECK(expected_price > 0)', 'The expected price must be strictly positive.'),

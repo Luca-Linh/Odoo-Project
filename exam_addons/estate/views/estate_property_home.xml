@@ -89,7 +89,7 @@
                         </div>
                         <div class="news-slider row mt-4">
                             <t t-foreach="[1,2,3]" t-as="news">
-                                <div class="news-wrap col-xl-4">
+                                <div class="news-wrap col-lg-4 col-sm-6">
                                     <img t-att-src="'estate/static/src/img/Frame 11282.png'" class="img-fluid"/>
                                     <div class="news-info">
                                         <div class="news-date">
@@ -117,15 +117,15 @@
                     <img t-att-src="'estate/static/src/img/Vector.png'" id="group24-vector"/>
                     <div class="container">
                         <div class="row">
-                            <div class="col-xl-6">
-                            <img t-att-src="'estate/static/src/img/bemo_company_intention 1.png'" class="img-fluid"/>
-                        </div>
-                            <div class="col-xl-6">
-                            <div class="title-section">
-                                <img t-att-src="'estate/static/src/img/polygon-bg 1.png'" class="img-fluid"/>
-                                <h3 class="d-inline-block">Company Intention</h3>
+                            <div class="col-lg-6">
+                                <img t-att-src="'estate/static/src/img/bemo_company_intention 1.png'" class="img-fluid"/>
                             </div>
-                            <div>
+                            <div class="col-lg-6">
+                                <div class="title-section">
+                                    <img t-att-src="'estate/static/src/img/polygon-bg 1.png'" class="img-fluid"/>
+                                    <span class="d-inline-block">Company Intention</span>
+                                </div>
+                                <div class="title-content">
                                 <p>On April 23, BAP company has a sharing session on the topic of
                                         Blockchain with the participation of student...</p>
                                 <p>On April 23, BAP company has a sharing session on the topic of
@@ -139,7 +139,7 @@
                                 <p>On April 23, BAP company has a sharing session on the topic of
                                         Blockchain with the participation of student...</p>
                             </div>
-                        </div>
+                            </div>
                         </div>
                     </div>
                 </section>
@@ -148,7 +148,7 @@
                     <div class="container">
                          <div class="gallery-header">
                             <img t-att-src="'estate/static/src/img/polygon-bg 1.png'" class="img-fluid"/>
-                            <h3 class="d-inline-block">Company Gallery</h3>
+                            <span class="d-inline-block">Company Gallery</span>
                         </div>
                         <div class="row gallery-item">
                             <div class="col-lg-6 col-md-6">
@@ -158,24 +158,24 @@
                                     </video>
                                 </div>
                             </div>
-                            <div class="col-lg-3 col-md-3 ">
+                            <div class="col-lg-3 col-md-3 col-sm-6 col-6">
                                 <img t-att-src="'estate/static/src/img/Rectangle 2958.png'" class="img-fluid"/>
                             </div>
-                            <div class="col-lg-3 col-md-3 ">
+                            <div class="col-lg-3 col-md-3 col-sm-6 col-6">
                                 <img t-att-src="'estate/static/src/img/Rectangle 2959.png'" class="img-fluid"/>
                             </div>
                         </div>
                         <div class="row grid">
-                            <div class="col-lg-3 col-md-3 ">
+                            <div class="col-lg-3 col-md-3 col-sm-6 col-6 mb-3">
                                 <img t-att-src="'estate/static/src/img/Rectangle 2958.png'" class="img-fluid"/>
                             </div>
-                            <div class="col-lg-3 col-md-3 ">
+                            <div class="col-lg-3 col-md-3 col-sm-6 col-6">
                                 <img t-att-src="'estate/static/src/img/Rectangle 2959.png'" class="img-fluid" />
                             </div>
-                            <div class="col-lg-3 col-md-3 ">
+                            <div class="col-lg-3 col-md-3 col-sm-6 col-6">
                                 <img t-att-src="'estate/static/src/img/Rectangle 2959.png'" class="img-fluid"/>
                             </div>
-                            <div class="col-lg-3 col-md-3 ">
+                            <div class="col-lg-3 col-md-3 col-sm-6 col-6">
                                 <img t-att-src="'estate/static/src/img/Rectangle 2959.png'" class="img-fluid"/>
                             </div>
                         </div>
