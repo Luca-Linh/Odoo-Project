@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+    <template id="assets_common" name="Fixed Tempusdominus" inherit_id="web.assets_common">
+        <xpath expr="." position="inside">
+            <script type="text/javascript" src="/bap_project/static/lib/tempusdominus.js" />
+        </xpath>
+    </template>
+
+    <template id="assets_backend" inherit_id="web.assets_backend">
+        <xpath expr="." position="inside">
+            <script src="/bap_project/static/src/js/button_task.js" type="text/javascript"/>
+
+            <script src="/bap_project/static/src/js/month_year_widget.js" type="text/javascript"/>
+
+            <script src="/bap_project/static/src/js/clickable_field.js" type="text/javascript"/>
+
+        </xpath>
+    </template>
+</odoo>

@@ -16,7 +16,7 @@ class TestReInvoice(TestCommonSaleTimesheet):
     def setUpClass(cls, chart_template_ref=None):
         super().setUpClass(chart_template_ref=chart_template_ref)
 
-        # patch expense products to make them services creating task/project
+        # patch expense products to make them services creating task/bap_project
         service_values = {
             'type': 'service',
             'service_type': 'timesheet',
@@ -80,7 +80,7 @@ class TestReInvoice(TestCommonSaleTimesheet):
         self.assertEqual(sale_order_line1.qty_delivered_method, 'timesheet', "Delivered quantity of 'service' SO line should be computed by timesheet amount")
         self.assertEqual(sale_order_line2.qty_delivered_method, 'timesheet', "Delivered quantity of 'service' SO line should be computed by timesheet amount")
 
-        # let's log some timesheets (on the project created by sale_order_line1)
+        # let's log some timesheets (on the bap_project created by sale_order_line1)
         task_sol1 = sale_order_line1.task_id
         self.env['account.analytic.line'].create({
             'name': 'Test Line',
@@ -117,7 +117,7 @@ class TestReInvoice(TestCommonSaleTimesheet):
 
         self.assertFalse(sale_order_line3.task_id, "Adding a new expense SO line should not create a task (sol3)")
         self.assertFalse(sale_order_line4.task_id, "Adding a new expense SO line should not create a task (sol4)")
-        self.assertEqual(len(self.sale_order.project_ids), 1, "SO create only one project with its service line. Adding new expense SO line should not impact that")
+        self.assertEqual(len(self.sale_order.project_ids), 1, "SO create only one bap_project with its service line. Adding new expense SO line should not impact that")
 
         self.assertEqual((sale_order_line3.price_unit, sale_order_line3.qty_delivered, sale_order_line3.product_uom_qty, sale_order_line3.qty_invoiced), (self.company_data['product_order_cost'].standard_price, 3.0, 0, 0), 'Sale line is wrong after confirming vendor invoice')
         self.assertEqual((sale_order_line4.price_unit, sale_order_line4.qty_delivered, sale_order_line4.product_uom_qty, sale_order_line4.qty_invoiced), (self.company_data['product_delivery_cost'].standard_price, 3.0, 0, 0), 'Sale line is wrong after confirming vendor invoice')
@@ -179,7 +179,7 @@ class TestReInvoice(TestCommonSaleTimesheet):
         self.sale_order._compute_tax_id()
         self.sale_order.action_confirm()
 
-        # let's log some timesheets (on the project created by sale_order_line1)
+        # let's log some timesheets (on the bap_project created by sale_order_line1)
         task_sol1 = sale_order_line1.task_id
         self.env['account.analytic.line'].create({
             'name': 'Test Line',
@@ -216,7 +216,7 @@ class TestReInvoice(TestCommonSaleTimesheet):
 
         self.assertFalse(sale_order_line3.task_id, "Adding a new expense SO line should not create a task (sol3)")
         self.assertFalse(sale_order_line4.task_id, "Adding a new expense SO line should not create a task (sol4)")
-        self.assertEqual(len(self.sale_order.project_ids), 1, "SO create only one project with its service line. Adding new expense SO line should not impact that")
+        self.assertEqual(len(self.sale_order.project_ids), 1, "SO create only one bap_project with its service line. Adding new expense SO line should not impact that")
 
         self.assertEqual((sale_order_line3.price_unit, sale_order_line3.qty_delivered, sale_order_line3.product_uom_qty, sale_order_line3.qty_invoiced), (self.company_data['product_delivery_sales_price'].list_price, 3.0, 0, 0), 'Sale line is wrong after confirming vendor invoice')
         self.assertEqual((sale_order_line4.price_unit, sale_order_line4.qty_delivered, sale_order_line4.product_uom_qty, sale_order_line4.qty_invoiced), (self.company_data['product_order_sales_price'].list_price, 3.0, 0, 0), 'Sale line is wrong after confirming vendor invoice')
@@ -274,7 +274,7 @@ class TestReInvoice(TestCommonSaleTimesheet):
         invoice_a = move_form.save()
         invoice_a.action_post()
 
-        # let's log some timesheets (on the project created by sale_order_line1)
+        # let's log some timesheets (on the bap_project created by sale_order_line1)
         task_sol1 = sale_order_line.task_id
         self.env['account.analytic.line'].create({
             'name': 'Test Line',
@@ -305,7 +305,7 @@ class TestReInvoice(TestCommonSaleTimesheet):
           -> Fails if there is nothing to invoice
         """
         product = self.env['product.product'].create({
-            'name': "Service delivered, create task in global project",
+            'name': "Service delivered, create task in global bap_project",
             'standard_price': 30,
             'list_price': 90,
             'type': 'service',

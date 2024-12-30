@@ -32,7 +32,7 @@ propagate those new data properly.
 It's important to note however that this module lack many implementations to
 use Odoo properly in Brazil. Those implementations (such as the electronic
 fiscal Invoicing which is already operational) are brought by more than 15
-additional modules of the Brazilian Launchpad localization project
+additional modules of the Brazilian Launchpad localization bap_project
 https://launchpad.net/openerp.pt-br-localiz and their dependencies in the
 extra addons branch. Those modules aim at not breaking with the remarkable
 Odoo modularity, this is why they are numerous but small. One of the

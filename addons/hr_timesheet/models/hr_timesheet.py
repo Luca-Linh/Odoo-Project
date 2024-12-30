@@ -45,10 +45,10 @@ class AccountAnalyticLine(models.Model):
         return []
 
     task_id = fields.Many2one(
-        'project.task', 'Task', compute='_compute_task_id', store=True, readonly=False, index=True,
+        'bap_project.task', 'Task', compute='_compute_task_id', store=True, readonly=False, index=True,
         domain="[('project_id.allow_timesheets', '=', True), ('project_id', '=?', project_id)]")
     project_id = fields.Many2one(
-        'project.project', 'Project', compute='_compute_project_id', store=True, readonly=False,
+        'bap_project.bap_project', 'Project', compute='_compute_project_id', store=True, readonly=False,
         domain=_domain_project_id)
     user_id = fields.Many2one(compute='_compute_user_id', store=True, readonly=False)
     employee_id = fields.Many2one('hr.employee', "Employee", domain=_domain_employee_id, context={'active_test': False})
@@ -79,8 +79,8 @@ class AccountAnalyticLine(models.Model):
     @api.onchange('project_id')
     def _onchange_project_id(self):
         # TODO KBA in master - check to do it "properly", currently:
-        # This onchange is used to reset the task_id when the project changes.
-        # Doing it in the compute will remove the task_id when the project of a task changes.
+        # This onchange is used to reset the task_id when the bap_project changes.
+        # Doing it in the compute will remove the task_id when the bap_project of a task changes.
         if self.project_id != self.task_id.project_id:
             self.task_id = False
 
@@ -193,24 +193,24 @@ class AccountAnalyticLine(models.Model):
             Overrride this to compute on the fly some field that can not be computed fields.
             :param values: dict values for `create`or `write`.
         """
-        # project implies analytic account
+        # bap_project implies analytic account
         if vals.get('project_id') and not vals.get('account_id'):
-            project = self.env['project.project'].browse(vals.get('project_id'))
+            project = self.env['bap_project.bap_project'].browse(vals.get('project_id'))
             vals['account_id'] = project.analytic_account_id.id
             vals['company_id'] = project.analytic_account_id.company_id.id or project.company_id.id
             if not project.analytic_account_id.active:
-                raise UserError(_('The project you are timesheeting on is not linked to an active analytic account. Set one on the project configuration.'))
+                raise UserError(_('The bap_project you are timesheeting on is not linked to an active analytic account. Set one on the bap_project configuration.'))
         # employee implies user
         if vals.get('employee_id') and not vals.get('user_id'):
             employee = self.env['hr.employee'].browse(vals['employee_id'])
             vals['user_id'] = employee.user_id.id
-        # force customer partner, from the task or the project
+        # force customer partner, from the task or the bap_project
         if (vals.get('project_id') or vals.get('task_id')) and not vals.get('partner_id'):
             partner_id = False
             if vals.get('task_id'):
-                partner_id = self.env['project.task'].browse(vals['task_id']).partner_id.id
+                partner_id = self.env['bap_project.task'].browse(vals['task_id']).partner_id.id
             else:
-                partner_id = self.env['project.project'].browse(vals['project_id']).partner_id.id
+                partner_id = self.env['bap_project.bap_project'].browse(vals['project_id']).partner_id.id
             if partner_id:
                 vals['partner_id'] = partner_id
         # set timesheet UoM from the AA company (AA implies uom)
@@ -220,7 +220,7 @@ class AccountAnalyticLine(models.Model):
             if not uom_id:
                 company_id = vals.get('company_id', False)
                 if not company_id:
-                    project = self.env['project.project'].browse(vals.get('project_id'))
+                    project = self.env['bap_project.bap_project'].browse(vals.get('project_id'))
                     company_id = project.analytic_account_id.company_id.id or project.company_id.id
                 uom_id = self.env['res.company'].browse(company_id).project_time_mode_id.id
             vals['product_uom_id'] = uom_id

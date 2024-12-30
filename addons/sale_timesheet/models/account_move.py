@@ -33,8 +33,8 @@ class AccountMove(models.Model):
                 <p class="o_view_nocontent_smiling_face">
                     Record timesheets
                 </p><p>
-                    You can register and track your workings hours by project every
-                    day. Every time spent on a project will become a cost and can be re-invoiced to
+                    You can register and track your workings hours by bap_project every
+                    day. Every time spent on a bap_project will become a cost and can be re-invoiced to
                     customers if required.
                 </p>
             """),

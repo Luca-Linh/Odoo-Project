@@ -24,7 +24,7 @@ class AccountAnalyticLine(models.Model):
     non_allow_billable = fields.Boolean("Non-Billable", help="Your timesheet will not be billed.")
     so_line = fields.Many2one(compute="_compute_so_line", store=True, readonly=False)
 
-    # TODO: [XBO] Since the task_id is not required in this model,  then it should more efficient to depends to bill_type and pricing_type of project (See in master)
+    # TODO: [XBO] Since the task_id is not required in this model,  then it should more efficient to depends to bill_type and pricing_type of bap_project (See in master)
     @api.depends('so_line.product_id', 'project_id', 'task_id', 'non_allow_billable', 'task_id.bill_type', 'task_id.pricing_type', 'task_id.non_allow_billable')
     def _compute_timesheet_invoice_type(self):
         non_allowed_billable = self.filtered('non_allow_billable')
@@ -75,7 +75,7 @@ class AccountAnalyticLine(models.Model):
     @api.constrains('so_line', 'project_id')
     def _check_sale_line_in_project_map(self):
         if not all(t._check_timesheet_can_be_billed() for t in self._get_not_billed().filtered(lambda t: t.project_id and t.so_line)):
-            raise ValidationError(_("This timesheet line cannot be billed: there is no Sale Order Item defined on the task, nor on the project. Please define one to save your timesheet line."))
+            raise ValidationError(_("This timesheet line cannot be billed: there is no Sale Order Item defined on the task, nor on the bap_project. Please define one to save your timesheet line."))
 
     def write(self, values):
         # prevent to update invoiced timesheets if one line is of type delivery
@@ -91,7 +91,7 @@ class AccountAnalyticLine(models.Model):
     @api.model
     def _timesheet_preprocess(self, values):
         if values.get('task_id') and not values.get('account_id'):
-            task = self.env['project.task'].browse(values.get('task_id'))
+            task = self.env['bap_project.task'].browse(values.get('task_id'))
             if task.analytic_account_id:
                 values['account_id'] = task.analytic_account_id.id
                 values['company_id'] = task.analytic_account_id.company_id.id or task.company_id.id
@@ -102,12 +102,12 @@ class AccountAnalyticLine(models.Model):
     def _timesheet_determine_sale_line(self, task, employee, project):
         """ Deduce the SO line associated to the timesheet line:
             1/ timesheet on task rate: the so line will be the one from the task
-            2/ timesheet on employee rate task: find the SO line in the map of the project (even for subtask), or fallback on the SO line of the task, or fallback
-                on the one on the project
+            2/ timesheet on employee rate task: find the SO line in the map of the bap_project (even for subtask), or fallback on the SO line of the task, or fallback
+                on the one on the bap_project
         """
         if not task:
             if project.bill_type == 'customer_project' and project.pricing_type == 'employee_rate':
-                map_entry = self.env['project.sale.line.employee.map'].search([('project_id', '=', project.id), ('employee_id', '=', employee.id)])
+                map_entry = self.env['bap_project.sale.line.employee.map'].search([('project_id', '=', project.id), ('employee_id', '=', employee.id)])
                 if map_entry:
                     return map_entry.sale_line_id
             if project.sale_line_id:

@@ -13,7 +13,7 @@ class TestProjectConfig(TestProjectCommon):
     @classmethod
     def setUpClass(cls):
         super(TestProjectConfig, cls).setUpClass()
-        cls.Project = cls.env["project.project"]
+        cls.Project = cls.env["bap_project.bap_project"]
         cls.Settings = cls.env["res.config.settings"]
         cls.features = (
             # Pairs of associated (config_flag, project_flag)
@@ -28,7 +28,7 @@ class TestProjectConfig(TestProjectCommon):
     @classmethod
     def _set_feature_status(cls, is_enabled):
         """Set enabled/disabled status of all optional features in the
-        project app config to is_enabled (boolean).
+        bap_project app config to is_enabled (boolean).
         """
         features_config = cls.Settings.create(
             {feature[0]: is_enabled for feature in cls.features})
@@ -42,7 +42,7 @@ class TestProjectConfig(TestProjectCommon):
         for config_flag, project_flag in self.features:
             self.assertTrue(
                 self.project_pigs[project_flag],
-                "Existing project failed to adopt activation of "
+                "Existing bap_project failed to adopt activation of "
                 f"{config_flag}/{project_flag} feature")
 
     def test_new_projects_enable_features(self):
@@ -57,5 +57,5 @@ class TestProjectConfig(TestProjectCommon):
         for config_flag, project_flag in self.features:
             self.assertTrue(
                 project_cows[project_flag],
-                f"Newly created project failed to adopt activation of "
+                f"Newly created bap_project failed to adopt activation of "
                 f"{config_flag}/{project_flag} feature")

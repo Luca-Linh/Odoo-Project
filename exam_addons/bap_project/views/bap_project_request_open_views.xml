@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="bap_project_request_open_tree_view" model="ir.ui.view">
+            <field name="name">bap.project.request.open.view.tree</field>
+            <field name="model">bap.project.request.open</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <header>
+                        <button name="action_approve_all" string="Approve All" type="object" class="btn-primary oe_highlight" groups="bap_project.group_project_admin"/>
+
+                        <!-- Nút Refuse All -->
+                        <button name="action_refuse_all" string="Refuse All" type="object" class="btn-secondary oe_highlight" groups="bap_project.group_project_admin"/>
+                    </header>
+                    <field name="project_name"/>
+                    <field name="pm_id"/>
+                    <field name="dev_ids" widget="many2many_tags"/>
+                    <field name="qc_ids" widget="many2many_tags"/>
+                    <field name="start_date"/>
+                    <field name="description"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="bap_project_request_open_form_view" model="ir.ui.view">
+            <field name="name">bap.project.request.open.view.form</field>
+            <field name="model">bap.project.request.open</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <field name="status" widget="statusbar" statusbar_visible="draft,submitted,approved,cancelled"/>
+                        <button name="action_submit"
+                                type="object"
+                                string="Submit"
+                                class="btn-primary"
+                                attrs="{'invisible': [('status', '!=', 'draft')]}"/>
+                        <button name="action_approve"
+                                type="object"
+                                string="Approve"
+                                class="btn-success"
+                                attrs="{'invisible': [('status', '!=', 'submitted')]}"
+                                groups="bap_project.group_project_admin"/>
+                        <button name="action_open_cancel_wizard"
+                                type="object"
+                                string="Cancel"
+                                class="btn-danger"
+                                attrs="{'invisible': [('status', '!=', 'submitted')]}"
+                                groups="bap_project.group_project_admin"/>
+                    </header>
+                    <group>
+                        <group>
+                            <field name="project_name"/>
+                            <field name="pm_id"/>
+                            <field name="dev_ids" widget="many2many_tags"/>
+                            <field name="qc_ids" widget="many2many_tags"/>
+                        </group>
+                        <group>
+                            <field name="rq_open_code"/>
+                            <field name="start_date"/>
+                            <field name="description"/>
+                            <field name="cancel_reason"/>
+                        </group>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record id="bap_project_request_open_action" model="ir.actions.act_window">
+            <field name="name">Bap Project Request Open</field>
+            <field name="res_model">bap.project.request.open</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+    </data>
+</odoo>

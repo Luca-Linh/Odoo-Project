@@ -408,9 +408,9 @@ class TestCompute(common.TransactionCase):
         self.assertEqual(r.display_name, 'Awiclo, Bob')
 
     def test_recursion(self):
-        project = self.env['test_base_automation.project'].create({})
+        project = self.env['test_base_automation.bap_project'].create({})
 
-        # this action is executed every time a task is assigned to project
+        # this action is executed every time a task is assigned to bap_project
         self.env['base.automation'].create({
             'name': 'dummy',
             'model_id': self.env['ir.model']._get_id('test_base_automation.task'),
@@ -419,8 +419,8 @@ class TestCompute(common.TransactionCase):
             'filter_domain': repr([('project_id', '=', project.id)]),
         })
 
-        # create one task in project with 10 subtasks; all the subtasks are
-        # automatically assigned to project, too
+        # create one task in bap_project with 10 subtasks; all the subtasks are
+        # automatically assigned to bap_project, too
         task = self.env['test_base_automation.task'].create({'project_id': project.id})
         subtasks = task.create([{'parent_id': task.id} for _ in range(10)])
         subtasks.flush()

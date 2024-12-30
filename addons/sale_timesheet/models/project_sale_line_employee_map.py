@@ -5,10 +5,10 @@ from odoo import api, fields, models
 
 
 class ProjectProductEmployeeMap(models.Model):
-    _name = 'project.sale.line.employee.map'
+    _name = 'bap_project.sale.line.employee.map'
     _description = 'Project Sales line, employee mapping'
 
-    project_id = fields.Many2one('project.project', "Project", required=True)
+    project_id = fields.Many2one('bap_project.bap_project', "Project", required=True)
     employee_id = fields.Many2one('hr.employee', "Employee", required=True)
     sale_line_id = fields.Many2one('sale.order.line', "Sale Order Item", domain=[('is_service', '=', True)])
     company_id = fields.Many2one('res.company', string='Company', related='project_id.company_id')

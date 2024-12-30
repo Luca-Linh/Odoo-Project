@@ -13,14 +13,14 @@ from odoo.addons.hr_timesheet.tests.test_timesheet import TestCommonTimesheet
 class TestTimesheetHolidaysCreate(common.TransactionCase):
 
     def test_status_create(self):
-        """Ensure that when a status is created, it fullfills the project and task constrains"""
+        """Ensure that when a status is created, it fullfills the bap_project and task constrains"""
         status = self.env['hr.leave.type'].create({
             'name': 'A nice Leave Type',
             'allocation_type': 'no'
         })
 
         company = self.env.company
-        self.assertEqual(status.timesheet_project_id, company.leave_timesheet_project_id, 'The default project linked to the status should be the same as the company')
+        self.assertEqual(status.timesheet_project_id, company.leave_timesheet_project_id, 'The default bap_project linked to the status should be the same as the company')
         self.assertEqual(status.timesheet_task_id, company.leave_timesheet_task_id, 'The default task linked to the status should be the same as the company')
 
     def test_company_create(self):
@@ -33,7 +33,7 @@ class TestTimesheetHolidaysCreate(common.TransactionCase):
         Company = Company.with_user(user)
         Company = Company.with_company(main_company)
         company = Company.create({'name': "Wall Company"})
-        self.assertEqual(company.leave_timesheet_project_id.sudo().company_id, company, "It should have created a project for the company")
+        self.assertEqual(company.leave_timesheet_project_id.sudo().company_id, company, "It should have created a bap_project for the company")
 
 class TestTimesheetHolidays(TestCommonTimesheet):
 
@@ -47,7 +47,7 @@ class TestTimesheetHolidays(TestCommonTimesheet):
         self.leave_start_datetime = datetime(2018, 2, 5, 7, 0, 0, 0)  # this is monday
         self.leave_end_datetime = self.leave_start_datetime + relativedelta(days=3)
 
-        # all company have those internal project/task (created by default)
+        # all company have those internal bap_project/task (created by default)
         self.internal_project = self.env.company.leave_timesheet_project_id
         self.internal_task_leaves = self.env.company.leave_timesheet_task_id
 

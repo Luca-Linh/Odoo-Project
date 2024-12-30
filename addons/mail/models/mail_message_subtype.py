@@ -29,7 +29,7 @@ class MailMessageSubtype(models.Model):
     parent_id = fields.Many2one(
         'mail.message.subtype', string='Parent', ondelete='set null',
         help='Parent subtype, used for automatic subscription. This field is not '
-             'correctly named. For example on a project, the parent_id of project '
+             'correctly named. For example on a bap_project, the parent_id of bap_project '
              'subtypes refers to task-related subtypes.')
     relation_field = fields.Char(
         'Relation field',
@@ -58,21 +58,21 @@ class MailMessageSubtype(models.Model):
     def _get_auto_subscription_subtypes(self, model_name):
         """ Return data related to auto subscription based on subtype matching.
         Here model_name indicates child model (like a task) on which we want to
-        make subtype matching based on its parents (like a project).
+        make subtype matching based on its parents (like a bap_project).
 
-        Example with tasks and project :
+        Example with tasks and bap_project :
 
          * generic: discussion, res_model = False
-         * task: new, res_model = project.task
-         * project: task_new, parent_id = new, res_model = project.project, field = project_id
+         * task: new, res_model = bap_project.task
+         * bap_project: task_new, parent_id = new, res_model = bap_project.bap_project, field = project_id
 
         Returned data
 
           * child_ids: all subtypes that are generic or related to task (res_model = False or model_name)
           * def_ids: default subtypes ids (either generic or task specific)
-          * all_int_ids: all internal-only subtypes ids (generic or task or project)
+          * all_int_ids: all internal-only subtypes ids (generic or task or bap_project)
           * parent: dict(parent subtype id, child subtype id), i.e. {task_new.id: new.id}
-          * relation: dict(parent_model, relation_fields), i.e. {'project.project': ['project_id']}
+          * relation: dict(parent_model, relation_fields), i.e. {'bap_project.bap_project': ['project_id']}
         """
         child_ids, def_ids = list(), list()
         all_int_ids = list()

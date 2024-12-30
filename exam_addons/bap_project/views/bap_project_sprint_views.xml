@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="view_project_sprint_tree" model="ir.ui.view">
+            <field name="name">bap.project.sprint.tree</field>
+            <field name="model">bap.project.sprint</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="sprint_code"/>
+                    <field name="sprint_name"/>
+                    <field name="project_id"/>
+                    <field name="start_date"/>
+                    <field name="end_date"/>
+                    <field name="status"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_project_sprint_form" model="ir.ui.view">
+            <field name="name">bap.project.sprint.form</field>
+            <field name="model">bap.project.sprint</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="sprint_code"/>
+                            <field name="sprint_name"/>
+                            <field name="project_id"/>
+                            <field name="start_date"/>
+                            <field name="end_date"/>
+                            <field name="status"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="bap_project_sprint_action" model="ir.actions.act_window">
+            <field name="name">Bap Project Sprint</field>
+            <field name="res_model">bap.project.sprint</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+    </data>
+</odoo>

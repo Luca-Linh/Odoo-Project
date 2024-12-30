@@ -8,11 +8,11 @@ from odoo.exceptions import UserError, ValidationError, RedirectWarning
 
 
 class Project(models.Model):
-    _inherit = "project.project"
+    _inherit = "bap_project.bap_project"
 
     allow_timesheets = fields.Boolean(
         "Timesheets", compute='_compute_allow_timesheets', store=True, readonly=False,
-        default=True, help="Enable timesheeting on the project.")
+        default=True, help="Enable timesheeting on the bap_project.")
     analytic_account_id = fields.Many2one(
         # note: replaces ['|', ('company_id', '=', False), ('company_id', '=', company_id)]
         domain="""[
@@ -25,7 +25,7 @@ class Project(models.Model):
     timesheet_encode_uom_id = fields.Many2one('uom.uom', related='company_id.timesheet_encode_uom_id')
     total_timesheet_time = fields.Integer(
         compute='_compute_total_timesheet_time',
-        help="Total number of time (in the proper UoM) recorded in the project, rounded to the unit.")
+        help="Total number of time (in the proper UoM) recorded in the bap_project, rounded to the unit.")
     encode_uom_in_days = fields.Boolean(compute='_compute_encode_uom_in_days')
 
     def _compute_encode_uom_in_days(self):
@@ -40,7 +40,7 @@ class Project(models.Model):
     def _check_allow_timesheet(self):
         for project in self:
             if project.allow_timesheets and not project.analytic_account_id:
-                raise ValidationError(_('To allow timesheet, your project %s should have an analytic account set.', project.name))
+                raise ValidationError(_('To allow timesheet, your bap_project %s should have an analytic account set.', project.name))
 
     @api.depends('timesheet_ids')
     def _compute_total_timesheet_time(self):
@@ -56,7 +56,7 @@ class Project(models.Model):
 
     @api.model_create_multi
     def create(self, vals_list):
-        """ Create an analytic account if project allow timesheet and don't provide one
+        """ Create an analytic account if bap_project allow timesheet and don't provide one
             Note: create it before calling super() to avoid raising the ValidationError from _check_allow_timesheet
         """
         defaults = self.default_get(['allow_timesheets', 'analytic_account_id'])
@@ -69,7 +69,7 @@ class Project(models.Model):
         return super(Project, self).create(vals_list)
 
     def write(self, values):
-        # create the AA for project still allowing timesheet
+        # create the AA for bap_project still allowing timesheet
         if values.get('allow_timesheets') and not values.get('analytic_account_id'):
             for project in self:
                 if not project.analytic_account_id:
@@ -92,7 +92,7 @@ class Project(models.Model):
             if len(projects_with_timesheets) > 1:
                 warning_msg = _("These projects have some timesheet entries referencing them. Before removing these projects, you have to remove these timesheet entries.")
             else:
-                warning_msg = _("This project has some timesheet entries referencing it. Before removing this project, you have to remove these timesheet entries.")
+                warning_msg = _("This bap_project has some timesheet entries referencing it. Before removing this bap_project, you have to remove these timesheet entries.")
             raise RedirectWarning(
                 warning_msg, self.env.ref('hr_timesheet.timesheet_action_project').id,
                 _('See timesheet entries'), {'active_ids': projects_with_timesheets.ids})
@@ -100,8 +100,8 @@ class Project(models.Model):
 
 
 class Task(models.Model):
-    _name = "project.task"
-    _inherit = "project.task"
+    _name = "bap_project.task"
+    _inherit = "bap_project.task"
 
     analytic_account_active = fields.Boolean("Active Analytic Account", compute='_compute_analytic_account_active')
     allow_timesheets = fields.Boolean("Allow timesheets", related='project_id.allow_timesheets', help="Timesheets can be logged on this task.", readonly=True)
@@ -182,15 +182,15 @@ class Task(models.Model):
         return self.timesheet_ids
 
     def write(self, values):
-        # a timesheet must have an analytic account (and a project)
+        # a timesheet must have an analytic account (and a bap_project)
         if 'project_id' in values and not values.get('project_id') and self._get_timesheet():
-            raise UserError(_('This task must be part of a project because there are some timesheets linked to it.'))
+            raise UserError(_('This task must be part of a bap_project because there are some timesheets linked to it.'))
         res = super(Task, self).write(values)
 
         if 'project_id' in values:
-            project = self.env['project.project'].browse(values.get('project_id'))
+            project = self.env['bap_project.bap_project'].browse(values.get('project_id'))
             if project.allow_timesheets:
-                # We write on all non yet invoiced timesheet the new project_id (if project allow timesheet)
+                # We write on all non yet invoiced timesheet the new project_id (if bap_project allow timesheet)
                 self._get_timesheet().write({'project_id': values.get('project_id')})
 
         return res

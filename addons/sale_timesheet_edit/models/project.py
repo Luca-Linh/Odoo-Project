@@ -5,7 +5,7 @@ from odoo import models
 
 
 class Project(models.Model):
-    _inherit = 'project.project'
+    _inherit = 'bap_project.bap_project'
 
     def _get_not_billed_timesheets(self):
         """ Get the timesheets not invoiced and the SOL has not manually been edited

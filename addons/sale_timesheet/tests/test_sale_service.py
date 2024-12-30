@@ -106,7 +106,7 @@ class TestSaleService(TestCommonSaleTimesheet):
             'price_unit': self.product_delivery_timesheet3.list_price
         })
         self.sale_order.action_confirm()
-        task = self.env['project.task'].search([('sale_line_id', '=', sale_order_line.id)])
+        task = self.env['bap_project.task'].search([('sale_line_id', '=', sale_order_line.id)])
 
         # let's log some timesheets
         self.env['account.analytic.line'].create({
@@ -140,9 +140,9 @@ class TestSaleService(TestCommonSaleTimesheet):
         })
         so_line_deliver_global_project.product_id_change()
         self.sale_order.action_confirm()
-        task_serv2 = self.env['project.task'].search([('sale_line_id', '=', so_line_deliver_global_project.id)])
+        task_serv2 = self.env['bap_project.task'].search([('sale_line_id', '=', so_line_deliver_global_project.id)])
 
-        # let's log some timesheets (on the project created by so_line_ordered_project_only)
+        # let's log some timesheets (on the bap_project created by so_line_ordered_project_only)
         timesheets = self.env['account.analytic.line']
         timesheets |= self.env['account.analytic.line'].create({
             'name': 'Test Line',
@@ -167,7 +167,7 @@ class TestSaleService(TestCommonSaleTimesheet):
 
         # make task non billable
         task_serv2.write({'sale_line_id': False})
-        self.assertTrue(all([billing_type == 'billable_time' for billing_type in timesheets.mapped('timesheet_invoice_type')]), "billable type of timesheet should not change when tranfering task into another project")
+        self.assertTrue(all([billing_type == 'billable_time' for billing_type in timesheets.mapped('timesheet_invoice_type')]), "billable type of timesheet should not change when tranfering task into another bap_project")
         self.assertEqual(task_serv2.timesheet_ids.mapped('so_line'), so_line_deliver_global_project, "Old invoiced timesheet are not modified when changing the task SO line")
 
         # try to update timesheets, catch error 'You cannot modify invoiced timesheet'
@@ -186,7 +186,7 @@ class TestSaleService(TestCommonSaleTimesheet):
         })
         so_line_deliver_new_task_project.product_id_change()
         self.sale_order.action_confirm()
-        task_serv2 = self.env['project.task'].search([('sale_line_id', '=', so_line_deliver_new_task_project.id)])
+        task_serv2 = self.env['bap_project.task'].search([('sale_line_id', '=', so_line_deliver_new_task_project.id)])
 
         # add a timesheet
         timesheet1 = self.env['account.analytic.line'].create({
@@ -240,7 +240,7 @@ class TestSaleService(TestCommonSaleTimesheet):
         self.sale_order.action_confirm()
 
         self.assertTrue(so_line1.task_id, "SO confirmation should create a task and link it to SOL")
-        self.assertTrue(so_line1.project_id, "SO confirmation should create a project and link it to SOL")
+        self.assertTrue(so_line1.project_id, "SO confirmation should create a bap_project and link it to SOL")
         self.assertEqual(self.sale_order.tasks_count, 1, "The SO should have only one task")
         self.assertEqual(so_line1.task_id.sale_line_id, so_line1, "The created task is also linked to its origin sale line, for invoicing purpose.")
         self.assertFalse(so_line1.task_id.user_id, "The created task should be unassigned")
@@ -253,7 +253,7 @@ class TestSaleService(TestCommonSaleTimesheet):
         self.sale_order.action_cancel()
 
         self.assertTrue(so_line1.task_id, "SO cancellation should keep the task")
-        self.assertTrue(so_line1.project_id, "SO cancellation should create a project")
+        self.assertTrue(so_line1.project_id, "SO cancellation should create a bap_project")
         self.assertEqual(self.sale_order.tasks_count, 1, "The SO should still have only one task")
         self.assertEqual(so_line1.task_id.sale_line_id, so_line1, "The created task is also linked to its origin sale line, for invoicing purpose.")
 
@@ -265,7 +265,7 @@ class TestSaleService(TestCommonSaleTimesheet):
         self.sale_order.action_confirm()
 
         self.assertTrue(so_line1.task_id, "SO reconfirmation should not have create another task")
-        self.assertTrue(so_line1.project_id, "SO reconfirmation should bit have create another project")
+        self.assertTrue(so_line1.project_id, "SO reconfirmation should bit have create another bap_project")
         self.assertEqual(self.sale_order.tasks_count, 1, "The SO should still have only one task")
         self.assertEqual(so_line1.task_id.sale_line_id, so_line1, "The created task is also linked to its origin sale line, for invoicing purpose.")
 
@@ -274,20 +274,20 @@ class TestSaleService(TestCommonSaleTimesheet):
             so_line1.write({'product_uom_qty': 20})
 
     def test_sale_create_project(self):
-        """ A SO with multiple product that should create project (with and without template) like ;
-                Line 1 : Service 1 create project with Template A ===> project created with template A
-                Line 2 : Service 2 create project no template ==> empty project created
-                Line 3 : Service 3 create project with Template A ===> Don't create any project because line 1 has already created a project with template A
-                Line 4 : Service 4 create project no template ==> Don't create any project because line 2 has already created an empty project
-                Line 5 : Service 5 create project with Template B ===> project created with template B
+        """ A SO with multiple product that should create bap_project (with and without template) like ;
+                Line 1 : Service 1 create bap_project with Template A ===> bap_project created with template A
+                Line 2 : Service 2 create bap_project no template ==> empty bap_project created
+                Line 3 : Service 3 create bap_project with Template A ===> Don't create any bap_project because line 1 has already created a bap_project with template A
+                Line 4 : Service 4 create bap_project no template ==> Don't create any bap_project because line 2 has already created an empty bap_project
+                Line 5 : Service 5 create bap_project with Template B ===> bap_project created with template B
         """
-        # second project template and its associated product
-        project_template2 = self.env['project.project'].create({
+        # second bap_project template and its associated product
+        project_template2 = self.env['bap_project.bap_project'].create({
             'name': 'Second Project TEMPLATE for services',
             'allow_timesheets': True,
             'active': False,  # this template is archived
         })
-        Stage = self.env['project.task.type'].with_context(default_project_id=project_template2.id)
+        Stage = self.env['bap_project.task.type'].with_context(default_project_id=project_template2.id)
         stage1_tmpl2 = Stage.create({
             'name': 'Stage 1',
             'sequence': 1
@@ -297,7 +297,7 @@ class TestSaleService(TestCommonSaleTimesheet):
             'sequence': 2
         })
         product_deli_ts_tmpl = self.env['product.product'].create({
-            'name': "Service delivered, create project only based on template B",
+            'name': "Service delivered, create bap_project only based on template B",
             'standard_price': 17,
             'list_price': 34,
             'type': 'service',
@@ -359,34 +359,34 @@ class TestSaleService(TestCommonSaleTimesheet):
         self.sale_order.action_confirm()
 
         # check each line has or no generate something
-        self.assertTrue(so_line1.project_id, "Line1 should have create a project based on template A")
-        self.assertTrue(so_line2.project_id, "Line2 should have create an empty project")
-        self.assertEqual(so_line3.project_id, so_line1.project_id, "Line3 should reuse project of line1")
-        self.assertEqual(so_line4.project_id, so_line2.project_id, "Line4 should reuse project of line2")
-        self.assertTrue(so_line4.task_id, "Line4 should have create a new task, even if no project created.")
-        self.assertTrue(so_line5.project_id, "Line5 should have create a project based on template B")
+        self.assertTrue(so_line1.project_id, "Line1 should have create a bap_project based on template A")
+        self.assertTrue(so_line2.project_id, "Line2 should have create an empty bap_project")
+        self.assertEqual(so_line3.project_id, so_line1.project_id, "Line3 should reuse bap_project of line1")
+        self.assertEqual(so_line4.project_id, so_line2.project_id, "Line4 should reuse bap_project of line2")
+        self.assertTrue(so_line4.task_id, "Line4 should have create a new task, even if no bap_project created.")
+        self.assertTrue(so_line5.project_id, "Line5 should have create a bap_project based on template B")
 
-        # check all generated project should be active, even if the template is not
+        # check all generated bap_project should be active, even if the template is not
         self.assertTrue(so_line1.project_id.active, "Project of Line1 should be active")
         self.assertTrue(so_line2.project_id.active, "Project of Line2 should be active")
         self.assertTrue(so_line5.project_id.active, "Project of Line5 should be active")
 
         # check generated stuff are correct
-        self.assertTrue(so_line1.project_id in self.project_template_state.project_ids, "Stage 1 from template B should be part of project from so line 1")
-        self.assertTrue(so_line1.project_id in self.project_template_state.project_ids, "Stage 1 from template B should be part of project from so line 1")
+        self.assertTrue(so_line1.project_id in self.project_template_state.project_ids, "Stage 1 from template B should be part of bap_project from so line 1")
+        self.assertTrue(so_line1.project_id in self.project_template_state.project_ids, "Stage 1 from template B should be part of bap_project from so line 1")
 
-        self.assertTrue(so_line5.project_id in stage1_tmpl2.project_ids, "Stage 1 from template B should be part of project from so line 5")
-        self.assertTrue(so_line5.project_id in stage2_tmpl2.project_ids, "Stage 2 from template B should be part of project from so line 5")
+        self.assertTrue(so_line5.project_id in stage1_tmpl2.project_ids, "Stage 1 from template B should be part of bap_project from so line 5")
+        self.assertTrue(so_line5.project_id in stage2_tmpl2.project_ids, "Stage 2 from template B should be part of bap_project from so line 5")
 
-        self.assertTrue(so_line1.project_id.allow_timesheets, "Create project should allow timesheets")
-        self.assertTrue(so_line2.project_id.allow_timesheets, "Create project should allow timesheets")
-        self.assertTrue(so_line5.project_id.allow_timesheets, "Create project should allow timesheets")
+        self.assertTrue(so_line1.project_id.allow_timesheets, "Create bap_project should allow timesheets")
+        self.assertTrue(so_line2.project_id.allow_timesheets, "Create bap_project should allow timesheets")
+        self.assertTrue(so_line5.project_id.allow_timesheets, "Create bap_project should allow timesheets")
 
-        self.assertEqual(so_line4.task_id.project_id, so_line2.project_id, "Task created with line 4 should have the project based on template A of the SO.")
+        self.assertEqual(so_line4.task_id.project_id, so_line2.project_id, "Task created with line 4 should have the bap_project based on template A of the SO.")
 
-        self.assertEqual(so_line1.project_id.sale_line_id, so_line1, "SO line of project with template A should be the one that create it.")
-        self.assertEqual(so_line2.project_id.sale_line_id, so_line2, "SO line of project should be the one that create it.")
-        self.assertEqual(so_line5.project_id.sale_line_id, so_line5, "SO line of project with template B should be the one that create it.")
+        self.assertEqual(so_line1.project_id.sale_line_id, so_line1, "SO line of bap_project with template A should be the one that create it.")
+        self.assertEqual(so_line2.project_id.sale_line_id, so_line2, "SO line of bap_project should be the one that create it.")
+        self.assertEqual(so_line5.project_id.sale_line_id, so_line5, "SO line of bap_project with template B should be the one that create it.")
 
     def test_sale_task_in_project_with_project(self):
         """ This will test the new 'task_in_project' service tracking correctly creates tasks and projects
@@ -401,12 +401,12 @@ class TestSaleService(TestCommonSaleTimesheet):
 
             Expected result:
             - 2 tasks created on the project_id configured on the SO
-            - 1 project created with the correct template for the 'project_only' product
+            - 1 bap_project created with the correct template for the 'project_only' product
         """
 
         self.sale_order.write({'project_id': self.project_global.id})
         self.sale_order._onchange_project_id()
-        self.assertEqual(self.sale_order.analytic_account_id, self.analytic_account_sale, "Changing the project on the SO should set the analytic account accordingly.")
+        self.assertEqual(self.sale_order.analytic_account_id, self.analytic_account_sale, "Changing the bap_project on the SO should set the analytic account accordingly.")
 
         so_line1 = self.env['sale.order.line'].create({
             'name': self.product_order_timesheet3.name,
@@ -444,12 +444,12 @@ class TestSaleService(TestCommonSaleTimesheet):
         })
 
         self.assertTrue(so_line1.task_id, "so_line1 should create a task as its product's service_tracking is set as 'task_in_project'")
-        self.assertEqual(so_line1.task_id.project_id, self.project_global, "The project on so_line1's task should be project_global as configured on its parent sale_order")
+        self.assertEqual(so_line1.task_id.project_id, self.project_global, "The bap_project on so_line1's task should be project_global as configured on its parent sale_order")
         self.assertTrue(so_line2.task_id, "so_line2 should create a task as its product's service_tracking is set as 'task_in_project'")
-        self.assertEqual(so_line2.task_id.project_id, self.project_global, "The project on so_line2's task should be project_global as configured on its parent sale_order")
+        self.assertEqual(so_line2.task_id.project_id, self.project_global, "The bap_project on so_line2's task should be project_global as configured on its parent sale_order")
         self.assertFalse(so_line3.task_id.name, "so_line3 should not create a task as its product's service_tracking is set as 'project_only'")
-        self.assertNotEqual(so_line3.project_id, self.project_template, "so_line3 should create a new project and not directly use the configured template")
-        self.assertIn(self.project_template.name, so_line3.project_id.name, "The created project for so_line3 should use the configured template")
+        self.assertNotEqual(so_line3.project_id, self.project_template, "so_line3 should create a new bap_project and not directly use the configured template")
+        self.assertIn(self.project_template.name, so_line3.project_id.name, "The created bap_project for so_line3 should use the configured template")
 
     def test_sale_task_in_project_without_project(self):
         """ This will test the new 'task_in_project' service tracking correctly creates tasks and projects
@@ -460,9 +460,9 @@ class TestSaleService(TestCommonSaleTimesheet):
             - Confirm sale_order
 
             Expected result:
-            - 1 project created with the correct template for the 'task_in_project' because the SO
+            - 1 bap_project created with the correct template for the 'task_in_project' because the SO
               does not have a configured project_id
-            - 1 task created from this new project
+            - 1 task created from this new bap_project
         """
 
         so_line1 = self.env['sale.order.line'].create({
@@ -485,8 +485,8 @@ class TestSaleService(TestCommonSaleTimesheet):
         })
 
         self.assertTrue(so_line1.task_id, "so_line1 should create a task as its product's service_tracking is set as 'task_in_project'")
-        self.assertNotEqual(so_line1.project_id, self.project_template, "so_line1 should create a new project and not directly use the configured template")
-        self.assertIn(self.project_template.name, so_line1.project_id.name, "The created project for so_line1 should use the configured template")
+        self.assertNotEqual(so_line1.project_id, self.project_template, "so_line1 should create a new bap_project and not directly use the configured template")
+        self.assertIn(self.project_template.name, so_line1.project_id.name, "The created bap_project for so_line1 should use the configured template")
 
     def test_billable_task_and_subtask(self):
         """ Test if subtasks and tasks are billed on the correct SO line """
@@ -514,28 +514,28 @@ class TestSaleService(TestCommonSaleTimesheet):
         project = so_line_deliver_new_task_project.project_id
         task = so_line_deliver_new_task_project.task_id
 
-        self.assertEqual(project.sale_line_id, so_line_deliver_new_task_project, "The created project should be linked to the so line")
+        self.assertEqual(project.sale_line_id, so_line_deliver_new_task_project, "The created bap_project should be linked to the so line")
         self.assertEqual(task.sale_line_id, so_line_deliver_new_task_project, "The created task should be linked to the so line")
 
         # create a new task and subtask
-        subtask = self.env['project.task'].create({
+        subtask = self.env['bap_project.task'].create({
             'parent_id': task.id,
             'project_id': project.id,
             'name': '%s: substask1' % (task.name,),
         })
-        task2 = self.env['project.task'].create({
+        task2 = self.env['bap_project.task'].create({
             'project_id': project.id,
             'name': '%s: substask1' % (task.name,)
         })
 
         self.assertEqual(subtask.sale_line_id, task.sale_line_id, "By, default, a child task should have the same SO line as its mother")
-        self.assertEqual(task2.sale_line_id, project.sale_line_id, "A new task in a billable project should have the same SO line as its project")
-        self.assertEqual(task2.partner_id, so_line_deliver_new_task_project.order_partner_id, "A new task in a billable project should have the same SO line as its project")
+        self.assertEqual(task2.sale_line_id, project.sale_line_id, "A new task in a billable bap_project should have the same SO line as its bap_project")
+        self.assertEqual(task2.partner_id, so_line_deliver_new_task_project.order_partner_id, "A new task in a billable bap_project should have the same SO line as its bap_project")
 
-        # moving subtask in another project
+        # moving subtask in another bap_project
         subtask.write({'project_id': self.project_global.id})
 
-        self.assertEqual(subtask.sale_line_id, task.sale_line_id, "A child task should always have the same SO line as its mother, even when changing project")
+        self.assertEqual(subtask.sale_line_id, task.sale_line_id, "A child task should always have the same SO line as its mother, even when changing bap_project")
         self.assertEqual(subtask.sale_line_id, so_line_deliver_new_task_project)
 
         # changing the SO line of the mother task
@@ -584,15 +584,15 @@ class TestSaleService(TestCommonSaleTimesheet):
             'price_unit': self.product_delivery_timesheet3.list_price
         })
         self.sale_order.action_confirm()
-        task = self.env['project.task'].search([('sale_line_id', '=', sale_order_line.id)])
+        task = self.env['bap_project.task'].search([('sale_line_id', '=', sale_order_line.id)])
         project = sale_order_line.project_id
 
-        # copy the project
+        # copy the bap_project
         project_copy = project.copy()
-        self.assertFalse(project_copy.sale_line_id, "Duplicating project should erase its Sale line")
-        self.assertFalse(project_copy.sale_order_id, "Duplicating project should erase its Sale order")
-        self.assertEqual(len(project.tasks), len(project_copy.tasks), "Copied project must have the same number of tasks")
-        self.assertFalse(project_copy.tasks.mapped('sale_line_id'), "The tasks of the duplicated project should not have a Sale Line set.")
+        self.assertFalse(project_copy.sale_line_id, "Duplicating bap_project should erase its Sale line")
+        self.assertFalse(project_copy.sale_order_id, "Duplicating bap_project should erase its Sale order")
+        self.assertEqual(len(project.tasks), len(project_copy.tasks), "Copied bap_project must have the same number of tasks")
+        self.assertFalse(project_copy.tasks.mapped('sale_line_id'), "The tasks of the duplicated bap_project should not have a Sale Line set.")
 
         # copy the task
         task_copy = task.copy()

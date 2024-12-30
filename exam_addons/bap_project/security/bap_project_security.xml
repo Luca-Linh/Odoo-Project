@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+<!--        Rule for Project -->
+        <record id="project_member_rule" model="ir.rule">
+            <field name="name">Project: View Own Projects</field>
+            <field name="model_id" ref="model_bap_project"/>
+            <field name="domain_force">[
+                '|', '|',
+                ('pm_id', '=', user.id),
+                ('dev_ids', 'in', user.id),
+                ('qc_ids', 'in', user.id)
+            ]</field>
+            <field name="groups" eval="[(4, ref('bap_project.group_project_member'))]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+
+        <record id="project_pm_view_rule" model="ir.rule">
+            <field name="name">Project: PM View Own Projects</field>
+            <field name="model_id" ref="model_bap_project"/>
+            <field name="domain_force">[
+                '|', '|',
+                ('pm_id', '=', user.id),
+                ('dev_ids', 'in', user.id),
+                ('qc_ids', 'in', user.id)
+            ]</field>
+            <field name="groups" eval="[(4, ref('bap_project.group_project_pm'))]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+
+        <record id="project_pm_edit_rule" model="ir.rule">
+            <field name="name">Project: PM Edit Projects</field>
+            <field name="model_id" ref="model_bap_project"/>
+            <field name="domain_force">[
+                ('pm_id', '=', user.id)
+            ]</field>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
+            <field name="groups" eval="[(4, ref('bap_project.group_project_pm'))]"/>
+        </record>
+
+<!--        Rule For Sprint-->
+        <record id="bap_project_sprint_member_access_rule" model="ir.rule">
+            <field name="name">Project Member - View Sprint</field>
+            <field name="model_id" ref="model_bap_project_sprint"/>
+            <field name="domain_force">
+                ['|', ('project_id.dev_ids', 'in', user.id),
+                     '|', ('project_id.qc_ids', 'in', user.id),
+                     ('project_id.pm_id', '=', user.id)]
+            </field>
+            <field name="groups" eval="[(4, ref('group_project_member')),(4, ref('group_project_pm'))]"/>
+            <field name="perm_read" eval="True"/>
+        </record>
+
+        <record id="bap_project_sprint_manager_access_rule" model="ir.rule">
+            <field name="name">Project Member - Create Sprint</field>
+            <field name="model_id" ref="model_bap_project_sprint"/>
+            <field name="domain_force">[('project_id.pm_id', '=', user.id)]</field>
+            <field name="groups" eval="[(4, ref('group_project_pm'))]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_create" eval="True"/>
+        </record>
+<!--        Rule For Task-->
+        <record id="bap_task_member_edit_access" model="ir.rule">
+            <field name="name">Quyền tạo/sửa/xóa Task cho thành viên và PM</field>
+            <field name="model_id" ref="model_bap_project_task"/>
+            <field name="domain_force">[
+                '|',
+                '|',
+                ('project_id.dev_ids', 'in', user.id),
+                ('project_id.qc_ids', 'in', user.id),
+                ('project_id.pm_id', '=', user.id)
+            ]</field>
+            <field name="groups" eval="[(4, ref('group_project_member')), (4, ref('group_project_pm'))]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
+
+        <record id="bap_task_member_edit_access" model="ir.rule">
+            <field name="name">Quyền tạo/sửa/xóa Task cho thành viên và PM</field>
+            <field name="model_id" ref="model_bap_project_task"/>
+            <field name="domain_force">[
+                '|',
+                '|',
+                ('project_id.dev_ids', 'in', user.id),
+                ('project_id.qc_ids', 'in', user.id),
+                ('project_id.pm_id', '=', user.id)
+            ]</field>
+            <field name="groups" eval="[(4, ref('group_project_pm'))]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
+
+<!---->
+        <record id="bap_request_open_pm_rule" model="ir.rule">
+            <field name="name">PM xem và tạo yêu cầu mở dự án</field>
+            <field name="model_id" ref="model_bap_project_request_open"/>
+            <field name="domain_force">[('pm_id', '=', user.id)]</field>
+            <field name="groups" eval="[(4, ref('group_project_pm'))]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+
+        <record id="bap_request_close_pm_rule" model="ir.rule">
+            <field name="name">PM xem và đóng yêu cầu mở dự án</field>
+            <field name="model_id" ref="model_bap_project_request_close"/>
+            <field name="domain_force">[('pm_id', '=', user.id)]</field>
+            <field name="groups" eval="[(4, ref('group_project_pm'))]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+
+    </data>
+</odoo>

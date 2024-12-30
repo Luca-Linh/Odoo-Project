@@ -5,11 +5,11 @@
     'name': 'Pad on tasks',
     'category': 'Services/Project',
     'description': """
-This module adds a PAD in all project form views.
+This module adds a PAD in all bap_project form views.
 =================================================
     """,
     'depends': [
-        'project',
+        'bap_project',
         'pad'
     ],
     'data': [

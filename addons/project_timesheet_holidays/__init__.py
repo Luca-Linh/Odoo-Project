@@ -5,8 +5,8 @@ from . import models
 
 
 def post_init(cr, registry):
-    """ Set the timesheet project and task on existing leave type. Do it in post_init to
-        be sure the internal project/task of res.company are set. (Since timesheet_generate field
+    """ Set the timesheet bap_project and task on existing leave type. Do it in post_init to
+        be sure the internal bap_project/task of res.company are set. (Since timesheet_generate field
         is true by default, those 2 fields are required on the leave type).
     """
     from odoo import api, SUPERUSER_ID

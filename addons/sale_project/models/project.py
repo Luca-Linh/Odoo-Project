@@ -8,19 +8,19 @@ from odoo.exceptions import ValidationError
 
 
 class Project(models.Model):
-    _inherit = 'project.project'
+    _inherit = 'bap_project.bap_project'
 
     sale_line_id = fields.Many2one(
         'sale.order.line', 'Sales Order Item', copy=False,
         domain="[('is_service', '=', True), ('is_expense', '=', False), ('order_id', '=', sale_order_id), ('state', 'in', ['sale', 'done']), '|', ('company_id', '=', False), ('company_id', '=', company_id)]",
-        help="Sales order item to which the project is linked. Link the timesheet entry to the sales order item defined on the project. "
-        "Only applies on tasks without sale order item defined, and if the employee is not in the 'Employee/Sales Order Item Mapping' of the project.")
+        help="Sales order item to which the bap_project is linked. Link the timesheet entry to the sales order item defined on the bap_project. "
+        "Only applies on tasks without sale order item defined, and if the employee is not in the 'Employee/Sales Order Item Mapping' of the bap_project.")
     sale_order_id = fields.Many2one('sale.order', 'Sales Order',
         domain="[('order_line.product_id.type', '=', 'service'), ('partner_id', '=', partner_id), ('state', 'in', ['sale', 'done'])]",
-        copy=False, help="Sales order to which the project is linked.")
+        copy=False, help="Sales order to which the bap_project is linked.")
 
     _sql_constraints = [
-        ('sale_order_required_if_sale_line', "CHECK((sale_line_id IS NOT NULL AND sale_order_id IS NOT NULL) OR (sale_line_id IS NULL))", 'The project should be linked to a sale order to select a sale order item.'),
+        ('sale_order_required_if_sale_line', "CHECK((sale_line_id IS NOT NULL AND sale_order_id IS NOT NULL) OR (sale_line_id IS NULL))", 'The bap_project should be linked to a sale order to select a sale order item.'),
     ]
 
     @api.model
@@ -43,14 +43,14 @@ class Project(models.Model):
 
 
 class ProjectTask(models.Model):
-    _inherit = "project.task"
+    _inherit = "bap_project.task"
 
     sale_order_id = fields.Many2one('sale.order', 'Sales Order', help="Sales order to which the task is linked.")
     sale_line_id = fields.Many2one(
         'sale.order.line', 'Sales Order Item', domain="[('company_id', '=', company_id), ('is_service', '=', True), ('order_partner_id', 'child_of', commercial_partner_id), ('is_expense', '=', False), ('state', 'in', ['sale', 'done']), ('order_id', '=?', project_sale_order_id)]",
         compute='_compute_sale_line', store=True, readonly=False, copy=False,
-        help="Sales order item to which the project is linked. Link the timesheet entry to the sales order item defined on the project. "
-        "Only applies on tasks without sale order item defined, and if the employee is not in the 'Employee/Sales Order Item Mapping' of the project.")
+        help="Sales order item to which the bap_project is linked. Link the timesheet entry to the sales order item defined on the bap_project. "
+        "Only applies on tasks without sale order item defined, and if the employee is not in the 'Employee/Sales Order Item Mapping' of the bap_project.")
     project_sale_order_id = fields.Many2one('sale.order', string="Project's sale order", related='project_id.sale_order_id')
     invoice_count = fields.Integer("Number of invoices", related='sale_order_id.invoice_count')
     task_to_invoice = fields.Boolean("To invoice", compute='_compute_task_to_invoice', search='_search_task_to_invoice', groups='sales_team.group_sale_salesman_all_leads')
@@ -157,7 +157,7 @@ class ProjectTask(models.Model):
         return action
 
 class ProjectTaskRecurrence(models.Model):
-    _inherit = 'project.task.recurrence'
+    _inherit = 'bap_project.task.recurrence'
 
     def _new_task_values(self, task):
         values = super(ProjectTaskRecurrence, self)._new_task_values(task)

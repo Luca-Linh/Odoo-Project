@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="bap_project_request_close_tree_view" model="ir.ui.view">
+            <field name="name">bap.project.request.close.view.tree</field>
+            <field name="model">bap.project.request.close</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <header>
+                        <button name="action_approve_all" string="Approve All" type="object" class="btn-primary"/>
+                        <!-- Nút Refuse All -->
+                        <button name="action_refuse_all" string="Refuse All" type="object" class="btn-secondary"/>
+                    </header>
+                    <field name="project_id"/>
+                    <field name="pm_id"/>
+                    <field name="end_date"/>
+                    <field name="close_reason"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="bap_project_request_close_form_view" model="ir.ui.view">
+            <field name="name">bap.project.request.close.view.form</field>
+            <field name="model">bap.project.request.close</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <field name="status" widget="statusbar" statusbar_visible="draft,submitted,approved,cancelled"/>
+                        <button name="action_submit"
+                                type="object"
+                                string="Submit"
+                                class="btn-primary"
+                                attrs="{'invisible': [('status', '!=', 'draft')]}"/>
+                        <button name="action_approve"
+                                type="object"
+                                string="Approve"
+                                class="btn-success"
+                                attrs="{'invisible': [('status', '!=', 'submitted')]}"
+                                groups="bap_project.group_project_admin"/>
+                        <button name="action_close_cancel_wizard"
+                                type="object"
+                                string="Cancel"
+                                class="btn-danger"
+                                attrs="{'invisible': [('status', '!=', 'submitted')]}"
+                                groups="bap_project.group_project_admin"/>
+                    </header>
+                    <group>
+                        <group>
+                            <field name="project_id"/>
+                            <field name="pm_id"/>
+                            <field name="end_date"/>
+                        </group>
+                        <group>
+                            <field name="rq_close_code"/>
+                            <field name="close_reason"/>
+                            <field name="cancel_reason"/>
+                        </group>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record id="bap_project_request_close_action" model="ir.actions.act_window">
+            <field name="name">Bap Project Request Close</field>
+            <field name="res_model">bap.project.request.close</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+    </data>
+</odoo>

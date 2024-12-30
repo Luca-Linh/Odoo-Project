@@ -2869,7 +2869,7 @@ class MailThread(models.AbstractModel):
         main mechanisms
 
          * using subtypes parent relationship. For example following a parent record
-           (i.e. project) with subtypes linked to child records (i.e. task). See
+           (i.e. bap_project) with subtypes linked to child records (i.e. task). See
            mail.message.subtype ``_get_auto_subscription_subtypes``;
          * calling _message_auto_subscribe_notify that returns a list of partner
            to subscribe, as well as data about the subtypes and notification
@@ -2888,7 +2888,7 @@ class MailThread(models.AbstractModel):
         new_partners, new_channels = dict(), dict()
 
         # return data related to auto subscription based on subtype matching (aka: 
-        # default task subtypes or subtypes from project triggering task subtypes)
+        # default task subtypes or subtypes from bap_project triggering task subtypes)
         updated_relation = dict()
         child_ids, def_ids, all_int_ids, parent, relation = self.env['mail.message.subtype']._get_auto_subscription_subtypes(self._name)
 
@@ -2899,11 +2899,11 @@ class MailThread(models.AbstractModel):
         udpated_fields = [fname for fnames in updated_relation.values() for fname in fnames if updated_values.get(fname)]
 
         if udpated_fields:
-            # fetch "parent" subscription data (aka: subtypes on project to propagate on task)
+            # fetch "parent" subscription data (aka: subtypes on bap_project to propagate on task)
             doc_data = [(model, [updated_values[fname] for fname in fnames]) for model, fnames in updated_relation.items()]
             res = self.env['mail.followers']._get_subscription_data(doc_data, None, None, include_pshare=True, include_active=True)
             for fid, rid, pid, cid, subtype_ids, pshare, active in res:
-                # use project.task_new -> task.new link
+                # use bap_project.task_new -> task.new link
                 sids = [parent[sid] for sid in subtype_ids if parent.get(sid)]
                 # add checked subtypes matching model_name
                 sids += [sid for sid in subtype_ids if sid not in parent and sid in child_ids]

@@ -5,10 +5,10 @@ from odoo import fields, models
 
 
 class ProjectDelete(models.TransientModel):
-    _name = 'project.delete.wizard'
+    _name = 'bap_project.delete.wizard'
     _description = 'Project Delete Wizard'
 
-    project_ids = fields.Many2many('project.project', string='Projects')
+    project_ids = fields.Many2many('bap_project.bap_project', string='Projects')
     task_count = fields.Integer(compute='_compute_task_count')
     projects_archived = fields.Boolean(compute='_compute_projects_archived')
 
@@ -25,4 +25,4 @@ class ProjectDelete(models.TransientModel):
 
     def confirm_delete(self):
         self.with_context(active_test=False).project_ids.unlink()
-        return self.env["ir.actions.actions"]._for_xml_id("project.open_view_project_all_config")
+        return self.env["ir.actions.actions"]._for_xml_id("bap_project.open_view_project_all_config")

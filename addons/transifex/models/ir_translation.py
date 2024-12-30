@@ -48,7 +48,7 @@ class IrTranslation(models.Model):
 
             language_codes = dict((l.code, l.iso_code) for l in languages)
 
-            # .tx/config files contains the project reference
+            # .tx/config files contains the bap_project reference
             # using ini files
             translation_modules = set(self.mapped('module'))
             project_modules = {}
@@ -84,7 +84,7 @@ class IrTranslation(models.Model):
                 src = f"'{src}'" if "+" in src else src
                 translation.transifex_url = "%(url)s/%(project)s/translate/#%(lang)s/%(module)s/42?q=%(src)s" % {
                     'url': base_url,
-                    'project': project,
+                    'bap_project': project,
                     'lang': lang_code,
                     'module': translation.module,
                     'src': f"text%3A{src}",

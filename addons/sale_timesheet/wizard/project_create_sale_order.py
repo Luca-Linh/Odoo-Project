@@ -6,22 +6,22 @@ from odoo.exceptions import UserError
 
 
 class ProjectCreateSalesOrder(models.TransientModel):
-    _name = 'project.create.sale.order'
-    _description = "Create SO from project"
+    _name = 'bap_project.create.sale.order'
+    _description = "Create SO from bap_project"
 
     @api.model
     def default_get(self, fields):
         result = super(ProjectCreateSalesOrder, self).default_get(fields)
 
         active_model = self._context.get('active_model')
-        if active_model != 'project.project':
-            raise UserError(_("You can only apply this action from a project."))
+        if active_model != 'bap_project.bap_project':
+            raise UserError(_("You can only apply this action from a bap_project."))
 
         active_id = self._context.get('active_id')
         if 'project_id' in fields and active_id:
-            project = self.env['project.project'].browse(active_id)
+            project = self.env['bap_project.bap_project'].browse(active_id)
             if project.sale_order_id:
-                raise UserError(_("The project has already a sale order."))
+                raise UserError(_("The bap_project has already a sale order."))
             result['project_id'] = active_id
             if not result.get('partner_id', False):
                 result['partner_id'] = project.partner_id.id
@@ -49,7 +49,7 @@ class ProjectCreateSalesOrder(models.TransientModel):
                         }) for p in project.task_ids.timesheet_product_id]
         return result
 
-    project_id = fields.Many2one('project.project', "Project", domain=[('sale_line_id', '=', False)], help="Project for which we are creating a sales order", required=True)
+    project_id = fields.Many2one('bap_project.bap_project', "Project", domain=[('sale_line_id', '=', False)], help="Project for which we are creating a sales order", required=True)
     company_id = fields.Many2one(related='project_id.company_id')
     partner_id = fields.Many2one('res.partner', string="Customer", required=True, help="Customer of the sales order")
     commercial_partner_id = fields.Many2one(related='partner_id.commercial_partner_id')
@@ -60,7 +60,7 @@ class ProjectCreateSalesOrder(models.TransientModel):
         'sale.order', string="Sales Order",
         domain="['|', '|', ('partner_id', '=', partner_id), ('partner_id', 'child_of', commercial_partner_id), ('partner_id', 'parent_of', partner_id)]")
 
-    line_ids = fields.One2many('project.create.sale.order.line', 'wizard_id', string='Lines')
+    line_ids = fields.One2many('bap_project.create.sale.order.line', 'wizard_id', string='Lines')
     info_invoice = fields.Char(compute='_compute_info_invoice')
 
     @api.depends('sale_order_id', 'link_selection')
@@ -88,7 +88,7 @@ class ProjectCreateSalesOrder(models.TransientModel):
 
     def action_link_sale_order(self):
         task_no_sale_line = self.project_id.tasks.filtered(lambda task: not task.sale_line_id)
-        # link the project to the SO line
+        # link the bap_project to the SO line
         self.project_id.write({
             'sale_line_id': self.sale_order_id.order_line[0].id,
             'sale_order_id': self.sale_order_id.id,
@@ -97,7 +97,7 @@ class ProjectCreateSalesOrder(models.TransientModel):
 
         if self.pricing_type == 'employee_rate':
             lines_already_present = dict([(l.employee_id.id, l) for l in self.project_id.sale_line_employee_ids])
-            EmployeeMap = self.env['project.sale.line.employee.map'].sudo()
+            EmployeeMap = self.env['bap_project.sale.line.employee.map'].sudo()
 
             for wizard_line in self.line_ids:
                 if wizard_line.employee_id.id not in lines_already_present:
@@ -129,9 +129,9 @@ class ProjectCreateSalesOrder(models.TransientModel):
                     task.write({'sale_line_id': dict_product_sol[task.timesheet_product_id.id]})
 
     def action_create_sale_order(self):
-        # if project linked to SO line or at least on tasks with SO line, then we consider project as billable.
+        # if bap_project linked to SO line or at least on tasks with SO line, then we consider bap_project as billable.
         if self.project_id.sale_line_id:
-            raise UserError(_("The project is already linked to a sales order item."))
+            raise UserError(_("The bap_project is already linked to a sales order item."))
         # at least one line
         if not self.line_ids:
             raise UserError(_("At least one line should be filled."))
@@ -142,12 +142,12 @@ class ProjectCreateSalesOrder(models.TransientModel):
             map_employees = self.line_ids.mapped('employee_id')
             missing_meployees = timesheet_employees - map_employees
             if missing_meployees:
-                raise UserError(_('The Sales Order cannot be created because you did not enter some employees that entered timesheets on this project. Please list all the relevant employees before creating the Sales Order.\nMissing employee(s): %s') % (', '.join(missing_meployees.mapped('name'))))
+                raise UserError(_('The Sales Order cannot be created because you did not enter some employees that entered timesheets on this bap_project. Please list all the relevant employees before creating the Sales Order.\nMissing employee(s): %s') % (', '.join(missing_meployees.mapped('name'))))
 
         # check here if timesheet already linked to SO line
         timesheet_with_so_line = self.env['account.analytic.line'].search_count([('task_id', 'in', self.project_id.tasks.ids), ('so_line', '!=', False)])
         if timesheet_with_so_line:
-            raise UserError(_('The sales order cannot be created because some timesheets of this project are already linked to another sales order.'))
+            raise UserError(_('The sales order cannot be created because some timesheets of this bap_project are already linked to another sales order.'))
 
         # create SO according to the chosen billable type
         sale_order = self._create_sale_order()
@@ -208,16 +208,16 @@ class ProjectCreateSalesOrder(models.TransientModel):
                 'order_id': sale_order.id,
                 'product_id': wizard_line.product_id.id,
                 'price_unit': wizard_line.price_unit,
-                'project_id': self.project_id.id,  # prevent to re-create a project on confirmation
+                'project_id': self.project_id.id,  # prevent to re-create a bap_project on confirmation
                 'task_id': task_id,
                 'product_uom_qty': 0.0,
             })
 
             if ticket_timesheet_ids and not self.project_id.sale_line_id and not task_ids:
-                # With pricing = "project rate" in project. When the user wants to create a sale order from a ticket in helpdesk
-                # The project cannot contain any tasks. Thus, we need to give the first sale_order_line created to link
+                # With pricing = "bap_project rate" in bap_project. When the user wants to create a sale order from a ticket in helpdesk
+                # The bap_project cannot contain any tasks. Thus, we need to give the first sale_order_line created to link
                 # the timesheet to this first sale order line.
-                # link the project to the SO line
+                # link the bap_project to the SO line
                 self.project_id.write({
                     'sale_order_id': sale_order.id,
                     'sale_line_id': sale_order_line.id,
@@ -244,12 +244,12 @@ class ProjectCreateSalesOrder(models.TransientModel):
             })
 
         if ticket_timesheet_ids and self.project_id.sale_line_id and not self.project_id.tasks and len(self.line_ids) > 1:
-            # Then, we need to give to the project the last sale order line created
+            # Then, we need to give to the bap_project the last sale order line created
             self.project_id.write({
                 'sale_line_id': sale_order_line.id
             })
         else:  # Otherwise, we are in the normal behaviour
-            # link the project to the SO line
+            # link the bap_project to the SO line
             self.project_id.write({
                 'sale_order_id': sale_order.id,
                 'sale_line_id': sale_order_line.id,  # we take the last sale_order_line created
@@ -262,7 +262,7 @@ class ProjectCreateSalesOrder(models.TransientModel):
     def _make_billable_at_employee_rate(self, sale_order):
         # trying to simulate the SO line created a task, according to the product configuration
         # To avoid, generating a task when confirming the SO
-        task_id = self.env['project.task'].search([('project_id', '=', self.project_id.id)], order='create_date DESC', limit=1).id
+        task_id = self.env['bap_project.task'].search([('project_id', '=', self.project_id.id)], order='create_date DESC', limit=1).id
         project_id = self.project_id.id
 
         lines_already_present = dict([(l.employee_id.id, l) for l in self.project_id.sale_line_employee_ids])
@@ -270,8 +270,8 @@ class ProjectCreateSalesOrder(models.TransientModel):
         non_billable_tasks = self.project_id.tasks.filtered(lambda task: not task.sale_line_id)
         non_allow_billable_tasks = self.project_id.tasks.filtered(lambda task: task.non_allow_billable)
 
-        map_entries = self.env['project.sale.line.employee.map']
-        EmployeeMap = self.env['project.sale.line.employee.map'].sudo()
+        map_entries = self.env['bap_project.sale.line.employee.map']
+        EmployeeMap = self.env['bap_project.sale.line.employee.map'].sudo()
 
         # create SO lines: create on SOL per product/price. So many employee can be linked to the same SOL
         map_product_price_sol = {}  # (product_id, price) --> SOL
@@ -304,7 +304,7 @@ class ProjectCreateSalesOrder(models.TransientModel):
                     'sale_line_id': map_product_price_sol[map_key].id
                 })
 
-        # link the project to the SO
+        # link the bap_project to the SO
         self.project_id.write({
             'sale_order_id': sale_order.id,
             'sale_line_id': sale_order.order_line[0].id,
@@ -336,16 +336,16 @@ class ProjectCreateSalesOrder(models.TransientModel):
 
 
 class ProjectCreateSalesOrderLine(models.TransientModel):
-    _name = 'project.create.sale.order.line'
-    _description = 'Create SO Line from project'
+    _name = 'bap_project.create.sale.order.line'
+    _description = 'Create SO Line from bap_project'
     _order = 'id,create_date'
 
-    wizard_id = fields.Many2one('project.create.sale.order', required=True)
+    wizard_id = fields.Many2one('bap_project.create.sale.order', required=True)
     product_id = fields.Many2one('product.product', domain=[('type', '=', 'service'), ('invoice_policy', '=', 'delivery'), ('service_type', '=', 'timesheet')], string="Service",
         help="Product of the sales order item. Must be a service invoiced based on timesheets on tasks.")
     price_unit = fields.Float("Unit Price", help="Unit price of the sales order item.")
     currency_id = fields.Many2one('res.currency', string="Currency")
-    employee_id = fields.Many2one('hr.employee', string="Employee", help="Employee that has timesheets on the project.")
+    employee_id = fields.Many2one('hr.employee', string="Employee", help="Employee that has timesheets on the bap_project.")
     sale_line_id = fields.Many2one('sale.order.line', "Sale Order Item", compute='_compute_sale_line_id', store=True, readonly=False)
 
     _sql_constraints = [

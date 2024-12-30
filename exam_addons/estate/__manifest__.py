@@ -1,5 +1,5 @@
 {
-    "name":"Real Estate",
+    "name":"Real Estate pro",
     "version":"1.0",
     "category":"Test",
     "description":"""Test 2""",
@@ -31,7 +31,6 @@
         "views/snippets/feedback_form.xml",
         "views/estate_menu_views.xml",
     ],
-    'post_init_hook': 'set_default_language',
 
     'qweb': [
         'static/src/xml/*.xml',

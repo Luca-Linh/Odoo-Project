@@ -169,11 +169,11 @@ class ResConfigInstaller(models.TransientModel, ResConfigModuleInstallationMixin
 
         _install_if = {
             ('sale','crm'): ['sale_crm'],
-            ('sale','project'): ['sale_service'],
+            ('sale','bap_project'): ['sale_service'],
         }
 
     will install both ``sale_crm`` and ``sale_service`` if all of
-    ``sale``, ``crm`` and ``project`` are selected for installation.
+    ``sale``, ``crm`` and ``bap_project`` are selected for installation.
 
     Hook methods
     ------------

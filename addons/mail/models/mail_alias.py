@@ -60,8 +60,8 @@ class Alias(models.Model):
         'ir.model', 'Parent Model',
         help="Parent model holding the alias. The model holding the alias reference "
              "is not necessarily the model given by alias_model_id "
-             "(example: project (parent_model) and task (model))")
-    alias_parent_thread_id = fields.Integer('Parent Record Thread ID', help="ID of the parent record holding the alias (example: project holding the task creation alias)")
+             "(example: bap_project (parent_model) and task (model))")
+    alias_parent_thread_id = fields.Integer('Parent Record Thread ID', help="ID of the parent record holding the alias (example: bap_project holding the task creation alias)")
     alias_contact = fields.Selection([
         ('everyone', 'Everyone'),
         ('partners', 'Authenticated Partners'),

@@ -17,7 +17,7 @@ class TestAccessRights(TestProjectCommon):
 
     def create_task(self, name, *, with_user=None, **kwargs):
         values = dict(name=name, project_id=self.project_pigs.id, **kwargs)
-        return self.env['project.task'].with_user(with_user or self.env.user).create(values)
+        return self.env['bap_project.task'].with_user(with_user or self.env.user).create(values)
 
 
 class TestCRUDVisibilityFollowers(TestAccessRights):
@@ -28,35 +28,35 @@ class TestCRUDVisibilityFollowers(TestAccessRights):
 
     @users('Internal user', 'Portal user')
     def test_project_no_write(self):
-        with self.assertRaises(AccessError, msg="%s should not be able to write on the project" % self.env.user.name):
+        with self.assertRaises(AccessError, msg="%s should not be able to write on the bap_project" % self.env.user.name):
             self.project_pigs.with_user(self.env.user).name = "Take over the world"
 
         self.project_pigs.allowed_user_ids = self.env.user
-        with self.assertRaises(AccessError, msg="%s should not be able to write on the project" % self.env.user.name):
+        with self.assertRaises(AccessError, msg="%s should not be able to write on the bap_project" % self.env.user.name):
             self.project_pigs.with_user(self.env.user).name = "Take over the world"
 
     @users('Internal user', 'Portal user')
     def test_project_no_unlink(self):
         self.project_pigs.task_ids.unlink()
-        with self.assertRaises(AccessError, msg="%s should not be able to unlink the project" % self.env.user.name):
+        with self.assertRaises(AccessError, msg="%s should not be able to unlink the bap_project" % self.env.user.name):
             self.project_pigs.with_user(self.env.user).unlink()
 
         self.project_pigs.allowed_user_ids = self.env.user
         self.project_pigs.task_ids.unlink()
-        with self.assertRaises(AccessError, msg="%s should not be able to unlink the project" % self.env.user.name):
+        with self.assertRaises(AccessError, msg="%s should not be able to unlink the bap_project" % self.env.user.name):
             self.project_pigs.with_user(self.env.user).unlink()
 
     @users('Internal user', 'Portal user')
     def test_project_no_read(self):
         self.project_pigs.invalidate_cache()
-        with self.assertRaises(AccessError, msg="%s should not be able to read the project" % self.env.user.name):
+        with self.assertRaises(AccessError, msg="%s should not be able to read the bap_project" % self.env.user.name):
             self.project_pigs.with_user(self.env.user).name
 
     @users('Portal user')
     def test_project_allowed_portal_no_read(self):
         self.project_pigs.allowed_user_ids = self.env.user
         self.project_pigs.invalidate_cache()
-        with self.assertRaises(AccessError, msg="%s should not be able to read the project" % self.env.user.name):
+        with self.assertRaises(AccessError, msg="%s should not be able to read the bap_project" % self.env.user.name):
             self.project_pigs.with_user(self.env.user).name
 
     @users('Internal user')
@@ -214,7 +214,7 @@ class TestAllowedUsers(TestAccessRights):
         self.assertNotIn(self.portal, self.task.allowed_user_ids, "Portal user should have been removed from allowed users")
 
     def test_write_task(self):
-        self.user.groups_id |= self.env.ref('project.group_project_user')
+        self.user.groups_id |= self.env.ref('bap_project.group_project_user')
         self.assertNotIn(self.user, self.project_pigs.allowed_user_ids)
         self.task.allowed_user_ids = self.user
         self.project_pigs.invalidate_cache()
@@ -222,7 +222,7 @@ class TestAllowedUsers(TestAccessRights):
         self.task.with_user(self.user).name = "I can edit a task!"
 
     def test_no_write_project(self):
-        self.user.groups_id |= self.env.ref('project.group_project_user')
+        self.user.groups_id |= self.env.ref('bap_project.group_project_user')
         self.assertNotIn(self.user, self.project_pigs.allowed_user_ids)
-        with self.assertRaises(AccessError, msg="User should not be able to edit project"):
+        with self.assertRaises(AccessError, msg="User should not be able to edit bap_project"):
             self.project_pigs.with_user(self.user).name = "I can't edit a task!"

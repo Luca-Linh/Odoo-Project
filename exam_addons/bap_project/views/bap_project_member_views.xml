@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="inherit_view_users_tree" model="ir.ui.view">
+            <field name="name">res.users.tree.inherit</field>
+            <field name="model">res.users</field>
+            <field name="inherit_id" ref="base.view_users_tree"/>
+            <field name="arch" type="xml">
+                <!-- Thêm trường email sau trường name -->
+                <xpath expr="//field[@name='login']" position="after">
+                    <field name="email"/>
+                </xpath>
+                <!-- Thay thế toàn bộ trường company_id -->
+                <xpath expr="//field[@name='company_id']" position="replace">
+                    <field name="groups_id" widget="many2many_tags"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="action_res_users_custom" model="ir.actions.act_window">
+            <field name="name">Users Bap Project </field>
+            <field name="res_model">res.users</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+    </data>
+</odoo>

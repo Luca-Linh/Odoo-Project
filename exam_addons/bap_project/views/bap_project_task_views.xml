@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+<!--  Tree View  -->
+    <record id="bap_project_task_tree_view" model="ir.ui.view">
+        <field name="name">bap.project.task.tree</field>
+        <field name="model">bap.project.task</field>
+        <field name="arch" type="xml">
+            <tree string="Tasks" js_class="project_task_tree_class">
+                <field name="task_code"/>
+                <field name="task_name"/>
+                <field name="project_id"/>
+                <field name="sprint_id"/>
+                <field name="description"/>
+            </tree>
+        </field>
+    </record>
+<!--  Form View  -->
+     <record id="bap_project_task_form_view" model="ir.ui.view">
+         <field name="name">bap.project.task.form</field>
+         <field name="model">bap.project.task</field>
+         <field name="arch" type="xml">
+             <form string="Task">
+                 <header>
+                     <field name="status" widget="statusbar" statusbar_visible="new,dev,qc,done" />
+                     <button name="action_submit_to_qc" string="Submit to QC" type="object"
+                             attrs="{'invisible': [('is_dev', '=', False)]}"/>
+                     <button name="action_qc_test_done" string="Mark as Done" type="object"
+                             attrs="{'invisible': [('is_qc', '=', False)]}"/>
+                     <button name="action_qc_return_to_dev" string="Return to Development" type="object"
+                             attrs="{'invisible': [('is_qc', '=', False)]}"/>
+                 </header>
+                 <sheet>
+                     <group>
+                         <group>
+                             <field name="task_code"/>
+                             <field name="task_name"/>
+                             <field name="project_id"/>
+                             <field name="sprint_id"/>
+                             <field name="description"/>
+                             <field name="status"/>
+                         </group>
+                         <group>
+                             <field name="dev_id"/>
+                             <field name="qc_id"/>
+                             <field name="task_type_id"/>
+                             <field name="dev_deadline"/>
+                             <field name="qc_deadline"/>
+                             <field name="is_dev" invisible='1'/>
+                             <field name="is_qc" invisible='1'/>
+                         </group>
+                     </group>
+
+                 </sheet>
+             </form>
+         </field>
+     </record>
+
+     <record id="bap_project_task_action" model="ir.actions.act_window">
+            <field name="name">Bap Project Task</field>
+            <field name="res_model">bap.project.task</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{'stat_button_view': False}</field>
+     </record>
+
+    </data>
+</odoo>

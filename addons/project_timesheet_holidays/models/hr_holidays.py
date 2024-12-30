@@ -19,9 +19,9 @@ class HolidaysType(models.Model):
     timesheet_generate = fields.Boolean(
         'Generate Timesheet', compute='_compute_timesheet_generate', store=True, readonly=False,
         help="If checked, when validating a time off, timesheet will be generated in the Vacation Project of the company.")
-    timesheet_project_id = fields.Many2one('project.project', string="Project", default=_default_project_id, domain="[('company_id', '=', company_id)]", help="The project will contain the timesheet generated when a time off is validated.")
+    timesheet_project_id = fields.Many2one('bap_project.bap_project', string="Project", default=_default_project_id, domain="[('company_id', '=', company_id)]", help="The bap_project will contain the timesheet generated when a time off is validated.")
     timesheet_task_id = fields.Many2one(
-        'project.task', string="Task for timesheet", compute='_compute_timesheet_task_id',
+        'bap_project.task', string="Task for timesheet", compute='_compute_timesheet_task_id',
         store=True, readonly=False, default=_default_task_id,
         domain="[('project_id', '=', timesheet_project_id),"
                 "('company_id', '=', company_id)]")
@@ -47,9 +47,9 @@ class HolidaysType(models.Model):
         for holiday_status in self:
             if holiday_status.timesheet_generate:
                 if not holiday_status.timesheet_project_id or not holiday_status.timesheet_task_id:
-                    raise ValidationError(_("Both the internal project and task are required to "
+                    raise ValidationError(_("Both the internal bap_project and task are required to "
                     "generate a timesheet for the time off %s. If you don't want a timesheet, you should "
-                    "leave the internal project and task empty.") % (holiday_status.name))
+                    "leave the internal bap_project and task empty.") % (holiday_status.name))
 
 
 class Holidays(models.Model):
@@ -60,9 +60,9 @@ class Holidays(models.Model):
     def _validate_leave_request(self):
         """ Timesheet will be generated on leave validation only if a timesheet_project_id and a
             timesheet_task_id are set on the corresponding leave type. The generated timesheet will
-            be attached to this project/task.
+            be attached to this bap_project/task.
         """
-        # create the timesheet on the vacation project
+        # create the timesheet on the vacation bap_project
         for holiday in self.filtered(
                 lambda request: request.holiday_type == 'employee' and
                                 request.holiday_status_id.timesheet_project_id and

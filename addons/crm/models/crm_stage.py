@@ -13,7 +13,7 @@ AVAILABLE_PRIORITIES = [
 
 class Stage(models.Model):
     """ Model for case stages. This models the main stages of a document
-        management flow. Main CRM objects (leads, opportunities, project
+        management flow. Main CRM objects (leads, opportunities, bap_project
         issues, ...) will now use only stages, instead of state and stages.
         Stages are for example used to display the kanban view of records.
     """

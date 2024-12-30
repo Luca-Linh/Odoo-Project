@@ -16,7 +16,7 @@ DEFAULT_MONTH_RANGE = 3
 
 
 class Project(models.Model):
-    _inherit = 'project.project'
+    _inherit = 'bap_project.bap_project'
 
 
     def _qweb_prepare_qcontext(self, view_id, domain):
@@ -106,9 +106,9 @@ class Project(models.Model):
             'other_revenues': 'other_revenues'
         }
         profit = dict.fromkeys(list(field_map.values()) + ['other_revenues', 'total'], 0.0)
-        profitability_raw_data = self.env['project.profitability.report'].read_group([('project_id', 'in', self.ids)], ['project_id'] + list(field_map), ['project_id'])   
+        profitability_raw_data = self.env['bap_project.profitability.report'].read_group([('project_id', 'in', self.ids)], ['project_id'] + list(field_map), ['project_id'])
         for data in profitability_raw_data:
-            company_id = self.env['project.project'].browse(data.get('project_id')[0]).company_id
+            company_id = self.env['bap_project.bap_project'].browse(data.get('project_id')[0]).company_id
             from_currency = company_id.currency_id
             for field in field_map:
                 value = data.get(field, 0.0)
@@ -374,9 +374,9 @@ class Project(models.Model):
         return rows_employee
 
     def _table_get_empty_so_lines(self):
-        """ get the Sale Order Lines having no timesheet but having generated a task or a project """
+        """ get the Sale Order Lines having no timesheet but having generated a task or a bap_project """
         so_lines = self.sudo().mapped('sale_line_id.order_id.order_line').filtered(lambda sol: sol.is_service and not sol.is_expense and not sol.is_downpayment)
-        # include the service SO line of SO sharing the same project
+        # include the service SO line of SO sharing the same bap_project
         sale_order = self.env['sale.order'].search([('project_id', 'in', self.ids)])
         return set(so_lines.ids) | set(sale_order.mapped('order_line').filtered(lambda sol: sol.is_service and not sol.is_expense).ids), set(so_lines.mapped('order_id').ids) | set(sale_order.ids)
 
@@ -390,7 +390,7 @@ class Project(models.Model):
             task_order_line_ids = []
             # retrieve all the sale order line that we will need later below
             if self.env.user.has_group('sales_team.group_sale_salesman') or self.env.user.has_group('sales_team.group_sale_salesman_all_leads'):
-                task_order_line_ids = self.env['project.task'].read_group([('project_id', '=', self.id), ('sale_line_id', '!=', False)], ['sale_line_id'], ['sale_line_id'])
+                task_order_line_ids = self.env['bap_project.task'].read_group([('project_id', '=', self.id), ('sale_line_id', '!=', False)], ['sale_line_id'], ['sale_line_id'])
                 task_order_line_ids = [ol['sale_line_id'][0] for ol in task_order_line_ids]
 
             if self.env.user.has_group('sales_team.group_sale_salesman'):
@@ -399,10 +399,10 @@ class Project(models.Model):
                         'label': _("Create a Sales Order"),
                         'type': 'action',
                         'action_id': 'sale_timesheet.project_project_action_multi_create_sale_order',
-                        'context': json.dumps({'active_id': self.id, 'active_model': 'project.project'}),
+                        'context': json.dumps({'active_id': self.id, 'active_model': 'bap_project.bap_project'}),
                     })
             if self.env.user.has_group('sales_team.group_sale_salesman_all_leads'):
-                to_invoice_amount = values['dashboard']['profit'].get('to_invoice', False)  # plan project only takes services SO line with timesheet into account
+                to_invoice_amount = values['dashboard']['profit'].get('to_invoice', False)  # plan bap_project only takes services SO line with timesheet into account
 
                 sale_order_ids = self.env['sale.order.line'].read_group([('id', 'in', task_order_line_ids)], ['order_id'], ['order_id'])
                 sale_order_ids = [s['order_id'][0] for s in sale_order_ids]
@@ -415,14 +415,14 @@ class Project(models.Model):
                             'label': _("Create Invoice"),
                             'type': 'action',
                             'action_id': 'sale.action_view_sale_advance_payment_inv',
-                            'context': json.dumps({'active_ids': sale_order_ids, 'active_model': 'project.project'}),
+                            'context': json.dumps({'active_ids': sale_order_ids, 'active_model': 'bap_project.bap_project'}),
                         })
                     else:
                         actions.append({
                             'label': _("Create Invoice"),
                             'type': 'action',
                             'action_id': 'sale_timesheet.project_project_action_multi_create_invoice',
-                            'context': json.dumps({'active_id': self.id, 'active_model': 'project.project'}),
+                            'context': json.dumps({'active_id': self.id, 'active_model': 'bap_project.bap_project'}),
                         })
         return actions
 
@@ -430,10 +430,10 @@ class Project(models.Model):
         stat_buttons = []
         num_projects = len(self)
         if num_projects == 1:
-            action_data = _to_action_data('project.project', res_id=self.id,
-                                          views=[[self.env.ref('project.edit_project').id, 'form']])
+            action_data = _to_action_data('bap_project.bap_project', res_id=self.id,
+                                          views=[[self.env.ref('bap_project.edit_project').id, 'form']])
         else:
-            action_data = _to_action_data(action=self.env.ref('project.open_view_project_all_config'),
+            action_data = _to_action_data(action=self.env.ref('bap_project.open_view_project_all_config'),
                                           domain=[('id', 'in', self.ids)])
 
         stat_buttons.append({
@@ -443,7 +443,7 @@ class Project(models.Model):
             'action': action_data
         })
 
-        # if only one project, add it in the context as default value
+        # if only one bap_project, add it in the context as default value
         tasks_domain = [('project_id', 'in', self.ids)]
         tasks_context = self.env.context.copy()
         tasks_context.pop('search_default_name', False)
@@ -453,7 +453,7 @@ class Project(models.Model):
         if len(self) == 1:
             tasks_context = {**tasks_context, 'default_project_id': self.id}
         elif len(self):
-            task_projects_ids = self.env['project.task'].read_group([('project_id', 'in', self.ids)], ['project_id'], ['project_id'])
+            task_projects_ids = self.env['bap_project.task'].read_group([('project_id', 'in', self.ids)], ['project_id'], ['project_id'])
             task_projects_ids = [p['project_id'][0] for p in task_projects_ids]
             if len(task_projects_ids) == 1:
                 tasks_context = {**tasks_context, 'default_project_id': task_projects_ids[0]}
@@ -463,27 +463,27 @@ class Project(models.Model):
             'count': sum(self.mapped('task_count')),
             'icon': 'fa fa-tasks',
             'action': _to_action_data(
-                action=self.env.ref('project.action_view_task'),
+                action=self.env.ref('bap_project.action_view_task'),
                 domain=tasks_domain,
                 context=tasks_context
             )
         })
         stat_buttons.append({
             'name': [_("Tasks"), _("Late")],
-            'count': self.env['project.task'].search_count(late_tasks_domain),
+            'count': self.env['bap_project.task'].search_count(late_tasks_domain),
             'icon': 'fa fa-tasks',
             'action': _to_action_data(
-                action=self.env.ref('project.action_view_task'),
+                action=self.env.ref('bap_project.action_view_task'),
                 domain=late_tasks_domain,
                 context=tasks_context,
             ),
         })
         stat_buttons.append({
             'name': [_("Tasks"), _("in Overtime")],
-            'count': self.env['project.task'].search_count(overtime_tasks_domain),
+            'count': self.env['bap_project.task'].search_count(overtime_tasks_domain),
             'icon': 'fa fa-tasks',
             'action': _to_action_data(
-                action=self.env.ref('project.action_view_task'),
+                action=self.env.ref('bap_project.action_view_task'),
                 domain=overtime_tasks_domain,
                 context=tasks_context,
             ),
@@ -491,7 +491,7 @@ class Project(models.Model):
 
         if self.env.user.has_group('sales_team.group_sale_salesman_all_leads'):
             # read all the sale orders linked to the projects' tasks
-            task_so_ids = self.env['project.task'].search_read([
+            task_so_ids = self.env['bap_project.task'].search_read([
                 ('project_id', 'in', self.ids), ('sale_order_id', '!=', False)
             ], ['sale_order_id'])
             task_so_ids = [o['sale_order_id'][0] for o in task_so_ids]

@@ -23,7 +23,7 @@ The whole flow is implemented as:
 * Approved by his manager
 * Validation by the accountant and accounting entries creation
 
-This module also uses analytic accounting and is compatible with the invoice on timesheet module so that you are able to automatically re-invoice your customers' expenses if your work by project.
+This module also uses analytic accounting and is compatible with the invoice on timesheet module so that you are able to automatically re-invoice your customers' expenses if your work by bap_project.
     """,
     'website': 'https://www.odoo.com/page/expenses',
     'depends': ['hr_contract', 'account', 'web_tour'],

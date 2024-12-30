@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <!--
-        Analytic Accounts with project
+        Analytic Accounts with bap_project
     -->
     <record id="account_analytic_account_view_form_inherit" model="ir.ui.view">
         <field name="name">account.analytic.account.form.inherit</field>

@@ -12,11 +12,11 @@ class Digest(models.Model):
     kpi_project_task_opened_value = fields.Integer(compute='_compute_project_task_opened_value')
 
     def _compute_project_task_opened_value(self):
-        if not self.env.user.has_group('project.group_project_user'):
+        if not self.env.user.has_group('bap_project.group_project_user'):
             raise AccessError(_("Do not have access, skip this data for user's digest email"))
         for record in self:
             start, end, company = record._get_kpi_compute_parameters()
-            record.kpi_project_task_opened_value = self.env['project.task'].search_count([
+            record.kpi_project_task_opened_value = self.env['bap_project.task'].search_count([
                 ('stage_id.fold', '=', False),
                 ('create_date', '>=', start),
                 ('create_date', '<', end),
@@ -25,5 +25,5 @@ class Digest(models.Model):
 
     def _compute_kpis_actions(self, company, user):
         res = super(Digest, self)._compute_kpis_actions(company, user)
-        res['kpi_project_task_opened'] = 'project.open_view_project_all&menu_id=%s' % self.env.ref('project.menu_main_pm').id
+        res['kpi_project_task_opened'] = 'bap_project.open_view_project_all&menu_id=%s' % self.env.ref('bap_project.menu_main_pm').id
         return res

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="report_deadline_urgent_wizard_view_form" model="ir.ui.view">
+        <field name="name">report.deadline.urgent.wizard.form</field>
+        <field name="model">report.deadline.urgent.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Report Deadline Urgent Wizard">
+                <group>
+                    <field name="project_ids" widget="many2many_tags"/>
+                </group>
+                <footer>
+                    <button string="Export Excel" type="object" name="action_export_excel" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_report_deadline_urgent_wizard" model="ir.actions.act_window">
+        <field name="name">Report Deadline Urgent Excel</field>
+        <field name="res_model">report.deadline.urgent.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+    </data>
+</odoo>

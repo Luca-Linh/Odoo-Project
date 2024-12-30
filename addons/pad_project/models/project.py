@@ -5,8 +5,8 @@ from odoo import api, fields, models
 
 
 class ProjectTask(models.Model):
-    _name = "project.task"
-    _inherit = ["project.task", 'pad.common']
+    _name = "bap_project.task"
+    _inherit = ["bap_project.task", 'pad.common']
     _description = 'Task'
 
     description_pad = fields.Char('Pad URL', pad_content_field='description', copy=False)
@@ -18,7 +18,7 @@ class ProjectTask(models.Model):
 
     @api.onchange('use_pad')
     def _onchange_use_pads(self):
-        """ Copy the content in the pad when the user change the project of the task to the one with no pads enabled.
+        """ Copy the content in the pad when the user change the bap_project of the task to the one with no pads enabled.
 
             This case is when the use_pad becomes False and we have already generated the url pad,
             that is the description_pad field contains the url of the pad.
@@ -32,7 +32,7 @@ class ProjectTask(models.Model):
     def create(self, vals):
         # When using quick create, the project_id is in the context, not in the vals
         project_id = vals.get('project_id', False) or self.default_get(['project_id']).get('project_id', False)
-        if not self.env['project.project'].browse(project_id).use_pads:
+        if not self.env['bap_project.bap_project'].browse(project_id).use_pads:
             self = self.with_context(pad_no_create=True)
         return super(ProjectTask, self).create(vals)
 
@@ -54,13 +54,13 @@ class ProjectTask(models.Model):
 
 
 class ProjectProject(models.Model):
-    _name = "project.project"
-    _inherit = ["project.project", 'pad.common']
+    _name = "bap_project.bap_project"
+    _inherit = ["bap_project.bap_project", 'pad.common']
     _description = 'Project'
 
     description_pad = fields.Char('Pad URL', pad_content_field='description', copy=False)
     use_pads = fields.Boolean("Use collaborative pads", default=True,
-        help="Use collaborative pad for the tasks on this project.")
+        help="Use collaborative pad for the tasks on this bap_project.")
 
     pad_availability = fields.Selection([
         ('internal', 'Internal Users'),

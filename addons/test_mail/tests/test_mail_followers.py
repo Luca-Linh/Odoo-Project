@@ -238,7 +238,7 @@ class AdvancedFollowersTest(TestMailCommon):
             'res_model': 'mail.test.track'
         })
 
-        # mail.test.container subtypes (aka: project records)
+        # mail.test.container subtypes (aka: bap_project records)
         cls.umb_nodef = Subtype.create({
             'name': 'Container NoDefault', 'default': False,
             'res_model': 'mail.test.container'
@@ -319,8 +319,8 @@ class AdvancedFollowersTest(TestMailCommon):
 
     def test_auto_subscribe_defaults(self):
         """ Test auto subscription based on an container record. This mimics
-        the behavior of addons like project and task where subscribing to
-        some project's subtypes automatically subscribe the follower to its tasks.
+        the behavior of addons like bap_project and task where subscribing to
+        some bap_project's subtypes automatically subscribe the follower to its tasks.
 
         Functional rules applied here
 

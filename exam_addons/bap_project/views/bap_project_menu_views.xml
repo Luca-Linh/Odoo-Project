@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <menuitem id="bap_project_menu_root" name="Bap Project" sequence="10" action="bap_project_action"/>
+
+    <menuitem id="project_menu" name="Project" parent="bap_project_menu_root" sequence="1"/>
+    <menuitem id="report_menu" name="Report" parent="bap_project_menu_root" sequence="2" groups="group_project_admin,group_project_pm"/>
+    <menuitem id="import_menu" name="Import" parent="bap_project_menu_root" sequence="3" groups="group_project_admin"/>
+    <menuitem id="conf_menu" name="Configuration" parent="bap_project_menu_root" sequence="4"/>
+
+    <menuitem id="project_menu_project" name="Project" parent="project_menu"
+              sequence="1"
+              action="bap_project_action"/>
+    <menuitem id="project_menu_sprint" name="Sprint" parent="project_menu"
+              sequence="2"
+              action="bap_project_sprint_action"/>
+    <menuitem id="project_menu_task" name="Task" parent="project_menu"
+              sequence="3"
+              action="bap_project_task_action"/>
+    <menuitem id="project_menu_rop" name="Request Open Project" parent="project_menu"
+              sequence="4"
+              action="bap_project_request_open_action" />
+    <menuitem id="project_menu_rcp" name="Request Close Project" parent="project_menu"
+              sequence="5"
+              action="bap_project_request_close_action"/>
+
+    <menuitem id="report_menu_deadline" name="Report Deadline Urgent" parent="report_menu"
+              sequence="1"
+              action="report_deadline_urgent_action"
+              groups="group_project_admin,group_project_pm"/>
+    <menuitem id="report_menu_task" name="Report Task In Sprint" parent="report_menu"
+              sequence="2"
+              action="action_report_task_sprint_wizard"
+              groups="group_project_admin,group_project_pm"/>
+    <menuitem id="report_menu_deadline_xlsx" name="Report Deadline Urgent XLSX" parent="report_menu"
+              sequence="3"
+              action="action_report_deadline_urgent_wizard"
+              groups="group_project_admin,group_project_pm"/>
+    <menuitem id="report_menu_task_xlsx" name="Report Task In Sprint XLSX" parent="report_menu"
+              sequence="4"
+              action="action_report_task_sprint_xlsx_wizard"
+              groups="group_project_admin,group_project_pm"/>
+
+    <menuitem id="import_menu_task" name="Import Task" parent="import_menu" action="action_import_task_wizard" groups="group_project_admin"/>
+
+    <menuitem id="conf_menu_task_type" name="Task Type" parent="conf_menu" sequence="1" action="bap_project_task_type_action"/>
+    <menuitem id="conf_menu_member" name="Member" parent="conf_menu" sequence="2" action="action_res_users_custom"/>
+
+
+</odoo>

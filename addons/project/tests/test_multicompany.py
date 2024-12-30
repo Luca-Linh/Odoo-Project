@@ -126,8 +126,8 @@ class TestMultiCompanyProject(TestMultiCompanyCommon):
 
         cls.setUpMultiCompany()
 
-        user_group_project_user = cls.env.ref('project.group_project_user')
-        user_group_project_manager = cls.env.ref('project.group_project_manager')
+        user_group_project_user = cls.env.ref('bap_project.group_project_user')
+        user_group_project_manager = cls.env.ref('bap_project.group_project_manager')
 
         # setup users
         cls.user_employee_company_a.write({
@@ -143,11 +143,11 @@ class TestMultiCompanyProject(TestMultiCompanyCommon):
             'groups_id': [(4, user_group_project_manager.id)]
         })
 
-        # create project in both companies
-        Project = cls.env['project.project'].with_context({'mail_create_nolog': True, 'tracking_disable': True})
+        # create bap_project in both companies
+        Project = cls.env['bap_project.bap_project'].with_context({'mail_create_nolog': True, 'tracking_disable': True})
         cls.project_company_a = Project.create({
             'name': 'Project Company A',
-            'alias_name': 'project+companya',
+            'alias_name': 'bap_project+companya',
             'partner_id': cls.partner_1.id,
             'company_id': cls.company_a.id,
             'type_ids': [
@@ -163,7 +163,7 @@ class TestMultiCompanyProject(TestMultiCompanyCommon):
         })
         cls.project_company_b = Project.create({
             'name': 'Project Company B',
-            'alias_name': 'project+companyb',
+            'alias_name': 'bap_project+companyb',
             'partner_id': cls.partner_1.id,
             'company_id': cls.company_b.id,
             'type_ids': [
@@ -178,7 +178,7 @@ class TestMultiCompanyProject(TestMultiCompanyCommon):
             ]
         })
         # already-existing tasks in company A and B
-        Task = cls.env['project.task'].with_context({'mail_create_nolog': True, 'tracking_disable': True})
+        Task = cls.env['bap_project.task'].with_context({'mail_create_nolog': True, 'tracking_disable': True})
         cls.task_1 = Task.create({
             'name': 'Task 1 in Project A',
             'user_id': cls.user_employee_company_a.id,
@@ -191,25 +191,25 @@ class TestMultiCompanyProject(TestMultiCompanyCommon):
         })
 
     def test_create_project(self):
-        """ Check project creation in multiple companies """
+        """ Check bap_project creation in multiple companies """
         with self.sudo('manager-a'):
-            project = self.env['project.project'].with_context({'tracking_disable': True}).create({
+            project = self.env['bap_project.bap_project'].with_context({'tracking_disable': True}).create({
                 'name': 'Project Company A',
                 'partner_id': self.partner_1.id,
             })
-            self.assertEqual(project.company_id, self.env.user.company_id, "A newly created project should be in the current user company")
+            self.assertEqual(project.company_id, self.env.user.company_id, "A newly created bap_project should be in the current user company")
 
             with self.switch_company(self.company_b):
-                with self.assertRaises(AccessError, msg="Manager can not create project in a company in which he is not allowed"):
-                    project = self.env['project.project'].with_context({'tracking_disable': True}).create({
+                with self.assertRaises(AccessError, msg="Manager can not create bap_project in a company in which he is not allowed"):
+                    project = self.env['bap_project.bap_project'].with_context({'tracking_disable': True}).create({
                         'name': 'Project Company B',
                         'partner_id': self.partner_1.id,
                         'company_id': self.company_b.id
                     })
 
-                # when allowed in other company, can create a project in another company (different from the one in which you are logged)
+                # when allowed in other company, can create a bap_project in another company (different from the one in which you are logged)
                 with self.allow_companies([self.company_a.id, self.company_b.id]):
-                    project = self.env['project.project'].with_context({'tracking_disable': True}).create({
+                    project = self.env['bap_project.bap_project'].with_context({'tracking_disable': True}).create({
                         'name': 'Project Company B',
                         'partner_id': self.partner_1.id,
                         'company_id': self.company_b.id
@@ -221,17 +221,17 @@ class TestMultiCompanyProject(TestMultiCompanyCommon):
             with self.allow_companies([self.company_a.id, self.company_b.id]):
                 self.project_company_a._create_analytic_account()
 
-                self.assertEqual(self.project_company_a.company_id, self.project_company_a.analytic_account_id.company_id, "The analytic account created from a project should be in the same company")
+                self.assertEqual(self.project_company_a.company_id, self.project_company_a.analytic_account_id.company_id, "The analytic account created from a bap_project should be in the same company")
 
     def test_create_task(self):
         with self.sudo('employee-a'):
-            # create task, set project; the onchange will set the correct company
-            with Form(self.env['project.task'].with_context({'tracking_disable': True})) as task_form:
+            # create task, set bap_project; the onchange will set the correct company
+            with Form(self.env['bap_project.task'].with_context({'tracking_disable': True})) as task_form:
                 task_form.name = 'Test Task in company A'
                 task_form.project_id = self.project_company_a
             task = task_form.save()
 
-            self.assertEqual(task.company_id, self.project_company_a.company_id, "The company of the task should be the one from its project.")
+            self.assertEqual(task.company_id, self.project_company_a.company_id, "The company of the task should be the one from its bap_project.")
 
     def test_move_task(self):
         with self.sudo('employee-a'):
@@ -240,7 +240,7 @@ class TestMultiCompanyProject(TestMultiCompanyCommon):
                     task_form.project_id = self.project_company_b
                 task = task_form.save()
 
-                self.assertEqual(task.company_id, self.company_b, "The company of the task should be the one from its project.")
+                self.assertEqual(task.company_id, self.company_b, "The company of the task should be the one from its bap_project.")
 
                 with Form(self.task_1) as task_form:
                     task_form.project_id = self.project_company_a
@@ -251,39 +251,39 @@ class TestMultiCompanyProject(TestMultiCompanyCommon):
     def test_create_subtask(self):
         with self.sudo('employee-a'):
             with self.allow_companies([self.company_a.id, self.company_b.id]):
-                # create subtask, set parent; the onchange will set the correct company and subtask project
-                with Form(self.env['project.task'].with_context({'tracking_disable': True})) as task_form:
+                # create subtask, set parent; the onchange will set the correct company and subtask bap_project
+                with Form(self.env['bap_project.task'].with_context({'tracking_disable': True})) as task_form:
                     task_form.name = 'Test Subtask in company B'
                     task_form.parent_id = self.task_1
                     task_form.project_id = self.project_company_b
 
                 task = task_form.save()
 
-                self.assertEqual(task.company_id, self.project_company_b.company_id, "The company of the subtask should be the one from its project, and not from its parent.")
+                self.assertEqual(task.company_id, self.project_company_b.company_id, "The company of the subtask should be the one from its bap_project, and not from its parent.")
 
-                # set parent on existing orphan task; the onchange will set the correct company and subtask project
+                # set parent on existing orphan task; the onchange will set the correct company and subtask bap_project
                 self.task_2.write({'project_id': False})
                 with Form(self.task_2) as task_form:
                     task_form.name = 'Test Task 2 becomes child of Task 1 (other company)'
                     task_form.parent_id = self.task_1
                 task = task_form.save()
 
-                self.assertEqual(task.company_id, task.project_id.company_id, "The company of the orphan subtask should be the one from its project.")
+                self.assertEqual(task.company_id, task.project_id.company_id, "The company of the orphan subtask should be the one from its bap_project.")
 
     def test_cross_subtask_project(self):
-        # set up default subtask project
+        # set up default subtask bap_project
         self.project_company_a.write({'allow_subtasks': True, 'subtask_project_id': self.project_company_b.id})
 
         with self.sudo('employee-a'):
             with self.allow_companies([self.company_a.id, self.company_b.id]):
-                with Form(self.env['project.task'].with_context({'tracking_disable': True})) as task_form:
+                with Form(self.env['bap_project.task'].with_context({'tracking_disable': True})) as task_form:
                     task_form.name = 'Test Subtask in company B'
                     task_form.parent_id = self.task_1
 
                 task = task_form.save()
 
-                self.assertEqual(task.project_id, self.task_1.project_id.subtask_project_id, "The default project of a subtask should be the default subtask project of the project from the mother task")
-                self.assertEqual(task.company_id, task.project_id.subtask_project_id.company_id, "The company of the orphan subtask should be the one from its project.")
+                self.assertEqual(task.project_id, self.task_1.project_id.subtask_project_id, "The default bap_project of a subtask should be the default subtask bap_project of the bap_project from the mother task")
+                self.assertEqual(task.company_id, task.project_id.subtask_project_id.company_id, "The company of the orphan subtask should be the one from its bap_project.")
                 self.assertEqual(self.task_1.child_ids.ids, [task.id])
 
         with self.sudo('employee-a'):

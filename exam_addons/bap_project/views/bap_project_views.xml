@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <data>
+<!-- Kanban View -->
+        <record id="bap_project_kanban_view" model="ir.ui.view">
+            <field name="name">bap.project.view.kanban</field>
+            <field name="model">bap.project</field>
+            <field name="arch" type="xml">
+                <kanban class="o_modules_kanban">
+                    <field name="project_name"/>
+                    <field name="task_count"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div t-attf-class="oe_kanban_card">
+                                <a name="action_view_task_project" type="object" >
+                                    <div>
+                                        <strong><field name="project_name"/></strong>
+                                    </div>
+                                    <div>
+                                        <span>Tasks: </span>
+                                        <strong><field name="task_count"/></strong>
+                                    </div>
+                                </a>
+                                <!-- Dropdown -->
+                                <div class="o_dropdown_kanban dropdown" tabindex="-1">
+                                    <a class="dropdown-toggle o-no-caret btn" data-toggle="dropdown" data-display="static" href="#" role="button" aria-label="Dropdown menu" title="Dropdown menu">
+                                        <span class="fa fa-ellipsis-v"/>
+                                    </a>
+                                    <div class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                        <t t-if="widget.editable"><a role="menuitem" type="edit" class="dropdown-item">Edit</a></t>
+                                        <t>
+                                            <a role="menuitem" class="dropdown-item" name="action_view_project" type="object">View</a>
+                                        </t>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+<!-- Form View -->
+        <record id="bap_project_form_view" model="ir.ui.view">
+            <field name="name">bap.project.form</field>
+            <field name="model">bap.project</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button name="action_view_task_project" type="object" class="oe_stat_button" icon="fa-icon">
+                                <field name="task_count" widget="statinfo"/>
+                            </button>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="project_name"/>
+                                <field name="description"/>
+                                <field name="start_date"/>
+                                <field name="end_date"/>
+                                <field name="status"/>
+                            </group>
+                            <group>
+                                <field name="project_code"/>
+                                <field name="pm_id"/>
+                                <field name="dev_ids" widget="many2many_tags"/>
+                                <field name="qc_ids" widget="many2many_tags"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="bap_project_action" model="ir.actions.act_window">
+            <field name="name">Bap Project</field>
+            <field name="res_model">bap.project</field>
+            <field name="view_mode">kanban,tree,form</field>
+        </record>
+
+    </data>
+</odoo>

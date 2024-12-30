@@ -41,7 +41,7 @@ class ResCompany(models.Model):
     def create(self, values):
         company = super(ResCompany, self).create(values)
         # use sudo as the user could have the right to create a company
-        # but not to create a project. On the other hand, when the company
+        # but not to create a bap_project. On the other hand, when the company
         # is created, it is not in the allowed_company_ids on the env
         company.sudo()._create_internal_project_task()
         return company
@@ -50,13 +50,13 @@ class ResCompany(models.Model):
         results = []
         for company in self:
             company = company.with_company(company)
-            internal_project = company.env['project.project'].sudo().create({
+            internal_project = company.env['bap_project.bap_project'].sudo().create({
                 'name': _('Internal'),
                 'allow_timesheets': True,
                 'company_id': company.id,
             })
 
-            company.env['project.task'].sudo().create([{
+            company.env['bap_project.task'].sudo().create([{
                 'name': _('Training'),
                 'project_id': internal_project.id,
                 'company_id': company.id,

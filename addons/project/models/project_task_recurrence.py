@@ -41,10 +41,10 @@ WEEKS = {
 }
 
 class ProjectTaskRecurrence(models.Model):
-    _name = 'project.task.recurrence'
+    _name = 'bap_project.task.recurrence'
     _description = 'Task Recurrence'
 
-    task_ids = fields.One2many('project.task', 'recurrence_id')
+    task_ids = fields.One2many('bap_project.task', 'recurrence_id')
     next_recurrence_date = fields.Date()
     recurrence_left = fields.Integer(string="Number of tasks left to create")
 
@@ -217,7 +217,7 @@ class ProjectTaskRecurrence(models.Model):
         for recurrence in self:
             task = max(recurrence.sudo().task_ids, key=lambda t: t.id)
             create_values = recurrence._new_task_values(task)
-            new_task = self.env['project.task'].sudo().create(create_values)
+            new_task = self.env['bap_project.task'].sudo().create(create_values)
             if not new_task.parent_id and task.child_ids:
                 children = []
                 # copy the subtasks of the original task
@@ -225,7 +225,7 @@ class ProjectTaskRecurrence(models.Model):
                     child_values = recurrence._new_task_values(child)
                     child_values['parent_id'] = new_task.id
                     children.append(child_values)
-                self.env['project.task'].create(children)
+                self.env['bap_project.task'].create(children)
 
     def _set_next_recurrence_date(self):
         today = fields.Date.today()
@@ -244,7 +244,7 @@ class ProjectTaskRecurrence(models.Model):
 
     @api.model
     def _cron_create_recurring_tasks(self):
-        if not self.env.user.has_group('project.group_project_recurring_tasks'):
+        if not self.env.user.has_group('bap_project.group_project_recurring_tasks'):
             return
         today = fields.Date.today()
         recurring_today = self.search([('next_recurrence_date', '<=', today)])

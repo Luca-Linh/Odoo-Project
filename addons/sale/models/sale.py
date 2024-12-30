@@ -1179,7 +1179,7 @@ class SaleOrderLine(models.Model):
         - to invoice: we refer to the quantity to invoice of the line. Refer to method
           `_get_to_invoice_qty()` for more information on how this quantity is calculated.
         - upselling: this is possible only for a product invoiced on ordered quantities for which
-          we delivered more than expected. The could arise if, for example, a project took more
+          we delivered more than expected. The could arise if, for example, a bap_project took more
           time than expected but we decided not to invoice the extra cost to the client. This
           occurs onyl in state 'sale', so that when a SO is set to done, the upselling opportunity
           is removed from the list.
@@ -1498,7 +1498,7 @@ class SaleOrderLine(models.Model):
     def _get_delivered_quantity_by_analytic(self, additional_domain):
         """ Compute and write the delivered quantity of current SO lines, based on their related
             analytic lines.
-            :param additional_domain: domain to restrict AAL to include in computation (required since timesheet is an AAL with a project ...)
+            :param additional_domain: domain to restrict AAL to include in computation (required since timesheet is an AAL with a bap_project ...)
         """
         result = {}
 

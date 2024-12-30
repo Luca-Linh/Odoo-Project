@@ -4,7 +4,7 @@ from odoo.addons.sale_timesheet.models.project_overview import _to_action_data
 
 
 class Project(models.Model):
-    _inherit = 'project.project'
+    _inherit = 'bap_project.bap_project'
 
     def _plan_get_stat_button(self):
         stat_buttons = super(Project, self)._plan_get_stat_button()

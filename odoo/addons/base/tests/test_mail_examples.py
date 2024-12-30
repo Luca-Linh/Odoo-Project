@@ -298,7 +298,7 @@ HOTMAIL_1 = u"""<div>
             <br>
             You indicated that you wish to use OpenERP in your own company.
             We would like to know more about your your business needs and requirements, and see how
-            we can help you. When would you be available to discuss your project ?<br>
+            we can help you. When would you be available to discuss your bap_project ?<br>
             Best regards,<br>
             <pre>
                 <a href="http://openerp.com" target="_blank">http://openerp.com</a>
@@ -403,7 +403,7 @@ MSOFFICE_1 = u"""
         <p></p>
         <p>
             Uou mentioned you wish to use OpenERP in your own company. Please let me more about your
-            business needs and requirements? When will you be available to discuss about your project?
+            business needs and requirements? When will you be available to discuss about your bap_project?
         </p>
         <p></p>
         <p>Thanks for your interest in OpenERP, </p>

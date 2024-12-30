@@ -6,13 +6,13 @@ from odoo import fields, models, tools
 
 class ProfitabilityAnalysis(models.Model):
 
-    _name = "project.profitability.report"
+    _name = "bap_project.profitability.report"
     _description = "Project Profitability Report"
     _order = 'project_id, sale_line_id'
     _auto = False
 
     analytic_account_id = fields.Many2one('account.analytic.account', string='Analytic Account', readonly=True)
-    project_id = fields.Many2one('project.project', string='Project', readonly=True)
+    project_id = fields.Many2one('bap_project.bap_project', string='Project', readonly=True)
     currency_id = fields.Many2one('res.currency', string='Project Currency', readonly=True)
     company_id = fields.Many2one('res.company', string='Project Company', readonly=True)
     user_id = fields.Many2one('res.users', string='Project Manager', readonly=True)
@@ -33,7 +33,7 @@ class ProfitabilityAnalysis(models.Model):
     expense_amount_untaxed_to_invoice = fields.Float("Untaxed Amount to Re-invoice", digits=(16, 2), readonly=True, group_operator="sum")
     expense_amount_untaxed_invoiced = fields.Float("Untaxed Amount Re-invoiced", digits=(16, 2), readonly=True, group_operator="sum")
     other_revenues = fields.Float("Other Revenues", digits=(16, 2), readonly=True, group_operator="sum",
-                                  help="All revenues that are not from timesheets and that are linked to the analytic account of the project.")
+                                  help="All revenues that are not from timesheets and that are linked to the analytic account of the bap_project.")
     margin = fields.Float("Margin", digits=(16, 2), readonly=True, group_operator="sum")
 
     _depends = {
@@ -244,7 +244,7 @@ class ProfitabilityAnalysis(models.Model):
                                 UNION ALL
 
                                 -- Get the following values: expense amount untaxed to invoice/invoiced, amount untaxed to invoice/invoiced
-                                -- These values have to be computed from all the records retrieved just above but grouped by project and sale order line
+                                -- These values have to be computed from all the records retrieved just above but grouped by bap_project and sale order line
                                 SELECT
                                     AMOUNT_UNTAXED.project_id AS project_id,
                                     AMOUNT_UNTAXED.analytic_account_id AS analytic_account_id,
@@ -289,7 +289,7 @@ class ProfitabilityAnalysis(models.Model):
                                         WHERE AAL.project_id IS NOT NULL AND P.id = AAL.project_id AND P.active = 't'
                                         GROUP BY P.id, AAL.so_line
                                         UNION
-                                        -- Service SOL linked to a project task AND not yet timesheeted
+                                        -- Service SOL linked to a bap_project task AND not yet timesheeted
                                         SELECT
                                             P.id AS project_id,
                                             P.analytic_account_id AS analytic_account_id,
@@ -304,7 +304,7 @@ class ProfitabilityAnalysis(models.Model):
                                           AND P.active = 't' AND P.allow_timesheets = 't'
                                         GROUP BY P.id, SOL.id
                                         UNION
-                                        -- Service SOL linked to project AND not yet timesheeted
+                                        -- Service SOL linked to bap_project AND not yet timesheeted
                                         SELECT
                                             P.id AS project_id,
                                             P.analytic_account_id AS analytic_account_id,
@@ -316,7 +316,7 @@ class ProfitabilityAnalysis(models.Model):
                                         LEFT JOIN project_task T ON T.sale_line_id = SOL.id
                                         WHERE SOL.is_service = 't'
                                           AND AAL.id IS NULL -- not timesheeted
-                                          AND (T.id IS NULL OR T.project_id != P.id) -- not linked to a task in this project
+                                          AND (T.id IS NULL OR T.project_id != P.id) -- not linked to a task in this bap_project
                                           AND P.active = 't' AND P.allow_timesheets = 't'
                                         GROUP BY P.id, SOL.id
                                         UNION
@@ -336,7 +336,7 @@ class ProfitabilityAnalysis(models.Model):
                                         WHERE SOL.is_service = 't'
                                           AND AAL.id IS NULL -- not timesheeted
                                           AND TSOL.id IS NULL -- not linked to a task
-                                          AND PSOL.id IS NULL -- not linked to a project
+                                          AND PSOL.id IS NULL -- not linked to a bap_project
                                           AND P.active = 't' AND P.allow_timesheets = 't'
                                         GROUP BY P.id, SOL.id
                                         UNION

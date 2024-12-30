@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+     <data noupdate="1">
+        <record id="project_alpha" model="bap.project">
+            <field name="project_name">Project Alpha</field>
+            <field name="start_date">2024-01-01</field>
+            <field name="status">open</field>
+            <field name="pm_id" ref="user_project_manager"/>
+            <field name="dev_id" ref="user_developer"/>
+            <field name="qc_id" ref="user_quality_controller"/>
+            <field name="description">Description for Project Alpha.</field>
+        </record>
+    </data>
+    <data>
+        <record id="sprint_1" model="bap.project.sprint">
+            <field name="sprint_name">Sprint 1</field>
+            <field name="project_id" ref="project_alpha"/>
+            <field name="start_date">2024-01-01</field>
+            <field name="end_date">2024-01-14</field>
+            <field name="status">open</field>
+        </record>
+    </data>
+    <data>
+        <record id="task_alpha" model="bap.project.task">
+            <field name="task_name">Task Alpha</field>
+            <field name="project_id" ref="project_alpha"/>
+            <field name="sprint_id" ref="sprint_1"/>
+            <field name="description">Description for Task Alpha.</field>
+        </record>
+
+        <record id="task_beta" model="bap.project.task">
+            <field name="task_name">Task Beta</field>
+            <field name="project_id" ref="project_alpha"/>
+            <field name="sprint_id" ref="sprint_1"/>
+            <field name="description">Description for Task Beta.</field>
+        </record>
+
+    </data>
+</odoo>

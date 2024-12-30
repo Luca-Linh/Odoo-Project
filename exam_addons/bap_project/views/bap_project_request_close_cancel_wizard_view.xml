@@ -1,0 +1,17 @@
+<odoo>
+    <record id="bap_project_request_cancel_close_wizard_form_view" model="ir.ui.view">
+        <field name="name">bap.project.request.cancel.close.wizard.form.view</field>
+        <field name="model">project.request.cancel.close.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Cancel Project Request">
+                <group>
+                    <field name="cancel_reason" placeholder="Enter reason for cancellation" required="1" widget="textarea"/>
+                </group>
+                <footer>
+                    <button name="action_confirm_cancel_close" type="object" string="Confirm" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="bap_project_task_type_tree_view" model="ir.ui.view">
+            <field name="name">bap.project.task.type.tree</field>
+            <field name="model">bap.project.task.type</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="task_type_code"/>
+                    <field name="take_type_name"/>
+                    <field name="active"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="bap_project_task_type_form_view" model="ir.ui.view">
+            <field name="name">bap.project.task.type.form</field>
+            <field name="model">bap.project.task.type</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="task_type_code"/>
+                            <field name="take_type_name"/>
+                            <field name="active"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="bap_project_task_type_action" model="ir.actions.act_window">
+            <field name="name">Bap Project Task Type</field>
+            <field name="res_model">bap.project.task.type</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+    </data>
+</odoo>

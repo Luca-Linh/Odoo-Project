@@ -9,11 +9,11 @@ from odoo.exceptions import ValidationError
 
 # YTI PLEASE SPLIT ME
 class Project(models.Model):
-    _inherit = 'project.project'
+    _inherit = 'bap_project.bap_project'
 
     @api.model
     def default_get(self, fields):
-        """ Pre-fill timesheet product as "Time" data product when creating new project allowing billable tasks by default. """
+        """ Pre-fill timesheet product as "Time" data product when creating new bap_project allowing billable tasks by default. """
         result = super(Project, self).default_get(fields)
         if 'timesheet_product_id' in fields and result.get('allow_billable') and result.get('allow_timesheets') and not result.get('timesheet_product_id'):
             default_product = self.env.ref('sale_timesheet.time_product', False)
@@ -28,15 +28,15 @@ class Project(models.Model):
         ('customer_task', 'Different customers'),
         ('customer_project', 'A unique customer')
     ], string="Invoice Tasks to", default="customer_task",
-        help='When billing tasks individually, a Sales Order will be created from each task. It is perfect if you would like to bill different services to different customers at different rates. \n When billing the whole project, a Sales Order will be created from the project instead. This option is better if you would like to bill all the tasks of a given project to a specific customer either at a fixed rate, or at an employee rate.')
+        help='When billing tasks individually, a Sales Order will be created from each task. It is perfect if you would like to bill different services to different customers at different rates. \n When billing the whole bap_project, a Sales Order will be created from the bap_project instead. This option is better if you would like to bill all the tasks of a given bap_project to a specific customer either at a fixed rate, or at an employee rate.')
     pricing_type = fields.Selection([
         ('fixed_rate', 'Project rate'),
         ('employee_rate', 'Employee rate')
     ], string="Pricing", default="fixed_rate",
         help='The fixed rate is perfect if you bill a service at a fixed rate per hour or day worked regardless of the employee who performed it. The employee rate is preferable if your employees deliver the same service at a different rate. For instance, junior and senior consultants would deliver the same service (= consultancy), but at a different rate because of their level of seniority.')
-    sale_line_employee_ids = fields.One2many('project.sale.line.employee.map', 'project_id', "Sale line/Employee map", copy=False,
+    sale_line_employee_ids = fields.One2many('bap_project.sale.line.employee.map', 'project_id', "Sale line/Employee map", copy=False,
         help="Employee/Sale Order Item Mapping:\n Defines to which sales order item an employee's timesheet entry will be linked."
-        "By extension, it defines the rate at which an employee's time on the project is billed.")
+        "By extension, it defines the rate at which an employee's time on the bap_project is billed.")
     allow_billable = fields.Boolean("Billable", help="Invoice your time and material from tasks.")
     display_create_order = fields.Boolean(compute='_compute_display_create_order')
     timesheet_product_id = fields.Many2one(
@@ -98,9 +98,9 @@ class Project(models.Model):
         for project in self:
             if project.pricing_type == 'fixed_rate':
                 if project.sale_line_id and not project.sale_line_id.is_service:
-                    raise ValidationError(_("A billable project should be linked to a Sales Order Item having a Service product."))
+                    raise ValidationError(_("A billable bap_project should be linked to a Sales Order Item having a Service product."))
                 if project.sale_line_id and project.sale_line_id.is_expense:
-                    raise ValidationError(_("A billable project should be linked to a Sales Order Item that does not come from an expense or a vendor bill."))
+                    raise ValidationError(_("A billable bap_project should be linked to a Sales Order Item that does not come from an expense or a vendor bill."))
 
     @api.onchange('allow_billable')
     def _onchange_allow_billable(self):
@@ -147,8 +147,8 @@ class Project(models.Model):
                 <p class="o_view_nocontent_smiling_face">
                     Record timesheets
                 </p><p>
-                    You can register and track your workings hours by project every
-                    day. Every time spent on a project will become a cost and can be re-invoiced to
+                    You can register and track your workings hours by bap_project every
+                    day. Every time spent on a bap_project will become a cost and can be re-invoiced to
                     customers if required.
                 </p>
             """),
@@ -175,26 +175,26 @@ class Project(models.Model):
         return {
             "name": _("Create Sales Order"),
             "type": 'ir.actions.act_window',
-            "res_model": 'project.create.sale.order',
+            "res_model": 'bap_project.create.sale.order',
             "views": [[False, "form"]],
             "target": 'new',
             "context": {
                 'active_id': self.id,
-                'active_model': 'project.project',
+                'active_model': 'bap_project.bap_project',
                 'default_product_id': self.timesheet_product_id.id,
             },
         }
 
 
 class ProjectTask(models.Model):
-    _inherit = "project.task"
+    _inherit = "bap_project.task"
 
     @api.model
     def default_get(self, fields):
         result = super(ProjectTask, self).default_get(fields)
 
         if not result.get('timesheet_product_id', False) and 'project_id' in result:
-            project = self.env['project.project'].browse(result['project_id'])
+            project = self.env['bap_project.bap_project'].browse(result['project_id'])
             if project.bill_type != 'customer_project' or project.pricing_type != 'employee_rate':
                 result['timesheet_product_id'] = project.timesheet_product_id.id
         return result
@@ -325,7 +325,7 @@ class ProjectTask(models.Model):
         res = super(ProjectTask, self).write(values)
         # Done after super to avoid constraints on field recomputation
         if values.get('project_id'):
-            project_dest = self.env['project.project'].browse(values['project_id'])
+            project_dest = self.env['bap_project.bap_project'].browse(values['project_id'])
             if project_dest.bill_type == 'customer_project' and project_dest.pricing_type == 'employee_rate':
                 self.write({'sale_line_id': False})
         if 'non_allow_billable' in values and self.filtered('allow_timesheets').sudo().timesheet_ids:
@@ -336,7 +336,7 @@ class ProjectTask(models.Model):
                 timesheet_ids.write({'so_line': False})
                 self.sale_line_id = False
             else:
-                # We write project on timesheet lines to call _timesheet_preprocess. This function will set correct the SOL
+                # We write bap_project on timesheet lines to call _timesheet_preprocess. This function will set correct the SOL
                 for project in timesheet_ids.project_id:
                     current_timesheet_ids = timesheet_ids.filtered(lambda t: t.project_id == project)
                     current_timesheet_ids.task_id.update({'sale_line_id': project.sale_line_id.id})
@@ -363,12 +363,12 @@ class ProjectTask(models.Model):
         return {
             "name": _("Create Sales Order"),
             "type": 'ir.actions.act_window',
-            "res_model": 'project.task.create.sale.order',
+            "res_model": 'bap_project.task.create.sale.order',
             "views": [[False, "form"]],
             "target": 'new',
             "context": {
                 'active_id': self.id,
-                'active_model': 'project.task',
+                'active_model': 'bap_project.task',
                 'form_view_initial_mode': 'edit',
                 'default_product_id': self.timesheet_product_id.id or self.project_id.timesheet_product_id.id,
             },
@@ -383,7 +383,7 @@ class ProjectTask(models.Model):
         return list(set((self.sale_order_id + self.timesheet_ids.so_line.order_id).ids))
 
 class ProjectTaskRecurrence(models.Model):
-    _inherit = 'project.task.recurrence'
+    _inherit = 'bap_project.task.recurrence'
 
     @api.model
     def _get_recurring_fields(self):

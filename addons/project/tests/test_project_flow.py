@@ -39,65 +39,65 @@ class TestProjectFlow(TestProjectCommon):
     def test_project_process_project_manager_duplicate(self):
         pigs = self.project_pigs.with_user(self.user_projectmanager)
         dogs = pigs.copy()
-        self.assertEqual(len(dogs.tasks), 2, 'project: duplicating a project must duplicate its tasks')
+        self.assertEqual(len(dogs.tasks), 2, 'bap_project: duplicating a bap_project must duplicate its tasks')
 
     @mute_logger('odoo.addons.mail.mail_thread')
     def test_task_process_without_stage(self):
         # Do: incoming mail from an unknown partner on an alias creates a new task 'Frogs'
         task = self.format_and_process(
-            EMAIL_TPL, to='project+pigs@mydomain.com, valid.lelitre@agrolait.com', cc='valid.other@gmail.com',
+            EMAIL_TPL, to='bap_project+pigs@mydomain.com, valid.lelitre@agrolait.com', cc='valid.other@gmail.com',
             email_from='%s' % self.user_projectuser.email,
             subject='Frogs', msg_id='<1198923581.41972151344608186760.JavaMail@agrolait.com>',
-            target_model='project.task')
+            target_model='bap_project.task')
 
         # Test: one task created by mailgateway administrator
-        self.assertEqual(len(task), 1, 'project: message_process: a new project.task should have been created')
+        self.assertEqual(len(task), 1, 'bap_project: message_process: a new bap_project.task should have been created')
         # Test: check partner in message followers
         self.assertIn(self.partner_2, task.message_partner_ids, "Partner in message cc is not added as a task followers.")
         # Test: messages
         self.assertEqual(len(task.message_ids), 1,
-                         'project: message_process: newly created task should have 1 message: email')
-        self.assertEqual(task.message_ids[0].subtype_id, self.env.ref('project.mt_task_new'),
-                         'project: message_process: first message of new task should have Task Created subtype')
+                         'bap_project: message_process: newly created task should have 1 message: email')
+        self.assertEqual(task.message_ids[0].subtype_id, self.env.ref('bap_project.mt_task_new'),
+                         'bap_project: message_process: first message of new task should have Task Created subtype')
         self.assertEqual(task.message_ids[0].author_id, self.user_projectuser.partner_id,
-                         'project: message_process: second message should be the one from Agrolait (partner failed)')
+                         'bap_project: message_process: second message should be the one from Agrolait (partner failed)')
         self.assertEqual(task.message_ids[0].subject, 'Frogs',
-                         'project: message_process: second message should be the one from Agrolait (subject failed)')
+                         'bap_project: message_process: second message should be the one from Agrolait (subject failed)')
         # Test: task content
         self.assertEqual(task.name, 'Frogs', 'project_task: name should be the email subject')
-        self.assertEqual(task.project_id.id, self.project_pigs.id, 'project_task: incorrect project')
+        self.assertEqual(task.project_id.id, self.project_pigs.id, 'project_task: incorrect bap_project')
         self.assertEqual(task.stage_id.sequence, False, "project_task: shouldn't have a stage, i.e. sequence=False")
 
     @mute_logger('odoo.addons.mail.mail_thread')
     def test_task_process_with_stages(self):
         # Do: incoming mail from an unknown partner on an alias creates a new task 'Cats'
         task = self.format_and_process(
-            EMAIL_TPL, to='project+goats@mydomain.com, valid.lelitre@agrolait.com', cc='valid.other@gmail.com',
+            EMAIL_TPL, to='bap_project+goats@mydomain.com, valid.lelitre@agrolait.com', cc='valid.other@gmail.com',
             email_from='%s' % self.user_projectuser.email,
             subject='Cats', msg_id='<1198923581.41972151344608186760.JavaMail@agrolait.com>',
-            target_model='project.task')
+            target_model='bap_project.task')
 
         # Test: one task created by mailgateway administrator
-        self.assertEqual(len(task), 1, 'project: message_process: a new project.task should have been created')
+        self.assertEqual(len(task), 1, 'bap_project: message_process: a new bap_project.task should have been created')
         # Test: check partner in message followers
         self.assertIn(self.partner_2, task.message_partner_ids, "Partner in message cc is not added as a task followers.")
         # Test: messages
         self.assertEqual(len(task.message_ids), 1,
-                         'project: message_process: newly created task should have 1 messages: email')
-        self.assertEqual(task.message_ids[0].subtype_id, self.env.ref('project.mt_task_new'),
-                         'project: message_process: first message of new task should have Task Created subtype')
+                         'bap_project: message_process: newly created task should have 1 messages: email')
+        self.assertEqual(task.message_ids[0].subtype_id, self.env.ref('bap_project.mt_task_new'),
+                         'bap_project: message_process: first message of new task should have Task Created subtype')
         self.assertEqual(task.message_ids[0].author_id, self.user_projectuser.partner_id,
-                         'project: message_process: first message should be the one from Agrolait (partner failed)')
+                         'bap_project: message_process: first message should be the one from Agrolait (partner failed)')
         self.assertEqual(task.message_ids[0].subject, 'Cats',
-                         'project: message_process: first message should be the one from Agrolait (subject failed)')
+                         'bap_project: message_process: first message should be the one from Agrolait (subject failed)')
         # Test: task content
         self.assertEqual(task.name, 'Cats', 'project_task: name should be the email subject')
-        self.assertEqual(task.project_id.id, self.project_goats.id, 'project_task: incorrect project')
+        self.assertEqual(task.project_id.id, self.project_goats.id, 'project_task: incorrect bap_project')
         self.assertEqual(task.stage_id.sequence, 1, "project_task: should have a stage with sequence=1")
 
     @mute_logger('odoo.addons.mail.mail_thread')
     def test_portal_visibility(self):
-        # change portal visibility to the project and add Portal user as invited
+        # change portal visibility to the bap_project and add Portal user as invited
         self.project_goats.write({
             'privacy_visibility': 'portal',
             'allowed_portal_user_ids': [self.user_portal.id],
@@ -105,27 +105,27 @@ class TestProjectFlow(TestProjectCommon):
 
         # Do: incoming mail from an internal user on an alias creates a new task 'Rabbits'
         task = self.format_and_process(
-            EMAIL_TPL, to='project+goats@mydomain.com, valid.lelitre@agrolait.com', cc='valid.other@gmail.com',
+            EMAIL_TPL, to='bap_project+goats@mydomain.com, valid.lelitre@agrolait.com', cc='valid.other@gmail.com',
             email_from='%s' % self.user_projectmanager.email,
             subject='Rabbits', msg_id='<1198923581.41972151344608186760.JavaMail@agrolait.com>',
-            target_model='project.task')
+            target_model='bap_project.task')
 
         self.assertIn(self.user_portal, task.allowed_user_ids, 'Task should be visible for Portal User')
 
     def test_subtask_process(self):
         """
-        Check subtask mecanism and change it from project.
+        Check subtask mecanism and change it from bap_project.
 
         For this test, 2 projects are used:
-            - the 'pigs' project which has a partner_id
-            - the 'goats' project where the partner_id is removed at the beginning of the tests and then restored.
+            - the 'pigs' bap_project which has a partner_id
+            - the 'goats' bap_project where the partner_id is removed at the beginning of the tests and then restored.
 
         2 parent tasks are also used to be able to switch the parent task of a sub-task:
             - 'parent_task' linked to the partner_2
             - 'another_parent_task' linked to the partner_3
         """
 
-        Task = self.env['project.task'].with_context({'tracking_disable': True})
+        Task = self.env['bap_project.task'].with_context({'tracking_disable': True})
 
         parent_task = Task.create({
             'name': 'Mother Task',
@@ -143,24 +143,24 @@ class TestProjectFlow(TestProjectCommon):
             'planned_hours': 0,
         })
 
-        # remove the partner_id of the 'goats' project
+        # remove the partner_id of the 'goats' bap_project
         goats_partner_id = self.project_goats.partner_id
 
         self.project_goats.write({
             'partner_id': False
         })
 
-        # the child task 1 is linked to a project without partner_id (goats project)
+        # the child task 1 is linked to a bap_project without partner_id (goats bap_project)
         child_task_1 = Task.create({
-            'name': 'Task Child with project',
+            'name': 'Task Child with bap_project',
             'parent_id': parent_task.id,
             'project_id': self.project_goats.id,
             'planned_hours': 3,
         })
 
-        # the child task 2 is linked to a project with a partner_id (pigs project)
+        # the child task 2 is linked to a bap_project with a partner_id (pigs bap_project)
         child_task_2 = Task.create({
-            'name': 'Task Child without project',
+            'name': 'Task Child without bap_project',
             'parent_id': parent_task.id,
             'project_id': self.project_pigs.id,
             'planned_hours': 5,
@@ -168,11 +168,11 @@ class TestProjectFlow(TestProjectCommon):
 
         self.assertEqual(
             child_task_1.partner_id, child_task_1.parent_id.partner_id,
-            "When no project partner_id has been set, a subtask should have the same partner as its parent")
+            "When no bap_project partner_id has been set, a subtask should have the same partner as its parent")
 
         self.assertEqual(
             child_task_2.partner_id, child_task_2.project_id.partner_id,
-            "When a project partner_id has been set, a subtask should have the same partner as its project")
+            "When a bap_project partner_id has been set, a subtask should have the same partner as its bap_project")
 
         self.assertEqual(
             parent_task.subtask_count, 2,
@@ -182,50 +182,50 @@ class TestProjectFlow(TestProjectCommon):
             parent_task.subtask_planned_hours, 8,
             "Planned hours of subtask should impact parent task")
 
-        # change the parent of a subtask without a project partner_id
+        # change the parent of a subtask without a bap_project partner_id
         child_task_1.write({
             'parent_id': another_parent_task.id
         })
 
         self.assertEqual(
             child_task_1.partner_id, parent_task.partner_id,
-            "When changing the parent task of a subtask with no project partner_id, the partner_id should remain the same.")
+            "When changing the parent task of a subtask with no bap_project partner_id, the partner_id should remain the same.")
 
-        # change the parent of a subtask with a project partner_id
+        # change the parent of a subtask with a bap_project partner_id
         child_task_2.write({
             'parent_id': another_parent_task.id
         })
 
         self.assertEqual(
             child_task_2.partner_id, child_task_2.project_id.partner_id,
-            "When changing the parent task of a subtask with a project, the partner_id should remain the same.")
+            "When changing the parent task of a subtask with a bap_project, the partner_id should remain the same.")
 
-        # set a project with partner_id to a subtask without project partner_id
+        # set a bap_project with partner_id to a subtask without bap_project partner_id
         child_task_1.write({
             'project_id': self.project_pigs.id
         })
 
         self.assertEqual(
             child_task_1.partner_id, self.project_pigs.partner_id, 
-            "When the project changes, the subtask should have the same partner id as the new project.")
+            "When the bap_project changes, the subtask should have the same partner id as the new bap_project.")
 
-        # restore the partner_id of the 'goats' project
+        # restore the partner_id of the 'goats' bap_project
         self.project_goats.write({
             'partner_id': goats_partner_id
         })
 
-        # set a project with partner_id to a subtask with a project partner_id
+        # set a bap_project with partner_id to a subtask with a bap_project partner_id
         child_task_2.write({
             'project_id': self.project_goats.id
         })
 
         self.assertEqual(
             child_task_2.partner_id, self.project_goats.partner_id,
-            "When the project changes, the subtask should have the same partner id as the new project.")
+            "When the bap_project changes, the subtask should have the same partner id as the new bap_project.")
 
     def test_rating(self):
-        """Check if rating works correctly even when task is changed from project A to project B"""
-        Task = self.env['project.task'].with_context({'tracking_disable': True})
+        """Check if rating works correctly even when task is changed from bap_project A to bap_project B"""
+        Task = self.env['bap_project.task'].with_context({'tracking_disable': True})
         first_task = Task.create({
             'name': 'first task',
             'user_id': self.user_projectuser.id,
@@ -236,9 +236,9 @@ class TestProjectFlow(TestProjectCommon):
         self.assertEqual(first_task.rating_count, 0, "Task should have no rating associated with it")
 
         rating_good = self.env['rating.rating'].create({
-            'res_model_id': self.env['ir.model']._get('project.task').id,
+            'res_model_id': self.env['ir.model']._get('bap_project.task').id,
             'res_id': first_task.id,
-            'parent_res_model_id': self.env['ir.model']._get('project.project').id,
+            'parent_res_model_id': self.env['ir.model']._get('bap_project.bap_project').id,
             'parent_res_id': self.project_pigs.id,
             'rated_partner_id': self.partner_2.id,
             'partner_id': self.partner_2.id,
@@ -247,9 +247,9 @@ class TestProjectFlow(TestProjectCommon):
         })
 
         rating_bad = self.env['rating.rating'].create({
-            'res_model_id': self.env['ir.model']._get('project.task').id,
+            'res_model_id': self.env['ir.model']._get('bap_project.task').id,
             'res_id': first_task.id,
-            'parent_res_model_id': self.env['ir.model']._get('project.project').id,
+            'parent_res_model_id': self.env['ir.model']._get('bap_project.bap_project').id,
             'parent_res_id': self.project_pigs.id,
             'rated_partner_id': self.partner_2.id,
             'partner_id': self.partner_2.id,
@@ -281,7 +281,7 @@ class TestProjectFlow(TestProjectCommon):
         self.assertEqual(self.project_goats.rating_percentage_satisfaction, -1)
         self.assertEqual(self.project_pigs.rating_percentage_satisfaction, 50)
 
-        # We change the task from project_pigs to project_goats, ratings should be associated with the new project
+        # We change the task from project_pigs to project_goats, ratings should be associated with the new bap_project
         first_task.project_id = self.project_goats.id
 
         # We need to invalidate cache since it is not done automatically by the ORM

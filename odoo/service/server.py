@@ -1153,7 +1153,7 @@ def load_server_wide_modules():
             msg = ''
             if m == 'web':
                 msg = """
-The `web` module is provided by the addons found in the `openerp-web` project.
+The `web` module is provided by the addons found in the `openerp-web` bap_project.
 Maybe you forgot to add those addons in your addons_path configuration."""
             _logger.exception('Failed to load server-wide module `%s`.%s', m, msg)
 

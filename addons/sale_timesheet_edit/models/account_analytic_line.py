@@ -15,6 +15,6 @@ class AccountAnalyticLine(models.Model):
         super(AccountAnalyticLine, self.filtered(lambda t: not t.is_so_line_edited))._compute_so_line()
 
     def _check_sale_line_in_project_map(self):
-        # TODO: [XBO] remove me in master, now we authorize to manually edit the so_line, then this so_line can be different of the one in task/project/map_entry
+        # TODO: [XBO] remove me in master, now we authorize to manually edit the so_line, then this so_line can be different of the one in task/bap_project/map_entry
         # !!! Override of the method in sale_timesheet !!!
         return

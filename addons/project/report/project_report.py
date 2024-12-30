@@ -5,7 +5,7 @@ from odoo import fields, models, tools
 
 
 class ReportProjectTaskUser(models.Model):
-    _name = "report.project.task.user"
+    _name = "report.bap_project.task.user"
     _description = "Tasks Analysis"
     _order = 'name desc, project_id'
     _auto = False
@@ -16,7 +16,7 @@ class ReportProjectTaskUser(models.Model):
     date_end = fields.Datetime(string='Ending Date', readonly=True)
     date_deadline = fields.Date(string='Deadline', readonly=True)
     date_last_stage_update = fields.Datetime(string='Last Stage Update', readonly=True)
-    project_id = fields.Many2one('project.project', string='Project', readonly=True)
+    project_id = fields.Many2one('bap_project.bap_project', string='Project', readonly=True)
     working_days_close = fields.Float(string='# Working Days to Close',
         digits=(16,2), readonly=True, group_operator="avg",
         help="Number of Working Days to close the task")
@@ -37,7 +37,7 @@ class ReportProjectTaskUser(models.Model):
         ], string='Kanban State', readonly=True)
     company_id = fields.Many2one('res.company', string='Company', readonly=True)
     partner_id = fields.Many2one('res.partner', string='Customer', readonly=True)
-    stage_id = fields.Many2one('project.task.type', string='Stage', readonly=True)
+    stage_id = fields.Many2one('bap_project.task.type', string='Stage', readonly=True)
 
     def _select(self):
         select_str = """

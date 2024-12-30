@@ -15,7 +15,7 @@ from odoo.service.db import _create_empty_database, DatabaseExists
 
 
 class Start(Command):
-    """Quick start the Odoo server for your project"""
+    """Quick start the Odoo server for your bap_project"""
 
     def get_module_list(self, path):
         mods = itertools.chain.from_iterable(
@@ -30,9 +30,9 @@ class Start(Command):
             description=self.__doc__
         )
         parser.add_argument('--path', default=".",
-            help="Directory where your project's modules are stored (will autodetect from current dir)")
+            help="Directory where your bap_project's modules are stored (will autodetect from current dir)")
         parser.add_argument("-d", "--database", dest="db_name", default=None,
-                         help="Specify the database name (default to project's directory name")
+                         help="Specify the database name (default to bap_project's directory name")
 
 
         args, unknown = parser.parse_known_args(args=cmdargs)

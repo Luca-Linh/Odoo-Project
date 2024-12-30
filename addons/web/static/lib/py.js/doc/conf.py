@@ -39,11 +39,11 @@ source_suffix = '.rst'
 # The master toctree document.
 master_doc = 'index'
 
-# General information about the project.
+# General information about the bap_project.
 project = u'py.js'
 copyright = u'2012, Xavier Morel'
 
-# The version info for the project you're documenting, acts as replacement for
+# The version info for the bap_project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
 # built documents.
 #
@@ -107,7 +107,7 @@ html_theme = 'default'
 #html_theme_path = []
 
 # The name for this set of Sphinx documents.  If None, it defaults to
-# "<project> v<release> documentation".
+# "<bap_project> v<release> documentation".
 #html_title = None
 
 # A shorter title for the navigation bar.  Default is the same as html_title.
@@ -233,7 +233,7 @@ man_pages = [
 #  dir menu entry, description, category)
 texinfo_documents = [
   ('index', 'pyjs', u'py.js Documentation',
-   u'Xavier Morel', 'pyjs', 'One line description of project.',
+   u'Xavier Morel', 'pyjs', 'One line description of bap_project.',
    'Miscellaneous'),
 ]
 

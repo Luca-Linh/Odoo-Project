@@ -35,13 +35,13 @@ class TestSaleProject(TestCommonReporting):
         # log timesheet for billable time
         timesheet1 = self._log_timesheet_manager(project_so, 10, so_line_deliver_global_project.task_id)
         task_so = self.so_line_order_project.task_id
-        # logged some timesheets: on project only, then on tasks with different employees
+        # logged some timesheets: on bap_project only, then on tasks with different employees
         timesheet2 = self._log_timesheet_user(project_so, 2)
         timesheet3 = self._log_timesheet_user(project_so, 3, task_so)
         timesheet4 = self._log_timesheet_manager(project_so, 1, task_so)
 
         # create a task which is not linked to sales order and fill non-billable timesheet
-        task = self.env['project.task'].create({
+        task = self.env['bap_project.task'].create({
             'name': 'Task',
             'project_id': project_so.id,
             'allow_billable': False,
@@ -98,7 +98,7 @@ class TestSaleProject(TestCommonReporting):
         })
 
         view_id = self.env.ref('sale_timesheet.project_timesheet_action_client_timesheet_plan').id
-        vals = self.env['project.project']._qweb_prepare_qcontext(view_id, [['id', '=', project_so.id]])
+        vals = self.env['bap_project.bap_project']._qweb_prepare_qcontext(view_id, [['id', '=', project_so.id]])
 
         dashboard_value = timesheet2.unit_amount + timesheet3.unit_amount + timesheet4.unit_amount + timesheet5.unit_amount + timesheet1.unit_amount
         project_so_timesheet_sold_unit = timesheet3.unit_amount + timesheet4.unit_amount
@@ -112,12 +112,12 @@ class TestSaleProject(TestCommonReporting):
         project_other_revenues = invoice.invoice_line_ids.search([('product_id', '=', self.product_delivery_manual1.id)])
 
         self.assertEqual(float_compare(vals['dashboard']['time']['non_billable'], timesheet5.unit_amount, precision_rounding=rounding), 0, "The hours non-billable should be the one from the SO2 line, as we are in ordered quantity")
-        self.assertEqual(float_compare(vals['dashboard']['time']['non_billable_project'], timesheet2.unit_amount, precision_rounding=rounding), 0, "The hours non-billable-project should be the one from the SO2 line, as we are in ordered quantity")
+        self.assertEqual(float_compare(vals['dashboard']['time']['non_billable_project'], timesheet2.unit_amount, precision_rounding=rounding), 0, "The hours non-billable-bap_project should be the one from the SO2 line, as we are in ordered quantity")
         self.assertEqual(float_compare(vals['dashboard']['time']['billable_time'], timesheet1.unit_amount, precision_rounding=rounding), 0, "The hours billable-time should be the one from the SO2 line, as we are in ordered quantity")
         self.assertEqual(float_compare(vals['dashboard']['time']['billable_fixed'], project_so_timesheet_sold_unit, precision_rounding=rounding), 0, "The hours billable-fixed should be the one from the SO2 line, as we are in ordered quantity")
         self.assertEqual(float_compare(vals['dashboard']['time']['total'], dashboard_value, precision_rounding=rounding), 0, "The total hours should be the one from the SO2 line, as we are in ordered quantity")
         self.assertEqual(float_compare(vals['dashboard']['rates']['non_billable'], project_rate_non_billable, precision_rounding=rounding), 0, "The rate non-billable should be the one from the SO2 line, as we are in ordered quantity")
-        self.assertEqual(float_compare(vals['dashboard']['rates']['non_billable_project'], project_rate_non_billable_project, precision_rounding=rounding), 0, "The rate non-billable-project should be the one from the SO2 line, as we are in ordered quantity")
+        self.assertEqual(float_compare(vals['dashboard']['rates']['non_billable_project'], project_rate_non_billable_project, precision_rounding=rounding), 0, "The rate non-billable-bap_project should be the one from the SO2 line, as we are in ordered quantity")
         self.assertEqual(float_compare(vals['dashboard']['rates']['billable_time'], project_rate_billable_time, precision_rounding=rounding), 0, "The rate billable-time should be the one from the SO2 line, as we are in ordered quantity")
         self.assertEqual(float_compare(vals['dashboard']['rates']['billable_fixed'], project_rate_billable_fixed, precision_rounding=rounding), 0, "The rate billable-fixed should be the one from the SO2 line, as we are in ordered quantity")
         self.assertEqual(float_compare(vals['dashboard']['rates']['total'], project_rate_total, precision_rounding=rounding), 0, "The total rates should be the one from the SO2 line, as we are in ordered quantity")

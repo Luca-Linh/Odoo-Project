@@ -10,22 +10,22 @@ class ProductTemplate(models.Model):
 
     service_tracking = fields.Selection([
         ('no', 'Don\'t create task'),
-        ('task_global_project', 'Create a task in an existing project'),
-        ('task_in_project', 'Create a task in sales order\'s project'),
-        ('project_only', 'Create a new project but no task')],
+        ('task_global_project', 'Create a task in an existing bap_project'),
+        ('task_in_project', 'Create a task in sales order\'s bap_project'),
+        ('project_only', 'Create a new bap_project but no task')],
         string="Service Tracking", default="no",
-        help="On Sales order confirmation, this product can generate a project and/or task. \
+        help="On Sales order confirmation, this product can generate a bap_project and/or task. \
         From those, you can track the service you are selling.\n \
-        'In sale order\'s project': Will use the sale order\'s configured project if defined or fallback to \
-        creating a new project based on the selected template.")
+        'In sale order\'s bap_project': Will use the sale order\'s configured bap_project if defined or fallback to \
+        creating a new bap_project based on the selected template.")
     project_id = fields.Many2one(
-        'project.project', 'Project', company_dependent=True,
+        'bap_project.bap_project', 'Project', company_dependent=True,
         domain="[('company_id', '=', current_company_id)]",
-        help='Select a billable project on which tasks can be created. This setting must be set for each company.')
+        help='Select a billable bap_project on which tasks can be created. This setting must be set for each company.')
     project_template_id = fields.Many2one(
-        'project.project', 'Project Template', company_dependent=True, copy=True,
+        'bap_project.bap_project', 'Project Template', company_dependent=True, copy=True,
         domain="[('company_id', '=', current_company_id)]",
-        help='Select a billable project to be the skeleton of the new created project when selling the current product. Its stages and tasks will be duplicated.')
+        help='Select a billable bap_project to be the skeleton of the new created bap_project when selling the current product. Its stages and tasks will be duplicated.')
 
     @api.constrains('project_id', 'project_template_id')
     def _check_project_and_template(self):
@@ -35,11 +35,11 @@ class ProductTemplate(models.Model):
         """
         for product in self:
             if product.service_tracking == 'no' and (product.project_id or product.project_template_id):
-                raise ValidationError(_('The product %s should not have a project nor a project template since it will not generate project.') % (product.name,))
+                raise ValidationError(_('The product %s should not have a bap_project nor a bap_project template since it will not generate bap_project.') % (product.name,))
             elif product.service_tracking == 'task_global_project' and product.project_template_id:
-                raise ValidationError(_('The product %s should not have a project template since it will generate a task in a global project.') % (product.name,))
+                raise ValidationError(_('The product %s should not have a bap_project template since it will generate a task in a global bap_project.') % (product.name,))
             elif product.service_tracking in ['task_in_project', 'project_only'] and product.project_id:
-                raise ValidationError(_('The product %s should not have a global project since it will generate a project.') % (product.name,))
+                raise ValidationError(_('The product %s should not have a global bap_project since it will generate a bap_project.') % (product.name,))
 
     @api.onchange('service_tracking')
     def _onchange_service_tracking(self):

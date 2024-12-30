@@ -10,8 +10,8 @@ class TestProjectCommon(SavepointCase):
         super(TestProjectCommon, cls).setUpClass()
 
         user_group_employee = cls.env.ref('base.group_user')
-        user_group_project_user = cls.env.ref('project.group_project_user')
-        user_group_project_manager = cls.env.ref('project.group_project_manager')
+        user_group_project_user = cls.env.ref('bap_project.group_project_user')
+        user_group_project_manager = cls.env.ref('bap_project.group_project_manager')
 
         cls.partner_1 = cls.env['res.partner'].create({
             'name': 'Valid Lelitre',
@@ -51,27 +51,27 @@ class TestProjectCommon(SavepointCase):
             'email': 'bastien.projectmanager@example.com',
             'groups_id': [(6, 0, [user_group_employee.id, user_group_project_manager.id])]})
 
-        # Test 'Pigs' project
-        cls.project_pigs = cls.env['project.project'].with_context({'mail_create_nolog': True}).create({
+        # Test 'Pigs' bap_project
+        cls.project_pigs = cls.env['bap_project.bap_project'].with_context({'mail_create_nolog': True}).create({
             'name': 'Pigs',
             'privacy_visibility': 'employees',
-            'alias_name': 'project+pigs',
+            'alias_name': 'bap_project+pigs',
             'partner_id': cls.partner_1.id})
         # Already-existing tasks in Pigs
-        cls.task_1 = cls.env['project.task'].with_context({'mail_create_nolog': True}).create({
+        cls.task_1 = cls.env['bap_project.task'].with_context({'mail_create_nolog': True}).create({
             'name': 'Pigs UserTask',
             'user_id': cls.user_projectuser.id,
             'project_id': cls.project_pigs.id})
-        cls.task_2 = cls.env['project.task'].with_context({'mail_create_nolog': True}).create({
+        cls.task_2 = cls.env['bap_project.task'].with_context({'mail_create_nolog': True}).create({
             'name': 'Pigs ManagerTask',
             'user_id': cls.user_projectmanager.id,
             'project_id': cls.project_pigs.id})
 
-        # Test 'Goats' project, same as 'Pigs', but with 2 stages
-        cls.project_goats = cls.env['project.project'].with_context({'mail_create_nolog': True}).create({
+        # Test 'Goats' bap_project, same as 'Pigs', but with 2 stages
+        cls.project_goats = cls.env['bap_project.bap_project'].with_context({'mail_create_nolog': True}).create({
             'name': 'Goats',
             'privacy_visibility': 'followers',
-            'alias_name': 'project+goats',
+            'alias_name': 'bap_project+goats',
             'partner_id': cls.partner_1.id,
             'type_ids': [
                 (0, 0, {
@@ -87,14 +87,14 @@ class TestProjectCommon(SavepointCase):
     def format_and_process(self, template, to='groups@example.com, other@gmail.com', subject='Frogs',
                            extra='', email_from='Sylvie Lelitre <test.sylvie.lelitre@agrolait.com>',
                            cc='', msg_id='<1198923581.41972151344608186760.JavaMail@agrolait.com>',
-                           model=None, target_model='project.task', target_field='name'):
+                           model=None, target_model='bap_project.task', target_field='name'):
         self.assertFalse(self.env[target_model].search([(target_field, '=', subject)]))
         mail = template.format(to=to, subject=subject, cc=cc, extra=extra, email_from=email_from, msg_id=msg_id)
         self.env['mail.thread'].with_context(mail_channel_noautofollow=True).message_process(model, mail)
         return self.env[target_model].search([(target_field, '=', subject)])
 
     def test_delete_project_with_tasks(self):
-        """User should never be able to delete a project with tasks"""
+        """User should never be able to delete a bap_project with tasks"""
 
         with self.assertRaises(UserError):
             self.project_pigs.unlink()
@@ -109,14 +109,14 @@ class TestProjectCommon(SavepointCase):
         self.assertFalse(self.project_pigs.type_ids)
         self.assertEqual(len(self.project_goats.type_ids), 2)
         first_stage = self.project_goats.type_ids[0]
-        self.env['project.task']._load_records_create({
+        self.env['bap_project.task']._load_records_create({
             'name': 'First Task',
             'user_id': self.user_projectuser.id,
             'project_id': self.project_pigs.id,
             'stage_id': first_stage.id,
         })
         self.assertEqual(self.project_pigs.type_ids, first_stage)
-        self.env['project.task']._load_records_create([
+        self.env['bap_project.task']._load_records_create([
             {'name': 'task',
                 'user_id': self.user_projectuser.id,
                 'project_id': self.project_pigs.id,

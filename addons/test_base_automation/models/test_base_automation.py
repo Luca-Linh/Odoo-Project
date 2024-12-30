@@ -68,7 +68,7 @@ class ModelWithoutAccess(models.Model):
 
 
 class Project(models.Model):
-    _name = _description = 'test_base_automation.project'
+    _name = _description = 'test_base_automation.bap_project'
 
     name = fields.Char()
     task_ids = fields.One2many('test_base_automation.task', 'project_id')
@@ -80,7 +80,7 @@ class Task(models.Model):
     name = fields.Char()
     parent_id = fields.Many2one('test_base_automation.task')
     project_id = fields.Many2one(
-        'test_base_automation.project',
+        'test_base_automation.bap_project',
         compute='_compute_project_id', recursive=True, store=True, readonly=False,
     )
 

@@ -6,7 +6,7 @@ from odoo.exceptions import UserError
 
 
 class ProjectTaskCreateSalesOrder(models.TransientModel):
-    _name = 'project.task.create.sale.order'
+    _name = 'bap_project.task.create.sale.order'
     _description = "Create SO from task"
 
     @api.model
@@ -14,12 +14,12 @@ class ProjectTaskCreateSalesOrder(models.TransientModel):
         result = super(ProjectTaskCreateSalesOrder, self).default_get(fields)
 
         active_model = self._context.get('active_model')
-        if active_model != 'project.task':
+        if active_model != 'bap_project.task':
             raise UserError(_("You can only apply this action from a task."))
 
         active_id = self._context.get('active_id')
         if 'task_id' in fields and active_id:
-            task = self.env['project.task'].browse(active_id)
+            task = self.env['bap_project.task'].browse(active_id)
             if task.sale_order_id:
                 raise UserError(_("The task has already a sale order."))
             result['task_id'] = active_id
@@ -29,7 +29,7 @@ class ProjectTaskCreateSalesOrder(models.TransientModel):
 
     link_selection = fields.Selection([('create', 'Create a new sales order'), ('link', 'Link to an existing sales order')], required=True, default='create')
 
-    task_id = fields.Many2one('project.task', "Task", domain=[('sale_line_id', '=', False)], help="Task for which we are creating a sales order", required=True)
+    task_id = fields.Many2one('bap_project.task', "Task", domain=[('sale_line_id', '=', False)], help="Task for which we are creating a sales order", required=True)
     partner_id = fields.Many2one('res.partner', string="Customer", help="Customer of the sales order", required=True)
     product_id = fields.Many2one('product.product', domain=[('type', '=', 'service'), ('invoice_policy', '=', 'delivery'), ('service_type', '=', 'timesheet')], string="Service", help="Product of the sales order item. Must be a service invoiced based on timesheets on tasks. The existing timesheet will be linked to this product.", required=True)
     price_unit = fields.Float("Unit Price", help="Unit price of the sales order item.")
@@ -125,7 +125,7 @@ class ProjectTaskCreateSalesOrder(models.TransientModel):
             'order_id': sale_order.id,
             'product_id': self.product_id.id,
             'price_unit': self.price_unit,
-            'project_id': self.task_id.project_id.id,  # prevent to re-create a project on confirmation
+            'project_id': self.task_id.project_id.id,  # prevent to re-create a bap_project on confirmation
             'task_id': self.task_id.id,
             'product_uom_qty': round(sum(self.task_id.timesheet_ids.filtered(lambda t: not t.non_allow_billable and not t.so_line).mapped('unit_amount')), 2),
         })

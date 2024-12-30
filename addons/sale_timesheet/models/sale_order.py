@@ -45,7 +45,7 @@ class SaleOrder(models.Model):
         self.ensure_one()
         # redirect to form or kanban view
         billable_projects = self.project_ids.filtered(lambda project: project.sale_line_id)
-        if len(billable_projects) == 1 and self.env.user.has_group('project.group_project_manager'):
+        if len(billable_projects) == 1 and self.env.user.has_group('bap_project.group_project_manager'):
             action = billable_projects[0].action_view_timesheet_plan()
         else:
             action = super().action_view_project_ids()
@@ -178,7 +178,7 @@ class SaleOrderLine(models.Model):
         return project
 
     def _timesheet_create_project_prepare_values(self):
-        """Generate project values"""
+        """Generate bap_project values"""
         values = super()._timesheet_create_project_prepare_values()
         values['allow_billable'] = True
         values['bill_type'] = 'customer_project'

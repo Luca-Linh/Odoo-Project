@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="email_template_accept_request_open" model="mail.template">
+            <field name="name">Accept Request Open Email Template</field>
+            <field name="model_id" ref="bap_project.model_bap_project_request_open"/>
+            <field name="subject">Phiếu yêu cầu tạo dự án: ${object.rq_open_code} đã được duyệt</field>
+            <field name="email_to">${object.created_by.email}</field>
+            <field name="body_html">
+                <![CDATA[
+                <p>Chào ${object.created_by.name},</p>
+                <p>
+                    Phiếu yêu cầu mở dự án của bạn đã được duyệt. Vui
+                    lòng liên hệ với các thành viên trong dự án để thông báo thông tin đến họ
+                </p>
+                <p>Trân trọng,</p>
+                ]]>
+            </field>
+        </record>
+
+        <record id="email_template_cancel_request_open" model="mail.template">
+            <field name="name">Accept Cancel Open Email Template</field>
+            <field name="model_id" ref="bap_project.model_bap_project_request_open"/>
+            <field name="subject">Phiếu yêu cầu tạo dự án: ${object.rq_open_code} đã bị hủy</field>
+            <field name="email_to">${object.created_by.email}</field>
+            <field name="body_html">
+                <![CDATA[
+                <p>Chào ${object.created_by.name},</p>
+                <p>
+                    Phiếu yêu cầu mở dự án của bạn đã bị hủy bởi "${object.approved_by.name}"
+                    với lý do "${object.cancel_reason}". Bạn vui lòng kiểm tra lại thông tin
+                </p>
+                <p>Trân trọng,</p>
+                ]]>
+            </field>
+        </record>
+
+        <record id="email_template_accept_request_close" model="mail.template">
+            <field name="name">Accept Accept Close Email Template</field>
+            <field name="model_id" ref="bap_project.model_bap_project_request_close"/>
+            <field name="subject">Phiếu yêu cầu đóng dự án: ${object.rq_close_code} đã đươợc duyệt</field>
+            <field name="email_to">${object.created_by.email}</field>
+            <field name="body_html">
+                <![CDATA[
+                <p>Chào ${object.created_by.name},</p>
+                <p>
+                    Phiếu yêu cầu đóng dự án của bạn đã được duyệt
+                </p>
+                <p>Trân trọng,</p>
+                ]]>
+            </field>
+        </record>
+
+        <record id="email_template_cancel_request_close" model="mail.template">
+            <field name="name">Accept Cancel Close Email Template</field>
+            <field name="model_id" ref="bap_project.model_bap_project_request_close"/>
+            <field name="subject">Phiếu yêu cầu đóng dự án: ${object.rq_close_code} đã bị hủy</field>
+            <field name="email_to">${object.created_by.email}</field>
+            <field name="body_html">
+                <![CDATA[
+                <p>Chào ${object.created_by.name},</p>
+                <p>
+                    Phiếu yêu cầu đóng dự án của bạn đã bị hủy bởi "${object.approved_by.name}"
+                    với lý do "${object.cancel_reason}". Bạn vui lòng kiểm tra lại thông tin
+                </p>
+                <p>Trân trọng,</p>
+                ]]>
+            </field>
+        </record>
+
+        <record id="email_template_project_created" model="mail.template">
+            <field name="name">New Project Notification</field>
+            <field name="model_id" ref="model_bap_project"/>
+            <field name="subject">New Project Created: ${object.project_name}</field>
+            <field name="email_from"/>
+            <field name="email_to"/>
+            <field name="body_html">
+                <![CDATA[
+                <p>Dear Project Team,</p>
+                <p>A new project has been created:</p>
+                <ul>
+                    <li><strong>Project Name:</strong> ${object.project_name}</li>
+                    <li><strong>Project Manager:</strong> ${object.pm_id.name}</li>
+                    <li><strong>Dev Team:</strong>
+                        <ul>
+                           % for dev in object.dev_ids:
+                                <li>${dev.name}</li>
+                           % endfor
+                        </ul>
+                    </li>
+                    <li><strong>QC Team:</strong>
+                         <ul>
+                            % for qc in object.qc_ids:
+                                <li>${qc.name}</li>
+                            % endfor
+                        </ul>
+                    </li>
+                    <li><strong>Start Date:</strong> ${object.start_date}</li>
+                    <li><strong>Description:</strong> ${object.description}</li>
+                </ul>
+                <p>Please check the project details in the system.</p>
+                <p>Thanks,</p>
+                ]]>
+            </field>
+        </record>
+
+        <record id="email_template_done_task_to_qc" model="mail.template">
+            <field name="name">Task Submitted to QC</field>
+            <field name="model_id" ref="model_bap_project_task"/>
+            <field name="subject">Task ${object.task_name} Ready for QC</field>
+            <field name="email_to">${object.qc_id.email}</field>
+            <field name="body_html">
+                <![CDATA[
+                <p>Dear ${object.qc_id.name},</p>
+                <p>Task <strong>${object.task_name}</strong> is now ready for QC.</p>
+                <p>Project: ${object.project_id.project_name}</p>
+                <p>Developer: ${object.dev_id.name}</p>
+                <p>Deadline: ${object.qc_deadline}</p>
+                <p>Best regards,</p>
+                ]]>
+            </field>
+        </record>
+
+        <record id="email_template_done_task_to_pm" model="mail.template">
+            <field name="name">Task Completed Notification</field>
+            <field name="model_id" ref="model_bap_project_task"/>
+            <field name="subject">Task ${object.task_name} Completed</field>
+            <field name="email_to">${object.project_id.pm_id.email}</field>
+            <field name="body_html">
+                <![CDATA[
+                <p>Dear ${object.project_id.pm_id.name},</p>
+                <p>Task <strong>${object.task_name}</strong> has been completed successfully.</p>
+                <p>Project: ${object.project_id.project_name}</p>
+                <p>QC: ${object.qc_id.name}</p>
+                <p>Dev: ${object.dev_id.name}</p>
+                <p>Best regards,</p>
+                ]]>
+            </field>
+        </record>
+
+        <record id="email_template_return_task_to_dev" model="mail.template">
+            <field name="name">Task Returned to Developer</field>
+            <field name="model_id" ref="model_bap_project_task"/>
+            <field name="subject">Task ${object.task_name} Returned for Rework</field>
+            <field name="email_to">${object.dev_id.email}</field>
+            <field name="body_html">
+                <![CDATA[
+                <p>Dear ${object.dev_id.name},</p>
+                <p>Task <strong>${object.task_name}</strong> has been returned to you for rework.</p>
+                <p>Project: ${object.project_id.project_name}</p>
+                <p>QC: ${object.qc_id.name}</p>
+                <p>Best regards,</p>
+                ]]>
+            </field>
+        </record>
+
+        <record id="email_template_task_report_weekly" model="mail.template">
+            <field name="name">Weekly Task Report</field>
+            <field name="model_id" ref="model_bap_project"/>
+            <field name="subject">Weekly Task Report for Project: {object.project_name}</field>
+            <field name="email_from">${(user.email or 'noreply@yourdomain.com')}</field>
+            <field name="body_html">
+                <![CDATA[
+                <p>Dear ${object.pm_id.name},</p>
+                <p>Please find below the weekly task report for the project: {object.project_name}</p>
+                <p>{object.body}</p>
+                <p>Best Regards,</p>
+                <p>Your Company</p>
+                ]]>
+            </field>
+        </record>
+
+    </data>
+</odoo>

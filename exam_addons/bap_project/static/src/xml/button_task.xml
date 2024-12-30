@@ -1,0 +1,10 @@
+<templates>
+    <t t-extend="ListView.buttons" t-name="bap_project.bap_project_task_buttons">
+        <t t-jquery="button.o_list_button_add" t-operation="before">
+            <button type="button"
+                    class="btn btn-primary o_button_alert_notification d-none">
+                    Update newest sprint
+            </button>
+        </t>
+    </t>
+</templates>

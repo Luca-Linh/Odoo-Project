@@ -16,15 +16,15 @@ class TestSaleProject(SavepointCase):
         })
 
         # Create projects
-        cls.project_global = cls.env['project.project'].create({
+        cls.project_global = cls.env['bap_project.bap_project'].create({
             'name': 'Global Project',
             'analytic_account_id': cls.analytic_account_sale.id,
         })
-        cls.project_template = cls.env['project.project'].create({
+        cls.project_template = cls.env['bap_project.bap_project'].create({
             'name': 'Project TEMPLATE for services',
         })
-        cls.project_template_state = cls.env['project.task.type'].create({
-            'name': 'Only stage in project template',
+        cls.project_template_state = cls.env['bap_project.task.type'].create({
+            'name': 'Only stage in bap_project template',
             'sequence': 1,
             'project_ids': [(4, cls.project_template.id)]
         })
@@ -45,7 +45,7 @@ class TestSaleProject(SavepointCase):
             'project_id': False,
         })
         cls.product_order_service2 = cls.env['product.product'].create({
-            'name': "Service Ordered, create task in global project",
+            'name': "Service Ordered, create task in global bap_project",
             'standard_price': 30,
             'list_price': 90,
             'type': 'service',
@@ -57,7 +57,7 @@ class TestSaleProject(SavepointCase):
             'project_id': cls.project_global.id,
         })
         cls.product_order_service3 = cls.env['product.product'].create({
-            'name': "Service Ordered, create task in new project",
+            'name': "Service Ordered, create task in new bap_project",
             'standard_price': 10,
             'list_price': 20,
             'type': 'service',
@@ -66,10 +66,10 @@ class TestSaleProject(SavepointCase):
             'uom_po_id': uom_hour.id,
             'default_code': 'SERV-ORDERED3',
             'service_tracking': 'task_in_project',
-            'project_id': False,  # will create a project
+            'project_id': False,  # will create a bap_project
         })
         cls.product_order_service4 = cls.env['product.product'].create({
-            'name': "Service Ordered, create project only",
+            'name': "Service Ordered, create bap_project only",
             'standard_price': 15,
             'list_price': 30,
             'type': 'service',
@@ -128,17 +128,17 @@ class TestSaleProject(SavepointCase):
         sale_order.action_confirm()
 
         # service_tracking 'no'
-        self.assertFalse(so_line_order_no_task.project_id, "The project should not be linked to no task product")
+        self.assertFalse(so_line_order_no_task.project_id, "The bap_project should not be linked to no task product")
         self.assertFalse(so_line_order_no_task.task_id, "The task should not be linked to no task product")
         # service_tracking 'task_global_project'
-        self.assertFalse(so_line_order_task_in_global.project_id, "Only task should be created, project should not be linked")
-        self.assertEqual(self.project_global.tasks.sale_line_id, so_line_order_task_in_global, "Global project's task should be linked to so line")
+        self.assertFalse(so_line_order_task_in_global.project_id, "Only task should be created, bap_project should not be linked")
+        self.assertEqual(self.project_global.tasks.sale_line_id, so_line_order_task_in_global, "Global bap_project's task should be linked to so line")
         #  service_tracking 'task_in_project'
-        self.assertTrue(so_line_order_new_task_new_project.project_id, "Sales order line should be linked to newly created project")
+        self.assertTrue(so_line_order_new_task_new_project.project_id, "Sales order line should be linked to newly created bap_project")
         self.assertTrue(so_line_order_new_task_new_project.task_id, "Sales order line should be linked to newly created task")
         # service_tracking 'project_only'
         self.assertFalse(so_line_order_only_project.task_id, "Task should not be created")
-        self.assertTrue(so_line_order_only_project.project_id, "Sales order line should be linked to newly created project")
+        self.assertTrue(so_line_order_only_project.project_id, "Sales order line should be linked to newly created bap_project")
 
     def test_sol_product_type_update(self):
         sale_order = self.env['sale.order'].with_context(tracking_disable=True).create({
@@ -162,10 +162,10 @@ class TestSaleProject(SavepointCase):
 
     @users('demo')
     def test_cancel_so_linked_to_project(self):
-        """ Test that cancelling a SO linked to a project will not raise an error """
-        # Ensure user don't have edit right access to the project
+        """ Test that cancelling a SO linked to a bap_project will not raise an error """
+        # Ensure user don't have edit right access to the bap_project
         group_sale_manager = self.env.ref('sales_team.group_sale_manager')
-        group_project_user = self.env.ref('project.group_project_user')
+        group_project_user = self.env.ref('bap_project.group_project_user')
         self.env.user.write({'groups_id': [(6, 0, [group_sale_manager.id, group_project_user.id])]})
 
         sale_order = self.env['sale.order'].with_context(tracking_disable=True).create({
@@ -179,11 +179,11 @@ class TestSaleProject(SavepointCase):
             'product_id': self.product_order_service2.id,
             'order_id': sale_order.id,
         })
-        self.assertFalse(self.project_global.tasks.sale_line_id, "The project tasks should not be linked to the SOL")
+        self.assertFalse(self.project_global.tasks.sale_line_id, "The bap_project tasks should not be linked to the SOL")
 
         sale_order.action_confirm()
-        self.assertEqual(self.project_global.tasks.sale_line_id.id, sale_order_line.id, "The project tasks should be linked to the SOL from the SO")
+        self.assertEqual(self.project_global.tasks.sale_line_id.id, sale_order_line.id, "The bap_project tasks should be linked to the SOL from the SO")
 
         self.project_global.sale_line_id = sale_order_line
         sale_order.action_cancel()
-        self.assertFalse(self.project_global.sale_line_id, "The project should not be linked to the SOL anymore")
+        self.assertFalse(self.project_global.sale_line_id, "The bap_project should not be linked to the SOL anymore")

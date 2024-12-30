@@ -53,7 +53,7 @@ class TestCommonSaleTimesheet(TestSaleCommon):
             'timesheet_cost': 45,
         })
 
-        # Account and project
+        # Account and bap_project
         cls.account_sale = cls.company_data['default_account_revenue']
         cls.analytic_account_sale = cls.env['account.analytic.account'].create({
             'name': 'Project for selling timesheet - AA',
@@ -67,18 +67,18 @@ class TestCommonSaleTimesheet(TestSaleCommon):
         })
 
         # Create projects
-        cls.project_global = cls.env['project.project'].create({
+        cls.project_global = cls.env['bap_project.bap_project'].create({
             'name': 'Project for selling timesheets',
             'allow_timesheets': True,
             'analytic_account_id': cls.analytic_account_sale.id,
             'allow_billable': True,
         })
-        cls.project_template = cls.env['project.project'].create({
+        cls.project_template = cls.env['bap_project.bap_project'].create({
             'name': 'Project TEMPLATE for services',
             'allow_timesheets': True,
         })
-        cls.project_template_state = cls.env['project.task.type'].create({
-            'name': 'Only stage in project template',
+        cls.project_template_state = cls.env['bap_project.task.type'].create({
+            'name': 'Only stage in bap_project template',
             'sequence': 1,
             'project_ids': [(4, cls.project_template.id)]
         })
@@ -103,7 +103,7 @@ class TestCommonSaleTimesheet(TestSaleCommon):
             'property_account_income_id': cls.account_sale.id,
         })
         cls.product_order_timesheet2 = cls.env['product.product'].create({
-            'name': "Service Ordered, create task in global project",
+            'name': "Service Ordered, create task in global bap_project",
             'standard_price': 30,
             'list_price': 90,
             'type': 'service',
@@ -118,7 +118,7 @@ class TestCommonSaleTimesheet(TestSaleCommon):
             'property_account_income_id': cls.account_sale.id,
         })
         cls.product_order_timesheet3 = cls.env['product.product'].create({
-            'name': "Service Ordered, create task in new project",
+            'name': "Service Ordered, create task in new bap_project",
             'standard_price': 10,
             'list_price': 20,
             'type': 'service',
@@ -128,12 +128,12 @@ class TestCommonSaleTimesheet(TestSaleCommon):
             'default_code': 'SERV-ORDERED3',
             'service_type': 'timesheet',
             'service_tracking': 'task_in_project',
-            'project_id': False,  # will create a project
+            'project_id': False,  # will create a bap_project
             'taxes_id': False,
             'property_account_income_id': cls.account_sale.id,
         })
         cls.product_order_timesheet4 = cls.env['product.product'].create({
-            'name': "Service Ordered, create project only",
+            'name': "Service Ordered, create bap_project only",
             'standard_price': 15,
             'list_price': 30,
             'type': 'service',
@@ -148,7 +148,7 @@ class TestCommonSaleTimesheet(TestSaleCommon):
             'property_account_income_id': cls.account_sale.id,
         })
         cls.product_order_timesheet5 = cls.env['product.product'].create({
-            'name': "Service Ordered, create project only based on template",
+            'name': "Service Ordered, create bap_project only based on template",
             'standard_price': 17,
             'list_price': 34,
             'type': 'service',
@@ -181,7 +181,7 @@ class TestCommonSaleTimesheet(TestSaleCommon):
             'property_account_income_id': cls.account_sale.id,
         })
         cls.product_delivery_timesheet2 = cls.env['product.product'].create({
-            'name': "Service delivered, create task in global project",
+            'name': "Service delivered, create task in global bap_project",
             'standard_price': 30,
             'list_price': 90,
             'type': 'service',
@@ -196,7 +196,7 @@ class TestCommonSaleTimesheet(TestSaleCommon):
             'property_account_income_id': cls.account_sale.id,
         })
         cls.product_delivery_timesheet3 = cls.env['product.product'].create({
-            'name': "Service delivered, create task in new project",
+            'name': "Service delivered, create task in new bap_project",
             'standard_price': 10,
             'list_price': 20,
             'type': 'service',
@@ -206,12 +206,12 @@ class TestCommonSaleTimesheet(TestSaleCommon):
             'default_code': 'SERV-DELI3',
             'service_type': 'timesheet',
             'service_tracking': 'task_in_project',
-            'project_id': False,  # will create a project
+            'project_id': False,  # will create a bap_project
             'taxes_id': False,
             'property_account_income_id': cls.account_sale.id,
         })
         cls.product_delivery_timesheet4 = cls.env['product.product'].create({
-            'name': "Service delivered, create project only",
+            'name': "Service delivered, create bap_project only",
             'standard_price': 15,
             'list_price': 30,
             'type': 'service',
@@ -226,7 +226,7 @@ class TestCommonSaleTimesheet(TestSaleCommon):
             'property_account_income_id': cls.account_sale.id,
         })
         cls.product_delivery_timesheet5 = cls.env['product.product'].create({
-            'name': "Service delivered, create project only based on template",
+            'name': "Service delivered, create bap_project only based on template",
             'standard_price': 17,
             'list_price': 34,
             'type': 'service',
@@ -259,7 +259,7 @@ class TestCommonSaleTimesheet(TestSaleCommon):
             'property_account_income_id': cls.account_sale.id,
         })
         cls.product_delivery_manual2 = cls.env['product.product'].create({
-            'name': "Service delivered, create task in global project",
+            'name': "Service delivered, create task in global bap_project",
             'standard_price': 30,
             'list_price': 90,
             'type': 'service',
@@ -274,7 +274,7 @@ class TestCommonSaleTimesheet(TestSaleCommon):
             'property_account_income_id': cls.account_sale.id,
         })
         cls.product_delivery_manual3 = cls.env['product.product'].create({
-            'name': "Service delivered, create task in new project",
+            'name': "Service delivered, create task in new bap_project",
             'standard_price': 10,
             'list_price': 20,
             'type': 'service',
@@ -284,12 +284,12 @@ class TestCommonSaleTimesheet(TestSaleCommon):
             'default_code': 'SERV-DELI3',
             'service_type': 'manual',
             'service_tracking': 'task_in_project',
-            'project_id': False,  # will create a project
+            'project_id': False,  # will create a bap_project
             'taxes_id': False,
             'property_account_income_id': cls.account_sale.id,
         })
         cls.product_delivery_manual4 = cls.env['product.product'].create({
-            'name': "Service delivered, create project only",
+            'name': "Service delivered, create bap_project only",
             'standard_price': 15,
             'list_price': 30,
             'type': 'service',
@@ -304,7 +304,7 @@ class TestCommonSaleTimesheet(TestSaleCommon):
             'property_account_income_id': cls.account_sale.id,
         })
         cls.product_delivery_manual5 = cls.env['product.product'].create({
-            'name': "Service delivered, create project only with template",
+            'name': "Service delivered, create bap_project only with template",
             'standard_price': 17,
             'list_price': 34,
             'type': 'service',

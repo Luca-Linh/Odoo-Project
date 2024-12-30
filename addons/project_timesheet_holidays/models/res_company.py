@@ -9,10 +9,10 @@ class Company(models.Model):
     _inherit = 'res.company'
 
     leave_timesheet_project_id = fields.Many2one(
-        'project.project', string="Internal Project",
-        help="Default project value for timesheet generated from time off type.")
+        'bap_project.bap_project', string="Internal Project",
+        help="Default bap_project value for timesheet generated from time off type.")
     leave_timesheet_task_id = fields.Many2one(
-        'project.task', string="Time Off Task",
+        'bap_project.task', string="Time Off Task",
         domain="[('project_id', '=', leave_timesheet_project_id)]")
 
     @api.constrains('leave_timesheet_project_id')
@@ -25,13 +25,13 @@ class Company(models.Model):
     def init(self):
         for company in self.search([('leave_timesheet_project_id', '=', False)]):
             company = company.with_company(company)
-            project = company.env['project.project'].search([
+            project = company.env['bap_project.bap_project'].search([
                 ('name', '=', _('Internal')),
                 ('allow_timesheets', '=', True),
                 ('company_id', '=', company.id),
             ], limit=1)
             if not project:
-                project = company.env['project.project'].create({
+                project = company.env['bap_project.bap_project'].create({
                     'name': _('Internal'),
                     'allow_timesheets': True,
                     'company_id': company.id,
@@ -40,7 +40,7 @@ class Company(models.Model):
                 'leave_timesheet_project_id': project.id,
             })
             if not company.leave_timesheet_task_id:
-                task = company.env['project.task'].create({
+                task = company.env['bap_project.task'].create({
                     'name': _('Time Off'),
                     'project_id': company.leave_timesheet_project_id.id,
                     'active': False,
@@ -60,7 +60,7 @@ class Company(models.Model):
                     'leave_timesheet_project_id': project.id,
                 })
             if not company.leave_timesheet_task_id:
-                task = company.env['project.task'].sudo().create({
+                task = company.env['bap_project.task'].sudo().create({
                     'name': _('Time Off'),
                     'project_id': company.leave_timesheet_project_id.id,
                     'active': False,

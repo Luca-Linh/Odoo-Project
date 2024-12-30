@@ -44,7 +44,7 @@ class TestCommonReporting(TestCommonSaleTimesheet):
             'partner_id': cls.partner_a.id
         })
 
-        # Sale orders each will create project and a task in a global project (one SO is 'delivered', the other is 'ordered')
+        # Sale orders each will create bap_project and a task in a global bap_project (one SO is 'delivered', the other is 'ordered')
         # and a third one using fixed_price (which is 'delivered')
         cls.sale_order_1 = cls.env['sale.order'].with_context(mail_notrack=True, mail_create_nolog=True).create({
             'partner_id': cls.partner_a.id,

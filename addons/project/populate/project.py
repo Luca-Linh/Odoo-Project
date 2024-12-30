@@ -9,7 +9,7 @@ from odoo.tools import populate
 _logger = logging.getLogger(__name__)
 
 class ProjectStage(models.Model):
-    _inherit = "project.task.type"
+    _inherit = "bap_project.task.type"
     _populate_sizes = {"small": 10, "medium": 50, "large": 500}
 
     def _populate_factories(self):
@@ -22,13 +22,13 @@ class ProjectStage(models.Model):
         ]
 
 class ProjectProject(models.Model):
-    _inherit = "project.project"
+    _inherit = "bap_project.bap_project"
     _populate_sizes = {"small": 10, "medium": 50, "large": 1000}
-    _populate_dependencies = ["res.company", "project.task.type"]
+    _populate_dependencies = ["res.company", "bap_project.task.type"]
 
     def _populate_factories(self):
         company_ids = self.env.registry.populated_models["res.company"]
-        stage_ids = self.env.registry.populated_models["project.task.type"]
+        stage_ids = self.env.registry.populated_models["bap_project.task.type"]
 
         def get_company_id(random, **kwargs):
             return random.choice(company_ids)
@@ -55,13 +55,13 @@ class ProjectProject(models.Model):
 
 
 class ProjectTask(models.Model):
-    _inherit = "project.task"
+    _inherit = "bap_project.task"
     _populate_sizes = {"small": 500, "medium": 5000, "large": 50000}
-    _populate_dependencies = ["project.project"]
+    _populate_dependencies = ["bap_project.bap_project"]
 
     def _populate_factories(self):
-        project_ids = self.env.registry.populated_models["project.project"]
-        stage_ids = self.env.registry.populated_models["project.task.type"]
+        project_ids = self.env.registry.populated_models["bap_project.bap_project"]
+        stage_ids = self.env.registry.populated_models["bap_project.task.type"]
         def get_project_id(random, **kwargs):
             return random.choice([False, False, False] + project_ids)
         def get_stage_id(random, **kwargs):
@@ -84,14 +84,14 @@ class ProjectTask(models.Model):
 
     def _populate_set_children_tasks(self, tasks, size):
         _logger.info('Setting parent tasks')
-        rand = populate.Random('project.task+children_generator')
-        parents = self.env["project.task"]
+        rand = populate.Random('bap_project.task+children_generator')
+        parents = self.env["bap_project.task"]
         for task in tasks:
             if not rand.getrandbits(4):
                 parents |= task
         parent_ids = parents.ids
         tasks -= parents
-        parent_childs = collections.defaultdict(lambda: self.env['project.task'])
+        parent_childs = collections.defaultdict(lambda: self.env['bap_project.task'])
         for count, task in enumerate(tasks):
             if not rand.getrandbits(4):
                 parent_childs[rand.choice(parent_ids)] |= task

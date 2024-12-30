@@ -25,7 +25,7 @@ class TimesheetCustomerPortal(CustomerPortal):
     def _get_searchbar_inputs(self):
         return {
             'all': {'input': 'all', 'label': _('Search in All')},
-            'project': {'input': 'project', 'label': _('Search in Project')},
+            'bap_project': {'input': 'bap_project', 'label': _('Search in Project')},
             'name': {'input': 'name', 'label': _('Search in Description')},
             'employee': {'input': 'employee', 'label': _('Search in Employee')},
             'task': {'input': 'task', 'label': _('Search in Task')}
@@ -34,7 +34,7 @@ class TimesheetCustomerPortal(CustomerPortal):
     def _get_searchbar_groupby(self):
         return {
             'none': {'input': 'none', 'label': _('None')},
-            'project': {'input': 'project', 'label': _('Project')},
+            'bap_project': {'input': 'bap_project', 'label': _('Project')},
             'task': {'input': 'task', 'label': _('Task')},
             'date': {'input': 'date', 'label': _('Date')},
             'employee': {'input': 'employee', 'label': _('Employee')}
@@ -42,7 +42,7 @@ class TimesheetCustomerPortal(CustomerPortal):
 
     def _get_search_domain(self, search_in, search):
         search_domain = []
-        if search_in in ('project', 'all'):
+        if search_in in ('bap_project', 'all'):
             search_domain = OR([search_domain, [('project_id', 'ilike', search)]])
         if search_in in ('name', 'all'):
             search_domain = OR([search_domain, [('name', 'ilike', search)]])
@@ -54,7 +54,7 @@ class TimesheetCustomerPortal(CustomerPortal):
 
     def _get_groupby_mapping(self):
         return {
-            'project': 'project_id',
+            'bap_project': 'project_id',
             'task': 'task_id',
             'employee': 'employee_id',
             'date': 'date'

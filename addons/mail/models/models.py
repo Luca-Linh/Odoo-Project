@@ -90,7 +90,7 @@ class BaseModel(models.AbstractModel):
         Reply-to is formatted like "MyCompany MyDocument <reply.to@domain>".
         Heuristic it the following:
          * search for specific aliases as they always have priority; it is limited
-           to aliases linked to documents (like project alias for task for example);
+           to aliases linked to documents (like bap_project alias for task for example);
          * use catchall address;
          * use default;
 
@@ -98,7 +98,7 @@ class BaseModel(models.AbstractModel):
 
         Override this method on a specific model to implement model-specific
         behavior. Also consider inheriting from ``mail.thread``.
-        An example would be tasks taking their reply-to alias from their project.
+        An example would be tasks taking their reply-to alias from their bap_project.
 
         :param default: default email if no alias or catchall is found;
         :param records: DEPRECATED, self should be a valid record set or an

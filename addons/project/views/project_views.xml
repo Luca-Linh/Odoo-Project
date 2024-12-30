@@ -1058,7 +1058,7 @@
             <field name="search_view_id" ref="view_task_search_form"/>
         </record>
 
-        <!-- Opening task when double clicking on project -->
+        <!-- Opening task when double clicking on bap_project -->
         <record id="dblc_proj" model="ir.actions.act_window">
             <field name="res_model">project.task</field>
             <field name="name">Project's tasks</field>
@@ -1067,7 +1067,7 @@
             <field name="context">{'project_id':active_id}</field>
         </record>
 
-        <!-- Menu item for project -->
+        <!-- Menu item for bap_project -->
         <menuitem id="menu_tasks_config" name="GTD" parent="menu_project_config" sequence="2"/>
 
         <menuitem action="open_task_type_form" id="menu_project_config_project" name="Stages" parent="menu_project_config" sequence="3" groups="base.group_no_one"/>
