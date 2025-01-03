@@ -1,39 +1,123 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
      <data noupdate="1">
-        <record id="project_alpha" model="bap.project">
-            <field name="project_name">Project Alpha</field>
-            <field name="start_date">2024-01-01</field>
+        <record id="project_df" model="bap.project">
+            <field name="project_name">Test Import Project DF</field>
+            <field name="start_date">2025-01-06</field>
             <field name="status">open</field>
             <field name="pm_id" ref="user_project_manager"/>
-            <field name="dev_id" ref="user_developer"/>
-            <field name="qc_id" ref="user_quality_controller"/>
-            <field name="description">Description for Project Alpha.</field>
+            <field name="dev_ids" eval="[(6, 0, [ref('user_project_manager'), ref('user_developer')])]"/>
+            <field name="qc_ids" eval="[(6, 0, [ref('user_project_manager_1'), ref('user_quality_controller'), ref('user_quality_controller_2')])]"/>
+            <field name="description">Description for Project Nami.</field>
+        </record>
+        <record id="project_lowG" model="bap.project">
+            <field name="project_name">Test Import Project LowG</field>
+            <field name="start_date">2025-01-06</field>
+            <field name="status">open</field>
+            <field name="pm_id" ref="user_project_manager_1"/>
+            <field name="dev_ids" eval="[(6, 0, [ref('user_project_manager'), ref('user_developer'), ref('user_developer_2')])]"/>
+            <field name="qc_ids" eval="[(6, 0, [ref('user_quality_controller'), ref('user_quality_controller_1')])]"/>
+            <field name="description">Description for Project Luffy.</field>
+        </record>
+        <record id="project_jack" model="bap.project">
+            <field name="project_name">Test Import Project Jack</field>
+            <field name="start_date">2025-01-06</field>
+            <field name="status">open</field>
+            <field name="pm_id" ref="user_project_manager_2"/>
+            <field name="dev_ids" eval="[(6, 0, [ref('user_project_manager_2'), ref('user_project_manager'), ref('user_developer_2')])]"/>
+            <field name="qc_ids" eval="[(6, 0, [ref('user_quality_controller'), ref('user_quality_controller_1'), ref('user_quality_controller_2')])]"/>
+            <field name="description">Description for Project Zoro.</field>
+        </record>
+        <record id="project_dev" model="bap.project">
+            <field name="project_name">Test Import Project Dev</field>
+            <field name="start_date">2025-01-06</field>
+            <field name="status">open</field>
+            <field name="pm_id" ref="user_developer"/>
+            <field name="dev_ids" eval="[(6, 0, [ref('user_developer'), ref('user_project_manager')])]"/>
+            <field name="qc_ids" eval="[(6, 0, [ref('user_quality_controller'), ref('user_quality_controller_2')])]"/>
+            <field name="description">Description for Project Chopper.</field>
         </record>
     </data>
-    <data>
-        <record id="sprint_1" model="bap.project.sprint">
-            <field name="sprint_name">Sprint 1</field>
-            <field name="project_id" ref="project_alpha"/>
-            <field name="start_date">2024-01-01</field>
-            <field name="end_date">2024-01-14</field>
+    <data noupdate="1">
+        <record id="sprint_project_df" model="bap.project.sprint">
+            <field name="sprint_name">Sprint Test Import Project DF</field>
+            <field name="project_id" ref="project_df"/>
+            <field name="start_date">2025-01-06</field>
+            <field name="end_date">2025-01-24</field>
             <field name="status">open</field>
         </record>
-    </data>
-    <data>
-        <record id="task_alpha" model="bap.project.task">
-            <field name="task_name">Task Alpha</field>
-            <field name="project_id" ref="project_alpha"/>
-            <field name="sprint_id" ref="sprint_1"/>
-            <field name="description">Description for Task Alpha.</field>
+        <record id="sprint_project_df1" model="bap.project.sprint">
+            <field name="sprint_name">Sprint Test Import Project DF 1</field>
+            <field name="project_id" ref="project_df"/>
+            <field name="start_date">2025-01-27</field>
+            <field name="end_date">2025-02-21</field>
+            <field name="status">draft</field>
+        </record>
+        <record id="sprint_project_df2" model="bap.project.sprint">
+            <field name="sprint_name">Sprint Test Import Project DF 2</field>
+            <field name="project_id" ref="project_df"/>
+            <field name="start_date">2025-02-24</field>
+            <field name="end_date">2025-03-14</field>
+            <field name="status">draft</field>
         </record>
 
-        <record id="task_beta" model="bap.project.task">
-            <field name="task_name">Task Beta</field>
-            <field name="project_id" ref="project_alpha"/>
-            <field name="sprint_id" ref="sprint_1"/>
-            <field name="description">Description for Task Beta.</field>
+        <record id="sprint_project_lowG" model="bap.project.sprint">
+            <field name="sprint_name">Sprint Test Import Project LowG</field>
+            <field name="project_id" ref="project_lowG"/>
+            <field name="start_date">2025-01-06</field>
+            <field name="end_date">2025-01-24</field>
+            <field name="status">open</field>
+        </record>
+        <record id="sprint_project_lowG1" model="bap.project.sprint">
+            <field name="sprint_name">Sprint Test Import Project LowG 1</field>
+            <field name="project_id" ref="project_lowG"/>
+            <field name="start_date">2025-01-27</field>
+            <field name="end_date">2025-02-21</field>
+            <field name="status">draft</field>
+        </record>
+        <record id="sprint_project_lowG2" model="bap.project.sprint">
+            <field name="sprint_name">Sprint Test Import Project LowG 2</field>
+            <field name="project_id" ref="project_lowG"/>
+            <field name="start_date">2025-02-24</field>
+            <field name="end_date">2025-03-14</field>
+            <field name="status">draft</field>
         </record>
 
+        <record id="sprint_project_jack" model="bap.project.sprint">
+            <field name="sprint_name">Sprint Test Import Project Jack</field>
+            <field name="project_id" ref="project_jack"/>
+            <field name="start_date">2025-01-06</field>
+            <field name="end_date">2025-01-24</field>
+            <field name="status">open</field>
+        </record>
+        <record id="sprint_project_jack1" model="bap.project.sprint">
+            <field name="sprint_name">Sprint Test Import Project Jack 1</field>
+            <field name="project_id" ref="project_jack"/>
+            <field name="start_date">2025-01-27</field>
+            <field name="end_date">2025-02-21</field>
+            <field name="status">draft</field>
+        </record>
+        <record id="sprint_project_jack2" model="bap.project.sprint">
+            <field name="sprint_name">Sprint Test Import Project Jack 2</field>
+            <field name="project_id" ref="project_jack"/>
+            <field name="start_date">2025-02-24</field>
+            <field name="end_date">2025-03-14</field>
+            <field name="status">draft</field>
+        </record>
+
+        <record id="sprint_project_dev" model="bap.project.sprint">
+            <field name="sprint_name">Sprint Test Import Project Dev</field>
+            <field name="project_id" ref="project_dev"/>
+            <field name="start_date">2025-01-06</field>
+            <field name="end_date">2025-01-31</field>
+            <field name="status">open</field>
+        </record>
+        <record id="sprint_project_dev1" model="bap.project.sprint">
+            <field name="sprint_name">Sprint Test Import Project Dev 1</field>
+            <field name="project_id" ref="project_dev"/>
+            <field name="start_date">2025-02-3</field>
+            <field name="end_date">2025-02-28</field>
+            <field name="status">draft</field>
+        </record>
     </data>
 </odoo>

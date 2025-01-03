@@ -1,16 +1,19 @@
 from odoo import http
+from odoo.exceptions import UserError
 from odoo.http import request
 from datetime import datetime
 
 
 class ReportController(http.Controller):
 
-    @http.route('/report_deadline_urgent_xlsx',type='http', auth='user', csrf=False)
+    @http.route('/report_deadline_urgent_xlsx', type='http', auth='user', csrf=False)
     def report_deadline_urgent_xlsx(self, project_ids='', **kwargs):
         user = request.env.user
-        project_ids = [int(pid) for pid in project_ids.split(',')] if project_ids else []
 
-        if not project_ids:
+        # Nếu không có project_ids, gán project_ids mặc định
+        if project_ids:
+            project_ids = [int(pid) for pid in project_ids.split(',')]
+        else:
             if user.has_group('bap_project.group_project_pm'):
                 # Nếu là PM, lấy tất cả các dự án mà PM này quản lý
                 project_ids = [project.id for project in request.env['bap.project'].search([('pm_id', '=', user.id)])]
@@ -18,15 +21,21 @@ class ReportController(http.Controller):
                 # Nếu không phải là PM, lấy tất cả các dự án
                 project_ids = [project.id for project in request.env['bap.project'].search([])]
 
+        # Nếu project_ids vẫn rỗng (không có dự án nào), thông báo lỗi
+        if not project_ids:
+            raise UserError("No projects found for the current user or group.")
+
         # Sinh dữ liệu báo cáo
         report = request.env['report.bap_project.report_deadline_urgent_xlsx']
-        file_content = report.generate_xlsx_report({'project_ids': project_ids})
+        file_content = report.generate_urgent_xlsx_report({'project_ids': project_ids})
 
+        # Tạo tên file và headers
         filename = 'Deadline_Report_Urgent.xlsx'
         headers = [
             ('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'),
             ('Content-Disposition', f'attachment; filename={filename}')
         ]
+        # Trả về file content
         return request.make_response(file_content, headers=headers)
 
 

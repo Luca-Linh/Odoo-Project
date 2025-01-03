@@ -6,18 +6,21 @@
             <field name="name">import.task.wizard.form</field>
             <field name="model">import.task.wizard</field>
             <field name="arch" type="xml">
-                <form string="Import Task">
-                    <group>
-                        <field name="data_file" filename="file_name"/>
-                        <field name="file_type"/>
-                    </group>
-                    <footer>
-                        <button string="Import" type="object" name="action_import_task" class="btn-primary"/>
-                        <button string="Cancel" class="btn-secondary" special="cancel"/>
-                    </footer>
+                <form string="Import Tasks">
+                    <sheet>
+                        <group>
+                            <field name="data_file" filename="file_name"/>
+                        </group>
+                        <field name="file_preview" readonly="1" widget="html"/>
+                        <footer>
+                            <button name="action_import_task" string="Import Tasks" type="object" class="btn-primary"/>
+                            <button string="Cancel" class="btn-secondary" special="cancel"/>
+                        </footer>
+                    </sheet>
                 </form>
             </field>
         </record>
+
 
         <!-- Action for Opening the Wizard -->
         <record id="action_import_task_wizard" model="ir.actions.act_window">

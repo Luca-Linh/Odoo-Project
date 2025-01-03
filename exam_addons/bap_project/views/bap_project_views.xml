@@ -40,6 +40,17 @@
                 </kanban>
             </field>
         </record>
+<!--Tree View-->
+        <record id="view_bap_project_tree" model="ir.ui.view">
+            <field name="name">bap.project.view.tree</field>
+            <field name="model">bap.project</field>
+            <field name="arch" type="xml">
+                <tree string="Projects">
+                    <field name="project_name"/>
+                    <field name="project_code"/>
+                </tree>
+            </field>
+        </record>
 <!-- Form View -->
         <record id="bap_project_form_view" model="ir.ui.view">
             <field name="name">bap.project.form</field>
@@ -71,6 +82,7 @@
                 </form>
             </field>
         </record>
+
 
         <record id="bap_project_action" model="ir.actions.act_window">
             <field name="name">Bap Project</field>

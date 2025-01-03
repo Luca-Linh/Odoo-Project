@@ -48,6 +48,17 @@ class ReportTaskSprintWizard(models.TransientModel):
     def generate_report_data(self, project_ids):
         # Xóa view nếu tồn tại
         self._cr.execute("DROP VIEW IF EXISTS report_task_sprint")
+        print(project_ids)
+        # Kiểm tra nếu project_ids là một đối tượng iterable (ví dụ: một danh sách hoặc một đối tượng tương tự)
+        if hasattr(project_ids, '__iter__'):
+            # Lấy các ID từ project_ids và chuyển đổi thành tuple
+            project_ids_tuple = tuple(int(project.id) for project in project_ids)
+        else:
+            # Nếu không phải iterable, thì in ra để kiểm tra kiểu dữ liệu
+            raise ValueError(f"Expected an iterable for project_ids, but got: {type(project_ids)}")
+
+        # In kết quả để kiểm tra
+        print(project_ids_tuple)
 
         # Truy vấn SQL để tạo view
         query = """
@@ -55,16 +66,16 @@ class ReportTaskSprintWizard(models.TransientModel):
                 SELECT
                     ROW_NUMBER() OVER() AS id,
                     pt.project_id,
+                    p.project_name AS project_name, 
                     pt.sprint_id,
-                    COALESCE(pt.dev_id, pt.qc_id) AS member_id,
-                    CASE
-                        WHEN pt.dev_id IS NOT NULL THEN 'dev'
-                        WHEN pt.qc_id IS NOT NULL THEN 'qc'
-                    END AS role,
+                    ps.sprint_name AS sprint_name,
+                    pt.dev_id AS member_id,
+                    rp_dev.name AS member_name,
+                    'dev' AS role,
                     COUNT(pt.id) AS total_task_count,
                     SUM(CASE WHEN pt.status = 'new' THEN 1 ELSE 0 END) AS task_new_count,
                     SUM(CASE WHEN pt.status = 'dev' THEN 1 ELSE 0 END) AS task_dev_count,
-                    SUM(CASE WHEN pt.status = 'qc' THEN 1 ELSE 0 END) AS task_qc_count,
+                    0 AS task_qc_count,
                     SUM(CASE WHEN pt.status = 'done' THEN 1 ELSE 0 END) AS task_done_count,
                     ps.start_date AS sprint_start_date,
                     ps.end_date AS sprint_end_date
@@ -72,29 +83,60 @@ class ReportTaskSprintWizard(models.TransientModel):
                     bap_project_task pt
                 LEFT JOIN res_users ru_dev ON ru_dev.id = pt.dev_id
                 LEFT JOIN res_partner rp_dev ON rp_dev.id = ru_dev.partner_id
+                LEFT JOIN bap_project_sprint ps ON ps.id = pt.sprint_id
+                LEFT JOIN bap_project p ON p.id = pt.project_id 
+                WHERE pt.dev_id IS NOT NULL
+                  AND ps.start_date >= %s
+                  AND ps.end_date <= %s
+                  {project_filter_dev}
+                GROUP BY
+                    p.project_name,ps.sprint_name,pt.project_id, pt.sprint_id, pt.dev_id, rp_dev.name, ps.start_date, ps.end_date
+                UNION ALL
+                SELECT
+                    ROW_NUMBER() OVER() + 100000 AS id,
+                    pt.project_id,
+                    p.project_name AS project_name, 
+                    pt.sprint_id,
+                    ps.sprint_name AS sprint_name,
+                    pt.qc_id AS member_id,
+                    rp_qc.name AS member_name,
+                    'qc' AS role,
+                    COUNT(pt.id) AS total_task_count,
+                    SUM(CASE WHEN pt.status = 'new' THEN 1 ELSE 0 END) AS task_new_count,
+                    0 AS task_dev_count,
+                    SUM(CASE WHEN pt.status = 'qc' THEN 1 ELSE 0 END) AS task_qc_count,
+                    SUM(CASE WHEN pt.status = 'done' THEN 1 ELSE 0 END) AS task_done_count,
+                    ps.start_date AS sprint_start_date,
+                    ps.end_date AS sprint_end_date
+                FROM
+                    bap_project_task pt
                 LEFT JOIN res_users ru_qc ON ru_qc.id = pt.qc_id
                 LEFT JOIN res_partner rp_qc ON rp_qc.id = ru_qc.partner_id
                 LEFT JOIN bap_project_sprint ps ON ps.id = pt.sprint_id
-                WHERE COALESCE(pt.dev_id, pt.qc_id) IS NOT NULL
+                LEFT JOIN bap_project p ON p.id = pt.project_id
+                WHERE pt.qc_id IS NOT NULL
                   AND ps.start_date >= %s
                   AND ps.end_date <= %s
-        """
-        params = [self.date_from, self.date_to]
-
-        # Sử dụng project_ids.ids để lấy danh sách ID của các project
-        if project_ids:
-            query += " AND pt.project_id IN %s"
-            params.append(tuple(project_ids.ids))  # Dùng tuple để truyền danh sách ID vào query
-
-        query += """
+                  {project_filter_qc}
                 GROUP BY
-                    pt.project_id, pt.sprint_id, COALESCE(pt.dev_id, pt.qc_id),
-                    COALESCE(rp_dev.name, rp_qc.name), ps.start_date, ps.end_date,
-                    pt.dev_id, pt.qc_id
+                    p.project_name,ps.sprint_name,pt.project_id, pt.sprint_id, pt.qc_id, rp_qc.name, ps.start_date, ps.end_date
             )
         """
 
-        # Thực thi truy vấn SQL
+        if project_ids:
+            project_filter_dev = " AND pt.project_id IN %s"
+            project_filter_qc = " AND pt.project_id IN %s"
+            params = [self.date_from, self.date_to, project_ids_tuple, self.date_from, self.date_to, project_ids_tuple]
+        else:
+            project_filter_dev = ""
+            project_filter_qc = ""
+            params = [self.date_from, self.date_to, self.date_from, self.date_to]
+
+        query = query.format(
+            project_filter_dev=project_filter_dev,
+            project_filter_qc=project_filter_qc
+        )
+
         try:
             self.env.cr.execute(query, params)
         except Exception as e:
@@ -104,7 +146,7 @@ class ReportTaskSprintWizard(models.TransientModel):
         self._cr.execute("SELECT * FROM report_task_sprint")
         result = self._cr.fetchall()
 
-        # Bạn có thể trả về dữ liệu ở đây, hoặc xử lý thêm nếu cần
+        # Trả về dữ liệu nếu cần thiết
         return result
 
     def _get_default_projects(self):

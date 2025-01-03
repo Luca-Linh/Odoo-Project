@@ -49,6 +49,11 @@ class BapProjectRequestOpen(models.Model):
 
     @api.model
     def create(self, vals):
+        if not self.env.user.has_group('bap_project.group_project_admin'):
+            # If pm_id is provided and does not match the logged-in user, raise an error
+            if vals.get('pm_id') and vals['pm_id'] != self.env.user.id:
+                raise UserError("The Project Manager must be yourself.")
+
         vals['rq_open_code'] = self.env['ir.sequence'].next_by_code('open_sequence_code')
         return super(BapProjectRequestOpen, self).create(vals)
 
@@ -63,13 +68,28 @@ class BapProjectRequestOpen(models.Model):
         for record in self:
             if record.status != 'submitted':
                 raise UserError(_("Only records with status 'Submitted' can be approved."))
+            record.env['bap.project'].sudo().create({
+                'project_name': record.project_name,
+                'pm_id': record.pm_id.id,
+                'dev_ids': [(6, 0, record.dev_ids.ids)],
+                'qc_ids': [(6, 0, record.qc_ids.ids)],
+                'start_date': record.start_date,
+                'description': record.description,
+                'status': 'open',  # Default status for new projects
+                'request_id': record.id,
+            })
+            # Update the status of the records to 'approved'
         self.sudo().write({'status': 'approved'})
 
     def action_refuse_all(self):
         for record in self:
             if record.status != 'submitted':
                 raise UserError(_("Only records with status 'Submitted' can be refused."))
-        self.sudo().write({'status': 'cancelled'})
+        self.sudo().write({
+            'status': 'cancelled',
+            'cancel_reason': 'cancelled all',
+            'approved_by':  self.env.user
+        })
 
     def action_submit(self):
         """Send request for approval."""

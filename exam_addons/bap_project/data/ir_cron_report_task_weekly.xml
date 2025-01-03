@@ -1,15 +1,14 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-    <data>
-        <record id="ir_cron_task_report" model="ir.cron">
+    <data noupdate="1">
+        <record id="cron_weekly_task_report" model="ir.cron">
             <field name="name">Weekly Task Report</field>
-            <field name="model_id" ref="model_bap_project_task"/>
+            <field name="model_id" ref="model_bap_project"/>
             <field name="state">code</field>
             <field name="code">model.send_weekly_task_report()</field>
             <field name="interval_number">1</field>
             <field name="interval_type">weeks</field>
-<!--            <field name="nextcall" eval="(DateTime.now() + relativedelta(weekday=0, hour=9, minute=0, second=0)).isoformat()"/>-->
-            <field name="nextcall">2024-12-24 00:00:00</field>
+            <field name="numbercall">-1</field>
+            <field name="nextcall" eval="(datetime.combine(datetime.now(), datetime.min.time()) + timedelta((7 - datetime.now().weekday()) % 7)).replace(hour=8).strftime('%Y-%m-%d %H:%M:%S')"/>
         </record>
     </data>
 </odoo>

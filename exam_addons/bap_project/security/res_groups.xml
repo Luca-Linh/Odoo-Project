@@ -3,13 +3,13 @@
 <odoo>
     <data>
         <record id="group_project_admin" model="res.groups">
-            <field name="name">Dự án/Quản trị</field>
+            <field name="name">Project/Admin</field>
         </record>
         <record id="group_project_pm" model="res.groups">
-            <field name="name">Dự án/PM</field>
+            <field name="name">Project/Manager</field>
         </record>
         <record id="group_project_member" model="res.groups">
-            <field name="name">Dự án/Thành Viên</field>
+            <field name="name">Project/Member</field>
         </record>
     </data>
 </odoo>

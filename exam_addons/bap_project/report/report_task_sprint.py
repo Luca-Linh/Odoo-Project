@@ -9,9 +9,9 @@ class ReportTaskSprint(models.Model):
     member_id = fields.Many2one('res.users', string='Member', readonly=True)
     member_name = fields.Char(string='Member Name', readonly=True)
     project_id = fields.Many2one('bap.project', string='Project', readonly=True)
-    project_name = fields.Many2one('bap.project', string='Project Name', readonly=True)
+    project_name = fields.Char(string='Project Name', readonly=True)
     sprint_id = fields.Many2one('bap.project.sprint', string='Sprint', readonly=True)
-    sprint_name = fields.Many2one('bap.project.sprint', string='Sprint Name', readonly=True)
+    sprint_name = fields.Char(string='Project Name', readonly=True)
     role = fields.Selection([('dev', 'Developer'), ('qc', 'Quality Controller')], string='Role', readonly=True)
     total_task_count = fields.Integer(string='Total Tasks', readonly=True)
     task_new_count = fields.Integer(string='New Tasks', readonly=True)
@@ -28,65 +28,66 @@ class ReportTaskSprint(models.Model):
             args += [('project_id.pm_id', '=', user.id)]
         return super(ReportTaskSprint, self).search(args, offset, limit, order, count)
 
-    def show_tasks_based_on_field(self, field_name, record_id):
-        # Tạo domain cho các task cần hiển thị
-        domain = [('project_id', '=', self.project_id.id), ('sprint_id', '=', self.sprint_id.id)]
-
-        if field_name == 'total_task_count':
-            return self._get_task_popup_view(domain)
-        elif field_name == 'task_new_count':
-            return self._get_task_popup_view(domain + [('status', '=', 'new')])
-        elif field_name == 'task_dev_count':
-            return self._get_task_popup_view(domain + [('status', '=', 'dev')])
-        elif field_name == 'task_qc_count':
-            return self._get_task_popup_view(domain + [('status', '=', 'qc')])
-        elif field_name == 'task_done_count':
-            return self._get_task_popup_view(domain + [('status', '=', 'done')])
-        else:
-            return {}
-
-    def _get_task_popup_view(self, domain):
-        """Trả về action để mở view task dưới dạng popup."""
-        tasks = self.env['bap.project.task'].search(domain)
-        print(tasks)
-        action = {
+    def action_view_total_tasks(self):
+        """Hiển thị tất cả các task liên quan đến báo cáo này."""
+        return {
             'type': 'ir.actions.act_window',
-            'name': _('Tasks'),
+            'name': 'Total Tasks',
+            'view_mode': 'tree',
             'res_model': 'bap.project.task',
-            'view_mode': 'tree,form',
-            'target': 'new',  # Mở popup
-            'domain': [('id', 'in', tasks.ids)],
+            'domain': [('project_id', '=', self.project_id.id)],
+            'context': dict(self.env.context),
+            'target': 'new',
         }
-        return {'action': action}
 
-    # def show_all_tasks(self):
-    #     return self._get_task_popup_view([])
-    #
-    # def show_new_tasks(self):
-    #     return self._get_task_popup_view([('status', '=', 'new')])
-    #
-    # def show_dev_tasks(self):
-    #     return self._get_task_popup_view([('status', '=', 'dev')])
-    #
-    # def show_qc_tasks(self):
-    #     return self._get_task_popup_view([('status', '=', 'qc')])
-    #
-    # def show_done_tasks(self):
-    #     return self._get_task_popup_view([('status', '=', 'done')])
-    #
-    # def _get_task_popup_view(self, additional_domain):
-    #     """Trả về danh sách nhiệm vụ dưới dạng popup."""
-    #     domain = [
-    #         ('project_id', '=', self.project_id.id),
-    #         ('sprint_id', '=', self.sprint_id.id),
-    #         ('member_id', '=', self.member_id.id),
-    #     ] + additional_domain
-    #
-    #     return {
-    #         'name': _('Tasks'),
-    #         'type': 'ir.actions.act_window',
-    #         'res_model': 'bap.project.task',
-    #         'view_mode': 'tree',
-    #         'target': 'new',  # Hiển thị dưới dạng popup
-    #         'domain': domain,
-    #     }
+    def action_view_new_tasks(self):
+        return {
+            'type': 'ir.actions.act_window',
+            'name': 'New Tasks',
+            'view_mode': 'tree',
+            'res_model': 'bap.project.task',
+            'domain': [('project_id', '=', self.project_id.id),
+                       ('status', '=', 'new')],
+            'context': dict(self.env.context),
+            'target': 'new',
+        }
+
+    def action_view_dev_tasks(self):
+        """Show development tasks related to the current project."""
+        self.ensure_one()
+        return {
+            'type': 'ir.actions.act_window',
+            'name': 'Done Tasks',
+            'view_mode': 'tree',
+            'res_model': 'bap.project.task',
+            'domain': [('project_id', '=', self.project_id.id),
+                       ('status', '=', 'dev')],
+            'context': dict(self.env.context),
+            'target':'new',
+        }
+
+    def action_view_qc_tasks(self):
+        """Show quality control tasks related to the current project."""
+        self.ensure_one()
+        return {
+            'type': 'ir.actions.act_window',
+            'name': 'Done Tasks',
+            'view_mode': 'tree',
+            'res_model': 'bap.project.task',
+            'domain': [('project_id', '=', self.project_id.id),
+                       ('status', '=', 'qc')],
+            'context': dict(self.env.context),
+            'target': 'new',
+        }
+
+    def action_view_done_tasks(self):
+        return {
+            'type': 'ir.actions.act_window',
+            'name': 'Done Tasks',
+            'view_mode': 'tree',
+            'res_model': 'bap.project.task',
+            'domain': [('project_id', '=', self.project_id.id),
+                       ('status', '=', 'done')],
+            'context': dict(self.env.context),
+            'target': 'new',
+        }

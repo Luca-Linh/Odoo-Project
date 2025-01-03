@@ -146,4 +146,90 @@ class BapProject(models.Model):
             'target': 'current',
         }
 
+    @api.model
+    def send_weekly_task_report(self):
+        projects = self.search([('status', '=', 'open')])
+        for project in projects:
+            tasks = self.env['bap.project.task'].search([('project_id', '=', project.id)])
+
+            # Bảng 1: Task | Status
+            task_table = ""
+            for task in tasks:
+                dev_name = task.dev_id.name if task.dev_id else "N/A"
+                qc_name = task.qc_id.name if task.qc_id else "N/A"
+                task_table += f"""
+                    <tr>
+                        <td style="padding: 8px; border: 1px solid #ddd;">{task.task_name}</td>
+                        <td style="padding: 8px; border: 1px solid #ddd;">{task.status.capitalize()}</td>
+                        <td style="padding: 8px; border: 1px solid #ddd;">{dev_name}</td>
+                        <td style="padding: 8px; border: 1px solid #ddd;">{qc_name}</td>
+                    </tr>
+                """
+
+            # Bảng 2: Member | Total Tasks
+            member_task_count = {}
+            for task in tasks:
+                dev_name = task.dev_id.name if task.dev_id else "N/A"
+                qc_name = task.qc_id.name if task.qc_id else "N/A"
+                if dev_name != "N/A":
+                    member_task_count[dev_name] = member_task_count.get(dev_name, 0) + 1
+                if qc_name != "N/A":
+                    member_task_count[qc_name] = member_task_count.get(qc_name, 0) + 1
+
+            member_table = ""
+            for member, count in member_task_count.items():
+                member_table += f"""
+                    <tr>
+                        <td style="padding: 8px; border: 1px solid #ddd;">{member}</td>
+                        <td style="padding: 8px; border: 1px solid #ddd;">{count}</td>
+                    </tr>
+                """
+
+            # Kết hợp nội dung email
+            email_body = f"""
+                <h3 style="font-family: Arial, sans-serif;">Weekly Task Report for Project: {project.project_name}</h3>
+                <p style="font-family: Arial, sans-serif;">Dear {project.pm_id.name},</p>
+                <p style="font-family: Arial, sans-serif;">Here is the weekly task summary for your project:</p>
+
+                <h4 style="font-family: Arial, sans-serif;">1. Task Details</h4>
+                <table style="border-collapse: collapse; width: 100%; font-family: Arial, sans-serif;">
+                    <thead>
+                        <tr>
+                            <th style="padding: 8px; border: 1px solid #ddd;">Task</th>
+                            <th style="padding: 8px; border: 1px solid #ddd;">Status</th>
+                            <th style="padding: 8px; border: 1px solid #ddd;">Developer</th>
+                            <th style="padding: 8px; border: 1px solid #ddd;">QC</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {task_table}
+                    </tbody>
+                </table>
+
+                <h4 style="font-family: Arial, sans-serif;">2. Member Task Summary</h4>
+                <table style="border-collapse: collapse; width: 100%; font-family: Arial, sans-serif;">
+                    <thead>
+                        <tr>
+                            <th style="padding: 8px; border: 1px solid #ddd;">Member</th>
+                            <th style="padding: 8px; border: 1px solid #ddd;">Total Tasks</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {member_table}
+                    </tbody>
+                </table>
+
+                <p style="font-family: Arial, sans-serif;">Thanks,</p>
+                <p style="font-family: Arial, sans-serif;">Odoo System</p>
+            """
+
+            # Gửi email
+            mail_values = {
+                'subject': f"Weekly Task Report for Project: {project.project_name}",
+                'email_to': project.pm_id.email,
+                'body_html': email_body,
+            }
+            self.env['mail.mail'].create(mail_values).send()
+
+
 

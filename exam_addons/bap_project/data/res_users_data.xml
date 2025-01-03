@@ -6,75 +6,64 @@
             <field name="login">19521760@gm.uit.edu.vn</field>
             <field name="password">password</field>
             <field name="email">19521760@gm.uit.edu.vn</field>
-            <field name="groups_id" eval="[(4, ref('base.group_user')), (4, ref('base.group_erp_manager'))]"/>
+            <field name="groups_id" eval="[(4, ref('base.group_user')),(4, ref('group_project_pm'))]"/>
         </record>
-    </data>
-    <data noupdate="1">
         <record id="user_project_manager_1" model="res.users">
             <field name="name">Duong Fin (PM)</field>
             <field name="login">apolopass2001@gmail.com</field>
             <field name="password">password</field>
             <field name="email">apolopass2001@gmail.com</field>
-            <field name="groups_id" eval="[(4, ref('base.group_user')), (4, ref('base.group_erp_manager'))]"/>
+            <field name="groups_id" eval="[(4, ref('base.group_user')),(4, ref('group_project_pm'))]"/>
         </record>
-
+        <record id="user_project_manager_2" model="res.users">
+            <field name="name">Trịnh Trần Phương Tuấn (PM)</field>
+            <field name="login">phuongtuan@gmail.com</field>
+            <field name="password">password</field>
+            <field name="email">phuongtuan@gmail.com</field>
+            <field name="groups_id" eval="[(4, ref('base.group_user')),(4, ref('group_project_pm'))]"/>
+        </record>
         <record id="user_developer" model="res.users">
             <field name="name">Nhật Hoàng (Dev)</field>
             <field name="login">tienlinhcrypto412001@gmail.com</field>
             <field name="password">password</field>
             <field name="email">tienlinhcrypto412001@gmail.com</field>
-            <field name="groups_id" eval="[(4, ref('base.group_user')), (4, ref('base.group_erp_manager'))]"/>
+            <field name="groups_id" eval="[(4, ref('base.group_user')),(4, ref('group_project_member'))]"/>
         </record>
-
-        <record id="user_quality_controller" model="res.users">
-            <field name="name">Thùy Chi (Qc)</field>
-            <field name="login">linh.investcrypto@gmail.com</field>
-            <field name="password">password</field>
-            <field name="email">linh.investcrypto@gmail.com</field>
-            <field name="groups_id" eval="[(4, ref('base.group_user')), (4, ref('base.group_erp_manager'))]"/>
-        </record>
-    </data>
-    <data noupdate="1">
-<!--        <record id="user_project_manager_2" model="res.users">-->
-<!--            <field name="name">Trịnh Trần Phương Tuấn</field>-->
-<!--            <field name="login">phuongtuan@gmail.com</field>-->
-<!--            <field name="password">password</field>-->
-<!--            <field name="email">phuongtuan@gmail.com</field>-->
-<!--            <field name="groups_id" eval="[(4, ref('base.group_user')), (4, ref('base.group_erp_manager'))]"/>-->
-<!--        </record>-->
-
         <record id="user_developer_1" model="res.users">
             <field name="name">Vũ Trường Giang (Dev)</field>
-                <field name="login">vutruonggiang@gmail.com</field>
+            <field name="login">vutruonggiang@gmail.com</field>
             <field name="password">password</field>
             <field name="email">vutruonggiang@gmail.com</field>
-            <field name="groups_id" eval="[(4, ref('base.group_user')), (4, ref('base.group_erp_manager'))]"/>
+            <field name="groups_id" eval="[(4, ref('base.group_user')),(4, ref('group_project_member'))]"/>
         </record>
-
-        <record id="user_quality_controller_1" model="res.users">
-            <field name="name">Pháp Kiều (Qc)</field>
-            <field name="login">phapkieu@gmail.com</field>
-            <field name="password">password</field>
-            <field name="email">phapkieu@gmail.com</field>
-            <field name="groups_id" eval="[(4, ref('base.group_user')), (4, ref('base.group_erp_manager'))]"/>
-        </record>
-    </data>
-    <data noupdate="1">
         <record id="user_developer_2" model="res.users">
             <field name="name">Dlow (Dev)</field>
             <field name="login">dlow@gmail.com</field>
             <field name="password">password</field>
             <field name="email">dlow@gmail.com</field>
-            <field name="groups_id" eval="[(4, ref('base.group_user')), (4, ref('base.group_erp_manager'))]"/>
+            <field name="groups_id" eval="[(4, ref('base.group_user')),(4, ref('group_project_member'))]"/>
         </record>
-
+        <record id="user_quality_controller" model="res.users">
+            <field name="name">Thùy Chi (Qc)</field>
+            <field name="login">linh.investcrypto@gmail.com</field>
+            <field name="password">password</field>
+            <field name="email">linh.investcrypto@gmail.com</field>
+            <field name="groups_id" eval="[(4, ref('base.group_user')),(4, ref('group_project_member'))]"/>
+        </record>
+        <record id="user_quality_controller_1" model="res.users">
+            <field name="name">Pháp Kiều (Qc)</field>
+            <field name="login">phapkieu@gmail.com</field>
+            <field name="password">password</field>
+            <field name="email">phapkieu@gmail.com</field>
+            <field name="groups_id" eval="[(4, ref('base.group_user')),(4, ref('group_project_member'))]"/>
+        </record>
         <record id="user_quality_controller_2" model="res.users">
             <field name="name">Pia Linh(Qc)</field>
             <field name="login">pialinh@gmail.com</field>
             <field name="password">password</field>
             <field name="email">pialinh@gmail.com</field>
-            <field name="groups_id" eval="[(4, ref('base.group_user')), (4, ref('base.group_erp_manager'))]"/>
+            <field name="groups_id" eval="[(4, ref('base.group_user')),(4, ref('group_project_member'))]"/>
         </record>
-    </data>
 
+    </data>
 </odoo>

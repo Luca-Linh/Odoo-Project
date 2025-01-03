@@ -80,6 +80,10 @@ class BapProjectRequestClose(models.Model):
 
     @api.model
     def create(self, vals):
+        if not self.env.user.has_group('bap_project.group_project_admin'):
+            # If pm_id is provided and does not match the logged-in user, raise an error
+            if vals.get('pm_id') and vals['pm_id'] != self.env.user.id:
+                raise UserError("The Project Manager must be yourself.")
         vals['rq_close_code'] = self.env['ir.sequence'].next_by_code('close_sequence_code')
         return super(BapProjectRequestClose, self).create(vals)
 
@@ -87,13 +91,20 @@ class BapProjectRequestClose(models.Model):
         for record in self:
             if record.status != 'submitted':
                 raise UserError(_("Only records with status 'Submitted' can be approved."))
-        self.sudo().write({'status': 'approved'})
+        self.sudo().write({
+            'status': 'approved',
+            'approved_by': self.env.user
+        })
 
     def action_refuse_all(self):
         for record in self:
             if record.status != 'submitted':
                 raise UserError(_("Only records with status 'Submitted' can be refused."))
-        self.sudo().write({'status': 'cancelled'})
+        self.sudo().write({
+            'status': 'cancelled',
+            'cancel_reason': 'cancelled all',
+            'approved_by': self.env.user
+        })
 
     def action_submit(self):
         """Send request for approval."""

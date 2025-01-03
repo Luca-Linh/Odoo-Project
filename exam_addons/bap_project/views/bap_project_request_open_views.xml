@@ -17,6 +17,7 @@
                     <field name="dev_ids" widget="many2many_tags"/>
                     <field name="qc_ids" widget="many2many_tags"/>
                     <field name="start_date"/>
+                    <field name="status"/>
                     <field name="description"/>
                 </tree>
             </field>

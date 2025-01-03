@@ -13,7 +13,7 @@
 
             <script src="/bap_project/static/src/js/month_year_widget.js" type="text/javascript"/>
 
-            <script src="/bap_project/static/src/js/clickable_field.js" type="text/javascript"/>
+            <script src="/bap_project/static/src/js/popup_task_widget.js" type="text/javascript"/>
 
         </xpath>
     </template>

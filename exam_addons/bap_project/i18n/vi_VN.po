@@ -1,0 +1,1156 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* bap_project
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-01-01 07:52+0000\n"
+"PO-Revision-Date: 2025-01-01 07:52+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: bap_project
+#: model:mail.template,body_html:bap_project.email_template_cancel_request_open
+msgid ""
+"\n"
+"                \n"
+"                <p>Chào ${object.created_by.name},</p>\n"
+"                <p>\n"
+"                    Phiếu yêu cầu mở dự án của bạn đã bị hủy bởi \"${object.approved_by.name}\"\n"
+"                    với lý do \"${object.cancel_reason}\". Bạn vui lòng kiểm tra lại thông tin\n"
+"                </p>\n"
+"                <p>Trân trọng,</p>\n"
+"                \n"
+"            "
+msgstr ""
+
+#. module: bap_project
+#: model:mail.template,body_html:bap_project.email_template_accept_request_open
+msgid ""
+"\n"
+"                \n"
+"                <p>Chào ${object.created_by.name},</p>\n"
+"                <p>\n"
+"                    Phiếu yêu cầu mở dự án của bạn đã được duyệt. Vui\n"
+"                    lòng liên hệ với các thành viên trong dự án để thông báo thông tin đến họ\n"
+"                </p>\n"
+"                <p>Trân trọng,</p>\n"
+"                \n"
+"            "
+msgstr ""
+
+#. module: bap_project
+#: model:mail.template,body_html:bap_project.email_template_cancel_request_close
+msgid ""
+"\n"
+"                \n"
+"                <p>Chào ${object.created_by.name},</p>\n"
+"                <p>\n"
+"                    Phiếu yêu cầu đóng dự án của bạn đã bị hủy bởi \"${object.approved_by.name}\"\n"
+"                    với lý do \"${object.cancel_reason}\". Bạn vui lòng kiểm tra lại thông tin\n"
+"                </p>\n"
+"                <p>Trân trọng,</p>\n"
+"                \n"
+"            "
+msgstr ""
+
+#. module: bap_project
+#: model:mail.template,body_html:bap_project.email_template_accept_request_close
+msgid ""
+"\n"
+"                \n"
+"                <p>Chào ${object.created_by.name},</p>\n"
+"                <p>\n"
+"                    Phiếu yêu cầu đóng dự án của bạn đã được duyệt\n"
+"                </p>\n"
+"                <p>Trân trọng,</p>\n"
+"                \n"
+"            "
+msgstr ""
+
+#. module: bap_project
+#: model:mail.template,body_html:bap_project.email_template_return_task_to_dev
+msgid ""
+"\n"
+"                \n"
+"                <p>Dear ${object.dev_id.name},</p>\n"
+"                <p>Task <strong>${object.task_name}</strong> has been returned to you for rework.</p>\n"
+"                <p>Project: ${object.project_id.project_name}</p>\n"
+"                <p>QC: ${object.qc_id.name}</p>\n"
+"                <p>Best regards,</p>\n"
+"                \n"
+"            "
+msgstr ""
+
+#. module: bap_project
+#: model:mail.template,body_html:bap_project.email_template_task_report_weekly
+msgid ""
+"\n"
+"                \n"
+"                <p>Dear ${object.pm_id.name},</p>\n"
+"                <p>Please find below the weekly task report for the project: {object.project_name}</p>\n"
+"                <p>{object.body}</p>\n"
+"                <p>Best Regards,</p>\n"
+"                <p>Your Company</p>\n"
+"                \n"
+"            "
+msgstr ""
+
+#. module: bap_project
+#: model:mail.template,body_html:bap_project.email_template_done_task_to_pm
+msgid ""
+"\n"
+"                \n"
+"                <p>Dear ${object.project_id.pm_id.name},</p>\n"
+"                <p>Task <strong>${object.task_name}</strong> has been completed successfully.</p>\n"
+"                <p>Project: ${object.project_id.project_name}</p>\n"
+"                <p>QC: ${object.qc_id.name}</p>\n"
+"                <p>Dev: ${object.dev_id.name}</p>\n"
+"                <p>Best regards,</p>\n"
+"                \n"
+"            "
+msgstr ""
+
+#. module: bap_project
+#: model:mail.template,body_html:bap_project.email_template_done_task_to_qc
+msgid ""
+"\n"
+"                \n"
+"                <p>Dear ${object.qc_id.name},</p>\n"
+"                <p>Task <strong>${object.task_name}</strong> is now ready for QC.</p>\n"
+"                <p>Project: ${object.project_id.project_name}</p>\n"
+"                <p>Developer: ${object.dev_id.name}</p>\n"
+"                <p>Deadline: ${object.qc_deadline}</p>\n"
+"                <p>Best regards,</p>\n"
+"                \n"
+"            "
+msgstr ""
+
+#. module: bap_project
+#: model:mail.template,body_html:bap_project.email_template_project_created
+msgid ""
+"\n"
+"                \n"
+"                <p>Dear Project Team,</p>\n"
+"                <p>A new project has been created:</p>\n"
+"                <ul>\n"
+"                    <li><strong>Project Name:</strong> ${object.project_name}</li>\n"
+"                    <li><strong>Project Manager:</strong> ${object.pm_id.name}</li>\n"
+"                    <li><strong>Dev Team:</strong>\n"
+"                        <ul>\n"
+"                           % for dev in object.dev_ids:\n"
+"                                <li>${dev.name}</li>\n"
+"                           % endfor\n"
+"                        </ul>\n"
+"                    </li>\n"
+"                    <li><strong>QC Team:</strong>\n"
+"                         <ul>\n"
+"                            % for qc in object.qc_ids:\n"
+"                                <li>${qc.name}</li>\n"
+"                            % endfor\n"
+"                        </ul>\n"
+"                    </li>\n"
+"                    <li><strong>Start Date:</strong> ${object.start_date}</li>\n"
+"                    <li><strong>Description:</strong> ${object.description}</li>\n"
+"                </ul>\n"
+"                <p>Please check the project details in the system.</p>\n"
+"                <p>Thanks,</p>\n"
+"                \n"
+"            "
+msgstr ""
+
+#. module: bap_project
+#. openerp-web
+#: code:addons/bap_project/static/src/js/month_year_widget.js:0
+#, python-format
+msgid "'%s' is not a correct date"
+msgstr "'%s' không phải là ngày chính xác"
+
+#. module: bap_project
+#: model_terms:ir.ui.view,arch_db:bap_project.bap_project_kanban_view
+msgid "<span>Tasks: </span>"
+msgstr "<span>Nhiệm vụ: </span>"
+
+#. module: bap_project
+#: model:ir.model.fields,field_description:bap_project.field_bap_project_task_type__active
+msgid "Active"
+msgstr "Kích hoạt"
+
+#. module: bap_project
+#: model_terms:ir.ui.view,arch_db:bap_project.bap_project_request_close_form_view
+#: model_terms:ir.ui.view,arch_db:bap_project.bap_project_request_open_form_view
+msgid "Approve"
+msgstr "Chấp nhận"
+
+#. module: bap_project
+#: model_terms:ir.ui.view,arch_db:bap_project.bap_project_request_close_tree_view
+#: model_terms:ir.ui.view,arch_db:bap_project.bap_project_request_open_tree_view
+msgid "Approve All"
+msgstr "Chấp nhận tất cả"
+
+#. module: bap_project
+#: model:ir.model.fields.selection,name:bap_project.selection__bap_project_request_close__status__approved
+#: model:ir.model.fields.selection,name:bap_project.selection__bap_project_request_open__status__approved
+msgid "Approved"
+msgstr "Đã chấp nhận"
+
+#. module: bap_project
+#: model:ir.model.fields,field_description:bap_project.field_bap_project_request_close__approved_by
+#: model:ir.model.fields,field_description:bap_project.field_bap_project_request_open__approved_by
+msgid "Approved By"
+msgstr "Chấp nhận bởi"
+
+#. module: bap_project
+#: model:ir.actions.act_window,name:bap_project.bap_project_action
+#: model:ir.model,name:bap_project.model_bap_project
+#: model:ir.ui.menu,name:bap_project.bap_project_menu_root
+msgid "Bap Project"
+msgstr "Dự Án Bap"
+
+#. module: bap_project
+#: model:ir.actions.act_window,name:bap_project.bap_project_request_close_action
+#: model:ir.model,name:bap_project.model_bap_project_request_close
+msgid "Bap Project Request Close"
+msgstr "Yêu cầu đóng dự án"
+
+#. module: bap_project
+#: model:ir.actions.act_window,name:bap_project.bap_project_request_open_action
+#: model:ir.model,name:bap_project.model_bap_project_request_open
+msgid "Bap Project Request Open"
+msgstr "Yêu cầu mở dự án"
+
+#. module: bap_project
+#: model:ir.actions.act_window,name:bap_project.bap_project_sprint_action
+#: model:ir.model,name:bap_project.model_bap_project_sprint
+msgid "Bap Project Sprint"
+msgstr "Sprint dự án Bap"
+
+#. module: bap_project
+#: model:ir.actions.act_window,name:bap_project.bap_project_task_action
+#: model:ir.model,name:bap_project.model_bap_project_task
+msgid "Bap Project Task"
+msgstr "Nhiệm vụ dự án Bap"
+
+#. module: bap_project
+#: model:ir.actions.act_window,name:bap_project.bap_project_task_type_action
+#: model:ir.model,name:bap_project.model_bap_project_task_type
+msgid "Bap Project Task Type"
+msgstr "Loại nhiệm vụ dự án Bap"
+
+#. module: bap_project
+#: model:ir.model.fields.selection,name:bap_project.selection__import_task_wizard__file_type__csv
+msgid "CSV"
+msgstr "CSV"
+
+#. module: bap_project
+#: model_terms:ir.ui.view,arch_db:bap_project.bap_project_request_cancel_close_wizard_form_view
+#: model_terms:ir.ui.view,arch_db:bap_project.bap_project_request_cancel_open_wizard_form_view
+#: model_terms:ir.ui.view,arch_db:bap_project.bap_project_request_close_form_view
+#: model_terms:ir.ui.view,arch_db:bap_project.bap_project_request_open_form_view
+#: model_terms:ir.ui.view,arch_db:bap_project.report_deadline_urgent_wizard_view_form
+#: model_terms:ir.ui.view,arch_db:bap_project.report_task_sprint_wizard_view_form
+#: model_terms:ir.ui.view,arch_db:bap_project.report_task_sprint_xlsx_wizard_view_form
+#: model_terms:ir.ui.view,arch_db:bap_project.view_import_task_wizard_form
+msgid "Cancel"
+msgstr "Hủy"
+
+#. module: bap_project
+#: model_terms:ir.ui.view,arch_db:bap_project.bap_project_request_cancel_close_wizard_form_view
+#: model_terms:ir.ui.view,arch_db:bap_project.bap_project_request_cancel_open_wizard_form_view
+msgid "Cancel Project Request"
+msgstr "Hủy yêu cầu dự án"
+
+#. module: bap_project
+#: model:ir.model.fields,field_description:bap_project.field_bap_project_request_close__cancel_reason
+#: model:ir.model.fields,field_description:bap_project.field_bap_project_request_open__cancel_reason
+#: model:ir.model.fields,field_description:bap_project.field_project_request_cancel_close_wizard__cancel_reason
+#: model:ir.model.fields,field_description:bap_project.field_project_request_cancel_open_wizard__cancel_reason
+msgid "Cancel Reason"
+msgstr "Lý do hủy"
+
+#. module: bap_project
+#: model:ir.model.fields.selection,name:bap_project.selection__bap_project_request_close__status__cancelled
+#: model:ir.model.fields.selection,name:bap_project.selection__bap_project_request_open__status__cancelled
+msgid "Cancelled"
+msgstr "Đã hủy"
+
+#. module: bap_project
+#: code:addons/bap_project/models/bap_project_request_close.py:0
+#, python-format
+msgid ""
+"Cannot create a close request for project \"%s\" because the following "
+"sprints are not closed: %s"
+msgstr ""
+"Không thể tạo yêu cầu đóng cho dự án \"%s\" vì "
+"sprints chưa được đóng: %s"
+#. module: bap_project
+#: code:addons/bap_project/models/bap_project_request_close.py:0
+#, python-format
+msgid ""
+"Cannot create a close request for project \"%s\" because the following tasks"
+" are not done: %s"
+msgstr ""
+"Không thể tạo yêu cầu đóng dự án \"%s\" vì các tác vụ sau"
+" chưa xong: %s"
+
+#. module: bap_project
+#: model:ir.model.fields,field_description:bap_project.field_bap_project_request_close__close_reason
+msgid "Close Reason"
+msgstr "Lý do đóng"
+
+#. module: bap_project
+#: model:ir.model.fields.selection,name:bap_project.selection__bap_project__status__close
+#: model:ir.model.fields.selection,name:bap_project.selection__bap_project_sprint__status__close
+msgid "Closed"
+msgstr "Đã đóng"
+
+#. module: bap_project
+#: model:ir.ui.menu,name:bap_project.conf_menu
+msgid "Configuration"
+msgstr "Cấu hình"
+
+#. module: bap_project
+#: model_terms:ir.ui.view,arch_db:bap_project.bap_project_request_cancel_close_wizard_form_view
+#: model_terms:ir.ui.view,arch_db:bap_project.bap_project_request_cancel_open_wizard_form_view
+msgid "Confirm"
+msgstr "Xác nhận"
+
+#. module: bap_project
+#: model:ir.model.fields,field_description:bap_project.field_bap_project_request_close__created_by
+#: model:ir.model.fields,field_description:bap_project.field_bap_project_request_open__created_by
+msgid "Created By"
+msgstr "Tạo bởi"
+
+#. module: bap_project
+#: model:ir.model.fields,field_description:bap_project.field_bap_project__create_uid
+#: model:ir.model.fields,field_description:bap_project.field_bap_project_request_close__create_uid
+#: model:ir.model.fields,field_description:bap_project.field_bap_project_request_open__create_uid
+#: model:ir.model.fields,field_description:bap_project.field_bap_project_sprint__create_uid
+#: model:ir.model.fields,field_description:bap_project.field_bap_project_task__create_uid
+#: model:ir.model.fields,field_description:bap_project.field_bap_project_task_type__create_uid
+#: model:ir.model.fields,field_description:bap_project.field_import_task_wizard__create_uid
+#: model:ir.model.fields,field_description:bap_project.field_project_request_cancel_close_wizard__create_uid
+#: model:ir.model.fields,field_description:bap_project.field_project_request_cancel_open_wizard__create_uid
+#: model:ir.model.fields,field_description:bap_project.field_report_deadline_urgent_wizard__create_uid
+#: model:ir.model.fields,field_description:bap_project.field_report_task_sprint_wizard__create_uid
+#: model:ir.model.fields,field_description:bap_project.field_report_task_sprint_xlsx_wizard__create_uid
+msgid "Created by"
+msgstr "Tạo bởi"
+
+#. module: bap_project
+#: model:ir.model.fields,field_description:bap_project.field_bap_project__create_date
+#: model:ir.model.fields,field_description:bap_project.field_bap_project_request_close__create_date
+#: model:ir.model.fields,field_description:bap_project.field_bap_project_request_open__create_date
+#: model:ir.model.fields,field_description:bap_project.field_bap_project_sprint__create_date
+#: model:ir.model.fields,field_description:bap_project.field_bap_project_task__create_date
+#: model:ir.model.fields,field_description:bap_project.field_bap_project_task_type__create_date
+#: model:ir.model.fields,field_description:bap_project.field_import_task_wizard__create_date
+#: model:ir.model.fields,field_description:bap_project.field_project_request_cancel_close_wizard__create_date
+#: model:ir.model.fields,field_description:bap_project.field_project_request_cancel_open_wizard__create_date
+#: model:ir.model.fields,field_description:bap_project.field_report_deadline_urgent_wizard__create_date
+#: model:ir.model.fields,field_description:bap_project.field_report_task_sprint_wizard__create_date
+#: model:ir.model.fields,field_description:bap_project.field_report_task_sprint_xlsx_wizard__create_date
+msgid "Created on"
+msgstr "Tạo vào"
+
+#. module: bap_project
+#: model:ir.model.fields,field_description:bap_project.field_report_task_sprint_wizard__date_from
+#: model:ir.model.fields,field_description:bap_project.field_report_task_sprint_xlsx_wizard__date_from
+msgid "Date From"
+msgstr "Từ ngày"
+
+#. module: bap_project
+#: model:ir.model.fields,field_description:bap_project.field_report_task_sprint_wizard__date_to
+#: model:ir.model.fields,field_description:bap_project.field_report_task_sprint_xlsx_wizard__date_to
+msgid "Date To"
+msgstr "Đến ngày"
+
+#. module: bap_project
+#: model:ir.model.fields,field_description:bap_project.field_bap_project__description
+#: model:ir.model.fields,field_description:bap_project.field_bap_project_request_open__description
+#: model:ir.model.fields,field_description:bap_project.field_bap_project_task__description
+msgid "Description"
+msgstr "Miêu tả"
+
+#. module: bap_project
+#: model:ir.model.fields,field_description:bap_project.field_report_deadline_urgent__dev_deadline
+msgid "Dev Deadline"
+msgstr "Hạn chót Dev"
+
+#. module: bap_project
+#: model:ir.model.fields,field_description:bap_project.field_report_deadline_urgent__dev_member
+msgid "Dev Member"
+msgstr "Thành viên Dev"
+
+#. module: bap_project
+#: model:ir.model.fields,field_description:bap_project.field_bap_project__dev_ids
+#: model:ir.model.fields,field_description:bap_project.field_bap_project_request_open__dev_ids
+msgid "Dev Team"
+msgstr "Nhóm dev"
+
+#. module: bap_project
+#: model:ir.model.fields,field_description:bap_project.field_bap_project_task__dev_id
+#: model:ir.model.fields.selection,name:bap_project.selection__report_task_sprint__role__dev
+msgid "Developer"
+msgstr "Lập trình viên"
+
+#. module: bap_project
+#: model:ir.model.fields,field_description:bap_project.field_bap_project_task__dev_deadline
+msgid "Developer Deadline"
+msgstr "Hạn lập trình viên"
+
+#. module: bap_project
+#: model:ir.model.fields.selection,name:bap_project.selection__bap_project_task__status__dev
+#: model:ir.model.fields.selection,name:bap_project.selection__report_deadline_urgent__status__dev
+msgid "Development"
+msgstr "Phát triển"
+
+#. module: bap_project
+#: model:ir.model.fields,field_description:bap_project.field_report_task_sprint__task_dev_count
+msgid "Development Tasks"
+msgstr "Nhiệm vụ phát triển"
+
+#. module: bap_project
+#: model:ir.model.fields,field_description:bap_project.field_bap_project__display_name
+#: model:ir.model.fields,field_description:bap_project.field_bap_project_request_close__display_name
+#: model:ir.model.fields,field_description:bap_project.field_bap_project_request_open__display_name
+#: model:ir.model.fields,field_description:bap_project.field_bap_project_sprint__display_name
+#: model:ir.model.fields,field_description:bap_project.field_bap_project_task__display_name
+#: model:ir.model.fields,field_description:bap_project.field_bap_project_task_type__display_name
+#: model:ir.model.fields,field_description:bap_project.field_import_task_wizard__display_name
+#: model:ir.model.fields,field_description:bap_project.field_project_request_cancel_close_wizard__display_name
+#: model:ir.model.fields,field_description:bap_project.field_project_request_cancel_open_wizard__display_name
+#: model:ir.model.fields,field_description:bap_project.field_report_bap_project_report_deadline_urgent_xlsx__display_name
+#: model:ir.model.fields,field_description:bap_project.field_report_bap_project_report_task_sprint_xlsx__display_name
+#: model:ir.model.fields,field_description:bap_project.field_report_deadline_urgent__display_name
+#: model:ir.model.fields,field_description:bap_project.field_report_deadline_urgent_wizard__display_name
+#: model:ir.model.fields,field_description:bap_project.field_report_task_sprint__display_name
+#: model:ir.model.fields,field_description:bap_project.field_report_task_sprint_wizard__display_name
+#: model:ir.model.fields,field_description:bap_project.field_report_task_sprint_xlsx_wizard__display_name
+msgid "Display Name"
+msgstr "Tên hiển thị"
+
+#. module: bap_project
+#: model:ir.model.fields.selection,name:bap_project.selection__bap_project_task__status__done
+#: model:ir.model.fields.selection,name:bap_project.selection__report_deadline_urgent__status__done
+msgid "Done"
+msgstr "Hoàn thành"
+
+#. module: bap_project
+#: model:ir.model.fields,field_description:bap_project.field_report_task_sprint__task_done_count
+msgid "Done Tasks"
+msgstr "Hoàn thành nhiệm vụ"
+
+#. module: bap_project
+#: model:ir.model.fields.selection,name:bap_project.selection__bap_project_request_close__status__draft
+#: model:ir.model.fields.selection,name:bap_project.selection__bap_project_request_open__status__draft
+#: model:ir.model.fields.selection,name:bap_project.selection__bap_project_sprint__status__draft
+msgid "Draft"
+msgstr "Nháp"
+
+#. module: bap_project
+#: model_terms:ir.ui.view,arch_db:bap_project.bap_project_kanban_view
+msgid "Dropdown menu"
+msgstr "Trình đơn thả xuống"
+
+#. module: bap_project
+#: model:res.groups,name:bap_project.group_project_pm
+msgid "Dự án/PM"
+msgstr "Dự án/PM"
+
+#. module: bap_project
+#: model:res.groups,name:bap_project.group_project_admin
+msgid "Dự án/Quản trị"
+msgstr "Dự án/Quản trị"
+
+#. module: bap_project
+#: model:res.groups,name:bap_project.group_project_member
+msgid "Dự án/Thành Viên"
+msgstr "Dự án/Thành Viên"
+
+#. module: bap_project
+#: model_terms:ir.ui.view,arch_db:bap_project.bap_project_kanban_view
+msgid "Edit"
+msgstr "Chỉnh sửa"
+
+#. module: bap_project
+#: model:ir.model.fields,field_description:bap_project.field_bap_project__end_date
+#: model:ir.model.fields,field_description:bap_project.field_bap_project_request_close__end_date
+#: model:ir.model.fields,field_description:bap_project.field_bap_project_sprint__end_date
+msgid "End Date"
+msgstr "Ngày kết thúc"
+
+#. module: bap_project
+#: model_terms:ir.ui.view,arch_db:bap_project.bap_project_request_cancel_close_wizard_form_view
+#: model_terms:ir.ui.view,arch_db:bap_project.bap_project_request_cancel_open_wizard_form_view
+msgid "Enter reason for cancellation"
+msgstr "Nhập lý do hủy"
+
+#. module: bap_project
+#: model:ir.model.fields.selection,name:bap_project.selection__import_task_wizard__file_type__excel
+msgid "Excel"
+msgstr "Excel"
+
+#. module: bap_project
+#: model_terms:ir.ui.view,arch_db:bap_project.report_deadline_urgent_wizard_view_form
+msgid "Export Excel"
+msgstr "Xuât file Excel"
+
+#. module: bap_project
+#: model:ir.model.fields,field_description:bap_project.field_import_task_wizard__data_file
+msgid "File"
+msgstr "Tệp"
+
+#. module: bap_project
+#: model:ir.model.fields,field_description:bap_project.field_import_task_wizard__file_name
+msgid "File Name"
+msgstr "Tên tệp"
+
+#. module: bap_project
+#: model:ir.model.fields,field_description:bap_project.field_import_task_wizard__file_type
+msgid "File Type"
+msgstr "Loai tệp"
+
+#. module: bap_project
+#: model:ir.model.fields,field_description:bap_project.field_bap_project__id
+#: model:ir.model.fields,field_description:bap_project.field_bap_project_request_close__id
+#: model:ir.model.fields,field_description:bap_project.field_bap_project_request_open__id
+#: model:ir.model.fields,field_description:bap_project.field_bap_project_sprint__id
+#: model:ir.model.fields,field_description:bap_project.field_bap_project_task__id
+#: model:ir.model.fields,field_description:bap_project.field_bap_project_task_type__id
+#: model:ir.model.fields,field_description:bap_project.field_import_task_wizard__id
+#: model:ir.model.fields,field_description:bap_project.field_project_request_cancel_close_wizard__id
+#: model:ir.model.fields,field_description:bap_project.field_project_request_cancel_open_wizard__id
+#: model:ir.model.fields,field_description:bap_project.field_report_bap_project_report_deadline_urgent_xlsx__id
+#: model:ir.model.fields,field_description:bap_project.field_report_bap_project_report_task_sprint_xlsx__id
+#: model:ir.model.fields,field_description:bap_project.field_report_deadline_urgent__id
+#: model:ir.model.fields,field_description:bap_project.field_report_deadline_urgent_wizard__id
+#: model:ir.model.fields,field_description:bap_project.field_report_task_sprint__id
+#: model:ir.model.fields,field_description:bap_project.field_report_task_sprint_wizard__id
+#: model:ir.model.fields,field_description:bap_project.field_report_task_sprint_xlsx_wizard__id
+msgid "ID"
+msgstr "ID"
+
+#. module: bap_project
+#: model:ir.ui.menu,name:bap_project.import_menu
+#: model_terms:ir.ui.view,arch_db:bap_project.view_import_task_wizard_form
+msgid "Import"
+msgstr "Nhập"
+
+#. module: bap_project
+#: model:ir.actions.act_window,name:bap_project.action_import_task_wizard
+#: model:ir.ui.menu,name:bap_project.import_menu_task
+#: model_terms:ir.ui.view,arch_db:bap_project.view_import_task_wizard_form
+msgid "Import Task"
+msgstr "Nhập nhiệm vụ"
+
+#. module: bap_project
+#: model:ir.model,name:bap_project.model_import_task_wizard
+msgid "Import Task Wizard"
+msgstr "Nhập nhiệm vụ Wizard"
+
+#. module: bap_project
+#: model:ir.model.fields,field_description:bap_project.field_bap_project_task__is_dev
+msgid "Is Dev"
+msgstr "Là Dev"
+
+#. module: bap_project
+#: model:ir.model.fields,field_description:bap_project.field_bap_project_task__is_qc
+msgid "Is Qc"
+msgstr "Là Qc"
+
+#. module: bap_project
+#: model:ir.model.fields,field_description:bap_project.field_bap_project____last_update
+#: model:ir.model.fields,field_description:bap_project.field_bap_project_request_close____last_update
+#: model:ir.model.fields,field_description:bap_project.field_bap_project_request_open____last_update
+#: model:ir.model.fields,field_description:bap_project.field_bap_project_sprint____last_update
+#: model:ir.model.fields,field_description:bap_project.field_bap_project_task____last_update
+#: model:ir.model.fields,field_description:bap_project.field_bap_project_task_type____last_update
+#: model:ir.model.fields,field_description:bap_project.field_import_task_wizard____last_update
+#: model:ir.model.fields,field_description:bap_project.field_project_request_cancel_close_wizard____last_update
+#: model:ir.model.fields,field_description:bap_project.field_project_request_cancel_open_wizard____last_update
+#: model:ir.model.fields,field_description:bap_project.field_report_bap_project_report_deadline_urgent_xlsx____last_update
+#: model:ir.model.fields,field_description:bap_project.field_report_bap_project_report_task_sprint_xlsx____last_update
+#: model:ir.model.fields,field_description:bap_project.field_report_deadline_urgent____last_update
+#: model:ir.model.fields,field_description:bap_project.field_report_deadline_urgent_wizard____last_update
+#: model:ir.model.fields,field_description:bap_project.field_report_task_sprint____last_update
+#: model:ir.model.fields,field_description:bap_project.field_report_task_sprint_wizard____last_update
+#: model:ir.model.fields,field_description:bap_project.field_report_task_sprint_xlsx_wizard____last_update
+msgid "Last Modified on"
+msgstr "Sửa đổi lần cuối vào"
+
+#. module: bap_project
+#: model:ir.model.fields,field_description:bap_project.field_bap_project__write_uid
+#: model:ir.model.fields,field_description:bap_project.field_bap_project_request_close__write_uid
+#: model:ir.model.fields,field_description:bap_project.field_bap_project_request_open__write_uid
+#: model:ir.model.fields,field_description:bap_project.field_bap_project_sprint__write_uid
+#: model:ir.model.fields,field_description:bap_project.field_bap_project_task__write_uid
+#: model:ir.model.fields,field_description:bap_project.field_bap_project_task_type__write_uid
+#: model:ir.model.fields,field_description:bap_project.field_import_task_wizard__write_uid
+#: model:ir.model.fields,field_description:bap_project.field_project_request_cancel_close_wizard__write_uid
+#: model:ir.model.fields,field_description:bap_project.field_project_request_cancel_open_wizard__write_uid
+#: model:ir.model.fields,field_description:bap_project.field_report_deadline_urgent_wizard__write_uid
+#: model:ir.model.fields,field_description:bap_project.field_report_task_sprint_wizard__write_uid
+#: model:ir.model.fields,field_description:bap_project.field_report_task_sprint_xlsx_wizard__write_uid
+msgid "Last Updated by"
+msgstr "Cập nhật lần cuối bởi"
+
+#. module: bap_project
+#: model:ir.model.fields,field_description:bap_project.field_bap_project__write_date
+#: model:ir.model.fields,field_description:bap_project.field_bap_project_request_close__write_date
+#: model:ir.model.fields,field_description:bap_project.field_bap_project_request_open__write_date
+#: model:ir.model.fields,field_description:bap_project.field_bap_project_sprint__write_date
+#: model:ir.model.fields,field_description:bap_project.field_bap_project_task__write_date
+#: model:ir.model.fields,field_description:bap_project.field_bap_project_task_type__write_date
+#: model:ir.model.fields,field_description:bap_project.field_import_task_wizard__write_date
+#: model:ir.model.fields,field_description:bap_project.field_project_request_cancel_close_wizard__write_date
+#: model:ir.model.fields,field_description:bap_project.field_project_request_cancel_open_wizard__write_date
+#: model:ir.model.fields,field_description:bap_project.field_report_deadline_urgent_wizard__write_date
+#: model:ir.model.fields,field_description:bap_project.field_report_task_sprint_wizard__write_date
+#: model:ir.model.fields,field_description:bap_project.field_report_task_sprint_xlsx_wizard__write_date
+msgid "Last Updated on"
+msgstr "Cập nhật lần cuối vào"
+
+#. module: bap_project
+#: model_terms:ir.ui.view,arch_db:bap_project.bap_project_task_form_view
+msgid "Mark as Done"
+msgstr "Đã hoàn thành"
+
+#. module: bap_project
+#: model:ir.model.fields,field_description:bap_project.field_report_task_sprint__member_id
+#: model:ir.ui.menu,name:bap_project.conf_menu_member
+msgid "Member"
+msgstr "Thành viên"
+
+#. module: bap_project
+#: model:ir.model.fields,field_description:bap_project.field_report_task_sprint__member_name
+msgid "Member Name"
+msgstr "Tên thành viên"
+
+#. module: bap_project
+#: model:ir.model.fields.selection,name:bap_project.selection__bap_project_task__status__new
+#: model:ir.model.fields.selection,name:bap_project.selection__report_deadline_urgent__status__new
+msgid "New"
+msgstr "Mới"
+
+#. module: bap_project
+#: code:addons/bap_project/models/bap_project.py:0
+#, python-format
+msgid "New Project Code"
+msgstr "Mã dự án mới"
+
+#. module: bap_project
+#: model:mail.template,subject:bap_project.email_template_project_created
+msgid "New Project Created: ${object.project_name}"
+msgstr "Dự án mới được tạo: ${object.project_name}"
+
+#. module: bap_project
+#: code:addons/bap_project/models/bap_project_request_close.py:0
+#, python-format
+msgid "New Request Close Project Code"
+msgstr "Mã yêu cầu đóng dự án"
+
+#. module: bap_project
+#: code:addons/bap_project/models/bap_project_request_open.py:0
+#, python-format
+msgid "New Request Open Project Code"
+msgstr "Mã yêu cầu mở dự án"
+
+#. module: bap_project
+#: code:addons/bap_project/models/bap_project_sprint.py:0
+#, python-format
+msgid "New Sprint Code"
+msgstr "Mã sprint"
+
+#. module: bap_project
+#: code:addons/bap_project/models/bap_project_task.py:0
+#, python-format
+msgid "New Task Code"
+msgstr "Mã nhiệm vụ"
+
+#. module: bap_project
+#: code:addons/bap_project/models/bap_project_task_type.py:0
+#, python-format
+msgid "New Task Type Code"
+msgstr "Mã loại task"
+
+#. module: bap_project
+#: model:ir.model.fields,field_description:bap_project.field_report_task_sprint__task_new_count
+msgid "New Tasks"
+msgstr "Nhiệm vụ mới"
+
+#. module: bap_project
+#: code:addons/bap_project/wizard/report_task_sprint_wizard.py:0
+#, python-format
+msgid "No projects available for the selected criteria."
+msgstr "Không có dự án nào phù hợp với tiêu chí đã chọn."
+
+#. module: bap_project
+#: code:addons/bap_project/models/bap_project_request_close.py:0
+#: code:addons/bap_project/models/bap_project_request_open.py:0
+#, python-format
+msgid "Only records with status 'Submitted' can be approved."
+msgstr "Chỉ những hồ sơ có trạng thái 'Đã gửi' mới có thể được phê duyệt."
+
+#. module: bap_project
+#: code:addons/bap_project/models/bap_project_request_close.py:0
+#: code:addons/bap_project/models/bap_project_request_open.py:0
+#, python-format
+msgid "Only records with status 'Submitted' can be refused."
+msgstr "Chỉ những hồ sơ có trạng thái 'Đã gửi' mới có thể bị từ chối."
+
+#. module: bap_project
+#: code:addons/bap_project/models/bap_project_request_open.py:0
+#, python-format
+msgid "Only requests in 'Submitted' status can be approved."
+msgstr "Chỉ những yêu cầu ở trạng thái 'Đã gửi' mới có thể được chấp thuận.
+"
+
+#. module: bap_project
+#: code:addons/bap_project/models/bap_project_request_close.py:0
+#, python-format
+msgid "Only submitted requests can be approved."
+msgstr "Chỉ những yêu cầu đã gửi mới có thể được chấp thuận."
+
+#. module: bap_project
+#: code:addons/bap_project/models/bap_project_task.py:0
+#, python-format
+msgid "Only tasks in Quality Control can be returned to Development."
+msgstr "Chỉ các nhiệm vụ trong Kiểm soát chất lượng mới có thể được trả lại cho Phát triển."
+
+#. module: bap_project
+#: code:addons/bap_project/models/bap_project_task.py:0
+#, python-format
+msgid "Only tasks in Quality Control status can be marked as Done."
+msgstr "Chỉ các nhiệm vụ ở trạng thái Kiểm soát chất lượng mới có thể được đánh dấu là Hoàn thành."
+
+#. module: bap_project
+#: model:ir.model.fields.selection,name:bap_project.selection__bap_project__status__open
+#: model:ir.model.fields.selection,name:bap_project.selection__bap_project_sprint__status__open
+msgid "Open"
+msgstr "Mở"
+
+#. module: bap_project
+#: model:mail.template,subject:bap_project.email_template_cancel_request_open
+msgid "Phiếu yêu cầu tạo dự án: ${object.rq_open_code} đã bị hủy"
+msgstr "Phiếu yêu cầu tạo dự án: ${object.rq_open_code} đã bị hủy"
+
+#. module: bap_project
+#: model:mail.template,subject:bap_project.email_template_accept_request_open
+msgid "Phiếu yêu cầu tạo dự án: ${object.rq_open_code} đã được duyệt"
+msgstr "Phiếu yêu cầu tạo dự án: ${object.rq_open_code} đã được duyệt"
+
+#. module: bap_project
+#: model:mail.template,subject:bap_project.email_template_cancel_request_close
+msgid "Phiếu yêu cầu đóng dự án: ${object.rq_close_code} đã bị hủy"
+msgstr "Phiếu yêu cầu đóng dự án: ${object.rq_close_code} đã bị hủy"
+
+#. module: bap_project
+#: model:mail.template,subject:bap_project.email_template_accept_request_close
+msgid "Phiếu yêu cầu đóng dự án: ${object.rq_close_code} đã đươợc duyệt"
+msgstr "Phiếu yêu cầu đóng dự án: ${object.rq_close_code} đã đươợc duyệt"
+
+#. module: bap_project
+#: model:ir.model.fields,field_description:bap_project.field_bap_project_request_close__project_id
+#: model:ir.model.fields,field_description:bap_project.field_bap_project_sprint__project_id
+#: model:ir.model.fields,field_description:bap_project.field_bap_project_task__project_id
+#: model:ir.model.fields,field_description:bap_project.field_report_deadline_urgent__project_id
+#: model:ir.model.fields,field_description:bap_project.field_report_deadline_urgent_wizard__project_ids
+#: model:ir.model.fields,field_description:bap_project.field_report_task_sprint__project_id
+#: model:ir.model.fields,field_description:bap_project.field_report_task_sprint_wizard__project_ids
+#: model:ir.model.fields,field_description:bap_project.field_report_task_sprint_xlsx_wizard__project_ids
+#: model:ir.ui.menu,name:bap_project.project_menu
+#: model:ir.ui.menu,name:bap_project.project_menu_project
+msgid "Project"
+msgstr "Dự án"
+
+#. module: bap_project
+#: model:ir.model.fields,field_description:bap_project.field_bap_project__project_code
+#: model:ir.model.fields,field_description:bap_project.field_bap_project_request_close__project_code
+#: model:ir.model.fields,field_description:bap_project.field_bap_project_request_open__project_code
+#: model:ir.model.fields,field_description:bap_project.field_bap_project_task__project_code
+msgid "Project Code"
+msgstr "Mã dự án"
+
+#. module: bap_project
+#: model:ir.model.fields,field_description:bap_project.field_bap_project__pm_id
+#: model:ir.model.fields,field_description:bap_project.field_bap_project_request_close__pm_id
+#: model:ir.model.fields,field_description:bap_project.field_bap_project_request_open__pm_id
+msgid "Project Manager"
+msgstr "Quản lý dự án"
+
+#. module: bap_project
+#: model:ir.model.fields,field_description:bap_project.field_bap_project__project_name
+#: model:ir.model.fields,field_description:bap_project.field_bap_project_request_open__project_name
+#: model:ir.model.fields,field_description:bap_project.field_report_task_sprint__project_name
+msgid "Project Name"
+msgstr "Tên dự án"
+
+#. module: bap_project
+#: model:ir.model,name:bap_project.model_report_task_sprint
+msgid "Project Task Sprint Report"
+msgstr "Báo cáo Sprint nhiệm vụ dự án"
+
+#. module: bap_project
+#: model:ir.model.fields,field_description:bap_project.field_bap_project_task__qc_deadline
+#: model:ir.model.fields,field_description:bap_project.field_report_deadline_urgent__qc_deadline
+msgid "QC Deadline"
+msgstr "Hạn chót QC"
+
+#. module: bap_project
+#: model:ir.model.fields,field_description:bap_project.field_report_deadline_urgent__qc_member
+msgid "QC Member"
+msgstr "Thành viên QC"
+
+#. module: bap_project
+#: model:ir.model.fields,field_description:bap_project.field_bap_project__qc_ids
+#: model:ir.model.fields,field_description:bap_project.field_bap_project_request_open__qc_ids
+msgid "QC Team"
+msgstr "Nhóm QC"
+
+#. module: bap_project
+#: model:ir.model.fields.selection,name:bap_project.selection__bap_project_task__status__qc
+#: model:ir.model.fields.selection,name:bap_project.selection__report_deadline_urgent__status__qc
+msgid "Quality Control"
+msgstr "Kiểm soát chất lượng"
+
+#. module: bap_project
+#: model:ir.model.fields,field_description:bap_project.field_report_task_sprint__task_qc_count
+msgid "Quality Control Tasks"
+msgstr "Nhiệm vụ kiểm tra chất lượng"
+
+#. module: bap_project
+#: model:ir.model.fields,field_description:bap_project.field_bap_project_task__qc_id
+#: model:ir.model.fields.selection,name:bap_project.selection__report_task_sprint__role__qc
+msgid "Quality Controller"
+msgstr "Kiểm soát viên chất lượng"
+
+#. module: bap_project
+#: model_terms:ir.ui.view,arch_db:bap_project.bap_project_request_close_tree_view
+#: model_terms:ir.ui.view,arch_db:bap_project.bap_project_request_open_tree_view
+msgid "Refuse All"
+msgstr "Từ trối tất cả"
+
+#. module: bap_project
+#: model:ir.ui.menu,name:bap_project.report_menu
+msgid "Report"
+msgstr "Báo cáo"
+
+#. module: bap_project
+#: model:ir.actions.act_window,name:bap_project.report_deadline_urgent_action
+#: model:ir.model,name:bap_project.model_report_deadline_urgent
+#: model:ir.ui.menu,name:bap_project.report_menu_deadline
+msgid "Report Deadline Urgent"
+msgstr "Báo cáo hạn khẩn cấp"
+
+#. module: bap_project
+#: model:ir.actions.act_window,name:bap_project.action_report_deadline_urgent_wizard
+msgid "Report Deadline Urgent Excel"
+msgstr "Báo cáo hạn khẩn cấp Excel"
+
+#. module: bap_project
+#: model:ir.model,name:bap_project.model_report_deadline_urgent_wizard
+#: model_terms:ir.ui.view,arch_db:bap_project.report_deadline_urgent_wizard_view_form
+msgid "Report Deadline Urgent Wizard"
+msgstr "Báo cáo hạn khẩn cấp Wizard"
+
+#. module: bap_project
+#: model:ir.model,name:bap_project.model_report_bap_project_report_deadline_urgent_xlsx
+#: model:ir.ui.menu,name:bap_project.report_menu_deadline_xlsx
+msgid "Report Deadline Urgent XLSX"
+msgstr "Báo cáo hạn khẩn cấp xlsx"
+
+#. module: bap_project
+#: model:ir.ui.menu,name:bap_project.report_menu_task
+msgid "Report Task In Sprint"
+msgstr "Báo cáo nhiệm vụ trong sprint"
+
+#. module: bap_project
+#: model:ir.ui.menu,name:bap_project.report_menu_task_xlsx
+msgid "Report Task In Sprint XLSX"
+msgstr "Báo cáo nhiệm vụ trong sprint xlsx"
+
+#. module: bap_project
+#: model:ir.actions.act_window,name:bap_project.action_report_task_sprint_wizard
+#: model_terms:ir.ui.view,arch_db:bap_project.report_task_sprint_wizard_view_form
+msgid "Report Task Sprint"
+msgstr "Báo cáo nhiệm vụ sprint"
+
+#. module: bap_project
+#: model:ir.actions.act_window,name:bap_project.action_report_task_sprint_xlsx_wizard
+msgid "Report Task Sprint Excel"
+msgstr "Báo cáo nhiệm vụ sprint excel"
+
+#. module: bap_project
+#: model:ir.model,name:bap_project.model_report_task_sprint_wizard
+#: model_terms:ir.ui.view,arch_db:bap_project.report_task_sprint_wizard_view_form
+msgid "Report Task Sprint Wizard"
+msgstr "Báo cáo nhiệm vụ sprint wizard"
+
+#. module: bap_project
+#: model:ir.model,name:bap_project.model_report_bap_project_report_task_sprint_xlsx
+#: model_terms:ir.ui.view,arch_db:bap_project.report_task_sprint_xlsx_wizard_view_form
+msgid "Report Task Sprint XLSX"
+msgstr "Báo cáo nhiệm vụ sprint xlsx"
+
+#. module: bap_project
+#: model:ir.model,name:bap_project.model_report_task_sprint_xlsx_wizard
+#: model_terms:ir.ui.view,arch_db:bap_project.report_task_sprint_xlsx_wizard_view_form
+msgid "Report Task Sprint XLSX Wizard"
+msgstr "Báo cáo nhiệm vụ sprint xlsx wizard"
+
+#. module: bap_project
+#: model:ir.model.fields,field_description:bap_project.field_bap_project__request_id
+msgid "Request"
+msgstr "Yêu cầu"
+
+#. module: bap_project
+#: model:ir.ui.menu,name:bap_project.project_menu_rcp
+msgid "Request Close Project"
+msgstr "Yêu cầu đóng dự án"
+
+#. module: bap_project
+#: model:ir.model.fields,field_description:bap_project.field_bap_project_request_close__rq_close_code
+#: model:ir.model.fields,field_description:bap_project.field_bap_project_request_open__rq_open_code
+msgid "Request Code"
+msgstr "Mã yêu cầu"
+
+#. module: bap_project
+#: model:ir.ui.menu,name:bap_project.project_menu_rop
+msgid "Request Open Project"
+msgstr "Yêu cầu đóng dự án"
+
+#. module: bap_project
+#: model_terms:ir.ui.view,arch_db:bap_project.bap_project_task_form_view
+msgid "Return to Development"
+msgstr "Trở về nhà phát triển"
+
+#. module: bap_project
+#: model:ir.model.fields,field_description:bap_project.field_report_task_sprint__role
+msgid "Role"
+msgstr "Vai trò"
+
+#. module: bap_project
+#: model:ir.model.fields,field_description:bap_project.field_bap_project__sprint_ids
+#: model:ir.model.fields,field_description:bap_project.field_bap_project_task__sprint_id
+#: model:ir.model.fields,field_description:bap_project.field_report_task_sprint__sprint_id
+#: model:ir.ui.menu,name:bap_project.project_menu_sprint
+msgid "Sprint"
+msgstr "Nước rút"
+
+#. module: bap_project
+#: model:ir.model.fields,field_description:bap_project.field_bap_project_sprint__sprint_code
+msgid "Sprint Code"
+msgstr "Mã nước rút"
+
+#. module: bap_project
+#: model:ir.model.fields,field_description:bap_project.field_report_task_sprint__sprint_end_date
+msgid "Sprint End Date"
+msgstr "Ngày nước rút kết thúc"
+
+#. module: bap_project
+#: model:ir.model.fields,field_description:bap_project.field_bap_project_sprint__sprint_name
+#: model:ir.model.fields,field_description:bap_project.field_report_task_sprint__sprint_name
+msgid "Sprint Name"
+msgstr "Tên nước rút"
+
+#. module: bap_project
+#: model:ir.model.fields,field_description:bap_project.field_report_task_sprint__sprint_start_date
+msgid "Sprint Start Date"
+msgstr "Ngày bắt đầu nước rút"
+
+#. module: bap_project
+#: model:ir.model.fields,field_description:bap_project.field_bap_project__start_date
+#: model:ir.model.fields,field_description:bap_project.field_bap_project_request_open__start_date
+#: model:ir.model.fields,field_description:bap_project.field_bap_project_sprint__start_date
+msgid "Start Date"
+msgstr "Ngày bắt đầu"
+
+#. module: bap_project
+#: model:ir.model.fields,field_description:bap_project.field_bap_project__status
+#: model:ir.model.fields,field_description:bap_project.field_bap_project_request_close__status
+#: model:ir.model.fields,field_description:bap_project.field_bap_project_request_open__status
+#: model:ir.model.fields,field_description:bap_project.field_bap_project_sprint__status
+#: model:ir.model.fields,field_description:bap_project.field_bap_project_task__status
+#: model:ir.model.fields,field_description:bap_project.field_report_deadline_urgent__status
+msgid "Status"
+msgstr "Trạng thái"
+
+#. module: bap_project
+#: model_terms:ir.ui.view,arch_db:bap_project.bap_project_request_close_form_view
+#: model_terms:ir.ui.view,arch_db:bap_project.bap_project_request_open_form_view
+msgid "Submit"
+msgstr "Nộp"
+
+#. module: bap_project
+#: model_terms:ir.ui.view,arch_db:bap_project.bap_project_task_form_view
+msgid "Submit to QC"
+msgstr "Nộp tới QC"
+
+#. module: bap_project
+#: model:ir.model.fields.selection,name:bap_project.selection__bap_project_request_close__status__submitted
+#: model:ir.model.fields.selection,name:bap_project.selection__bap_project_request_open__status__submitted
+msgid "Submitted"
+msgstr "Đã nộp"
+
+#. module: bap_project
+#: model:ir.ui.menu,name:bap_project.project_menu_task
+#: model_terms:ir.ui.view,arch_db:bap_project.bap_project_task_form_view
+msgid "Task"
+msgstr "Nhiệm vụ"
+
+#. module: bap_project
+#: model:mail.template,subject:bap_project.email_template_done_task_to_pm
+msgid "Task ${object.task_name} Completed"
+msgstr "Nhiệm vụ ${object.task_name} hoàn tất"
+
+#. module: bap_project
+#: model:mail.template,subject:bap_project.email_template_done_task_to_qc
+msgid "Task ${object.task_name} Ready for QC"
+msgstr "Nhiệm vụ ${object.task_name} Sẵn sàng cho QC"
+
+#. module: bap_project
+#: model:mail.template,subject:bap_project.email_template_return_task_to_dev
+msgid "Task ${object.task_name} Returned for Rework"
+msgstr "Nhiệm vụ ${object.task_name} trả về để làm lại"
+
+#. module: bap_project
+#: model:ir.model.fields,field_description:bap_project.field_bap_project_task__task_code
+#: model:ir.model.fields,field_description:bap_project.field_report_deadline_urgent__task_code
+msgid "Task Code"
+msgstr "Mã nhiệm vụ"
+
+#. module: bap_project
+#: model:ir.model.fields,field_description:bap_project.field_bap_project__task_count
+msgid "Task Count"
+msgstr "Đếm nhiệm vụ"
+
+#. module: bap_project
+#: model_terms:ir.ui.view,arch_db:bap_project.report_deadline_urgent_view_tree
+msgid "Task Deadline Report"
+msgstr "Báo cáo hạn nhiệm vụ"
+
+#. module: bap_project
+#: model:ir.model.fields,field_description:bap_project.field_bap_project_task__task_name
+#: model:ir.model.fields,field_description:bap_project.field_report_deadline_urgent__task_name
+msgid "Task Name"
+msgstr "Tên Nhiệm vụ"
+
+#. module: bap_project
+#: code:addons/bap_project/wizard/report_task_sprint_wizard.py:0
+#: model:ir.actions.act_window,name:bap_project.action_report_task_sprint
+#: model_terms:ir.ui.view,arch_db:bap_project.view_report_task_sprint_tree
+#, python-format
+msgid "Task Sprint Report"
+msgstr "Báo cáo nhiệm vụ nước rút"
+
+#. module: bap_project
+#: model:ir.model.fields,field_description:bap_project.field_bap_project_task__task_type_id
+#: model:ir.ui.menu,name:bap_project.conf_menu_task_type
+msgid "Task Type"
+msgstr "Loại nhiệm vụ"
+
+#. module: bap_project
+#: model:ir.model.fields,field_description:bap_project.field_bap_project_task_type__take_type_name
+msgid "Task Type Name"
+msgstr "Tên loại nhiệm vụ"
+
+#. module: bap_project
+#: code:addons/bap_project/report/report_task_sprint.py:0
+#: model:ir.model.fields,field_description:bap_project.field_bap_project__task_ids
+#: model:ir.model.fields,field_description:bap_project.field_bap_project_sprint__task_ids
+#: model_terms:ir.ui.view,arch_db:bap_project.bap_project_task_tree_view
+#, python-format
+msgid "Tasks"
+msgstr "Nhiệm vụ"
+
+#. module: bap_project
+#: code:addons/bap_project/wizard/report_task_sprint_wizard.py:0
+#, python-format
+msgid "The 'Date From' must be before or equal to 'Date To'."
+msgstr "'Từ ngày' cần phải trước hoặc bằng 'Đến ngày'."
+
+#. module: bap_project
+#: code:addons/bap_project/models/bap_project.py:0
+#, python-format
+msgid "The End Date (%s) cannot be earlier than the Start Date (%s)."
+msgstr "Ngày kết thúc (%s) không thể sớm hơn Ngày bắt đầu (%s)."
+
+#. module: bap_project
+#: code:addons/bap_project/models/bap_project.py:0
+#, python-format
+msgid "The Project Name \"%s\" must be unique (case insensitive)."
+msgstr "Tên dự án \"%s\" phải là duy nhất (không phân biệt chữ hoa chữ thường)."
+
+#. module: bap_project
+#: code:addons/bap_project/models/bap_project_request_close.py:0
+#, python-format
+msgid "The related project does not exist."
+msgstr "Dự án liên quan không tồn tại."
+
+#. module: bap_project
+#: model:ir.model.fields,field_description:bap_project.field_report_task_sprint__total_task_count
+msgid "Total Tasks"
+msgstr "Tổng nhiệm vụ"
+
+#. module: bap_project
+#: model:ir.model.fields,field_description:bap_project.field_bap_project_task_type__task_type_code
+msgid "Type Code"
+msgstr "Mã loại"
+
+#. module: bap_project
+#. openerp-web
+#: code:addons/bap_project/static/src/xml/button_task.xml:0
+#, python-format
+msgid "Update newest sprint"
+msgstr "Cập nhật sprint mới nhất"
+
+#. module: bap_project
+#: model:ir.actions.act_window,name:bap_project.action_res_users_custom
+msgid "Users Bap Project "
+msgstr "Người dùng dự án Bap"
+
+#. module: bap_project
+#: model_terms:ir.ui.view,arch_db:bap_project.bap_project_kanban_view
+msgid "View"
+msgstr "Xem"
+
+#. module: bap_project
+#: model:ir.actions.server,name:bap_project.ir_cron_task_report_ir_actions_server
+#: model:ir.cron,cron_name:bap_project.ir_cron_task_report
+#: model:ir.cron,name:bap_project.ir_cron_task_report
+msgid "Weekly Task Report"
+msgstr "Báo cáo nhiệm vụ hàng tuần"
+
+#. module: bap_project
+#: model:mail.template,subject:bap_project.email_template_task_report_weekly
+msgid "Weekly Task Report for Project: {object.project_name}"
+msgstr "Báo cáo công việc hàng tuần cho dự án: {object.project_name}"
+
+#. module: bap_project
+#: model:ir.model,name:bap_project.model_project_request_cancel_close_wizard
+msgid "Wizard to Cancel Close Project Request"
+msgstr ""wizard để hủy yêu cầu đóng dự án
+
+#. module: bap_project
+#: model:ir.model,name:bap_project.model_project_request_cancel_open_wizard
+msgid "Wizard to Cancel Project Request"
+msgstr "wizard để hủy yêu cầu dự án"
+
+#. module: bap_project
+#: code:addons/bap_project/models/bap_project_task.py:0
+#, python-format
+msgid "You can only submit tasks in Development status."
+msgstr "Ba chỉ có thể nộp nhiệm vụ trong trạng thái phát triển"
+
+#. module: bap_project
+#: code:addons/bap_project/wizard/report_task_sprint_wizard.py:0
+#, python-format
+msgid "You must enter both 'Date From' and 'Date To'."
+msgstr "Bạn cần nhập cả 'Từ ngày' và 'Đến ngày'."

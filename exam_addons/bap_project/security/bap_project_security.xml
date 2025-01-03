@@ -86,17 +86,10 @@
             <field name="perm_unlink" eval="True"/>
         </record>
 
-        <record id="bap_task_member_edit_access" model="ir.rule">
-            <field name="name">Quyền tạo/sửa/xóa Task cho thành viên và PM</field>
+        <record id="bap_task_admin_edit_access" model="ir.rule">
+            <field name="name">Quyền tạo/sửa/xóa Task cho Admin</field>
             <field name="model_id" ref="model_bap_project_task"/>
-            <field name="domain_force">[
-                '|',
-                '|',
-                ('project_id.dev_ids', 'in', user.id),
-                ('project_id.qc_ids', 'in', user.id),
-                ('project_id.pm_id', '=', user.id)
-            ]</field>
-            <field name="groups" eval="[(4, ref('group_project_pm'))]"/>
+            <field name="groups" eval="[(4, ref('group_project_admin'))]"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_create" eval="True"/>
             <field name="perm_write" eval="True"/>

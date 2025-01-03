@@ -15,7 +15,7 @@
         "data/sequence_data.xml",
         "data/ir_cron_report_task_weekly.xml",
         "data/res_users_data.xml",
-        "data/project_data.xml",
+        # "data/project_data.xml",
         "data/project_mail_template_data.xml",
         "views/assets.xml",
         "views/bap_project_views.xml",
@@ -41,5 +41,5 @@
     ],
 
     'installable': True,
-    'application': True
+    'application': True,
 }

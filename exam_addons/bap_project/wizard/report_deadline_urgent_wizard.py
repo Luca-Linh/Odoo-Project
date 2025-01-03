@@ -12,7 +12,7 @@ class ReportDeadlineUrgentWizard(models.TransientModel):
             return [('pm_id', '=', user.id)]
         return []
 
-    def action_export_excel(self):
+    def action_export_urgent_excel(self):
         project_ids = ','.join(map(str, self.project_ids.ids)) if self.project_ids else ''
         url = f'/report_deadline_urgent_xlsx?project_ids={project_ids}'
         return {

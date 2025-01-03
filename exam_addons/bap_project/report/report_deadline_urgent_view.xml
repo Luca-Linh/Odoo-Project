@@ -4,15 +4,13 @@
             <field name="name">report.deadline.urgent.view.tree</field>
             <field name="model">report.deadline.urgent</field>
             <field name="arch" type="xml">
-                <tree string="Task Deadline Report">
-                    <field name="task_code"/>
-                    <field name="task_name"/>
-                    <field name="project_id"/>
-                    <field name="dev_member"/>
-                    <field name="qc_member"/>
-                    <field name="dev_deadline"/>
-                    <field name="qc_deadline"/>
-                    <field name="status"/>
+                <tree string="Deadline Urgent">
+                    <field name="task_code" string="Task Code"/>
+                    <field name="task_name" string="Task Name"/>
+                    <field name="project_id" string="Project"/>
+                    <field name="member" string="Member"/>
+                    <field name="deadline" string="Deadline"/>
+                    <field name="status" string="Status"/>
                 </tree>
             </field>
         </record>

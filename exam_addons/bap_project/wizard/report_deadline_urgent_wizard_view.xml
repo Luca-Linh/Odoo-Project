@@ -10,7 +10,7 @@
                     <field name="project_ids" widget="many2many_tags"/>
                 </group>
                 <footer>
-                    <button string="Export Excel" type="object" name="action_export_excel" class="btn-primary"/>
+                    <button string="Export Urgent" type="object" name="action_export_urgent_excel" class="btn-primary"/>
                     <button string="Cancel" class="btn-secondary" special="cancel"/>
                 </footer>
             </form>

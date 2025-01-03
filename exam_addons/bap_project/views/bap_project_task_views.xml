@@ -35,7 +35,7 @@
                          <group>
                              <field name="task_code"/>
                              <field name="task_name"/>
-                             <field name="project_id"/>
+                             <field name="project_id" options="{'no_create': True}"/>
                              <field name="sprint_id"/>
                              <field name="description"/>
                              <field name="status"/>

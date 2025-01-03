@@ -175,10 +175,6 @@ class EstateAPI(http.Controller):
                     "status": "error",
                     "message": "No valid fields provided for update"
                 }, 400
-            # update_data = {}
-            # for field in allowed_fields:
-            #     update_data[field] = estate_data.get(field, False)
-
             estate.update(update_data)
             return {
                 "status": "success",
