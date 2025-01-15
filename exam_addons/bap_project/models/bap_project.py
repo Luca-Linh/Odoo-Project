@@ -1,7 +1,7 @@
 from lxml import etree
 
 from odoo import models, fields, api, _
-from odoo.exceptions import ValidationError, _logger
+from odoo.exceptions import ValidationError, _logger, UserError
 
 
 class BapProject(models.Model):
@@ -16,7 +16,7 @@ class BapProject(models.Model):
     )
     project_name = fields.Char(string='Project Name', required=True, unique=True)
     start_date = fields.Date(string='Start Date', required=True)
-    end_date = fields.Date(string='End Date')
+    end_date = fields.Date(string='End Date', readonly=True)
     status = fields.Selection([
         ('open', 'Open'),
         ('close', 'Closed')
@@ -50,26 +50,26 @@ class BapProject(models.Model):
         compute="_compute_bap_task_count"
     )
     request_id = fields.Many2one('bap.project.request.open', string='Request', readonly=True)
-
+    # Hiện tên thay vì là id
     def name_get(self):
         result = []
         for project in self:
             name = project.project_name
             result.append((project.id, name))
         return result
-
+    # tính số task của project
     @api.depends('task_ids')
     def _compute_bap_task_count(self):
         for project in self:
             project.task_count = len(project.task_ids)
 
-
+    # Tạo project
     @api.model
     def create(self, vals):
         vals['project_code'] = self.env['ir.sequence'].next_by_code('project_sequence_code')
         bap_project = super(BapProject, self).create(vals)
 
-        request_id = vals.get('request_id')  # Giả định bạn truyền request_id vào project_vals
+        request_id = vals.get('request_id')
         if request_id:
             request = self.env['bap.project.request.open'].browse(request_id)
             template = self.env.ref('bap_project.email_template_accept_request_open')
@@ -86,7 +86,7 @@ class BapProject(models.Model):
             self._send_project_notification(bap_project, email_list)
 
         return bap_project
-
+    # Gửi mail cho thành viên
     def _send_project_notification(self, bap_project, email_list):
         _logger.info(f"Sending email to: {email_list}")  # Log danh sách email để kiểm tra
         template = self.env.ref('bap_project.email_template_project_created')
@@ -99,7 +99,6 @@ class BapProject(models.Model):
 
     @api.constrains('start_date', 'end_date')
     def _check_start_end_date(self):
-        """Ensure end date is greater than or equal to start date."""
         for project in self:
             if project.end_date and project.end_date < project.start_date:
                 raise ValidationError(
@@ -109,7 +108,6 @@ class BapProject(models.Model):
 
     @api.constrains('project_name')
     def _check_unique_project_name(self):
-        """Ensure project name is unique (case insensitive)."""
         for project in self:
             duplicate_project = self.search([
                 ('id', '!=', project.id),
@@ -135,6 +133,11 @@ class BapProject(models.Model):
             },
             'target': 'current',
         }
+    def write(self, vals):
+        for project in self:
+            if project.status == 'close':
+                raise UserError(_("Use cannot edit project closed"))
+        return super(BapProject,self).write(vals)
 
     def action_view_project(self):
         return {
@@ -145,7 +148,7 @@ class BapProject(models.Model):
             'res_id': self.id,
             'target': 'current',
         }
-
+    # Schedule gửi mail mỗi tuần
     @api.model
     def send_weekly_task_report(self):
         projects = self.search([('status', '=', 'open')])

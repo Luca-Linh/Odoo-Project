@@ -18,9 +18,9 @@ class ProjectRequestCancelOpenWizard(models.TransientModel):
             raise UserError("Only submitted requests can be cancelled.")
 
         # Update the request with the cancel reason
-        request.sudo().write({'status': 'cancelled'})
-        request.sudo().write({'cancel_reason': self.cancel_reason})
-        request.sudo().write({'approved_by': self.env.user})
+        request.write({'status': 'cancelled'})
+        request.write({'cancel_reason': self.cancel_reason})
+        request.write({'approved_by': self.env.user})
 
         # Send the email notification
         self._send_cancel_email(request)

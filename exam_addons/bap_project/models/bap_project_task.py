@@ -61,6 +61,33 @@ class BapProjectTask(models.Model):
             result.append((task.id, name))
         return result
 
+    @api.onchange('project_id')
+    def _onchange_project_id(self):
+        if self.project_id:
+            # Set the domain for developer (dev_id) and quality controller (qc_id)
+            self.dev_id = False  # Reset the previous selection
+            self.qc_id = False
+            return {
+                'domain': {
+                    'dev_id': [('id', 'in', self.project_id.dev_ids.ids)],
+                    'qc_id': [('id', 'in', self.project_id.qc_ids.ids)],
+                    'sprint_id': [('id', 'in', self.project_id.sprint_ids.ids)]
+                }
+            }
+        return {}
+    @api.onchange('sprint_id')
+    def _onchange_sprint(self):
+        if self.sprint_id and self.sprint_id.status == 'close':
+            raise ValidationError(_('Sprint is close will create task'))
+
+    @api.onchange('sprint_id','dev_deadline','qc_deadline')
+    def _onchange_deadline(self):
+        if self.dev_deadline and self.dev_deadline <= self.sprint_id.start_date:
+            raise ValidationError(_(
+                "dev deadline after start date (%s) of sprint"
+            ) % self.sprint_id.start_date)
+
+    # Kiểm tra để hiện button submit
     @api.depends('project_id.dev_ids', 'project_id.qc_ids')
     def _compute_user_permissions(self):
         for task in self:
@@ -79,6 +106,8 @@ class BapProjectTask(models.Model):
             ('project_id', '=', project_id),
             ('status', '=', 'close')
         ])
+        if not closed_sprints:
+            return {'error': 'No close sprint found for this project.'}
 
         newest_open_sprint = self.env['bap.project.sprint'].search([
             ('project_id', '=', project_id),
@@ -107,9 +136,9 @@ class BapProjectTask(models.Model):
     def _check_deadlines(self):
         for task in self:
             if task.dev_id and not task.dev_deadline:
-                raise ValidationError('Developer Deadline is required if a Developer is assigned.')
+                raise ValidationError(_('Developer Deadline is required if a Developer is assigned.'))
             if task.qc_id and not task.qc_deadline:
-                raise ValidationError('QC Deadline is required if a Quality Controller is assigned.')
+                raise ValidationError(_('QC Deadline is required if a Quality Controller is assigned.'))
 
     def action_submit_to_qc(self):
         """Dev submits task to QC."""
@@ -122,6 +151,10 @@ class BapProjectTask(models.Model):
         template = self.env.ref('bap_project.email_template_done_task_to_qc')
         if template:
             template.sudo().send_mail(self.id, force_send=True)
+
+    def action_accept_task(self):
+        self.write({'status': 'dev'})
+
 
     def action_qc_test_done(self):
         """QC confirms task is done."""

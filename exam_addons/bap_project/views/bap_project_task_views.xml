@@ -9,8 +9,11 @@
             <tree string="Tasks" js_class="project_task_tree_class">
                 <field name="task_code"/>
                 <field name="task_name"/>
+                <field name="dev_id"/>
+                <field name="qc_id"/>
                 <field name="project_id"/>
                 <field name="sprint_id"/>
+                <field name="status"/>
                 <field name="description"/>
             </tree>
         </field>
@@ -23,6 +26,8 @@
              <form string="Task">
                  <header>
                      <field name="status" widget="statusbar" statusbar_visible="new,dev,qc,done" />
+                     <button name="action_accept_task" string="Accept Task" type="object"
+                             attrs="{'invisible': [('is_dev', '=', False),('status', 'not in', ['new'])]}"/>
                      <button name="action_submit_to_qc" string="Submit to QC" type="object"
                              attrs="{'invisible': [('is_dev', '=', False)]}"/>
                      <button name="action_qc_test_done" string="Mark as Done" type="object"
@@ -38,14 +43,13 @@
                              <field name="project_id" options="{'no_create': True}"/>
                              <field name="sprint_id"/>
                              <field name="description"/>
-                             <field name="status"/>
                          </group>
                          <group>
                              <field name="dev_id"/>
                              <field name="qc_id"/>
                              <field name="task_type_id"/>
-                             <field name="dev_deadline"/>
-                             <field name="qc_deadline"/>
+                             <field name="dev_deadline" attrs="{'invisible': [('dev_id', '=', False)]}"/>
+                             <field name="qc_deadline" attrs="{'invisible': [('qc_id', '=', False)]}"/>
                              <field name="is_dev" invisible='1'/>
                              <field name="is_qc" invisible='1'/>
                          </group>

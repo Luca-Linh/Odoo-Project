@@ -42,7 +42,7 @@
         <record id="sprint_project_df" model="bap.project.sprint">
             <field name="sprint_name">Sprint Test Import Project DF</field>
             <field name="project_id" ref="project_df"/>
-            <field name="start_date">2025-01-06</field>
+            <field name="start_date">2025-01-07</field>
             <field name="end_date">2025-01-24</field>
             <field name="status">open</field>
         </record>
@@ -64,7 +64,7 @@
         <record id="sprint_project_lowG" model="bap.project.sprint">
             <field name="sprint_name">Sprint Test Import Project LowG</field>
             <field name="project_id" ref="project_lowG"/>
-            <field name="start_date">2025-01-06</field>
+            <field name="start_date">2025-01-07</field>
             <field name="end_date">2025-01-24</field>
             <field name="status">open</field>
         </record>
@@ -86,7 +86,7 @@
         <record id="sprint_project_jack" model="bap.project.sprint">
             <field name="sprint_name">Sprint Test Import Project Jack</field>
             <field name="project_id" ref="project_jack"/>
-            <field name="start_date">2025-01-06</field>
+            <field name="start_date">2025-01-07</field>
             <field name="end_date">2025-01-24</field>
             <field name="status">open</field>
         </record>
@@ -108,7 +108,7 @@
         <record id="sprint_project_dev" model="bap.project.sprint">
             <field name="sprint_name">Sprint Test Import Project Dev</field>
             <field name="project_id" ref="project_dev"/>
-            <field name="start_date">2025-01-06</field>
+            <field name="start_date">2025-01-07</field>
             <field name="end_date">2025-01-31</field>
             <field name="status">open</field>
         </record>

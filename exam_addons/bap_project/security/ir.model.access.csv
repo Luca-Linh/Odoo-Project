@@ -1,5 +1,5 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_project_admin,access.project.admin,model_bap_project,group_project_admin,1,1,0,0
+access_project_admin,access.project.admin,model_bap_project,group_project_admin,1,1,1,0
 access_project_pm,access.project.pm,model_bap_project,group_project_pm,1,1,0,0
 access_project_member,access.project.member,model_bap_project,group_project_member,1,0,0,0
 
@@ -15,12 +15,12 @@ access_task_type_admin,access_task_type_admin,model_bap_project_task_type,group_
 access_task_type_pm,access_task_type_pm,model_bap_project_task_type,group_project_pm,1,1,1,0
 access_task_type_member,access_task_type_member,model_bap_project_task_type,group_project_member,1,0,0,0
 
-access_request_open_admin,access_request_open_admin,model_bap_project_request_open,group_project_admin,1,0,1,0
-access_request_open_pm,access_request_open_pm,model_bap_project_request_open,group_project_pm,1,0,1,0
+access_request_open_admin,access_request_open_admin,model_bap_project_request_open,group_project_admin,1,1,1,0
+access_request_open_pm,access_request_open_pm,model_bap_project_request_open,group_project_pm,1,1,1,0
 
 
-access_request_close_admin,access_request_close_admin,model_bap_project_request_close,group_project_admin,1,0,1,0
-access_request_close_pm,access_request_close_pm,model_bap_project_request_close,group_project_pm,1,0,1,0
+access_request_close_admin,access_request_close_admin,model_bap_project_request_close,group_project_admin,1,1,1,0
+access_request_close_pm,access_request_close_pm,model_bap_project_request_close,group_project_pm,1,1,1,0
 
 
 

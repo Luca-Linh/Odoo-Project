@@ -104,7 +104,7 @@
             <field name="groups" eval="[(4, ref('group_project_pm'))]"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_create" eval="True"/>
-            <field name="perm_write" eval="False"/>
+            <field name="perm_write" eval="True"/>
             <field name="perm_unlink" eval="False"/>
         </record>
 
@@ -115,7 +115,7 @@
             <field name="groups" eval="[(4, ref('group_project_pm'))]"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_create" eval="True"/>
-            <field name="perm_write" eval="False"/>
+            <field name="perm_write" eval="True"/>
             <field name="perm_unlink" eval="False"/>
         </record>
 

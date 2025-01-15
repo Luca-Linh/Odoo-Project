@@ -709,8 +709,7 @@ msgstr "Chỉ những hồ sơ có trạng thái 'Đã gửi' mới có thể b�
 #: code:addons/bap_project/models/bap_project_request_open.py:0
 #, python-format
 msgid "Only requests in 'Submitted' status can be approved."
-msgstr "Chỉ những yêu cầu ở trạng thái 'Đã gửi' mới có thể được chấp thuận.
-"
+msgstr "Chỉ những yêu cầu ở trạng thái 'Đã gửi' mới có thể được chấp thuận."
 
 #. module: bap_project
 #: code:addons/bap_project/models/bap_project_request_close.py:0

@@ -35,7 +35,11 @@ class ReportTaskSprint(models.Model):
             'name': 'Total Tasks',
             'view_mode': 'tree',
             'res_model': 'bap.project.task',
-            'domain': [('project_id', '=', self.project_id.id)],
+            'domain': [
+                ('project_id', '=', self.project_id.id),
+                ('sprint_id', '=', self.sprint_id.id),
+                ('member_id', '=', self.member_id.id),
+            ],
             'context': dict(self.env.context),
             'target': 'new',
         }
@@ -47,6 +51,8 @@ class ReportTaskSprint(models.Model):
             'view_mode': 'tree',
             'res_model': 'bap.project.task',
             'domain': [('project_id', '=', self.project_id.id),
+                       ('sprint_id', '=', self.sprint_id.id),
+                       ('member_id', '=', self.member_id.id),
                        ('status', '=', 'new')],
             'context': dict(self.env.context),
             'target': 'new',
@@ -57,10 +63,12 @@ class ReportTaskSprint(models.Model):
         self.ensure_one()
         return {
             'type': 'ir.actions.act_window',
-            'name': 'Done Tasks',
+            'name': 'Dev Tasks',
             'view_mode': 'tree',
             'res_model': 'bap.project.task',
             'domain': [('project_id', '=', self.project_id.id),
+                       ('sprint_id', '=', self.sprint_id.id),
+                       ('member_id', '=', self.dev_ids.id),
                        ('status', '=', 'dev')],
             'context': dict(self.env.context),
             'target':'new',
@@ -71,10 +79,12 @@ class ReportTaskSprint(models.Model):
         self.ensure_one()
         return {
             'type': 'ir.actions.act_window',
-            'name': 'Done Tasks',
+            'name': 'QC Tasks',
             'view_mode': 'tree',
             'res_model': 'bap.project.task',
             'domain': [('project_id', '=', self.project_id.id),
+                       ('sprint_id', '=', self.sprint_id.id),
+                       ('member_id', '=', self.member_id.id),
                        ('status', '=', 'qc')],
             'context': dict(self.env.context),
             'target': 'new',
@@ -87,6 +97,8 @@ class ReportTaskSprint(models.Model):
             'view_mode': 'tree',
             'res_model': 'bap.project.task',
             'domain': [('project_id', '=', self.project_id.id),
+                       ('sprint_id', '=', self.sprint_id.id),
+                       ('member_id', '=', self.member_id.id),
                        ('status', '=', 'done')],
             'context': dict(self.env.context),
             'target': 'new',

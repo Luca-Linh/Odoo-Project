@@ -44,7 +44,7 @@ class ReportTaskSprintXLSX(models.AbstractModel):
 
         # Xây dựng câu truy vấn SQL
         query = """
-            SELECT
+            SELECT DISTINCT
                 rp_dev.name AS member_name,
                 p.project_name AS project_name,
                 ps.sprint_name AS sprint_name,
@@ -69,7 +69,7 @@ class ReportTaskSprintXLSX(models.AbstractModel):
                 GROUP BY
                     p.project_name, ps.sprint_name, pt.dev_id, rp_dev.name, ps.start_date, ps.end_date
                 UNION ALL
-                SELECT
+                SELECT DISTINCT
                     rp_qc.name AS member_name,
                     p.project_name AS project_name,
                     ps.sprint_name AS sprint_name,

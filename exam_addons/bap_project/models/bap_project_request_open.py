@@ -50,7 +50,7 @@ class BapProjectRequestOpen(models.Model):
     @api.model
     def create(self, vals):
         if not self.env.user.has_group('bap_project.group_project_admin'):
-            # If pm_id is provided and does not match the logged-in user, raise an error
+
             if vals.get('pm_id') and vals['pm_id'] != self.env.user.id:
                 raise UserError("The Project Manager must be yourself.")
 
@@ -68,14 +68,14 @@ class BapProjectRequestOpen(models.Model):
         for record in self:
             if record.status != 'submitted':
                 raise UserError(_("Only records with status 'Submitted' can be approved."))
-            record.env['bap.project'].sudo().create({
+            record.env['bap.project'].create({
                 'project_name': record.project_name,
                 'pm_id': record.pm_id.id,
                 'dev_ids': [(6, 0, record.dev_ids.ids)],
                 'qc_ids': [(6, 0, record.qc_ids.ids)],
                 'start_date': record.start_date,
                 'description': record.description,
-                'status': 'open',  # Default status for new projects
+                'status': 'open',
                 'request_id': record.id,
             })
             # Update the status of the records to 'approved'
@@ -85,23 +85,19 @@ class BapProjectRequestOpen(models.Model):
         for record in self:
             if record.status != 'submitted':
                 raise UserError(_("Only records with status 'Submitted' can be refused."))
-        self.sudo().write({
+        self.write({
             'status': 'cancelled',
             'cancel_reason': 'cancelled all',
             'approved_by':  self.env.user
         })
 
     def action_submit(self):
-        """Send request for approval."""
         if self.status == 'draft':
-            self.sudo().write({'status': 'submitted'})
+            self.write({'status': 'submitted'})
 
     def action_approve(self):
-        """Approve the request and create the project."""
         if self.status != 'submitted':
             raise ValidationError(_("Only requests in 'Submitted' status can be approved."))
-
-        # Tạo dự án
         project_vals = {
             'project_name': self.project_name,
             'pm_id': self.pm_id.id,
@@ -112,9 +108,9 @@ class BapProjectRequestOpen(models.Model):
             'status': 'open',
             'request_id': self.id,
         }
-        self.env['bap.project'].sudo().create(project_vals)
+        self.env['bap.project'].create(project_vals)
 
-        self.sudo().write({'status':'approved','approved_by': self.env.user})
+        self.write({'status':'approved','approved_by': self.env.user})
 
 
     def action_open_cancel_wizard(self):

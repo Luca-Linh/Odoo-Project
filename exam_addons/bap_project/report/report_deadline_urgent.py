@@ -25,7 +25,7 @@ class ReportDeadlineUrgent(models.Model):
 
         self.env.cr.execute("""
             CREATE OR REPLACE VIEW report_deadline_urgent AS (
-                SELECT
+                SELECT DISTINCT
                     row_number() OVER () AS id,
                     t.task_code AS task_code,
                     t.task_name AS task_name,
@@ -45,7 +45,7 @@ class ReportDeadlineUrgent(models.Model):
                 WHERE
                     t.dev_deadline BETWEEN CURRENT_DATE AND CURRENT_DATE + 2
                 UNION ALL
-                SELECT
+                SELECT DISTINCT
                     row_number() OVER () + 100000 AS id,
                     t.task_code AS task_code,
                     t.task_name AS task_name,

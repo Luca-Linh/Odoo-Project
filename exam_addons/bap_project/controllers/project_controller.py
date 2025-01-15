@@ -234,42 +234,28 @@ class ProjectController(http.Controller):
             task_data = request.jsonrequest
             _logger.info(f"Received username: {username}")
             if not username:
-                return Response(
-                    json.dumps({
+                return {
                         "status": "error",
                         "message": "Username is required"
-                    }),
-                    headers={'Content-Type': 'application/json'},
-                    status=400
-                )
+                }, 400
 
             # Tìm user theo username
             user = request.env['res.users'].sudo().search([('login', '=', username)], limit=1)
             if not user:
-                return Response(
-                    json.dumps({
+                return {
                         "status": "error",
                         "message": "User not found"
-                    }),
-                    headers={'Content-Type': 'application/json'},
-                    status=404
-                )
-
+                }, 400
             # Tìm task theo task_id
             task = request.env['bap.project.task'].sudo().browse(task_id)
             _logger.info(f"Received Task: {task}")
 
             if not task.exists():
                 _logger.error(f"Task {task_id} not found")
-                return Response(
-                    json.dumps({
+                return {
                         "status": "error",
                         "message": "Task not found"
-                    }),
-                    headers={'Content-Type': 'application/json'},
-                    status=404
-                )
-
+                }, 400
             # Các trường được phép cập nhật
             allowed_fields = [
                 'task_name', 'sprint_id',
@@ -282,12 +268,12 @@ class ProjectController(http.Controller):
                 # Lọc các trường hợp lệ từ kwargs
                 update_data = {key: value for key, value in task_data.items() if key in allowed_fields}
             elif user.has_group('bap_project.group_project_pm') or user.has_group('bap_project.group_project_member'):
-                if user.id in project.qc_ids.ids or user.id in project.dev_ids.ids or user.id == project.pm_id.id :
+                if not user.id in project.qc_ids.ids or user.id in project.dev_ids.ids or user.id == project.pm_id.id :
                     _logger.error(f"User {username} does not have permission to edit task {task_id}")
                     return {
                         'status': 'forbidden',
                         'message': 'You do not have permission to edit this task'
-                    }
+                    }, 400
                 # Lọc các trường hợp lệ từ kwargs
                 update_data = {key: value for key, value in task_data.items() if key in allowed_fields}
             else:
@@ -298,15 +284,10 @@ class ProjectController(http.Controller):
                 }
 
             if not update_data:
-                return Response(
-                    json.dumps({
+                return {
                         "status": "error",
                         "message": "No valid fields to update"
-                    }),
-                    headers={'Content-Type': 'application/json'},
-                    status=400
-                )
-
+                    }, 400
             # Cập nhật thông tin task
             task.sudo().write(update_data)
 
@@ -326,24 +307,16 @@ class ProjectController(http.Controller):
                 'description': task.description,
             }
 
-            return Response(
-                json.dumps({
+            return {
                     "status": "success",
                     "message": "Task updated successfully",
                     "data": task_data_update
-                }),
-                headers={'Content-Type': 'application/json'},
-                status=200
-            )
+                }, 200
         except Exception as e:
             _logger.error(f"Error updating task: {str(e)}")
-            return Response(
-                json.dumps({
+            return {
                     "status": "error",
                     "message": f"An error occurred: {str(e)}"
-                }),
-                headers={'Content-Type': 'application/json'},
-                status=500
-            )
+                },500
 
 

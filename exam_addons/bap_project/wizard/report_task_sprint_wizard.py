@@ -63,7 +63,7 @@ class ReportTaskSprintWizard(models.TransientModel):
         # Truy vấn SQL để tạo view
         query = """
             CREATE OR REPLACE VIEW report_task_sprint AS (
-                SELECT
+                SELECT DISTINCT
                     ROW_NUMBER() OVER() AS id,
                     pt.project_id,
                     p.project_name AS project_name, 
@@ -92,7 +92,7 @@ class ReportTaskSprintWizard(models.TransientModel):
                 GROUP BY
                     p.project_name,ps.sprint_name,pt.project_id, pt.sprint_id, pt.dev_id, rp_dev.name, ps.start_date, ps.end_date
                 UNION ALL
-                SELECT
+                SELECT DISTINCT
                     ROW_NUMBER() OVER() + 100000 AS id,
                     pt.project_id,
                     p.project_name AS project_name, 

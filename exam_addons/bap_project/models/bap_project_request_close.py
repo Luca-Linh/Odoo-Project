@@ -91,7 +91,11 @@ class BapProjectRequestClose(models.Model):
         for record in self:
             if record.status != 'submitted':
                 raise UserError(_("Only records with status 'Submitted' can be approved."))
-        self.sudo().write({
+            record.project_id.write({
+                'end_date': record.end_date,
+                'status': 'close',  # Giả sử dự án có trạng thái closed
+            })
+        self.write({
             'status': 'approved',
             'approved_by': self.env.user
         })
@@ -100,7 +104,7 @@ class BapProjectRequestClose(models.Model):
         for record in self:
             if record.status != 'submitted':
                 raise UserError(_("Only records with status 'Submitted' can be refused."))
-        self.sudo().write({
+        self.write({
             'status': 'cancelled',
             'cancel_reason': 'cancelled all',
             'approved_by': self.env.user
@@ -109,7 +113,7 @@ class BapProjectRequestClose(models.Model):
     def action_submit(self):
         """Send request for approval."""
         if self.status == 'draft':
-            self.sudo().write({'status': 'submitted'})
+            self.write({'status': 'submitted'})
 
     def action_approve(self):
         """Approve the request and create the project."""
@@ -126,8 +130,8 @@ class BapProjectRequestClose(models.Model):
                 'status': 'close',  # Giả sử dự án có trạng thái closed
             })
 
-        self.sudo().write({'status':'approved'})
-        self.sudo().write({'approved_by': self.env.user})
+        self.write({'status':'approved'})
+        self.write({'approved_by': self.env.user})
 
         # Gửi email
         template = self.env.ref('bap_project.email_template_accept_request_close')

@@ -40,7 +40,7 @@ class ReportDeadlineUrgentXLSX(models.AbstractModel):
 
         # Xây dựng câu truy vấn SQL
         query = """
-            SELECT
+            SELECT DISTINCT
                 t.task_code AS task_code,
                 t.task_name AS task_name,
                 p.project_name AS project_name,
@@ -64,7 +64,7 @@ class ReportDeadlineUrgentXLSX(models.AbstractModel):
 
         query += """
             UNION ALL
-            SELECT
+            SELECT DISTINCT
                 t.task_code AS task_code,
                 t.task_name AS task_name,
                 p.project_name AS project_name,

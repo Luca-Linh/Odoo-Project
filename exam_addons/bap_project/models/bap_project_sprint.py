@@ -25,6 +25,7 @@ class BapProjectSprint(models.Model):
         required=True
     )
     task_ids = fields.One2many('bap.project.task', 'sprint_id', string='Tasks')
+    # Hiện thị tên thay vì id
     def name_get(self):
         result = []
         for sprint in self:
@@ -32,11 +33,17 @@ class BapProjectSprint(models.Model):
             result.append((sprint.id, name))
         return result
 
+    # Chỉ hiện project mà user là pm
     def _get_project_domain(self):
         user = self.env.user
         if user.has_group('bap_project.group_project_pm'):
-            return [('pm_id', '=', user.id)]
-        return []
+            return [
+                ('pm_id', '=', user.id),
+                ('status', '=', 'open')]
+        if user.has_group('bap_project.group_project_admin'):
+            return [
+                ('status', '=', 'open')
+            ]
 
     @api.model
     def create(self, vals):
@@ -58,6 +65,24 @@ class BapProjectSprint(models.Model):
                     raise ValidationError(
                         "The sprint dates overlap with another sprint in the same project."
                     )
+
+    @api.constrains('start_date', 'project_id')
+    def _check_sprint_start_date(self):
+        for sprint in self:
+            if sprint.project_id and sprint.start_date:
+                if sprint.start_date <= sprint.project_id.start_date:
+                    raise ValidationError(_(
+                        "The Sprint's start date (%s) cannot be before the project's start date (%s)."
+                    ) % (sprint.start_date, sprint.project_id.start_date))
+
+    @api.constrains('start_date', 'end_date')
+    def _check_sprint_dates(self):
+        for sprint in self:
+            if sprint.start_date and sprint.end_date:
+                if sprint.end_date < sprint.start_date:
+                    raise ValidationError(_(
+                        "The end date (%s) of the Sprint must be after its start date (%s)."
+                    ) % (sprint.end_date, sprint.start_date))
 
     @api.constrains('status', 'project_id')
     def _check_single_open_sprint(self):
